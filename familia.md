@@ -1,8 +1,18 @@
-Bem-vindo à área de registros e história da família. Selecione um dos diretórios ou arquivos abaixo:
-
-### 🔗 [Georg Rücker: Uma crônica de família (1789)](georg-rucker.html)
-
-### 🔗 [Espaço para próximo documento ou galeria de fotos](#)
-
 ---
-[⬅ Voltar para a página inicial](/)
+layout: default
+title: Família
+---
+
+<h1>Família</h1>
+<p>Registros e história da família Rücker.</p>
+
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <small>— {{ post.date | date: "%d/%m/%Y" }}</small>
+    </li>
+  {% endfor %}
+</ul>
+
+<p><a href="{{ '/' | relative_url }}">← Voltar para a página inicial</a></p>
