@@ -3,16 +3,17 @@ layout: default
 title: Família
 ---
 
-<h1>Família</h1>
-<p>Registros e história da família Rücker.</p>
+# Família
+Registros e história da família Rücker.
 
-<ul>
+<div class="posts-list" style="margin-top: 20px;">
   {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      <small>— {{ post.date | date: "%d/%m/%Y" }}</small>
-    </li>
+    <div style="margin-bottom: 15px;">
+      <a href="{{ post.url | relative_url }}" style="font-size: 1.1em; font-weight: bold;">{{ post.title }}</a>
+    </div>
   {% endfor %}
-</ul>
+</div>
+
+<hr style="margin: 30px 0; border: none; border-top: 1px solid #eaeaea;">
 
 <p><a href="{{ '/' | relative_url }}">← Voltar para a página inicial</a></p>
