@@ -1,20 +1,19 @@
 ---
 layout: default
-title: Família
+title: "Família"
 ---
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 # Família
+
 Registros e história da família Rücker.
 
-<div class="posts-list" style="margin-top: 20px;">
-  {% assign sorted_posts = site.posts | sort: 'date' %}
-  {% for post in sorted_posts %}
-    <div style="margin-bottom: 15px;">
-      <a href="{{ post.url | relative_url }}" style="font-size: 1.1em; font-weight: bold;">{{ post.title }}</a>
-    </div>
-  {% endfor %}
-</div>
+---
 
-<hr style="margin: 30px 0; border: none; border-top: 1px solid #eaeaea;">
+* [Georg Rücker](familia/georg-rucker.html)
+* [Vincentius Joseph Rücker](familia/vincentius-joseph-rucker.html)
+
+---
 
 <p><a href="{{ '/' | relative_url }}">← Voltar para a página inicial</a></p>
