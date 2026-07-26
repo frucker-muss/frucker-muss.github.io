@@ -2,16 +2,17 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body>
-    <main class="page-content" aria-label="Content">
+    <main class="page-content" aria-label="Content" style="padding: 20px; max-width: 800px; margin: 0 auto; word-wrap: break-word;">
         <div class="wrapper">
             {{ content }}
 
-            <!-- Início do Sistema de Comentários Giscus -->
-            <div style="margin-top: 50px;">
+            <!-- Sistema de Comentários Giscus -->
+            <div style="margin-top: 40px; width: 100%;">
                 <script src="https://giscus.app/client.js"
                         data-repo="frucker-muss/frucker-muss.github.io"
                         data-repo-id="R_kgDOTkOLsg"
@@ -28,7 +29,6 @@
                         async>
                 </script>
             </div>
-            <!-- Fim dos Comentários -->
         </div>
     </main>
 </body>
