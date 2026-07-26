@@ -7,7 +7,8 @@ title: Família
 Registros e história da família Rücker.
 
 <div class="posts-list" style="margin-top: 20px;">
-  {% for post in site.posts %}
+  {% assign sorted_posts = site.posts | sort: 'date' %}
+  {% for post in sorted_posts %}
     <div style="margin-bottom: 15px;">
       <a href="{{ post.url | relative_url }}" style="font-size: 1.1em; font-weight: bold;">{{ post.title }}</a>
     </div>
