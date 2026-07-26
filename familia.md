@@ -11,9 +11,11 @@ Registros e história da família Rücker.
 
 ---
 
-* [Georg Rücker](familia/georg-rucker.html)
-* [Vincentius Joseph Rücker](familia/vincentius-joseph-rucker.html)
+<ul style="line-height: 2.2; font-size: 1.15rem;">
+    <li><a href="georg-rucker.html">Georg Rücker</a></li>
+    <li><a href="vincentius-joseph-rucker.html">Vincentius Joseph Rücker</a></li>
+</ul>
 
 ---
 
-<p><a href="{{ '/' | relative_url }}">← Voltar para a página inicial</a></p>
+<p style="font-size: 1.05rem;"><a href="{{ '/' | relative_url }}">← Voltar para a página inicial</a></p>
