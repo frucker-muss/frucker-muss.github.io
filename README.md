@@ -1,9 +1,8 @@
-# Bem-vindo ao Rucker.life
+Este é o portal principal em construção. Escolha um dos diretórios abaixo para acessar o conteúdo isolado:
 
-Este é o site principal em construção.
+### 🔗 [Família e Registros Históricos](familia.html)
 
-## Sobre
+### 🔗 [Projetos e Outros Assuntos](projetos.html)
 
-* Esta página utiliza o motor Jekyll do GitHub.
-* O design é aplicado automaticamente.
-* 
+---
+*Infraestrutura operando sob GitHub Pages.*
