@@ -1,8 +1,17 @@
-Este é o portal principal em construção. Escolha um dos diretórios abaixo para acessar o conteúdo isolado:
+## Bem-vindo ao Rücker.Life
 
-### 🔗 [Família e Registros Históricos](familia.html)
-
-### 🔗 [Projetos e Outros Assuntos](projetos.html)
+Este espaço é dedicado à preservação da memória histórica, crônicas e registros da nossa trajetória. Selecione abaixo a seção que deseja explorar:
 
 ---
+
+### 📂 [Família](familia.html)
+*Genealogia*
+
+### 📂 [Outros](projetos.html)
+*Tópicos independentes.*
+
+---
+
+![Imagem de capa do portal](https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80)
+
 *Infraestrutura operando sob GitHub Pages.*
