@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+    <main class="page-content" aria-label="Content" style="padding: 20px; max-width: 800px; margin: 0 auto; word-wrap: break-word;">
+        <div class="wrapper">
+            {{ content }}
+
+            <!-- Sistema de Comentários Giscus -->
+            <div style="margin-top: 40px; width: 100%;">
+                <script src="https://giscus.app/client.js"
+                        data-repo="frucker-muss/frucker-muss.github.io"
+                        data-repo-id="R_kgDOTkOLsg"
+                        data-category="General"
+                        data-category-id="DIC_kwDOTkOLss4DCB9p"
+                        data-mapping="pathname"
+                        data-strict="0"
+                        data-reactions-enabled="1"
+                        data-emit-metadata="0"
+                        data-input-position="bottom"
+                        data-theme="preferred_color_scheme"
+                        data-lang="pt"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            </div>
+            
+            <p style="margin-top: 30px;"><a href="{{ '/familia.html' | relative_url }}">← Voltar para a lista</a></p>
+        </div>
+    </main>
+</body>
+</html>
