@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+    <main class="page-content" aria-label="Content">
+        <div class="wrapper">
+            {{ content }}
+
+            <!-- Início do Sistema de Comentários Giscus -->
+            <div style="margin-top: 50px;">
+                <script src="https://giscus.app/client.js"
+                        data-repo="frucker-muss/frucker-muss.github.io"
+                        data-repo-id="R_kgDOTkOLsg"
+                        data-category="General"
+                        data-category-id="DIC_kwDOTkOLss4DCB9p"
+                        data-mapping="pathname"
+                        data-strict="0"
+                        data-reactions-enabled="1"
+                        data-emit-metadata="0"
+                        data-input-position="bottom"
+                        data-theme="preferred_color_scheme"
+                        data-lang="pt"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            </div>
+            <!-- Fim dos Comentários -->
+        </div>
+    </main>
+</body>
+</html>
