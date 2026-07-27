@@ -4,12 +4,6 @@ title: "Vincentius Joseph Rücker"
 subtitle: "Do Bürgerthum prussiano à fuga pelo Atlântico"
 ---
 
-
-
-
-
----
-
 ### 1. A ascensão social (1827 – meados do século XIX)
 
 Vicente nasceu em 1827 em Wölfelsgrund, filho de Georg Rücker — um homem que começara a vida como servo sem terras. A trajetória do filho, porém, seguiria outro rumo. Na primeira metade do século XIX, a Silésia prussiana via nascer uma nova camada social, o chamado *Bürgerthum*: industriais, professores, funcionários públicos — um Terceiro Estado que se afirmava entre a nobreza e o povo. Foi nesse espaço que Vicente encontrou seu lugar. Diferente do pai, que vendera apenas força braçal, ele reuniu educação e qualificação suficientes para ingressar nessa elite administrativa tão cobiçada, onde ascender à burocracia do Estado ou aos altos cargos dos latifúndios aristocráticos era o caminho mais seguro para o prestígio.
@@ -36,7 +30,6 @@ Morreu aos oitenta anos, em 21 de julho de 1908, e foi sepultado no Cemitério d
 
 ---
 
-<p style="font-size: 0.9rem; color: #666;"><em>Genealogia da família Rücker — de Wölfelsgrund, Silésia, ao Rio Grande do Sul.</em></p>
+<p class="cronica-footnote"><em>Genealogia da família Rücker — de Wölfelsgrund, Silésia, ao Rio Grande do Sul.</em></p>
 
 <p style="font-size: 1.05rem;"><a href="{{ '/familia.html' | relative_url }}">← Voltar para Família</a></p>
-
