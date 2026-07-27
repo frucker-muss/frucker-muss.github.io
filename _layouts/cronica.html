@@ -11,7 +11,7 @@ layout: default
     {{ content }}
   </div>
   
-  <!-- BOTÃO DE COMPARTILHAMENTO -->
+  <!-- BOTÃO DE COMPARTILHAMENTO WHATSAPP -->
   <div style="text-align: center; margin: 3rem 0 1rem; border-top: 1px solid #2a2a2a; padding-top: 2rem;">
     <a href="https://api.whatsapp.com/send?text=Leia:%20{{ page.title | url_encode }}%20-%20https://rucker.life{{ page.url }}" 
        target="_blank" 
@@ -22,6 +22,26 @@ layout: default
       </svg>
       Compartilhar no WhatsApp
     </a>
+  </div>
+
+  <!-- SEÇÃO DE COMENTÁRIOS (GISCUS) -->
+  <div style="margin-top: 3rem;">
+    <script src="https://giscus.app/client.js"
+            data-repo="frucker-muss/frucker-muss.github.io"
+            data-repo-id="R_kgDOTkOLsg"
+            data-category="General"
+            data-category-id="DIC_kwDOTkOLss4DCB9p"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="dark"
+            data-lang="pt"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+    </script>
   </div>
 </article>
 
