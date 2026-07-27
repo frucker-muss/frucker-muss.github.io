@@ -3,23 +3,21 @@ layout: default
 title: Início
 ---
 
-<div class="home-grid">
-  <!-- O link agora aponta diretamente para o arquivo renderizado -->
-  <a href="familia.html" class="card">
+<div style="display: flex; flex-direction: column; gap: 2.5rem; margin: 2rem 0;">
+  
+  <!-- 1. Cartão Família no topo -->
+  <a href="{{ '/familia.html' | relative_url }}" class="card">
     <h3>Família</h3>
     <p>Genealogia e registros históricos.</p>
   </a>
   
-  <a href="projetos.html" class="card">
+  <!-- 2. Imagem do Mapa logo abaixo de Família -->
+  <img src="{{ '/assets/1785149425259.png' | relative_url }}" alt="Mapa cartográfico das rotas de migração da família Rücker" style="border-radius: 8px; max-width: 100%; height: auto; display: block; margin: 0 auto; border: 1px solid #333; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+
+  <!-- 3. Cartão Outros no final -->
+  <a href="{{ '/projetos.html' | relative_url }}" class="card">
     <h3>Outros</h3>
     <p>Tópicos independentes.</p>
   </a>
-</div>
 
-<hr>
-
-<hr>
-
-<div style="text-align: center; margin: 2.5rem auto;">
-  <img src="{{ '/assets/1785149425259.png' | relative_url }}" alt="Mapa cartográfico das rotas de migração da família Rücker" style="border-radius: 8px; max-width: 100%; height: auto; display: block; margin: 0 auto; border: 1px solid #333; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
 </div>
