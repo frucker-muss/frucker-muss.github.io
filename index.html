@@ -5,16 +5,15 @@ title: Início
 
 <div style="display: flex; flex-direction: column; gap: 2.5rem; margin: 2rem 0;">
   
-  <!-- 1. Cartão Família no topo -->
-  <a href="{{ '/familia.html' | relative_url }}" class="card">
-    <h3>Família</h3>
-    <p>Genealogia e registros históricos.</p>
+  <!-- 1. Cartão Família com Mapa de Fundo -->
+  <a href="{{ '/familia.html' | relative_url }}" class="card" style="background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('{{ "/assets/1785149425259.png" | relative_url }}'); background-size: cover; background-position: center; border-color: #333;">
+    <!-- Título com sombra para garantir leitura -->
+    <h3 style="text-shadow: 2px 2px 4px rgba(0,0,0,0.9); color: #d4af6a;">Família</h3>
+    <!-- Texto levemente mais claro que o padrão para contrastar melhor com o fundo escurecido -->
+    <p style="text-shadow: 1px 1px 3px rgba(0,0,0,0.9); color: #f2efe6;">Genealogia e registros históricos.</p>
   </a>
   
-  <!-- 2. Imagem do Mapa logo abaixo de Família -->
-  <img src="{{ '/assets/1785149425259.png' | relative_url }}" alt="Mapa cartográfico das rotas de migração da família Rücker" style="border-radius: 8px; max-width: 100%; height: auto; display: block; margin: 0 auto; border: 1px solid #333; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
-
-  <!-- 3. Cartão Outros no final -->
+  <!-- 2. Cartão Outros -->
   <a href="{{ '/projetos.html' | relative_url }}" class="card">
     <h3>Outros</h3>
     <p>Tópicos independentes.</p>
