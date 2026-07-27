@@ -1,3 +1,4 @@
-theme: jekyll-theme-architect
 title: Rucker.life
 description: Família
+# Remova ou comente a linha abaixo para evitar sobreposição de estilos
+# theme: jekyll-theme-architect
