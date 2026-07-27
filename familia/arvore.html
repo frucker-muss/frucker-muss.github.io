@@ -117,24 +117,6 @@ title: "Árvore Genealógica"
   color:var(--ouro);display:block;font-weight:normal;margin-bottom:0.2rem;}
 .rkr-arbitro{font-family:var(--mono);font-size:0.7rem;color:var(--mudo);border-left:2px solid var(--sage);padding-left:0.85rem;line-height:1.7;}
 
-.rkr-tl ol{border-left:1px solid var(--borda);margin-left:6px;}
-.rkr-tl li{position:relative;padding:0 0 1.4rem 1.6rem;}
-.rkr-tl li::before{content:"";position:absolute;left:-5px;top:9px;width:9px;height:9px;border-radius:50%;background:var(--ouro);}
-.rkr-tl li[data-status="hip"]::before{background:transparent;border:1px dashed var(--mudo);}
-.rkr-tl li[data-status="inf"]::before{background-image:linear-gradient(90deg,var(--ouro) 50%,transparent 50%);border:1px solid var(--ouro);}
-.rkr-tl li[data-status="ext"]::before{background:var(--sage);}
-.rkr-tl li[data-status="conf"]::before{background:var(--terra);}
-.rkr-tl time{font-family:var(--mono);font-size:0.72rem;color:var(--ouro);letter-spacing:.04em;}
-.rkr-tl li[data-status="ext"] time{color:var(--sage);}
-.rkr-tl li[data-status="conf"] time{color:var(--terra);}
-.rkr-tl p{font-size:0.98rem;color:var(--soft);margin-top:0.25rem;}
-
-.rkr-fontes{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
-.rkr-fonte{border:1px solid var(--borda);border-radius:10px;padding:1.3rem;background:var(--superficie);}
-.rkr-fonte h4{font-family:Georgia,serif;font-size:1.1rem;color:var(--claro);line-height:1.3;margin:0;}
-.rkr-fonte .rkr-ref{font-family:var(--mono);font-size:0.66rem;color:var(--ouro);margin:0.45rem 0 0.7rem;display:block;}
-.rkr-fonte p{font-size:0.92rem;color:var(--soft);}
-
 @media (max-width:480px){
   .rkr-cartao{width:100%;}
   .rkr-item{grid-template-columns:1fr;gap:0.6rem;}
@@ -178,7 +160,7 @@ title: "Árvore Genealógica"
 
 <script>
 (function(){
-  // 1. DADOS CONSOLIDADOS (Corrigido o truncamento)
+  // 1. DADOS CONSOLIDADOS (Completo com as gerações III e IV)
   var DADOS = {
     desambiguacoes: {
       anton: {
@@ -301,6 +283,52 @@ title: "Árvore Genealógica"
             t: "O que se sabe",
             f: [
               { r: "Filiação", v: "Filho de Vincentius Joseph Rücker e Beata Larisch", s: "doc", src: "Arquivo-base, Geração 2." }
+            ]
+          }
+        ]
+      },
+      {
+        id: "august_ambros", ger: "Geração III · os três irmãos", linha: "direta", iniciais: "AA", desamb: "anton",
+        nome: "August Ambros Rücker", vida: "Emigração em 1898",
+        papel: "Descendência direta. Fixou-se em São Pedro do Maratá, RS, com 15 filhos.",
+        sub: "Irmão · Linha Direta",
+        blocos: [
+          {
+            t: "Trajetória e Descendência",
+            f: [
+              { r: "Casamento", v: "Philippine Saft (n. 1875), casamento em 1899", s: "doc", src: "Correção da omissão da tabela datilografada." },
+              { r: "Fixação", v: "São Pedro do Maratá, Rio Grande do Sul", s: "doc", src: "Lápide do jazigo familiar de São Pedro do Maratá." },
+              { r: "Prole", v: "Pai de Paulo Vicente, Maria Emma, Gottfried Anton, Bertholdo, Aloisio, Ewaldo, Hedwig, Luisa, Rudolfo, Adolf, José, Adalberto, Augusto, Siegmundo e Albano", s: "doc", src: "Registros da família e lápide do jazigo familiar." }
+            ]
+          }
+        ]
+      },
+      {
+        id: "ambros_august", ger: "Geração III · os três irmãos", linha: "colateral", iniciais: "AM", desamb: "ambros",
+        nome: "Ambros August Rücker", vida: "28 anos no embarque de 1898",
+        papel: "Irmão. Seguiu para o Paraná e Santa Catarina.",
+        sub: "Irmão · Ramo Colateral",
+        blocos: [
+          {
+            t: "Informações",
+            f: [
+              { r: "Imigração", v: "Chegou ao Brasil em 1898, possivelmente casado com Amalia", s: "doc", src: "Tabela datilografada." },
+              { r: "Confusão", v: "A semelhança dos nomes invertidos com o irmão August Ambros é a principal fonte de erro nas genealogias publicadas da família.", s: "inf", src: "Análise documental." },
+              { r: "Filhos", v: "Pai de Walter, Herbert e Max", s: "doc", src: "Tabela datilografada." }
+            ]
+          }
+        ]
+      },
+      {
+        id: "siegmundo", ger: "Geração IV · os nascidos no brasil", linha: "direta", iniciais: "SR",
+        nome: "Siegmundo Rücker", vida: "n. 1918",
+        papel: "Linha direta da descendência atual.",
+        sub: "Linha Direta",
+        blocos: [
+          {
+            t: "Registro",
+            f: [
+              { r: "Nascimento", v: "Nascido em 1918 no Brasil", s: "doc", src: "Registros da família." }
             ]
           }
         ]
