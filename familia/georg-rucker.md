@@ -1,6 +1,9 @@
 ---
-layout: default
+---
+layout: cronica
 title: "Georg Rücker"
+subtitle: "Johannesberg, Silésia · 1789"
+---
 ---
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
