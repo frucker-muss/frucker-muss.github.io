@@ -8,9 +8,16 @@ title: "Família Rücker"
   Registros documentais, trajetórias e crônicas da imigração da família Rücker, desde a região da Silésia no século XVIII até o sul do Brasil.
 </p>
 
-<!-- Grid de Cartões (Reaproveitando o CSS já existente) -->
+<!-- Grid de Cartões -->
 <div class="home-grid">
-  
+
+  <!-- Cartão: Árvore Genealógica -->
+  <a href="{{ '/familia/arvore.html' | relative_url }}" class="card" style="padding: 1.5rem; text-align: left; justify-content: flex-start; border-color: rgba(212, 175, 106, 0.45); grid-column: 1 / -1;">
+    <span style="font-size: 0.75rem; color: #d4af6a; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; display: block; font-weight: bold;">Interativo</span>
+    <h3 style="margin-bottom: 0.5rem; font-size: 1.5rem; border: none;">Árvore Genealógica</h3>
+    <p style="font-size: 0.95rem;">Cinco gerações navegáveis, de Georg Rücker (1789) aos nascidos no Rio Grande do Sul.</p>
+  </a>
+
   <!-- Cartão: Georg (Perfil Histórico) -->
   <a href="{{ '/familia/georg-rucker.html' | relative_url }}" class="card" style="padding: 1.5rem; text-align: left; justify-content: flex-start;">
     <span style="font-size: 0.75rem; color: #8a8578; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; display: block; font-weight: bold;">Perfil Histórico</span>
