@@ -1,0 +1,27 @@
+.site-header {
+  background-color: #0d0d0d;
+  border-bottom: 1px solid #2a2a2a;
+  padding: 1rem 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Georgia, serif;
+}
+
+.site-header-title {
+  color: #d4af6a;
+  font-size: 1.2rem;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+}
+
+.site-header-nav a {
+  color: #b8b2a3;
+  text-decoration: none;
+  font-size: 1rem;
+  margin-left: 1.2rem;
+}
+
+.site-header-nav a:hover {
+  color: #d4af6a;
+}
