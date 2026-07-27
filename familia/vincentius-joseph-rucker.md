@@ -38,4 +38,5 @@ Morreu aos oitenta anos, em 21 de julho de 1908, e foi sepultado no Cemitério d
 
 <p style="font-size: 0.9rem; color: #666;"><em>Genealogia da família Rücker — de Wölfelsgrund, Silésia, ao Rio Grande do Sul.</em></p>
 
-<p style="font-size: 1.05rem;"><a href="{{ '/familia/' | relative_url }}">← Voltar para Família</a></p>
+<p style="font-size: 1.05rem;"><a href="{{ '/familia.html' | relative_url }}">← Voltar para Família</a></p>
+
