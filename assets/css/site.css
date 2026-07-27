@@ -28,33 +28,23 @@ img {
   margin: 1.5rem auto;
 }
 
-/* Cabeçalho do Site */
+/* Cabeçalho do Site Minimalista */
 .site-header {
   text-align: center;
-  margin-bottom: 3rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #333;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #2a2a2a; /* Linha divisória mais suave */
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .site-header-title {
-  font-size: 2.2rem;
-  color: #f2efe6;
+  font-size: 1.2rem; /* Fonte pequena */
+  color: #8a8578; /* Tom acinzentado e discreto */
   text-decoration: none;
-  font-weight: bold;
-}
-
-.site-header-nav {
-  margin-top: 1rem;
-}
-
-.site-header-nav a {
-  color: #d4af6a;
-  text-decoration: none;
-  font-size: 1.2rem;
-  margin: 0 15px;
+  font-weight: normal; /* Remove o negrito */
+  letter-spacing: 0.05em; /* Leve espaçamento elegante */
 }
 
 /* Tipografia e Links base */
