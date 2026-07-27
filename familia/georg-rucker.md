@@ -127,4 +127,4 @@ Mas ele existiu. Isso os documentos garantem. Ele caminhou nas encostas da Monta
 
 <p style="font-size: 0.9rem; color: #666;"><em>Nota: Os fatos desta crônica — datas de nascimento e morte, nomes das esposas e filhos, a presença do Padre Carolus Rücker no falecimento de Maria Volkmer — são extraídos de registros documentais da família e dos arquivos paroquiais do Condado de Habelschwerdt. O contexto histórico é documentado: a servidão prussiana (Erbuntertänigkeit), o Édito de Outubro de 1807, a crise climática de 1816 causada pelo vulcão Tambora, e a economia madeireira de Wölfelsgrund. O que não está nos arquivos — os sentimentos, os cheiros, o cotidiano — foi imaginado com o cuidado de quem respeita o que não sabe.</em></p>
 
-<p style="font-size: 1.05rem;"><a href="{{ '/familia/' | relative_url }}">← Voltar para Família</a></p>
+<p style="font-size: 1.05rem;"><a href="{{ '/familia.html' | relative_url }}">← Voltar para Família</a></p>
