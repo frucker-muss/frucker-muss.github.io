@@ -5,10 +5,199 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#121212">
   <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
-  {% if page.layout == 'cronica' %}
-  <link rel="stylesheet" href="{{ '/assets/css/cronica.css' | relative_url }}">
-  {% endif %}
+  <style>
+  :root {
+    --bg: #121212;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #e8e4da;
+    --text-soft: #b8b2a3;
+    --text-mute: #8a8578;
+    --gold: #d4af6a;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background-color: #121212;
+    color: #e8e4da;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { max-width: 100%; height: auto; }
+  a { color: #d4af6a; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ---------- Cabeçalho ---------- */
+  .site-header {
+    border-bottom: 1px solid #2a2a2a;
+    padding: 1.2rem 1.4rem;
+    text-align: center;
+  }
+  .site-header-title {
+    font-size: 1.25rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #b8b2a3;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .site-header-title:hover { color: #d4af6a; text-decoration: none; }
+
+  /* ---------- Conteúdo ---------- */
+  .page-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem 1.4rem 4rem;
+  }
+  .page-content h1, .page-content h2 {
+    font-family: Georgia, serif;
+    color: #f2efe6;
+    line-height: 1.25;
+    text-align: center;
+  }
+  .page-content hr {
+    border: none;
+    border-top: 1px solid #2a2a2a;
+    margin: 3rem 0;
+  }
+
+  /* ---------- Grade de cartões ---------- */
+  .home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.4rem;
+    margin: 0 auto;
+  }
+  .home-grid--single {
+    max-width: 640px;
+    grid-template-columns: 1fr;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 170px;
+    padding: 2rem 1.6rem;
+    background-color: #1a1a1a;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    color: #e8e4da;
+    text-align: center;
+    text-decoration: none;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .card:hover {
+    border-color: #d4af6a;
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+  .card h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.7rem;
+    color: #f2efe6;
+    font-family: Georgia, serif;
+    line-height: 1.2;
+  }
+  .card p {
+    margin: 0;
+    color: #b8b2a3;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .card--family { min-height: 240px; }
+
+  /* ---------- Crônicas ---------- */
+  .cronica {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 0 1.5rem;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #e8e4da;
+    line-height: 1.75;
+    font-size: 1.15rem;
+  }
+  .cronica-header h1 {
+    font-family: Georgia, serif;
+    font-size: 2.4rem;
+    color: #f2efe6;
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+    text-align: center;
+  }
+  .cronica-subtitle {
+    font-style: italic;
+    color: #b8b2a3;
+    font-size: 1.1rem;
+    margin-top: 0;
+    margin-bottom: 2.4rem;
+    text-align: center;
+  }
+  .cronica-body h3 {
+    text-align: center;
+    color: #d4af6a;
+    font-size: 1.4rem;
+    margin: 3.2rem 0 2rem;
+    letter-spacing: 0.1em;
+  }
+  .cronica-body p {
+    margin-bottom: 1.5rem;
+    text-align: left;
+    hyphens: auto;
+  }
+  .cronica-body em { color: #c9c3b4; }
+  .cronica-body strong { color: #f2efe6; }
+  .cronica-body blockquote {
+    border-left: 3px solid #d4af6a;
+    text-align: left;
+    font-style: italic;
+    font-size: 1.05rem;
+    margin: 2.5rem 0;
+    padding: 1.2rem 1.6rem;
+    background: #1a1a1a;
+    border-radius: 6px;
+    line-height: 1.7;
+    color: #d8d3c5;
+  }
+  .cronica-body hr {
+    border: none;
+    border-top: 1px solid #333;
+    margin: 3rem 0;
+  }
+  .cronica-body a {
+    color: #d4af6a;
+    text-decoration: underline;
+    text-decoration-color: rgba(212, 175, 106, 0.4);
+    text-underline-offset: 3px;
+  }
+  .cronica-footnote {
+    font-size: 0.95rem;
+    color: #8a8578;
+    border-top: 1px solid #2a2a2a;
+    padding-top: 1.4rem;
+    margin-top: 3rem;
+    line-height: 1.6;
+  }
+
+  /* ---------- Celular ---------- */
+  @media (max-width: 480px) {
+    .page-content { padding: 1.8rem 1.1rem 3rem; }
+    .home-grid { gap: 1.1rem; }
+    .card { min-height: 150px; padding: 1.6rem 1.3rem; }
+    .card--family { min-height: 200px; }
+    .card h3 { font-size: 1.5rem; }
+    .cronica { font-size: 1.05rem; }
+    .cronica-header h1 { font-size: 2rem; }
+  }
+  </style>
 </head>
 <body>
   <header class="site-header">
