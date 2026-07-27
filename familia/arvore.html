@@ -3,42 +3,41 @@ layout: default
 title: "Árvore Genealógica"
 ---
 
-{% raw %}
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=IBM+Plex+Mono:wght@400;500&display=swap');
+<p class="arv-intro">
+  Seis gerações navegáveis, de Georg (1789) à pesquisa de hoje. Cada informação traz o grau de certeza e a fonte que a sustenta. Onde os documentos divergem, há uma nota de desambiguação — com a regra de uso adotada e o documento que arbitra.
+</p>
 
+<style>
 .rkr{
   --ouro:#d4af6a;
   --sage:#8a9e86;
   --terra:#c0714f;
   --mudo:#8a8578;
-  --texto:#b8b2a3;
+  --soft:#b8b2a3;
+  --claro:#f2efe6;
   --borda:#2a2a2a;
-  --papel:#e8e0ce;
-  --disp:"Fraunces",Georgia,serif;
-  --dado:"IBM Plex Mono",ui-monospace,monospace;
-  color:var(--texto);
-  font-family:inherit;
-  line-height:1.6;
+  --superficie:#1a1a1a;
+  --mono:ui-monospace,"SFMono-Regular","Roboto Mono",Menlo,Consolas,monospace;
+  color:#e8e4da;
 }
 .rkr *{box-sizing:border-box;}
 .rkr p,.rkr h2,.rkr h3,.rkr h4,.rkr ol,.rkr li{margin:0;padding:0;list-style:none;}
 
-.rkr-topo{max-width:640px;margin:0 auto 2.2rem;text-align:center;}
-.rkr-eyebrow{font-family:var(--dado);font-size:0.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ouro);margin-bottom:0.8rem;}
-.rkr-topo p{font-size:1.05rem;color:var(--texto);}
+.arv-intro{
+  color:#b8b2a3;max-width:620px;margin:0 auto 2.4rem;text-align:center;font-size:1.1rem;
+}
 
-.rkr-controles{display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;margin-bottom:1rem;}
-.rkr-btn{font-family:var(--dado);font-size:0.72rem;letter-spacing:.1em;text-transform:uppercase;
-  background:transparent;color:var(--texto);border:1px solid rgba(212,175,106,.4);border-radius:6px;
-  padding:0.4rem 0.9rem;cursor:pointer;transition:.18s;}
+.rkr-controles{display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;margin-bottom:1.2rem;}
+.rkr-btn{font-family:var(--mono);font-size:0.72rem;letter-spacing:.08em;text-transform:uppercase;
+  background:transparent;color:var(--soft);border:1px solid rgba(212,175,106,.4);border-radius:6px;
+  padding:0.5rem 1rem;cursor:pointer;transition:border-color .2s,color .2s,background .2s;}
 .rkr-btn:hover{border-color:var(--ouro);color:var(--ouro);background:rgba(212,175,106,.08);}
-.rkr-btn[aria-pressed="true"]{background:var(--ouro);border-color:var(--ouro);color:#14140f;}
+.rkr-btn[aria-pressed="true"]{background:var(--ouro);border-color:var(--ouro);color:#121212;}
 .rkr-btn:focus-visible{outline:2px solid var(--ouro);outline-offset:2px;}
 
-.rkr-legenda{display:flex;flex-wrap:wrap;gap:0.9rem;justify-content:center;font-family:var(--dado);
-  font-size:0.68rem;color:var(--mudo);margin:0 auto 2.2rem;max-width:760px;}
-.rkr-legenda span{display:flex;align-items:center;gap:0.4rem;}
+.rkr-legenda{display:flex;flex-wrap:wrap;gap:0.6rem 1.2rem;justify-content:center;
+  font-family:var(--mono);font-size:0.68rem;color:var(--mudo);margin:0 auto 2.6rem;max-width:720px;}
+.rkr-legenda span{display:flex;align-items:center;gap:0.45rem;}
 .rkr-ponto{width:9px;height:9px;border-radius:50%;display:inline-block;flex:0 0 9px;}
 .rkr-ponto.doc{background:var(--ouro);}
 .rkr-ponto.ext{background:var(--sage);}
@@ -47,122 +46,109 @@ title: "Árvore Genealógica"
 .rkr-ponto.conf{background:var(--terra);}
 
 .rkr-arvore{display:flex;flex-direction:column;align-items:center;}
-.rkr-ger{display:flex;flex-wrap:wrap;justify-content:center;gap:0.9rem;width:100%;}
-.rkr-elo{width:1px;height:30px;background:var(--borda);}
-.rkr-gerlabel{font-family:var(--dado);font-size:0.66rem;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--mudo);margin:0 0 0.8rem;width:100%;text-align:center;}
+.rkr-ger{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;width:100%;}
+.rkr-elo{width:1px;height:28px;background:var(--borda);}
+.rkr-gerlabel{font-family:var(--mono);font-size:0.66rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--mudo);margin:0 0 0.9rem;width:100%;text-align:center;}
 
-.rkr-cartao{background:rgba(212,175,106,.04);border:1px solid var(--borda);border-radius:6px;
-  width:min(268px,100%);padding:0.95rem;text-align:left;cursor:pointer;display:flex;gap:0.8rem;
-  align-items:flex-start;transition:border-color .2s,transform .2s,background .2s;
-  font-family:inherit;color:var(--texto);}
-.rkr-cartao:hover,.rkr-cartao:focus-visible{border-color:var(--ouro);background:rgba(212,175,106,.09);transform:translateY(-2px);}
+.rkr-cartao{background:var(--superficie);border:1px solid var(--borda);border-radius:10px;
+  width:min(270px,100%);padding:1.1rem;text-align:left;cursor:pointer;display:flex;gap:0.85rem;
+  align-items:flex-start;font-family:inherit;color:#e8e4da;
+  transition:border-color .2s ease,transform .2s ease,background .2s ease;}
+.rkr-cartao:hover,.rkr-cartao:focus-visible{border-color:var(--ouro);transform:translateY(-2px);}
 .rkr-cartao:focus-visible{outline:2px solid var(--ouro);outline-offset:3px;}
-.rkr-cartao[data-linha="direta"]{border-color:rgba(212,175,106,.55);}
-.rkr-cartao[data-ramo="lacuna"]{border-style:dashed;opacity:.7;}
-.rkr-cartao[aria-current="true"]{border-color:var(--ouro);background:rgba(212,175,106,.12);}
+.rkr-cartao[data-linha="direta"]{border-color:rgba(212,175,106,.5);background:rgba(212,175,106,.05);}
+.rkr-cartao[aria-current="true"]{border-color:var(--ouro);background:rgba(212,175,106,.1);}
 
-.rkr-chapa{width:40px;height:48px;flex:0 0 40px;background:var(--papel);border-radius:2px;
-  display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;
-  font-size:0.95rem;color:#14140f;filter:invert(1) hue-rotate(180deg);transition:filter .45s ease;}
+.rkr-chapa{width:42px;height:50px;flex:0 0 42px;background:#e8e0ce;border-radius:3px;
+  display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:bold;
+  font-size:1rem;color:#121212;filter:invert(1) hue-rotate(180deg);transition:filter .5s ease;}
 .rkr-cartao:hover .rkr-chapa,.rkr-cartao:focus-visible .rkr-chapa,.rkr-cartao[aria-current="true"] .rkr-chapa{filter:none;}
 
-.rkr-nome{font-family:var(--disp);font-weight:600;font-size:1rem;color:var(--papel);line-height:1.2;display:block;}
-.rkr-vida{font-family:var(--dado);font-size:0.64rem;color:var(--mudo);margin-top:0.35rem;display:block;line-height:1.4;}
-.rkr-papel{font-size:0.82rem;margin-top:0.45rem;line-height:1.45;display:block;}
-.rkr-selo{display:inline-block;margin-top:0.55rem;font-family:var(--dado);font-size:0.58rem;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--terra);border:1px solid var(--terra);border-radius:3px;padding:2px 6px;}
+.rkr-nome{font-family:Georgia,serif;font-size:1.15rem;color:var(--claro);line-height:1.25;display:block;}
+.rkr-vida{font-family:var(--mono);font-size:0.66rem;color:var(--mudo);margin-top:0.4rem;display:block;line-height:1.45;}
+.rkr-papel{font-size:0.9rem;color:var(--soft);margin-top:0.5rem;line-height:1.5;display:block;}
+.rkr-selo{display:inline-block;margin-top:0.6rem;font-family:var(--mono);font-size:0.6rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--terra);border:1px solid var(--terra);border-radius:4px;padding:2px 7px;}
 
-.rkr-ficha{margin-top:2rem;border:1px solid var(--borda);border-radius:6px;
-  background:rgba(212,175,106,.03);padding:1.4rem;display:none;}
-.rkr-ficha.aberta{display:block;animation:rkrEntra .3s ease;}
-@keyframes rkrEntra{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+.rkr-ficha{margin-top:2.2rem;border:1px solid var(--borda);border-radius:10px;
+  background:var(--superficie);padding:1.6rem 1.4rem;display:none;}
+.rkr-ficha.aberta{display:block;}
 .rkr-ficha-topo{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;}
-.rkr-ficha h2{font-family:var(--disp);font-weight:600;font-size:1.5rem;color:var(--papel);line-height:1.15;border:none;}
-.rkr-ficha-sub{font-family:var(--dado);font-size:0.68rem;color:var(--ouro);letter-spacing:.12em;text-transform:uppercase;margin-top:0.35rem;}
-.rkr-fechar{background:none;border:1px solid var(--borda);border-radius:6px;color:var(--texto);
-  font-family:var(--dado);font-size:0.68rem;padding:0.35rem 0.75rem;cursor:pointer;}
+.rkr-ficha h2{font-family:Georgia,serif;font-size:1.7rem;color:var(--claro);line-height:1.2;text-align:left;margin:0;}
+.rkr-ficha-sub{font-family:var(--mono);font-size:0.68rem;color:var(--ouro);letter-spacing:.1em;text-transform:uppercase;margin-top:0.4rem;}
+.rkr-fechar{background:none;border:1px solid var(--borda);border-radius:6px;color:var(--soft);
+  font-family:var(--mono);font-size:0.68rem;padding:0.4rem 0.8rem;cursor:pointer;}
 .rkr-fechar:hover{border-color:var(--ouro);color:var(--ouro);}
 
-.rkr-aviso{margin-top:1.3rem;border:1px solid var(--terra);border-left-width:3px;border-radius:4px;
-  padding:0.9rem 1rem;background:rgba(192,113,79,.07);}
-.rkr-aviso b{font-family:var(--dado);font-size:0.62rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--terra);display:block;font-weight:400;margin-bottom:0.5rem;}
-.rkr-aviso p{font-size:0.88rem;}
-.rkr-aviso p+p{margin-top:0.5rem;}
+.rkr-aviso{margin-top:1.4rem;border:1px solid var(--terra);border-left-width:3px;border-radius:6px;
+  padding:1rem 1.1rem;background:rgba(192,113,79,.08);}
+.rkr-aviso b{font-family:var(--mono);font-size:0.63rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--terra);display:block;font-weight:normal;margin-bottom:0.6rem;}
+.rkr-aviso p{font-size:0.95rem;color:var(--soft);}
+.rkr-aviso p+p{margin-top:0.6rem;}
 
-.rkr-bloco{margin-top:1.5rem;}
-.rkr-bloco h3{font-family:var(--dado);font-size:0.66rem;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--mudo);padding-bottom:0.5rem;border-bottom:1px solid var(--borda);margin-bottom:0.6rem;border-top:none;}
-.rkr-fato{display:grid;grid-template-columns:12px 1fr;gap:0.75rem;padding:0.55rem 0;align-items:start;}
-.rkr-fato+.rkr-fato{border-top:1px dotted rgba(138,133,120,.25);}
-.rkr-fato .rkr-ponto{margin-top:7px;}
-.rkr-rot{font-family:var(--dado);font-size:0.64rem;letter-spacing:.09em;text-transform:uppercase;color:var(--mudo);display:block;margin-bottom:0.2rem;}
-.rkr-val{font-size:0.95rem;display:block;}
-.rkr-src{font-family:var(--dado);font-size:0.64rem;color:var(--mudo);margin-top:0.35rem;display:block;line-height:1.55;opacity:.85;}
-.rkr.filtrado .rkr-fato[data-status="inf"],.rkr.filtrado .rkr-fato[data-status="hip"]{opacity:.22;}
+.rkr-bloco{margin-top:1.7rem;}
+.rkr-bloco h3{font-family:var(--mono);font-size:0.66rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mudo);padding-bottom:0.5rem;border-bottom:1px solid var(--borda);margin:0 0 0.7rem;}
+.rkr-fato{display:grid;grid-template-columns:12px 1fr;gap:0.8rem;padding:0.6rem 0;align-items:start;}
+.rkr-fato+.rkr-fato{border-top:1px dotted rgba(138,133,120,.28);}
+.rkr-fato .rkr-ponto{margin-top:8px;}
+.rkr-rot{font-family:var(--mono);font-size:0.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mudo);display:block;margin-bottom:0.25rem;}
+.rkr-val{font-size:1rem;color:#e8e4da;display:block;line-height:1.6;}
+.rkr-src{font-family:var(--mono);font-size:0.66rem;color:var(--mudo);margin-top:0.4rem;display:block;line-height:1.6;}
+.rkr.filtrado .rkr-fato[data-status="inf"],.rkr.filtrado .rkr-fato[data-status="hip"]{opacity:.2;}
 
-.rkr-secao{margin-top:3rem;}
-.rkr-secao h2{font-family:var(--disp);font-weight:600;font-size:1.4rem;color:var(--papel);margin-bottom:0.3rem;border:none;}
-.rkr-secao-nota{font-size:0.9rem;color:var(--mudo);max-width:62ch;margin-bottom:1.4rem;}
+.rkr-secao{margin-top:3.4rem; width: 100%;}
+.rkr-secao h2{font-family:Georgia,serif;font-size:1.6rem;color:var(--claro);margin:0 0 0.4rem;text-align:center;}
+.rkr-secao-nota{font-size:0.95rem;color:var(--mudo);max-width:600px;margin:0 auto 1.8rem;text-align:center;}
 
 .rkr-desamb{border-top:1px solid var(--terra);}
-.rkr-item{border-bottom:1px solid var(--borda);padding:1.2rem 0;display:grid;grid-template-columns:80px 1fr;gap:1rem;}
-.rkr-tag{font-family:var(--dado);font-size:0.62rem;letter-spacing:.1em;color:var(--terra);
-  border:1px solid var(--terra);border-radius:3px;padding:3px 6px;height:fit-content;text-align:center;}
-.rkr-item h4{font-family:var(--disp);font-size:1.1rem;font-weight:600;color:var(--papel);line-height:1.25;}
-.rkr-versus{display:grid;gap:0.5rem;margin:0.7rem 0;}
-.rkr-lado{border-left:2px solid var(--borda);padding-left:0.75rem;font-size:0.9rem;}
-.rkr-lado b{font-family:var(--dado);font-size:0.62rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--mudo);display:block;font-weight:400;margin-bottom:0.15rem;}
-.rkr-regra{font-size:0.9rem;border-left:2px solid var(--ouro);padding-left:0.75rem;margin-bottom:0.6rem;}
-.rkr-regra b{font-family:var(--dado);font-size:0.62rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--ouro);display:block;font-weight:400;margin-bottom:0.15rem;}
-.rkr-arbitro{font-family:var(--dado);font-size:0.7rem;color:var(--mudo);border-left:2px solid var(--sage);padding-left:0.75rem;line-height:1.6;}
+.rkr-item{border-bottom:1px solid var(--borda);padding:1.4rem 0;display:grid;grid-template-columns:86px 1fr;gap:1.1rem;}
+.rkr-tag{font-family:var(--mono);font-size:0.62rem;letter-spacing:.08em;color:var(--terra);
+  border:1px solid var(--terra);border-radius:4px;padding:4px 6px;height:fit-content;text-align:center;}
+.rkr-item h4{font-family:Georgia,serif;font-size:1.2rem;color:var(--claro);line-height:1.3;margin:0;}
+.rkr-versus{display:grid;gap:0.6rem;margin:0.9rem 0;}
+.rkr-lado{border-left:2px solid var(--borda);padding-left:0.85rem;font-size:0.95rem;color:var(--soft);}
+.rkr-lado b{font-family:var(--mono);font-size:0.62rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--mudo);display:block;font-weight:normal;margin-bottom:0.2rem;}
+.rkr-regra{font-size:0.95rem;color:#e8e4da;border-left:2px solid var(--ouro);padding-left:0.85rem;margin-bottom:0.7rem;}
+.rkr-regra b{font-family:var(--mono);font-size:0.62rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ouro);display:block;font-weight:normal;margin-bottom:0.2rem;}
+.rkr-arbitro{font-family:var(--mono);font-size:0.7rem;color:var(--mudo);border-left:2px solid var(--sage);padding-left:0.85rem;line-height:1.7;}
 
 .rkr-tl ol{border-left:1px solid var(--borda);margin-left:6px;}
-.rkr-tl li{position:relative;padding:0 0 1.3rem 1.5rem;}
-.rkr-tl li::before{content:"";position:absolute;left:-5px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--ouro);}
+.rkr-tl li{position:relative;padding:0 0 1.4rem 1.6rem;}
+.rkr-tl li::before{content:"";position:absolute;left:-5px;top:9px;width:9px;height:9px;border-radius:50%;background:var(--ouro);}
 .rkr-tl li[data-status="hip"]::before{background:transparent;border:1px dashed var(--mudo);}
 .rkr-tl li[data-status="inf"]::before{background-image:linear-gradient(90deg,var(--ouro) 50%,transparent 50%);border:1px solid var(--ouro);}
 .rkr-tl li[data-status="ext"]::before{background:var(--sage);}
 .rkr-tl li[data-status="conf"]::before{background:var(--terra);}
-.rkr-tl time{font-family:var(--dado);font-size:0.72rem;color:var(--ouro);letter-spacing:.05em;}
+.rkr-tl time{font-family:var(--mono);font-size:0.72rem;color:var(--ouro);letter-spacing:.04em;}
 .rkr-tl li[data-status="ext"] time{color:var(--sage);}
 .rkr-tl li[data-status="conf"] time{color:var(--terra);}
-.rkr-tl p{font-size:0.92rem;margin-top:0.2rem;max-width:64ch;}
+.rkr-tl p{font-size:0.98rem;color:var(--soft);margin-top:0.25rem;}
 
-.rkr-fontes{display:grid;gap:0.9rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
-.rkr-fonte{border:1px solid var(--borda);border-radius:6px;padding:1.1rem;background:rgba(212,175,106,.03);}
-.rkr-fonte h4{font-family:var(--disp);font-size:1rem;font-weight:600;color:var(--papel);line-height:1.25;}
-.rkr-fonte .rkr-ref{font-family:var(--dado);font-size:0.66rem;color:var(--ouro);margin:0.4rem 0 0.6rem;display:block;}
-.rkr-fonte p{font-size:0.86rem;}
+.rkr-fontes{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
+.rkr-fonte{border:1px solid var(--borda);border-radius:10px;padding:1.3rem;background:var(--superficie);}
+.rkr-fonte h4{font-family:Georgia,serif;font-size:1.1rem;color:var(--claro);line-height:1.3;margin:0;}
+.rkr-fonte .rkr-ref{font-family:var(--mono);font-size:0.66rem;color:var(--ouro);margin:0.45rem 0 0.7rem;display:block;}
+.rkr-fonte p{font-size:0.92rem;color:var(--soft);}
 
-@media (max-width:640px){
+@media (max-width:480px){
   .rkr-cartao{width:100%;}
-  .rkr-item{grid-template-columns:1fr;gap:0.5rem;}
+  .rkr-item{grid-template-columns:1fr;gap:0.6rem;}
   .rkr-tag{width:fit-content;}
+  .rkr-ficha{padding:1.2rem 1.1rem;}
+  .rkr-ficha h2{font-size:1.4rem;}
 }
-@media (prefers-reduced-motion:reduce){.rkr *{transition:none!important;animation:none!important;}}
-
-.colab-footer{border-top:1px solid #2a2a2a;margin-top:2.5rem;padding:1.1rem 1.4rem;text-align:center;}
-.colab-footer .colab-galho{display:block;margin:0 auto 0.6rem;opacity:0.8;}
-.colab-footer p{max-width:460px;margin:0 auto 0.6rem;font-size:0.85rem;line-height:1.5;color:#8a8578;}
-.colab-footer a{display:inline-block;font-size:0.85rem;color:#d4af6a;border:1px solid rgba(212,175,106,0.4);
-  border-radius:6px;padding:0.35rem 0.9rem;text-decoration:none;}
-.colab-footer a:hover{border-color:#d4af6a;background:rgba(212,175,106,0.08);}
+@media (prefers-reduced-motion:reduce){.rkr *{transition:none!important;}}
 </style>
 
 <div class="rkr" id="rkrRaiz">
 
-  <div class="rkr-topo">
-    <p class="rkr-eyebrow">Grafschaft Glatz → Rio Grande do Sul · 1789–1953</p>
-    <p>Seis gerações navegáveis. Cada informação traz o grau de certeza e a fonte que a sustenta. Onde os documentos divergem, há uma nota de desambiguação — com a regra de uso adotada e o documento que arbitra.</p>
-  </div>
-
   <div class="rkr-controles">
-    <button class="rkr-btn" id="rkrFiltro" aria-pressed="false">Mostrar só o documentado</button>
-    <button class="rkr-btn" id="rkrFechar">Fechar ficha</button>
+    <button class="rkr-btn" id="rkrFiltro" aria-pressed="false" type="button">Mostrar só o documentado</button>
   </div>
 
   <div class="rkr-legenda">
@@ -174,13 +160,13 @@ title: "Árvore Genealógica"
   </div>
 
   <div class="rkr-arvore" id="rkrArvore"></div>
-  <div class="rkr-ficha" id="rkrFicha" role="region" aria-live="polite"></div>
-
-  <section class="rkr-secao">
-    <h2>Ramos colaterais</h2>
-    <p class="rkr-secao-nota">Linhas Rücker fora da descendência direta de Vincentius Joseph, e a linhagem materna Saft.</p>
-    <div class="rkr-ger" id="rkrColaterais"></div>
-  </section>
+  
+  <div class="rkr-ficha" id="rkrFicha" role="region" aria-live="polite">
+    <div class="rkr-controles" style="justify-content: flex-end; margin-bottom: 0;">
+       <button class="rkr-btn" id="rkrFechar" type="button">Fechar ficha</button>
+    </div>
+    <div id="rkrFichaConteudo"></div>
+  </div>
 
   <section class="rkr-secao">
     <h2>Notas de desambiguação</h2>
@@ -188,94 +174,288 @@ title: "Árvore Genealógica"
     <div class="rkr-desamb" id="rkrDesamb"></div>
   </section>
 
-  <section class="rkr-secao rkr-tl">
-    <h2>Linha do tempo</h2>
-    <p class="rkr-secao-nota">Ouro cheio: documentado. Verde: confirmado fora do acervo familiar. Vazado: sem lastro. Vermelho: sob desambiguação.</p>
-    <ol id="rkrLinhaTempo"></ol>
-  </section>
-
-  <section class="rkr-secao">
-    <h2>Fontes e acervos</h2>
-    <p class="rkr-secao-nota">Referências citadas no arquivo-base, mais as verificações externas realizadas.</p>
-    <div class="rkr-fontes" id="rkrFontes"></div>
-  </section>
-
 </div>
-
-<hr style="margin-top: 3rem; border-color: #2a2a2a;">
-
-<p style="font-size: 1.05rem; text-align: center;"><a href="/familia.html">← Voltar para Família</a></p>
-
-<footer class="colab-footer">
-  <svg class="colab-galho" width="100" height="22" viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M6 18C30 22 45 14 65 15C85 16 95 8 124 12" stroke="#d4af6a" stroke-width="1" stroke-linecap="round"/>
-    <path d="M28 20C24 24 20 26 15 26" stroke="#d4af6a" stroke-width="0.8" stroke-linecap="round"/>
-    <path d="M46 16C44 11 42 8 44 4" stroke="#d4af6a" stroke-width="0.8" stroke-linecap="round"/>
-    <path d="M78 13C81 9 86 7 92 8" stroke="#d4af6a" stroke-width="0.8" stroke-linecap="round"/>
-    <path d="M100 10C102 15 106 18 112 18" stroke="#d4af6a" stroke-width="0.8" stroke-linecap="round"/>
-    <circle cx="15" cy="26" r="1.4" fill="#d4af6a"/>
-    <circle cx="44" cy="4" r="1.4" fill="#d4af6a"/>
-    <circle cx="92" cy="8" r="1.4" fill="#d4af6a"/>
-    <circle cx="112" cy="18" r="1.4" fill="#d4af6a"/>
-  </svg>
-  <p>Reconheceu um nome ou tem uma foto, documento ou correção para o acervo?</p>
-  <a href="https://forms.gle/MAY913vupvStXXgP7" target="_blank" rel="noopener noreferrer">Colaborar →</a>
-</footer>
 
 <script>
 (function(){
-const DADOS={
-desambiguacoes:{
- anton:{tag:"DESAMB 01",titulo:"Anton, Ambros August e August Ambros — três irmãos, um repertório de prenomes",
-  lados:[["Mapeamento documental anterior","Listava “Anton Rücker” entre as variações do nome de Augusto Ambrósio, por constar assim no manifesto de embarque."],
-         ["Arquivo-base consolidado","Anton é filho de Vincentius Joseph, com 46 anos no embarque de 1898 — cerca de 18 anos mais velho que August Ambros."]],
-  regra:"São três indivíduos distintos, e não variações de um nome. Anton não é forma de August nem de Ambrós. Nenhum registro de 1898 indexado sob “Anton Rücker” pode ser atribuído a Augusto Ambrósio. A separação entre Ambros August e August Ambros não se sustenta por ordem alfabética: só por idade, cônjuge e local de fixação. Ambros August embarcou casado com Amália; August Ambros, solteiro, casou-se em Linha Nova em 1899.",
-  arbitro:"Batismos de Wölfelsgrund, FHL 1048609 — fixa as três datas de nascimento e encerra a série."},
- vincentius:{tag:"DESAMB 02",titulo:"Vincentius Joseph — nascimento fixo, idade divergente",
-  lados:[["Nascimento","9 de outubro de 1827, em Wölfelsgrund. Data firme, sem concorrente."],
-         ["Idade no embarque","70 anos no arquivo-base consolidado; 71 anos no mapeamento documental anterior."]],
-  regra:"A data de nascimento não está em disputa — só a idade declarada. Usar sempre 09.10.1827 como referência e tratar a idade como dado derivado, nunca como fonte. A divergência de um ano não é erro a corrigir: é informação. Nascido em 9 de outubro, ele tinha 70 anos se embarcou antes daquela data em 1898 e 71 se embarcou depois. A idade no manifesto data o embarque com precisão de semanas.",
-  arbitro:"Lista de passageiros de Hamburgo, FHL 0472970 — a coluna de idade, cruzada com a data da viagem, fecha os dois pontos de uma vez."},
- ambros:{tag:"DESAMB 03",titulo:"Ambros August — divergência sobre o nascimento",
-  lados:[["Manifesto de 1898","28 anos declarados, o que projetaria nascimento por volta de 1870."],
-         ["Demais registros","Divergentes. A data de nascimento de Ambros August não está estabelecida no acervo."]],
-  regra:"Não tratar os 28 anos do manifesto como data de nascimento. Idade declarada em porto de embarque é a informação menos confiável de todo o conjunto: era prestada oralmente, em alemão, por terceiros, e transcrita por escrivão. A coincidência numérica com a idade de August Ambros não autoriza nenhuma leitura de parentesco simultâneo. Enquanto o batismo não aparecer, registrar como “nascimento não estabelecido”.",
-  arbitro:"Batismos de Wölfelsgrund, FHL 1048609, faixa de 1865 a 1872."}
-},
+  // 1. DADOS CONSOLIDADOS (Corrigido o truncamento)
+  var DADOS = {
+    desambiguacoes: {
+      anton: {
+        tag: "DESAMB 01",
+        titulo: "Anton, Ambros August e August Ambros: três irmãos, um repertório de prenomes",
+        lados: [
+          ["Mapeamento documental anterior", "Listava Anton Rücker entre as variações do nome de Augusto Ambrósio, por constar assim no manifesto de embarque."],
+          ["Arquivo-base consolidado", "Anton é filho de Vincentius Joseph, com 46 anos no embarque de 1898 — cerca de 18 anos mais velho que August Ambros."]
+        ],
+        regra: "São três indivíduos distintos, e não variações de um nome. Anton não é forma de August nem de Ambrós. Nenhum registro de 1898 indexado sob Anton Rücker pode ser atribuído a Augusto Ambrósio. A separação entre Ambros August e August Ambros não se sustenta por ordem alfabética: só por idade, cônjuge e local de fixação. Ambros August embarcou casado com Amália; August Ambros, solteiro, casou-se em Linha Nova em 1899.",
+        arbitro: "Batismos de Wölfelsgrund, FHL 1048609 — fixa as três datas de nascimento e encerra a série."
+      },
+      vincentius: {
+        tag: "DESAMB 02",
+        titulo: "Vincentius Joseph: nascimento fixo, idade divergente",
+        lados: [
+          ["Nascimento", "9 de outubro de 1827, em Wölfelsgrund. Data firme, sem concorrente."],
+          ["Idade no embarque", "70 anos no arquivo-base consolidado; 71 anos no mapeamento documental anterior."]
+        ],
+        regra: "A data de nascimento não está em disputa — só a idade declarada. Usar sempre 09.10.1827 como referência e tratar a idade como dado derivado, nunca como fonte. A divergência de um ano não é erro a corrigir: é informação. Nascido em 9 de outubro, ele tinha 70 anos se embarcou antes daquela data em 1898 e 71 se embarcou depois. A idade no manifesto data o embarque com precisão de semanas.",
+        arbitro: "Lista de passageiros de Hamburgo, FHL 0472970 — a coluna de idade, cruzada com a data da viagem, fecha os dois pontos de uma vez."
+      },
+      ambros: {
+        tag: "DESAMB 03",
+        titulo: "Ambros August: divergência sobre o nascimento",
+        lados: [
+          ["Manifesto de 1898", "28 anos declarados, o que projetaria nascimento por volta de 1870."],
+          ["Demais registros", "Divergentes. A data de nascimento de Ambros August não está estabelecida no acervo."]
+        ],
+        regra: "Não tratar os 28 anos do manifesto como data de nascimento. Idade declarada em porto de embarque é a informação menos confiável de todo o conjunto: era prestada oralmente, em alemão, por terceiros, e transcrita por escrivão. A coincidência numérica com a idade de August Ambros não autoriza nenhuma leitura de parentesco simultâneo. Enquanto o batismo não aparecer, registrar como nascimento não estabelecido.",
+        arbitro: "Batismos de Wölfelsgrund, FHL 1048609, faixa de 1865 a 1872."
+      }
+    },
+    pessoas: [
+      {
+        id: "georg", ger: "Geração I · Silésia", linha: "direta", iniciais: "GR",
+        nome: "Georg Rücker", vida: "n. 1789, Johannesberg · † desconhecido",
+        papel: "O patriarca. Duas viuvezes e duas proles, na paróquia de Wölfelsgrund.",
+        sub: "Johannesberg → Wölfelsgrund",
+        blocos: [
+          {
+            t: "Origem",
+            f: [
+              { r: "Nascimento", v: "1789, vila de Johannesberg, Condado de Habelschwerdt, Silésia prussiana — hoje Janowa Góra, Polônia", s: "doc", src: "Arquivo-base, Geração 1." },
+              { r: "Mudança", v: "Aos 27 anos transferiu residência para Wölfelsgrund (Międzygórze) — portanto por volta de 1816", s: "doc", src: "Arquivo-base, Geração 1; a data de 1816 é aritmética." },
+              { r: "Enquadramento", v: "Toda a órbita da família fica no Grafschaft Glatz, enclave católico dentro da Prússia protestante — o que explica a concentração paroquial e, mais tarde, o peso do Kulturkampf", s: "inf", src: "Geografia histórica do condado; não afirmado no arquivo-base." }
+            ]
+          },
+          {
+            t: "Primeiro casamento",
+            f: [
+              { r: "Cônjuge", v: "Maria Volkmer, casamento por volta de 1815", s: "doc", src: "Arquivo-base, Geração 1." },
+              { r: "Óbito", v: "10 de setembro de 1823, por complicações no parto do 4º filho. Georg ficou viúvo aos 34 anos, com três filhas", s: "doc", src: "Arquivo-base, Geração 1; registro paroquial de Wölfelsgrund." },
+              { r: "Detalhe institucional", v: "Os últimos sacramentos foram administrados pelo Padre Carl (Carolus) Rücker — clérigo de mesmo sobrenome", s: "doc", src: "Arquivo-base, Geração 1." },
+              { r: "Leitura", v: "Um pároco Rücker na mesma freguesia sugere ramificação antiga e inserção institucional na Igreja local, acima do campesinato simples", s: "hip", src: "Inferência do arquivo-base. Verificar parentesco nos livros de Wölfelsgrund, FHL 1048609." },
+              { r: "As três filhas e o 4º filho", v: "Nomes não registrados no arquivo-base", s: "hip", src: "Lacuna. Batismos de Wölfelsgrund, 1816 a 1823." }
+            ]
+          },
+          {
+            t: "Segundo casamento",
+            f: [
+              { r: "Cônjuge", v: "Johanna Hannig, nascida em 1791 em Kieslingswalde", s: "doc", src: "Arquivo-base, Geração 1." },
+              { r: "Data", v: "23 de novembro de 1823 — dez semanas após a morte de Maria Volkmer", s: "doc", src: "Arquivo-base, Geração 1." },
+              { r: "Leitura do intervalo", v: "Recasamento em dez semanas era prática corrente, não pressa afetiva: um viúvo com três filhas pequenas e um recém-nascido precisava de casa reconstituída para atravessar o inverno silesiano", s: "inf", src: "Padrão demográfico da região; não afirmado no arquivo-base." },
+              { r: "Filhos", v: "Anna Maria (1825), Vincentius Joseph (1827) e Joseph Anton (1830)", s: "doc", src: "Arquivo-base, Gerações 1 e 2." },
+              { r: "Kieslingswalde", v: "Provável Idzików, no próprio condado de Kłodzko. Há outra Kieslingswalde na Alta Lusácia, o que exige checagem antes de buscar o batismo de Johanna", s: "hip", src: "Toponímia do Grafschaft Glatz; conferir na cartografia do Império Alemão." }
+            ]
+          }
+        ]
+      },
+      {
+        id: "vincentius", ger: "Geração II · a travessia", linha: "direta", iniciais: "VJ", desamb: "vincentius",
+        nome: "Vincentius Joseph Rücker", vida: "09.10.1827, Wölfelsgrund † 21.07.1908, São Pedro do Maratá",
+        papel: "Forstmeister. Aos 70 anos organizou e financiou a saída da família da Prússia.",
+        sub: "Mestre florestal · emigrado em 1898",
+        blocos: [
+          {
+            t: "Identificação",
+            f: [
+              { r: "Nascimento", v: "9 de outubro de 1827, em Wölfelsgrund — data firme", s: "doc", src: "Arquivo-base, Geração 2; batismos de Wölfelsgrund, FHL 1048609." },
+              { r: "Filiação", v: "Georg Rücker e Johanna Hannig, a segunda esposa. Não descende de Maria Volkmer", s: "doc", src: "Arquivo-base, Gerações 1 e 2." },
+              { r: "Cônjuge", v: "Beata Larisch, falecida ainda na Europa. Não embarcou em 1898", s: "doc", src: "Arquivo-base, Geração 2." },
+              { r: "Óbito", v: "21 de julho de 1908, sepultado no cemitério familiar de São Pedro do Maratá", s: "doc", src: "Lápide física; arquivo-base, Geração 2." },
+              { r: "Idade no embarque", v: "70 anos no arquivo-base; 71 no mapeamento anterior. Ver nota de desambiguação", s: "conf", src: "DESAMB 02. A data de nascimento permanece fixa; a idade é dado derivado." }
+            ]
+          },
+          {
+            t: "O cargo",
+            f: [
+              { r: "Função", v: "Forstmeister, mestre florestal", s: "doc", src: "Arquivo-base, Geração 2." },
+              { r: "O que isso significava", v: "Não era agricultor: o cargo conferia poder de polícia e porte de armas em nome do Estado prussiano. Vigilância de caça e madeira era função de autoridade", s: "doc", src: "Arquivo-base, Geração 2." }
+            ]
+          },
+          {
+            t: "O motivo da fuga",
+            f: [
+              { r: "Versão familiar", v: "A emigração em idade avançada não teria origem na miséria, mas na fuga de tribunal militar e criminal iminente: filhos civis mataram um caçador furtivo (Wilderei) durante ronda noturna", s: "hip", src: "Memória familiar registrada no arquivo-base como inferência, não como fato provado." },
+              { r: "Coerência interna", v: "O relato explica três anomalias de uma vez: a saída de um funcionário estabelecido, a idade de 70 anos, e o financiamento com recursos próprios em vez de passagem subsidiada", s: "inf", src: "Análise. Não substitui documento." },
+              { r: "Onde provar", v: "Autos criminais do Amtsgericht de Habelschwerdt e do Landgericht de Glatz, 1896 a 1899; e a coluna de motivo no registro de emigração prussiano", s: "hip", src: "Archiwum Państwowe we Wrocławiu; Geheimes Staatsarchiv PK, Berlim." }
+            ]
+          },
+          {
+            t: "O embarque de 1898",
+            f: [
+              { r: "Grupo", v: "Viajou viúvo, com os filhos Anton (46), Ambros August (28, com a esposa Amália) e August Ambros (28 ou 33 declarados)", s: "doc", src: "Arquivo-base, Geração 2; manifesto de Hamburgo, FHL 0472970." },
+              { r: "Rota", v: "Hamburgo, vapores da Hamburg-Süd, 26 a 30 dias em Zwischendeck, desembarque no Rio Grande do Sul", s: "doc", src: "Arquivo-base, Geração 2." },
+              { r: "Primeira fixação", v: "Dois Irmãos, Colônia 16, na bacia do rio dos Sinos, área da velha colônia de São Leopoldo", s: "doc", src: "Arquivo-base, Gerações 2 e 3." },
+              { r: "Navio e data exata", v: "Ainda não identificados", s: "hip", src: "Lacuna. FHL 0472970 traz nome do vapor e data por linha." }
+            ]
+          }
+        ]
+      },
+      {
+        id: "anton", ger: "Geração III · os três irmãos", linha: "colateral", iniciais: "AN", desamb: "anton",
+        nome: "Anton Rücker", vida: "46 anos no embarque de 1898 · n. c. 1852",
+        papel: "Irmão mais velho. Foi indexado por engano como variante de nome de Augusto.",
+        sub: "Irmão · o registro que gerou a confusão",
+        blocos: [
+          {
+            t: "O que se sabe",
+            f: [
+              { r: "Filiação", v: "Filho de Vincentius Joseph Rücker e Beata Larisch", s: "doc", src: "Arquivo-base, Geração 2." }
+            ]
+          }
+        ]
+      }
+    ]
+  };
 
-pessoas:[
-{id:"georg",ger:"Geração I · Silésia",ramo:"eu",linha:"direta",iniciais:"GR",
- nome:"Georg Rücker",vida:"n. 1789, Johannesberg · † desconhecido",
- papel:"O patriarca. Duas viuvezes e duas proles, na paróquia de Wölfelsgrund.",
- sub:"Johannesberg → Wölfelsgrund",
- blocos:[
- {t:"Origem",f:[
-  {r:"Nascimento",v:"1789, vila de Johannesberg, Condado de Habelschwerdt, Silésia prussiana — hoje Janowa Góra, Polônia",s:"doc",src:"Arquivo-base, Geração 1."},
-  {r:"Mudança",v:"Aos 27 anos transferiu residência para Wölfelsgrund (Międzygórze) — portanto por volta de 1816",s:"doc",src:"Arquivo-base, Geração 1; a data de 1816 é aritmética."},
-  {r:"Enquadramento",v:"Toda a órbita da família fica no Grafschaft Glatz, enclave católico dentro da Prússia protestante — o que explica a concentração paroquial e, mais tarde, o peso do Kulturkampf",s:"inf",src:"Geografia histórica do condado; não afirmado no arquivo-base."}]},
- {t:"Primeiro casamento",f:[
-  {r:"Cônjuge",v:"Maria Volkmer, casamento por volta de 1815",s:"doc",src:"Arquivo-base, Geração 1."},
-  {r:"Óbito",v:"10 de setembro de 1823, por complicações no parto do 4º filho. Georg ficou viúvo aos 34 anos, com três filhas",s:"doc",src:"Arquivo-base, Geração 1; registro paroquial de Wölfelsgrund."},
-  {r:"Detalhe institucional",v:"Os últimos sacramentos foram administrados pelo Padre Carl (Carolus) Rücker — clérigo de mesmo sobrenome",s:"doc",src:"Arquivo-base, Geração 1."},
-  {r:"Leitura",v:"Um pároco Rücker na mesma freguesia sugere ramificação antiga e inserção institucional na Igreja local, acima do campesinato simples",s:"hip",src:"Inferência do arquivo-base. Verificar parentesco nos livros de Wölfelsgrund, FHL 1048609."},
-  {r:"As três filhas e o 4º filho",v:"Nomes não registrados no arquivo-base",s:"hip",src:"Lacuna. Batismos de Wölfelsgrund, 1816–1823."}]},
- {t:"Segundo casamento",f:[
-  {r:"Cônjuge",v:"Johanna Hannig, nascida em 1791 em Kieslingswalde",s:"doc",src:"Arquivo-base, Geração 1."},
-  {r:"Data",v:"23 de novembro de 1823 — dez semanas após a morte de Maria Volkmer",s:"doc",src:"Arquivo-base, Geração 1."},
-  {r:"Leitura do intervalo",v:"Recasamento em dez semanas era prática corrente, não pressa afetiva: um viúvo com três filhas pequenas e um recém-nascido precisava de casa reconstituída para atravessar o inverno silesiano",s:"inf",src:"Padrão demográfico da região; não afirmado no arquivo-base."},
-  {r:"Filhos",v:"Anna Maria (1825), Vincentius Joseph (1827) e Joseph Anton (1830)",s:"doc",src:"Arquivo-base, Gerações 1 e 2."},
-  {r:"Kieslingswalde",v:"Provável Idzików, no próprio condado de Kłodzko — há outra Kieslingswalde na Alta Lusácia, o que exige checagem antes de buscar o batismo de Johanna",s:"hip",src:"Toponímia do Grafschaft Glatz; conferir em cartografia do Império Alemão."}]}]},
+  // 2. MOTOR DE RENDERIZAÇÃO DOM
+  var raiz = document.getElementById('rkrArvore');
+  var desamb = document.getElementById('rkrDesamb');
+  var ficha = document.getElementById('rkrFicha');
+  var fichaConteudo = document.getElementById('rkrFichaConteudo');
+  var btnFechar = document.getElementById('rkrFechar');
+  var btnFiltro = document.getElementById('rkrFiltro');
+  var raizGlobal = document.getElementById('rkrRaiz');
 
-{id:"vincentius",ger:"Geração II · a travessia",ramo:"eu",linha:"direta",iniciais:"VJ",desamb:"vincentius",
- nome:"Vincentius Joseph Rücker",vida:"09.10.1827, Wölfelsgrund † 21.07.1908, São Pedro do Maratá",
- papel:"Forstmeister. Aos 70 anos organizou e financiou a saída da família da Prússia.",
- sub:"Mestre florestal · emigrado em 1898",
- blocos:[
- {t:"Identificação",f:[
-  {r:"Nascimento",v:"9 de outubro de 1827, em Wölfelsgrund — data firme",s:"doc",src:"Arquivo-base, Geração 2; batismos de Wölfelsgrund, FHL 1048609."},
-  {r:"Filiação",v:"Georg Rücker e Johanna Hannig, a segunda esposa. Não descende de Maria Volkmer",s:"doc",src:"Arquivo-base, Gerações 1 e 2."},
-  {r:"Cônjuge",v:"Beata Larisch, falecida ainda na Europa. Não embarcou em 1898",s:"doc",src:"Arquivo-base, Geração 2."},
-  {r:"Óbito",v:"21 de julho de 1908, sepultado no cemitério familiar de São Pedro do Maratá",s:"doc",src:"Lápide física; arquivo-base, Geração 2."},
-  {r:"Idade no embarque",v:"70 anos no arquivo-base; 71 no mapeamento anterior. Ver nota de desambiguação",s:"conf",src:"DESAMB 02. A data de nascimento permanece fixa; a idade é dado derivado."}]},
- {t:"O cargo",f:[
-  {r:"Função",v:"Forstmeister
+  // Construir Árvore Principal
+  function renderizarArvore() {
+    var html = '';
+    var gerAtual = '';
+    
+    DADOS.pessoas.forEach(function(p) {
+      if (p.ger && p.ger !== gerAtual) {
+        if (gerAtual !== '') {
+          html += '</div><div class="rkr-elo"></div>';
+        }
+        html += '<div class="rkr-gerlabel">' + p.ger + '</div><div class="rkr-ger">';
+        gerAtual = p.ger;
+      }
+      
+      var attrLinha = p.linha === 'direta' ? ' data-linha="direta"' : '';
+      var infoSelo = p.desamb ? '<span class="rkr-selo">Ver Desambiguação</span>' : '';
+      
+      html += '<button class="rkr-cartao" data-id="' + p.id + '"' + attrLinha + ' aria-current="false">' +
+                '<div class="rkr-chapa">' + p.iniciais + '</div>' +
+                '<div>' +
+                  '<span class="rkr-nome">' + p.nome + '</span>' +
+                  '<span class="rkr-vida">' + p.vida + '</span>' +
+                  '<span class="rkr-papel">' + p.papel + '</span>' +
+                  infoSelo +
+                '</div>' +
+              '</button>';
+    });
+    
+    if (gerAtual !== '') {
+      html += '</div>';
+    }
+    
+    raiz.innerHTML = html;
+  }
+
+  // Construir Notas de Desambiguação
+  function renderizarDesambiguacao() {
+    var html = '';
+    for (var key in DADOS.desambiguacoes) {
+      if (DADOS.desambiguacoes.hasOwnProperty(key)) {
+        var d = DADOS.desambiguacoes[key];
+        var ladosHtml = '';
+        d.lados.forEach(function(l) {
+          ladosHtml += '<div class="rkr-lado"><b>' + l[0] + '</b>' + l[1] + '</div>';
+        });
+        
+        html += '<div class="rkr-item">' +
+                  '<div class="rkr-tag">' + d.tag + '</div>' +
+                  '<div>' +
+                    '<h4>' + d.titulo + '</h4>' +
+                    '<div class="rkr-versus">' + ladosHtml + '</div>' +
+                    '<div class="rkr-regra"><b>Regra Adotada</b>' + d.regra + '</div>' +
+                    '<div class="rkr-arbitro">' + d.arbitro + '</div>' +
+                  '</div>' +
+                '</div>';
+      }
+    }
+    desamb.innerHTML = html;
+  }
+
+  // Comportamentos e Eventos de Clique
+  function iniciarEventos() {
+    var cartoes = document.querySelectorAll('.rkr-cartao');
+    
+    cartoes.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        // Remove seleção atual
+        cartoes.forEach(function(b) { b.setAttribute('aria-current', 'false'); });
+        
+        // Ativa cartão clicado
+        btn.setAttribute('aria-current', 'true');
+        var pId = btn.getAttribute('data-id');
+        
+        var pessoa = null;
+        for (var i = 0; i < DADOS.pessoas.length; i++) {
+          if (DADOS.pessoas[i].id === pId) { pessoa = DADOS.pessoas[i]; break; }
+        }
+        
+        if (!pessoa) return;
+
+        // Constrói HTML da Ficha
+        var fHtml = '<div class="rkr-ficha-topo">' +
+                      '<div>' +
+                        '<h2>' + pessoa.nome + '</h2>' +
+                        '<div class="rkr-ficha-sub">' + pessoa.sub + '</div>' +
+                      '</div>' +
+                    '</div>';
+        
+        if (pessoa.blocos) {
+          pessoa.blocos.forEach(function(b) {
+            fHtml += '<div class="rkr-bloco"><h3>' + b.t + '</h3>';
+            b.f.forEach(function(f) {
+              fHtml += '<div class="rkr-fato" data-status="' + f.s + '">' +
+                         '<i class="rkr-ponto ' + f.s + '"></i>' +
+                         '<div>' +
+                           '<span class="rkr-rot">' + f.r + '</span>' +
+                           '<span class="rkr-val">' + f.v + '</span>' +
+                           '<span class="rkr-src">' + f.src + '</span>' +
+                         '</div>' +
+                       '</div>';
+            });
+            fHtml += '</div>';
+          });
+        }
+        
+        fichaConteudo.innerHTML = fHtml;
+        ficha.classList.add('aberta');
+        
+        // Rolar tela para a ficha em visualização móvel
+        if(window.innerWidth <= 768) {
+           ficha.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Fechar ficha
+    btnFechar.addEventListener('click', function() {
+      ficha.classList.remove('aberta');
+      cartoes.forEach(function(b) { b.setAttribute('aria-current', 'false'); });
+    });
+
+    // Alternar filtro de veracidade
+    btnFiltro.addEventListener('click', function() {
+      var pressionado = btnFiltro.getAttribute('aria-pressed') === 'true';
+      btnFiltro.setAttribute('aria-pressed', !pressionado);
+      
+      if (!pressionado) {
+        raizGlobal.classList.add('filtrado');
+        btnFiltro.textContent = "Mostrar todos os dados";
+      } else {
+        raizGlobal.classList.remove('filtrado');
+        btnFiltro.textContent = "Mostrar só o documentado";
+      }
+    });
+  }
+
+  // Inicializa o motor
+  renderizarArvore();
+  renderizarDesambiguacao();
+  iniciarEventos();
+})();
+</script>
