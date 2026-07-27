@@ -5,8 +5,8 @@
   background-color: #121212;
   font-family: Georgia, 'Times New Roman', serif;
   color: #e8e4da;
-  line-height: 2.1;
-  font-size: 1.4rem;
+  line-height: 2.15;
+  font-size: 1.6rem;
 }
 
 .cronica-header h1 {
@@ -21,7 +21,7 @@
 .cronica-subtitle {
   font-style: italic;
   color: #b8b2a3;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   margin-top: 0;
   margin-bottom: 2.4rem;
   text-align: center;
@@ -30,13 +30,13 @@
 .cronica-body h3 {
   text-align: center;
   color: #d4af6a;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   margin: 3.2rem 0 2.4rem;
   letter-spacing: 0.15em;
 }
 
 .cronica-body p {
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.7rem;
   text-align: justify;
   hyphens: auto;
 }
@@ -53,12 +53,12 @@
   border-left: none;
   text-align: center;
   font-style: italic;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   margin: 3rem 0;
   padding: 1.6rem;
   background: #1a1a1a;
   border-radius: 6px;
-  line-height: 1.9;
+  line-height: 1.95;
   color: #d8d3c5;
 }
 
@@ -73,17 +73,17 @@
 }
 
 .cronica-footnote {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   color: #8a8578;
   border-top: 1px solid #2a2a2a;
   padding-top: 1.4rem;
   margin-top: 3rem;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 @media (max-width: 480px) {
   .cronica {
-    font-size: 1.35rem;
+    font-size: 1.5rem;
     padding: 2rem 1.1rem 3rem;
   }
   .cronica-header h1 {
