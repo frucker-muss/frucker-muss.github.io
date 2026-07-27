@@ -8,7 +8,7 @@ Este espaço é dedicado à preservação da memória histórica, crônicas e re
 
 ---
 
-### 📂 [Família](familia/)
+### 📂 [Família](familia.md)
 *Genealogia*
 
 ### 📂 [Outros](projetos.html)
