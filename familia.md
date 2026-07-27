@@ -1,22 +1,39 @@
 ---
 layout: default
-title: "Família"
+title: "Família Rücker"
 ---
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="content-language" content="pt-br">
+<!-- Texto introdutório centralizado -->
+<p style="font-size: 1.15rem; color: #b8b2a3; text-align: center; max-width: 600px; margin: 0 auto 3rem;">
+  Registros documentais, trajetórias e crônicas da imigração da família Rücker, desde a região da Silésia no século XVIII até o sul do Brasil.
+</p>
 
-# Família
+<!-- Grid de Cartões (Reaproveitando o CSS já existente) -->
+<div class="home-grid">
+  
+  <!-- Cartão: Georg (Perfil Histórico) -->
+  <a href="{{ '/familia/georg-rucker.html' | relative_url }}" class="card" style="padding: 1.5rem; text-align: left; justify-content: flex-start;">
+    <span style="font-size: 0.75rem; color: #8a8578; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; display: block; font-weight: bold;">Perfil Histórico</span>
+    <h3 style="margin-bottom: 0.5rem; font-size: 1.5rem; border: none;">Georg Rücker</h3>
+    <p style="font-size: 0.95rem;">Da servidão hereditária à ação individual no nascente capitalismo silesiano.</p>
+  </a>
 
-Registros e história da família Rücker.
+  <!-- Cartão: Georg (Crônica) -->
+  <a href="{{ '/familia/georg-uma-cronica.html' | relative_url }}" class="card" style="padding: 1.5rem; text-align: left; justify-content: flex-start; border-color: rgba(212, 175, 106, 0.3);">
+    <span style="font-size: 0.75rem; color: #d4af6a; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; display: block; font-weight: bold;">Crônica Literária</span>
+    <h3 style="margin-bottom: 0.5rem; font-size: 1.5rem; border: none;">Georg - Uma Crônica</h3>
+    <p style="font-size: 0.95rem;">Um olhar narrativo sobre a vida nas encostas da Montanha Negra.</p>
+  </a>
 
----
+  <!-- Cartão: Vincentius -->
+  <a href="{{ '/familia/vincentius-joseph-rucker.html' | relative_url }}" class="card" style="padding: 1.5rem; text-align: left; justify-content: flex-start;">
+    <span style="font-size: 0.75rem; color: #8a8578; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; display: block; font-weight: bold;">Perfil Histórico</span>
+    <h3 style="margin-bottom: 0.5rem; font-size: 1.5rem; border: none;">Vincentius Joseph Rücker</h3>
+    <p style="font-size: 0.95rem;">A ascensão na Prússia e a fuga rumo à liberdade no Atlântico (1827–1908).</p>
+  </a>
 
-<ul style="line-height: 2.2; font-size: 1.15rem;">
-    <li><a href="familia/georg-rucker.html">Georg Rücker</a></li>
-    <li><a href="familia/vincentius-joseph-rucker.html">Vincentius Joseph Rücker</a></li>
-</ul>
+</div>
 
----
+<hr style="margin-top: 3rem; border-color: #2a2a2a;">
 
-<p style="font-size: 1.05rem;"><a href="{{ '/' | relative_url }}">← Voltar para a página inicial</a></p>
+<p style="font-size: 1.05rem; text-align: center;"><a href="{{ '/' | relative_url }}">← Voltar para a página inicial</a></p>
