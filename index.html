@@ -3,16 +3,14 @@ layout: default
 title: Início
 ---
 
-<div style="display: flex; flex-direction: column; gap: 2.5rem; margin: 2rem 0;">
-  
+<div class="home-grid home-grid--single">
+
   <!-- 1. Cartão Família com Mapa de Fundo -->
-  <a href="{{ '/familia.html' | relative_url }}" class="card" style="background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('{{ "/assets/1785149425259.png" | relative_url }}'); background-size: cover; background-position: center; border-color: #333;">
-    <!-- Título com sombra para garantir leitura -->
-    <h3 style="text-shadow: 2px 2px 4px rgba(0,0,0,0.9); color: #d4af6a;">Família</h3>
-    <!-- Texto levemente mais claro que o padrão para contrastar melhor com o fundo escurecido -->
-    <p style="text-shadow: 1px 1px 3px rgba(0,0,0,0.9); color: #f2efe6;">Genealogia e registros históricos.</p>
+  <a href="{{ '/familia.html' | relative_url }}" class="card card--family" style="background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('{{ '/assets/1785149425259.png' | relative_url }}');">
+    <h3>Família</h3>
+    <p>Genealogia e registros históricos.</p>
   </a>
-  
+
   <!-- 2. Cartão Outros -->
   <a href="{{ '/projetos.html' | relative_url }}" class="card">
     <h3>Outros</h3>
