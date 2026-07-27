@@ -1,0 +1,647 @@
+---
+layout: default
+title: "Árvore Genealógica"
+---
+
+<style>
+  .arv-intro {
+    color: #b8b2a3;
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto 2rem;
+    font-size: 1.05rem;
+  }
+
+  .arv-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .arv-busca {
+    flex: 1 1 220px;
+    max-width: 320px;
+    padding: 0.6rem 0.9rem;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    color: #e8e4da;
+    font-family: Georgia, serif;
+    font-size: 1rem;
+  }
+  .arv-busca:focus { outline: none; border-color: #d4af6a; }
+
+  .arv-btn {
+    padding: 0.6rem 1rem;
+    background: transparent;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    color: #b8b2a3;
+    font-family: Georgia, serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  .arv-btn:hover { border-color: #d4af6a; color: #d4af6a; }
+
+  /* ---------- Árvore ---------- */
+  .arv-lista, .arv-lista ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .arv-lista ul {
+    margin-left: 0.85rem;
+    padding-left: 1.1rem;
+    border-left: 1px solid #2a2a2a;
+  }
+
+  .arv-no { margin: 0.35rem 0; }
+
+  .arv-uniao { margin: 0.6rem 0; }
+
+  .arv-uniao-cab {
+    font-size: 0.78rem;
+    color: #8a8578;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    margin: 0.9rem 0 0.4rem;
+    padding-left: 0.2rem;
+  }
+  .arv-uniao-cab strong { color: #b8b2a3; font-weight: normal; }
+
+  .arv-uniao > ul { border-left-color: #3a332a; }
+
+  .arv-linha {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .arv-toggle {
+    flex: 0 0 auto;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 0.55rem;
+    background: transparent;
+    border: none;
+    color: #8a8578;
+    font-size: 0.85rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+  }
+  .arv-toggle:hover { color: #d4af6a; }
+  .arv-toggle.vazio { visibility: hidden; }
+
+  .arv-pessoa {
+    flex: 1 1 auto;
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.55rem 0.8rem;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    color: #e8e4da;
+    font-family: Georgia, serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: border-color 0.15s ease;
+  }
+  .arv-pessoa:hover { border-color: #d4af6a; }
+  .arv-pessoa.destaque { border-color: #d4af6a; background: #241f16; }
+  .arv-pessoa.linhagem { border-left: 3px solid #d4af6a; }
+
+  .arv-nome { display: block; line-height: 1.3; }
+
+  .arv-conjuge {
+    display: block;
+    font-size: 0.9rem;
+    color: #8a8578;
+    font-style: italic;
+    margin-top: 0.15rem;
+  }
+
+  .arv-datas {
+    display: block;
+    font-size: 0.85rem;
+    color: #8a8578;
+    letter-spacing: 0.04em;
+    margin-top: 0.2rem;
+  }
+
+  .arv-contador { font-size: 0.8rem; color: #8a8578; margin-left: 0.4rem; }
+
+  .arv-duvida {
+    display: inline-block;
+    margin-left: 0.4rem;
+    font-size: 0.7rem;
+    color: #b07d3a;
+    border: 1px solid #5a4526;
+    border-radius: 4px;
+    padding: 0 0.35rem;
+    letter-spacing: 0.06em;
+    vertical-align: middle;
+  }
+
+  /* ---------- Painel de detalhes ---------- */
+  .arv-painel {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 50;
+    background: #16161a;
+    border-top: 1px solid #d4af6a;
+    padding: 1.4rem 1.3rem 1.8rem;
+    max-height: 70vh;
+    overflow-y: auto;
+    transform: translateY(105%);
+    transition: transform 0.25s ease;
+    box-shadow: 0 -14px 40px rgba(0,0,0,0.6);
+  }
+  .arv-painel.aberto { transform: translateY(0); }
+  .arv-painel-inner { max-width: 640px; margin: 0 auto; }
+
+  .arv-fechar {
+    position: absolute;
+    top: 0.7rem; right: 0.9rem;
+    background: transparent;
+    border: none;
+    color: #8a8578;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .arv-fechar:hover { color: #d4af6a; }
+
+  .arv-painel h2 {
+    margin: 0 0 0.3rem;
+    font-size: 1.6rem;
+    color: #f2efe6;
+    text-align: left;
+  }
+
+  .arv-p-sub {
+    color: #d4af6a;
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    margin: 0 0 1rem;
+  }
+
+  .arv-campo {
+    display: flex;
+    gap: 0.6rem;
+    padding: 0.4rem 0;
+    border-top: 1px solid #2a2a2a;
+    font-size: 0.98rem;
+  }
+  .arv-campo dt { flex: 0 0 7.5rem; color: #8a8578; margin: 0; }
+  .arv-campo dd { margin: 0; color: #e8e4da; }
+
+  .arv-nota {
+    margin-top: 1rem;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: #c9c3b4;
+  }
+
+  .arv-fonte {
+    margin-top: 0.9rem;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: #8a8578;
+    border-left: 2px solid #2a2a2a;
+    padding-left: 0.8rem;
+  }
+
+  .arv-link {
+    display: inline-block;
+    margin-top: 1.2rem;
+    padding: 0.6rem 1.1rem;
+    border: 1px solid #d4af6a;
+    border-radius: 6px;
+    color: #d4af6a;
+    font-size: 0.98rem;
+  }
+  .arv-link:hover { background: rgba(212,175,106,0.1); text-decoration: none; }
+
+  .arv-legenda {
+    margin-top: 2.5rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid #2a2a2a;
+    font-size: 0.9rem;
+    color: #8a8578;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 480px) {
+    .arv-lista ul { margin-left: 0.5rem; padding-left: 0.7rem; }
+    .arv-pessoa { font-size: 0.95rem; padding: 0.5rem 0.65rem; }
+    .arv-campo { flex-direction: column; gap: 0.1rem; }
+    .arv-campo dt { flex: none; }
+  }
+</style>
+
+<p class="arv-intro">
+  Descendência documentada a partir de Georg Rücker (1789, Johannesberg, Silésia).
+  Toque em qualquer nome para ver detalhes e fontes; use as setas para abrir e fechar as gerações.
+</p>
+
+<div class="arv-toolbar">
+  <input type="text" id="arvBusca" class="arv-busca" placeholder="Buscar nome ou ano…" autocomplete="off">
+  <button type="button" class="arv-btn" id="arvExpandir">Expandir tudo</button>
+  <button type="button" class="arv-btn" id="arvRecolher">Recolher tudo</button>
+</div>
+
+<ul class="arv-lista" id="arvRaiz"></ul>
+
+<p class="arv-legenda">
+  <strong style="color:#d4af6a;">★</strong> nascimento &nbsp;·&nbsp;
+  <strong style="color:#d4af6a;">✝</strong> falecimento &nbsp;·&nbsp;
+  a barra dourada à esquerda marca a linhagem direta &nbsp;·&nbsp;
+  a etiqueta <span class="arv-duvida">a verificar</span> assinala dado ainda sem confirmação documental.
+  Cada ficha traz a fonte de onde a informação foi extraída.
+</p>
+
+<div class="arv-painel" id="arvPainel" aria-hidden="true">
+  <div class="arv-painel-inner">
+    <button type="button" class="arv-fechar" id="arvFechar" aria-label="Fechar">&times;</button>
+    <div id="arvPainelConteudo"></div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   DADOS DA ARVORE - edite apenas este bloco.
+
+   Campos por pessoa:
+     nome      (obrigatorio)
+     nasc      data de nascimento
+     falec     data de falecimento
+     local     lugar de nascimento ou residencia
+     notas     texto livre
+     fonte     origem documental
+     duvida    true  -> etiqueta "a verificar"
+     linhagem  true  -> destaca a linha direta
+     link      caminho para a cronica
+     conjuge   { nome, nasc, falec, casamento, notaConjuge }
+     filhos    [ ... ]                       (uniao unica)
+     unioes    [ { rotulo, conjuge, filhos } ] (varios casamentos)
+
+   Revisao de 27/07/2026 - registros paroquiais da Silesia,
+   tabela datilografada, rascunho manuscrito e lapide do jazigo
+   de Sao Pedro do Marata.
+   ============================================================ */
+
+const ARVORE = {
+  nome: "Georg Rücker",
+  nasc: "1789",
+  local: "Johannesberg, Silésia (hoje Janowa Góra, Polônia)",
+  linhagem: true,
+  link: "/familia/georg-rucker.html",
+  notas: "Nascido Inwohner sob servidão hereditária no Senhorio de Seitenberg. Emancipado juridicamente em 1810; migrou para Wölfelsgrund após o Ano Sem Verão de 1816. Casou-se duas vezes: viúvo aos 34 anos, com três filhas pequenas, casou-se novamente apenas dois meses após a morte da primeira esposa.",
+  fonte: "Registros paroquiais da Silésia.",
+  unioes: [
+    {
+      rotulo: "Primeiro casamento",
+      conjuge: {
+        nome: "Maria Volkmer",
+        falec: "10 set. 1823",
+        casamento: "c. 1815–1816",
+        notaConjuge: "natural de Kamnitz (Kamienica)"
+      },
+      notas: "Maria Volkmer faleceu em 10 de setembro de 1823, em decorrência de complicações do parto do quarto filho.",
+      fonte: "Registros paroquiais da Silésia.",
+      filhos: [
+        { nome: "Maria Therezia Beata Rücker", nasc: "22 dez. 1816", fonte: "Registro paroquial." },
+        { nome: "Anna Maria Johanna Rücker", nasc: "1 mar. 1819", fonte: "Registro paroquial." },
+        { nome: "Beata Maria Josefa Rücker", nasc: "16 ago. 1821", fonte: "Registro paroquial." },
+        {
+          nome: "Filho sem nome registrado",
+          nasc: "2 set. 1823",
+          falec: "11 set. 1823",
+          notas: "Viveu nove dias. O parto custou a vida da mãe, falecida em 10 de setembro, um dia antes da criança. O diagrama gerado por software registrava equivocadamente o nascimento e a morte do bebê em 10 de setembro — data que é, na verdade, a do óbito materno.",
+          fonte: "Registros paroquiais da Silésia."
+        },
+        {
+          nome: "August Rücker",
+          nasc: "1823",
+          falec: "1856",
+          duvida: true,
+          conjuge: { nome: "Beata Exner", nasc: "1829" },
+          notas: "Registro contraditório, mantido para verificação. As duas listas de filhos de Georg estão fechadas — quatro no primeiro casamento, três no segundo — e August não cabe em nenhuma delas. Tampouco há espaço biológico: Maria Volkmer deu à luz em 2 de setembro de 1823 e faleceu em 10; o casamento com Johanna Hannig só ocorreu em 23 de novembro. Hipótese mais provável: o software desdobrou o bebê de setembro de 1823 em dois nós e a esposa Beata Exner foi atribuída ao nó equivocado. Alternativa: trata-se de um Rücker de outro ramo, incorporado por engano. Confirmar em registro paroquial antes de manter ou excluir.",
+          fonte: "Diagrama gerado por software — sem confirmação documental."
+        }
+      ]
+    },
+    {
+      rotulo: "Segundo casamento",
+      conjuge: {
+        nome: "Johanna Hannig",
+        nasc: "1791",
+        casamento: "23 nov. 1823",
+        notaConjuge: "natural de Kieslingswalde"
+      },
+      notas: "Casamento celebrado dois meses após a morte de Maria Volkmer. A grafia \"Hanniz\", que consta da tabela datilografada, é erro de transcrição.",
+      fonte: "Registros paroquiais da Silésia.",
+      filhos: [
+        { nome: "Anna Maria Rücker", nasc: "5 ago. 1825", fonte: "Registro paroquial." },
+        {
+          nome: "Vincentius Joseph Rücker",
+          nasc: "9 out. 1827",
+          falec: "1908",
+          local: "Wölfelsgrund, Silésia",
+          linhagem: true,
+          link: "/familia/vincentius-joseph-rucker.html",
+          conjuge: { nome: "Beata Larisch" },
+          notas: "Também registrado como Vincenz. Forstmeister a serviço do Estado prussiano. Emigrou para o Rio Grande do Sul em 1898, após o incidente florestal envolvendo seus filhos.",
+          fonte: "Registro paroquial de nascimento; documentação de emigração.",
+          filhos: [
+            {
+              nome: "Anton Rücker",
+              nasc: "1898",
+              duvida: true,
+              notas: "O ano de 1898 corresponde à chegada ao Brasil, não ao nascimento: quatro irmãos não nascem no mesmo ano, e August Ambros casa-se já em 1899. Data de nascimento a levantar nas listas de passageiros."
+            },
+            {
+              nome: "August Ambros Rücker",
+              nasc: "1898",
+              duvida: true,
+              linhagem: true,
+              local: "São Pedro do Maratá, Rio Grande do Sul",
+              conjuge: { nome: "Philippine Saft", nasc: "1875", casamento: "1899" },
+              notas: "Fixou-se em São Pedro do Maratá, RS, com 15 filhos. Não confundir com o irmão Ambros August Rücker, que seguiu para o Paraná e Santa Catarina: os nomes são invertidos e as trajetórias, distintas. A tabela datilografada deixa esta linha inteiramente em branco — omissão corrigida aqui. O ano de 1898 refere-se à imigração.",
+              fonte: "Correção da omissão da tabela datilografada, com base na lápide do jazigo familiar de São Pedro do Maratá e nos registros da família.",
+              filhos: [
+                { nome: "Paulo Vicente Ambrósio Rücker", nasc: "1900" },
+                {
+                  nome: "Maria Emma Rücker",
+                  nasc: "1903",
+                  notas: "Ausente do rascunho manuscrito; reinserida na revisão de 2026.",
+                  fonte: "Registros da família."
+                },
+                {
+                  nome: "Gottfried Anton Rücker",
+                  nasc: "12 jan. 1904",
+                  notas: "O rascunho manuscrito anota 12-1-1903. A lápide de granito do jazigo de São Pedro do Maratá registra 12 1 1904 — a inscrição em pedra prevalece sobre a anotação a lápis.",
+                  fonte: "Lápide do jazigo familiar, São Pedro do Maratá."
+                },
+                { nome: "Bertholdo Rücker", nasc: "1905" },
+                { nome: "Aloisio Rücker", nasc: "1906" },
+                { nome: "Ewaldo Rücker", nasc: "1907" },
+                { nome: "Hedwig Guilhermina Rücker", nasc: "1908" },
+                { nome: "Luisa Victória Rücker", nasc: "1909" },
+                { nome: "Rudolfo Rücker", nasc: "1911" },
+                {
+                  nome: "Adolf Rücker",
+                  nasc: "1912",
+                  falec: "1913",
+                  notas: "Faleceu com um ano e dois meses de idade. Ausente do rascunho manuscrito; seu nome consta da lápide principal do Maratá.",
+                  fonte: "Lápide do jazigo familiar, São Pedro do Maratá."
+                },
+                { nome: "José Rücker", nasc: "1914" },
+                { nome: "Adalberto Rücker", nasc: "1915" },
+                { nome: "Augusto Guilherme Rücker", nasc: "1916" },
+                {
+                  nome: "Siegmundo Rücker",
+                  nasc: "1918",
+                  linhagem: true,
+                  notas: "Linha direta da descendência atual."
+                },
+                { nome: "Albano Rücker", nasc: "1920" }
+              ]
+            },
+            {
+              nome: "Ambros August Rücker",
+              nasc: "1898",
+              duvida: true,
+              local: "Paraná e Santa Catarina",
+              notas: "Irmão de August Ambros. A semelhança dos nomes invertidos é a principal fonte de erro nas genealogias publicadas da família. Sua descendência é a que a tabela datilografada detalha.",
+              fonte: "Tabela datilografada.",
+              filhos: [
+                {
+                  nome: "Walter Rücker",
+                  duvida: true,
+                  notas: "O diagrama gerado por software o posiciona entre os filhos de August Ambros, mas a tabela datilografada o atribui a Ambros August, junto de Herbert e Max — e é essa atribuição que faz a contagem do ramo do Maratá fechar em 15 filhos. Realocado aqui; confirmar."
+                },
+                { nome: "Herbert Rücker", fonte: "Tabela datilografada." },
+                { nome: "Max Rücker", fonte: "Tabela datilografada." }
+              ]
+            },
+            { nome: "Amalia Rücker", nasc: "1898", duvida: true, notas: "Ano correspondente à imigração; nascimento a levantar." }
+          ]
+        },
+        { nome: "Joseph Anton Rücker", nasc: "19 jul. 1830", fonte: "Registro paroquial." }
+      ]
+    }
+  ]
+};
+
+/* ============================================================
+   MOTOR DA ARVORE - nao precisa mexer daqui para baixo.
+   ============================================================ */
+
+(function () {
+  const raiz = document.getElementById('arvRaiz');
+  const painel = document.getElementById('arvPainel');
+  const painelConteudo = document.getElementById('arvPainelConteudo');
+  const busca = document.getElementById('arvBusca');
+
+  function esc(t) {
+    return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function datas(p) {
+    const partes = [];
+    if (p.nasc) partes.push('★ ' + p.nasc);
+    if (p.falec) partes.push('✝ ' + p.falec);
+    return partes.join('  ·  ');
+  }
+
+  function totalFilhos(p) {
+    if (Array.isArray(p.filhos)) return p.filhos.length;
+    if (Array.isArray(p.unioes)) {
+      return p.unioes.reduce(function (s, u) {
+        return s + (Array.isArray(u.filhos) ? u.filhos.length : 0);
+      }, 0);
+    }
+    return 0;
+  }
+
+  function criarNo(pessoa) {
+    const li = document.createElement('li');
+    li.className = 'arv-no';
+
+    const linha = document.createElement('div');
+    linha.className = 'arv-linha';
+
+    const total = totalFilhos(pessoa);
+    const temFilhos = total > 0;
+
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'arv-toggle' + (temFilhos ? '' : ' vazio');
+    toggle.textContent = '▾';
+    toggle.setAttribute('aria-label', 'Abrir ou fechar descendentes');
+
+    const botao = document.createElement('button');
+    botao.type = 'button';
+    botao.className = 'arv-pessoa' + (pessoa.linhagem ? ' linhagem' : '');
+
+    let html = '<span class="arv-nome">' + esc(pessoa.nome);
+    if (temFilhos) html += '<span class="arv-contador">(' + total + ')</span>';
+    if (pessoa.duvida) html += '<span class="arv-duvida">a verificar</span>';
+    html += '</span>';
+
+    if (pessoa.conjuge && pessoa.conjuge.nome) {
+      html += '<span class="arv-conjuge">c. ' + esc(pessoa.conjuge.nome) + '</span>';
+    } else if (Array.isArray(pessoa.unioes)) {
+      const nomes = pessoa.unioes
+        .filter(function (u) { return u.conjuge && u.conjuge.nome; })
+        .map(function (u) { return u.conjuge.nome; });
+      if (nomes.length) html += '<span class="arv-conjuge">c. ' + esc(nomes.join(' · ')) + '</span>';
+    }
+
+    const d = datas(pessoa);
+    if (d) html += '<span class="arv-datas">' + d + '</span>';
+    botao.innerHTML = html;
+
+    botao.addEventListener('click', function () { abrirPainel(pessoa); });
+
+    linha.appendChild(toggle);
+    linha.appendChild(botao);
+    li.appendChild(linha);
+
+    if (temFilhos) {
+      const container = document.createElement('ul');
+
+      if (Array.isArray(pessoa.unioes)) {
+        pessoa.unioes.forEach(function (u) {
+          const liU = document.createElement('li');
+          liU.className = 'arv-uniao';
+
+          const cab = document.createElement('div');
+          cab.className = 'arv-uniao-cab';
+          let texto = u.rotulo || 'União';
+          if (u.conjuge && u.conjuge.nome) texto += ' · <strong>' + esc(u.conjuge.nome) + '</strong>';
+          if (u.conjuge && u.conjuge.casamento) texto += ' — ' + esc(u.conjuge.casamento);
+          cab.innerHTML = texto;
+          liU.appendChild(cab);
+
+          const ulU = document.createElement('ul');
+          (u.filhos || []).forEach(function (f) { ulU.appendChild(criarNo(f)); });
+          liU.appendChild(ulU);
+
+          container.appendChild(liU);
+        });
+      } else {
+        pessoa.filhos.forEach(function (f) { container.appendChild(criarNo(f)); });
+      }
+
+      li.appendChild(container);
+
+      toggle.addEventListener('click', function () {
+        const fechado = container.style.display === 'none';
+        container.style.display = fechado ? '' : 'none';
+        toggle.textContent = fechado ? '▾' : '▸';
+      });
+    }
+
+    return li;
+  }
+
+  function campo(rotulo, valor) {
+    if (!valor) return '';
+    return '<div class="arv-campo"><dt>' + rotulo + '</dt><dd>' + valor + '</dd></div>';
+  }
+
+  function textoConjuge(c) {
+    let s = esc(c.nome);
+    const cd = datas(c);
+    if (cd) s += ' <span style="color:#8a8578;">(' + cd + ')</span>';
+    if (c.notaConjuge) s += ' <span style="color:#8a8578;">— ' + esc(c.notaConjuge) + '</span>';
+    return s;
+  }
+
+  function abrirPainel(p) {
+    let html = '<h2>' + esc(p.nome) + '</h2>';
+    html += '<p class="arv-p-sub">' + (datas(p) || 'Datas não documentadas') + '</p>';
+    html += '<dl style="margin:0;">';
+    html += campo('Local', p.local ? esc(p.local) : '');
+
+    if (p.conjuge && p.conjuge.nome) {
+      html += campo('Cônjuge', textoConjuge(p.conjuge));
+      html += campo('Casamento', p.conjuge.casamento ? esc(p.conjuge.casamento) : '');
+    }
+
+    if (Array.isArray(p.unioes)) {
+      p.unioes.forEach(function (u) {
+        if (!u.conjuge || !u.conjuge.nome) return;
+        html += campo(u.rotulo || 'União', textoConjuge(u.conjuge) +
+          (u.conjuge.casamento ? '<br><span style="color:#8a8578;">casamento: ' + esc(u.conjuge.casamento) + '</span>' : '') +
+          (u.filhos && u.filhos.length ? '<br><span style="color:#8a8578;">' + u.filhos.length + ' filhos</span>' : '') +
+          (u.notas ? '<br><span style="color:#c9c3b4; font-size:0.92rem;">' + esc(u.notas) + '</span>' : ''));
+      });
+    }
+
+    const total = totalFilhos(p);
+    if (total) html += campo('Filhos', total + ' registrados');
+    if (p.duvida) html += campo('Situação', '<span style="color:#b07d3a;">Dado pendente de confirmação</span>');
+    html += '</dl>';
+
+    if (p.notas) html += '<p class="arv-nota">' + esc(p.notas) + '</p>';
+    if (p.fonte) html += '<p class="arv-fonte"><strong>Fonte:</strong> ' + esc(p.fonte) + '</p>';
+    if (p.link) html += '<a class="arv-link" href="' + p.link + '">Ler o perfil completo →</a>';
+
+    painelConteudo.innerHTML = html;
+    painel.classList.add('aberto');
+    painel.setAttribute('aria-hidden', 'false');
+  }
+
+  function fecharPainel() {
+    painel.classList.remove('aberto');
+    painel.setAttribute('aria-hidden', 'true');
+  }
+
+  document.getElementById('arvFechar').addEventListener('click', fecharPainel);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') fecharPainel();
+  });
+
+  function definirTudo(visivel) {
+    raiz.querySelectorAll('.arv-no > ul').forEach(function (ul) {
+      ul.style.display = visivel ? '' : 'none';
+    });
+    raiz.querySelectorAll('.arv-toggle').forEach(function (t) {
+      t.textContent = visivel ? '▾' : '▸';
+    });
+  }
+
+  document.getElementById('arvExpandir').addEventListener('click', function () { definirTudo(true); });
+  document.getElementById('arvRecolher').addEventListener('click', function () { definirTudo(false); });
+
+  busca.addEventListener('input', function () {
+    const termo = busca.value.trim().toLowerCase();
+    const botoes = raiz.querySelectorAll('.arv-pessoa');
+    botoes.forEach(function (b) { b.classList.remove('destaque'); });
+    if (!termo) return;
+    definirTudo(true);
+    let primeiro = null;
+    botoes.forEach(function (b) {
+      if (b.textContent.toLowerCase().indexOf(termo) !== -1) {
+        b.classList.add('destaque');
+        if (!primeiro) primeiro = b;
+      }
+    });
+    if (primeiro) primeiro.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  raiz.appendChild(criarNo(ARVORE));
+})();
+</script>
+
+<p style="margin-top:2.5rem; text-align:center;">
+  <a href="{{ '/familia.html' | relative_url }}">← Voltar para Família</a>
+</p>
