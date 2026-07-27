@@ -1,161 +1,42 @@
-/* =========================================
-   Resets e Configurações Globais
-   ========================================= */
-* {
-  box-sizing: border-box;
-}
+---
+layout: default
+---
+<article class="cronica">
+  <header class="cronica-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.subtitle %}<p class="cronica-subtitle">{{ page.subtitle }}</p>{% endif %}
+  </header>
 
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #121212; /* Cor de fundo escura global */
-  color: #e8e4da; /* Cor de texto clara global */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.6;
-}
+  <div class="cronica-body">
+    {{ content }}
+  </div>
 
-/* =========================================
-   Cabeçalho do Site (Global)
-   ========================================= */
-.site-header {
-  background-color: #1a1a1a;
-  border-bottom: 1px solid #2a2a2a;
-  padding: 1rem 0;
-  text-align: center;
-}
+  <!-- BOTÕES DE INTERAÇÃO -->
+  <div style="text-align: center; margin: 3rem 0 1rem; border-top: 1px solid #2a2a2a; padding-top: 2rem; display: flex; flex-direction: column; gap: 1rem; align-items: center;">
 
-.site-header-title {
-  font-family: Georgia, serif; /* Mantém serif para o título principal */
-  font-size: 1.8rem;
-  color: #d4af6a;
-  text-decoration: none;
-  font-weight: bold;
-  letter-spacing: 0.05em;
-}
+    <!-- Botão WhatsApp -->
+    <a href="https://api.whatsapp.com/send?text=Leia:%20{{ page.title | url_encode }}%20-%20https://rucker.life{{ page.url }}"
+       target="_blank"
+       rel="noopener noreferrer"
+       style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 24px; background-color: #121212; border: 1px solid #25D366; color: #25D366; border-radius: 6px; text-decoration: none; font-family: -apple-system, sans-serif; font-size: 1.05rem; font-weight: bold; width: 100%; max-width: 350px;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+      </svg>
+      Compartilhar
+    </a>
 
-.site-header-title:hover {
-  color: #f2efe6;
-}
+    <!-- Botão Google Forms -->
+    <a href="https://forms.gle/zbPuMirz1jVDKdae7"
+       target="_blank"
+       rel="noopener noreferrer"
+       style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 24px; background-color: transparent; border: 1px solid #d4af6a; color: #d4af6a; border-radius: 6px; text-decoration: none; font-family: -apple-system, sans-serif; font-size: 1.05rem; font-weight: bold; width: 100%; max-width: 350px;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+      </svg>
+      Adicionar Relato à História
+    </a>
 
-/* =========================================
-   Estilos Padrão para Páginas Markdown
-   (Dentro de .page-content)
-   ========================================= */
-.page-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-}
+  </div>
 
-.page-content h1 {
-  font-family: Georgia, serif; /* H1 serif para consistência com as crônicas */
-  font-size: 2.2rem;
-  color: #f2efe6;
-  margin-top: 0;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #333;
-  padding-bottom: 0.5rem;
-}
-
-.page-content h2 {
-  font-size: 1.8rem;
-  color: #f2efe6;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
-
-.page-content h3 {
-  font-size: 1.4rem;
-  color: #d4af6a; /* Cor dourada para H3 */
-  margin-top: 1.5rem;
-  margin-bottom: 0.8rem;
-}
-
-.page-content p {
-  color: #e8e4da; /* Texto principal do parágrafo */
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-  font-size: 1.1rem;
-}
-
-.page-content a {
-  color: #d4af6a; /* Cor dourada para links */
-  text-decoration: none;
-  border-bottom: 1px solid rgba(212, 175, 106, 0.3);
-  transition: color 0.2s, border-color 0.2s;
-}
-
-.page-content a:hover {
-  color: #f2efe6;
-  border-bottom-color: #f2efe6;
-}
-
-.page-content ul, 
-.page-content ol {
-  margin-bottom: 1.5rem;
-  padding-left: 1.2rem;
-}
-
-.page-content li {
-  color: #e8e4da;
-  margin-bottom: 0.5rem;
-}
-
-/* Garante que o grid de cartões da home page não herde estilos errados */
-.page-content > .home-grid {
-    margin-top: 0;
-}
-
-/* =========================================
-   Grid de Cartões (Estilos Específicos da Home Page)
-   ========================================= */
-.home-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
-
-@media (min-width: 600px) {
-  .home-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.card {
-  background-color: #1a1a1a;
-  border: 1px solid #2a2a2a;
-  border-radius: 8px;
-  padding: 2.5rem 1.5rem;
-  text-align: center;
-  text-decoration: none !important; /* Força a remoção do sublinhado para o card inteiro */
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-}
-
-.card:hover {
-  transform: translateY(-3px);
-  border-color: #d4af6a;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-}
-
-.card h3 {
-  color: #d4af6a;
-  font-size: 1.6rem;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  font-family: Georgia, serif;
-  letter-spacing: 0.05em;
-  border-bottom: none; /* Remove a borda inferior do estilo genérico de H3 */
-  padding-bottom: 0;
-}
-
-.card p {
-  color: #8a8578;
-  font-size: 1rem;
-  margin: 0;
-  text-decoration: none !important;
-}
+</article>
