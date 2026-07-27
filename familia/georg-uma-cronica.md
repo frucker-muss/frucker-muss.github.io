@@ -108,7 +108,7 @@ O que mais podemos dizer sobre Georg Rücker?
 
 Que ele trabalhou a vida inteira com as mãos. Que nunca teve terra própria. Que sobreviveu à maior crise climática do século porque tinha as pernas livres para sair de onde estava — uma liberdade que seus pais nunca tiveram. Que perdeu uma esposa e um filho e achou força para continuar. Que construiu uma família duas vezes.
 
-Que o filho que ela teria com Johanna, aquele menino nascido em outubro de 1827, seria o elo que levaria o nome Rücker para o outro lado do mundo.
+Que o filho que ele teria com Johanna, aquele menino nascido em outubro de 1827, seria o elo que levaria o nome Rücker para o outro lado do mundo.
 
 Não sabemos quando Georg morreu. Os registros silenciam sobre isso. Em algum ponto da história, ele simplesmente para de aparecer nos documentos — e esse silêncio é a única despedida que os arquivos lhe concedem.
 
@@ -124,6 +124,6 @@ Mas ele existiu. Isso os documentos garantem. Ele caminhou nas encostas da Monta
 
 ---
 
-<p style="font-size: 0.9rem; color: #8a8578; margin-bottom: 2rem;"><em>Nota: Os fatos desta crônica — datas de nascimento e morte, nomes das esposas e filhos, a presença do Padre Carolus Rücker no falecimento de Maria Volkmer — são extraídos de registros documentais da família e dos arquivos paroquiais do Condado de Habelschwerdt. O contexto histórico é documentado: a servidão prussiana (Erbuntertänigkeit), o Édito de Outubro de 1807, a crise climática de 1816 causada pelo vulcão Tambora, e a economia madeireira de Wölfelsgrund. O que não está nos arquivos — os sentimentos, os cheiros, o cotidiano — foi imaginado com o cuidado de quem respeita o que não sabe.</em></p>
+<p class="cronica-footnote"><em>Nota: Os fatos desta crônica — datas de nascimento e morte, nomes das esposas e filhos, a presença do Padre Carolus Rücker no falecimento de Maria Volkmer — são extraídos de registros documentais da família e dos arquivos paroquiais do Condado de Habelschwerdt. O contexto histórico é documentado: a servidão prussiana (Erbuntertänigkeit), o Édito de Outubro de 1807, a crise climática de 1816 causada pelo vulcão Tambora, e a economia madeireira de Wölfelsgrund. O que não está nos arquivos — os sentimentos, os cheiros, o cotidiano — foi imaginado com o cuidado de quem respeita o que não sabe.</em></p>
 
 <p style="font-size: 1.05rem;"><a href="{{ '/familia.html' | relative_url }}">← Voltar para Família</a></p>
