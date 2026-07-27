@@ -1,6 +1,4 @@
-{% if layout.name == 'cronica' or page.layout == 'cronica' %}
-  <link rel="stylesheet" href="{{ '/assets/css/cronica.css' | relative_url }}">
-{% endif %}---
+---
 layout: default
 ---
 <article class="cronica">
@@ -13,3 +11,7 @@ layout: default
     {{ content }}
   </div>
 </article>
+
+{% if layout.name == 'cronica' or page.layout == 'cronica' %}
+  <link rel="stylesheet" href="{{ '/assets/css/cronica.css' | relative_url }}">
+{% endif %}
