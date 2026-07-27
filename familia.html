@@ -3,6 +3,40 @@ layout: default
 title: "Família Rücker"
 ---
 
+<style>
+  .colab-footer {
+    border-top: 1px solid #2a2a2a;
+    margin-top: 2.5rem;
+    padding: 1.1rem 1.4rem;
+    text-align: center;
+  }
+  .colab-footer .colab-galho {
+    display: block;
+    margin: 0 auto 0.6rem;
+    opacity: 0.8;
+  }
+  .colab-footer p {
+    max-width: 460px;
+    margin: 0 auto 0.6rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #8a8578;
+  }
+  .colab-footer a {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: #d4af6a;
+    border: 1px solid rgba(212, 175, 106, 0.4);
+    border-radius: 6px;
+    padding: 0.35rem 0.9rem;
+    text-decoration: none;
+  }
+  .colab-footer a:hover {
+    border-color: #d4af6a;
+    background: rgba(212, 175, 106, 0.08);
+  }
+</style>
+
 <!-- Texto introdutório centralizado -->
 <p style="font-size: 1.15rem; color: #b8b2a3; text-align: center; max-width: 600px; margin: 0 auto 2.5rem;">
   Registros documentais, trajetórias e crônicas da imigração da família Rücker, desde a região da Silésia no século XVIII até o sul do Brasil.
@@ -22,13 +56,6 @@ title: "Família Rücker"
     <h3 style="margin-bottom: 0.4rem; font-size: 1.25rem; border: none;">Árvore Genealógica</h3>
     <p style="font-size: 0.9rem; line-height: 1.45;">Cinco gerações navegáveis, de Georg (1789) aos nascidos no RS.</p>
   </a>
-
-  <!-- Link discreto: Enviar Fotos e Documentos -->
-  <p style="text-align: center; margin: 0.9rem 0 0;">
-    <a href="https://forms.gle/MAY913vupvStXXgP7" target="_blank" rel="noopener noreferrer" style="font-size: 0.85rem; color: #8a8578;">
-      + Tem uma foto ou documento de família? Envie para o acervo →
-    </a>
-  </p>
 
 </div>
 
@@ -71,3 +98,19 @@ title: "Família Rücker"
 <hr style="margin-top: 3rem; border-color: #2a2a2a;">
 
 <p style="font-size: 1.05rem; text-align: center;"><a href="{{ '/' | relative_url }}">← Voltar para a página inicial</a></p>
+
+<footer class="colab-footer">
+  <svg class="colab-galho" width="100" height="22" viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M6 18C30 22 45 14 65 15C85 16 95 8 124 12" stroke="#d4af6a" stroke-width="1" stroke-linecap="round"/>
+    <path d="M28 20C24 24 20 26 15 26" stroke="#d4af6a" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M46 16C44 11 42 8 44 4" stroke="#d4af6a" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M78 13C81 9 86 7 92 8" stroke="#d4af6a" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M100 10C102 15 106 18 112 18" stroke="#d4af6a" stroke-width="0.8" stroke-linecap="round"/>
+    <circle cx="15" cy="26" r="1.4" fill="#d4af6a"/>
+    <circle cx="44" cy="4" r="1.4" fill="#d4af6a"/>
+    <circle cx="92" cy="8" r="1.4" fill="#d4af6a"/>
+    <circle cx="112" cy="18" r="1.4" fill="#d4af6a"/>
+  </svg>
+  <p>Reconheceu um nome ou tem uma foto, documento ou correção para o acervo?</p>
+  <a href="https://forms.gle/MAY913vupvStXXgP7" target="_blank" rel="noopener noreferrer">Colaborar →</a>
+</footer>
