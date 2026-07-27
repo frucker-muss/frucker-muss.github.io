@@ -197,6 +197,39 @@
     .cronica { font-size: 1.05rem; }
     .cronica-header h1 { font-size: 2rem; }
   }
+
+  /* ---------- Rodapé de colaboração ---------- */
+  .colab-footer {
+    border-top: 1px solid #2a2a2a;
+    padding: 1.8rem 1.4rem 2.2rem;
+    text-align: center;
+  }
+  .colab-footer .colab-galho {
+    display: block;
+    margin: 0 auto 1rem;
+    opacity: 0.85;
+  }
+  .colab-footer p {
+    max-width: 480px;
+    margin: 0 auto 0.8rem;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #8a8578;
+  }
+  .colab-footer strong { color: #b8b2a3; }
+  .colab-footer a {
+    display: inline-block;
+    font-size: 0.92rem;
+    color: #d4af6a;
+    border: 1px solid rgba(212, 175, 106, 0.4);
+    border-radius: 6px;
+    padding: 0.5rem 1.1rem;
+    text-decoration: none;
+  }
+  .colab-footer a:hover {
+    border-color: #d4af6a;
+    background: rgba(212, 175, 106, 0.08);
+  }
   </style>
 </head>
 <body>
@@ -207,5 +240,26 @@
   <main class="page-content">
     {{ content }}
   </main>
+
+  <footer class="colab-footer">
+    <svg class="colab-galho" width="130" height="30" viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M6 18C30 22 45 14 65 15C85 16 95 8 124 12" stroke="#d4af6a" stroke-width="1" stroke-linecap="round"/>
+      <path d="M28 20C24 24 20 26 15 26" stroke="#d4af6a" stroke-width="0.8" stroke-linecap="round"/>
+      <path d="M46 16C44 11 42 8 44 4" stroke="#d4af6a" stroke-width="0.8" stroke-linecap="round"/>
+      <path d="M78 13C81 9 86 7 92 8" stroke="#d4af6a" stroke-width="0.8" stroke-linecap="round"/>
+      <path d="M100 10C102 15 106 18 112 18" stroke="#d4af6a" stroke-width="0.8" stroke-linecap="round"/>
+      <circle cx="15" cy="26" r="1.4" fill="#d4af6a"/>
+      <circle cx="44" cy="4" r="1.4" fill="#d4af6a"/>
+      <circle cx="92" cy="8" r="1.4" fill="#d4af6a"/>
+      <circle cx="112" cy="18" r="1.4" fill="#d4af6a"/>
+    </svg>
+    <p>
+      <strong>Este acervo cresce com a colaboração da família.</strong>
+      Reconheceu um nome? Tem uma correção, uma foto ou documento guardado?
+      Ou ainda não aparece na árvore e quer registrar sua própria história,
+      a de seus pais e avós? Cada contribuição entra no acervo depois de revisada.
+    </p>
+    <a href="https://forms.gle/MAY913vupvStXXgP7" target="_blank" rel="noopener noreferrer">Colaborar com o site →</a>
+  </footer>
 </body>
 </html>
