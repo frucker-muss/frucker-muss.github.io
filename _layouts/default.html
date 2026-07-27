@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#121212">
   <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  {% if page.layout == 'cronica' %}
+  <link rel="stylesheet" href="{{ '/assets/css/cronica.css' | relative_url }}">
+  {% endif %}
 </head>
 <body>
   <header class="site-header">
