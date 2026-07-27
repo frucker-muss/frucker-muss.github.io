@@ -1,11 +1,14 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+---
+layout: default
+title: Início
+---
 ## Bem-vindo ao Rücker.Life
 
 Este espaço é dedicado à preservação da memória histórica, crônicas e registros da nossa trajetória. Selecione abaixo a seção que deseja explorar:
 
 ---
 
-### 📂 [Família](familia.html)
+### 📂 [Família](familia/)
 *Genealogia*
 
 ### 📂 [Outros](projetos.html)
