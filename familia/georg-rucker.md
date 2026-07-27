@@ -1,22 +1,14 @@
 ---
----
 layout: cronica
 title: "Georg Rücker"
 subtitle: "Johannesberg,1789"
----
 ---
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="content-language" content="pt-br">
 
-# Georg Rücker
-
-**Johannesberg, Silésia · 1789**
-*Uma crônica de família*
-
----
-
 Vou te contar sobre o Georg.
+
 
 Não o Georg que aparece nos documentos — aquele que existe apenas como uma linha de tinta em papel amarelado de arquivo, registrado entre um batismo e um óbito de paróquia. Vou te contar sobre o Georg de carne e osso, aquele que acordava de manhã com o cheiro de resina de abeto no ar e a neve pesando sobre o telhado, aquele que um dia olhou para a montanha à sua frente e decidiu atravessá-la.
 
