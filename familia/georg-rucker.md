@@ -22,6 +22,6 @@ Em Wölfelsgrund, Georg estabeleceu-se como trabalhador florestal braçal (*Wald
 
 ---
 
-*Genealogia da família Rücker — de Johannesberg ao nascente capitalismo industrial da Silésia.*
+<p class="cronica-footnote"><em>Genealogia da família Rücker — de Johannesberg ao nascente capitalismo industrial da Silésia.</em></p>
 
 <p style="font-size: 1.05rem;"><a href="{{ '/familia.html' | relative_url }}">← Voltar para Família</a></p>
