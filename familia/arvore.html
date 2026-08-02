@@ -1,10 +1,10 @@
 ---
 layout: default
-title: "Árvore Genealógica (v5.2)"
+title: "Árvore Genealógica (v6.0)"
 ---
 
 <p class="arv-intro">
-  Base de Dados Consolidada v5.2 (29/07/2026). Navegue pelas gerações da família Rücker, desde Georg (1789) até os ramos de Santa Catarina e Paraná. Informações classificadas por grau de evidência documental.
+  Base de Dados Consolidada v6.0 (02/08/2026). Navegue pelas gerações da família Rücker, desde Georg (1789) até os ramos de Santa Catarina e Paraná, e uma linha de pesquisa em aberto. Cruzamento com o livro comemorativo do centenário de Maratá e depoimentos orais da família. Informações classificadas por grau de evidência documental.
 </p>
 
 <style>
@@ -45,6 +45,7 @@ title: "Árvore Genealógica (v5.2)"
 .rkr-ponto.inf{background-image:linear-gradient(90deg,var(--ouro) 50%,transparent 50%);border:1px solid var(--ouro);}
 .rkr-ponto.hip{background:transparent;border:1px dashed var(--mudo);}
 .rkr-ponto.conf{background:var(--terra);}
+.rkr-ponto.abt{background:transparent;border:1px dashed var(--sage);}
 
 .rkr-arvore{display:flex;flex-direction:column;align-items:center;}
 .rkr-ger{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;width:100%;}
@@ -59,6 +60,7 @@ title: "Árvore Genealógica (v5.2)"
 .rkr-cartao:hover,.rkr-cartao:focus-visible{border-color:var(--ouro);transform:translateY(-2px);}
 .rkr-cartao:focus-visible{outline:2px solid var(--ouro);outline-offset:3px;}
 .rkr-cartao[data-linha="direta"]{border-color:rgba(212,175,106,.5);background:rgba(212,175,106,.05);}
+.rkr-cartao[data-linha="aberta"]{border-style:dashed;border-color:rgba(138,158,134,.6);}
 .rkr-cartao[aria-current="true"]{border-color:var(--ouro);background:rgba(212,175,106,.1);}
 
 .rkr-chapa{width:42px;height:50px;flex:0 0 42px;background:#e8e0ce;border-radius:3px;
@@ -133,6 +135,7 @@ title: "Árvore Genealógica (v5.2)"
     <span><i class="rkr-ponto inf"></i> Inferido / Derivado</span>
     <span><i class="rkr-ponto hip"></i> Hipótese / Oral</span>
     <span><i class="rkr-ponto conf"></i> Conflito Desambiguado</span>
+    <span><i class="rkr-ponto abt"></i> Pesquisa Aberta</span>
   </div>
 
   <div class="rkr-arvore" id="rkrArvore"></div>
@@ -146,7 +149,7 @@ title: "Árvore Genealógica (v5.2)"
 
   <section class="rkr-secao">
     <h2>Notas de Desambiguação & Arbitragem</h2>
-    <p class="rkr-secao-nota">Regras aplicadas para sanar divergências e homofonias nos registros (v5.2).</p>
+    <p class="rkr-secao-nota">Regras aplicadas para sanar divergências e homofonias nos registros (v6.0).</p>
     <div class="rkr-desamb" id="rkrDesamb"></div>
   </section>
 
@@ -164,7 +167,7 @@ title: "Árvore Genealógica (v5.2)"
           ["Fato Consolidado", "São três irmãos. Anton (46), Ambros August (28) e August Ambros (28 declarados) embarcaram em 1898."]
         ],
         regra: "A REGRA R1 ESTABELECE QUE NÃO SE DEVE FUNDIR OS IRMÃOS. Nomes do meio devem ser respeitados.",
-        arbitro: "Lista de Hamburgo (1898) / Base v5.2"
+        arbitro: "Lista de Hamburgo (1898) / Base v6.0"
       },
       desamb05: {
         tag: "DESAMB 05",
@@ -173,8 +176,18 @@ title: "Árvore Genealógica (v5.2)"
           ["Ramo Direto", "August Ambros tem 15 filhos contados fotograficamente em 1925."],
           ["Walter", "Foi alocado equivocadamente na linha direta em árvores antigas."]
         ],
-        regra: "Walter pertence ao ramo de SC (filho de Ambros August). A prole de August Ambros fecha em 15 filhos.",
-        arbitro: "Validação fotográfica de 1925 / Base v5.2"
+        regra: "Walter pertence ao ramo de SC (filho de Ambros August). Quatorze filhos nomeados + Adolf fecham os quinze de August Ambros, confirmando a tradição oral.",
+        arbitro: "Validação fotográfica de 1925 / Base v6.0"
+      },
+      desamb11: {
+        tag: "DESAMB 11",
+        titulo: "Homonímia de prenomes entre as descendências dos dois irmãos",
+        lados: [
+          ["Risco", "Um mesmo prenome aparece nas duas linhagens (August Ambros e Ambros August), levando a atribuições cruzadas incorretas em registros antigos."],
+          ["Regra Geral", "Qualquer prenome presente na descendência de um irmão deve ser tratado como possível também na descendência do outro, até prova em contrário."]
+        ],
+        regra: "NUNCA ATRIBUIR UM DESCENDENTE A UM RAMO APENAS PELO PRENOME. Exigir data, cônjuge ou fonte fotográfica/epigráfica que amarre a pessoa ao ramo correto.",
+        arbitro: "Regra geral de método arquivístico / Base v6.0"
       },
       desamb12: {
         tag: "DESAMB 12",
@@ -184,7 +197,7 @@ title: "Árvore Genealógica (v5.2)"
           ["Primos", "Edelmar Rücker (filho de Leonardo) vs Idelmar Rücker (filho de Sérgio Adriano)."]
         ],
         regra: "Não atribuir registros unicamente pela grafia. Discriminação por paternidade ou matrimônio é mandatória.",
-        arbitro: "Regra L13 de método arquivístico / Base v5.2"
+        arbitro: "Regra L13 de método arquivístico / Base v6.0"
       }
     },
     pessoas: [
@@ -222,7 +235,7 @@ title: "Árvore Genealógica (v5.2)"
         papel: "Filho mais velho de Vincentius. Embarcou solteiro em 1898.",
         sub: "[G3-AN]",
         blocos: [
-          { t: "Registros", f: [ { r: "Paradeiro", v: "Desconhecido pós-1898", s: "inf", src: "Acervo v5.2" } ] }
+          { t: "Registros", f: [ { r: "Paradeiro", v: "Desconhecido pós-1898", s: "inf", src: "Acervo v6.0" } ] }
         ]
       },
       {
@@ -231,7 +244,10 @@ title: "Árvore Genealógica (v5.2)"
         papel: "Ramo SC/PR.",
         sub: "Cônjuge: Amalia Rathmann",
         blocos: [
-          { t: "Registros", f: [ { r: "Datas", v: "07/01/1870 - 01/10/1955", s: "epi", src: "Lápides e Registros" } ] }
+          { t: "Registros", f: [
+            { r: "Datas", v: "07/01/1870 - 01/10/1955", s: "epi", src: "Lápides e Registros" },
+            { r: "Ofício", v: "Fotografia era competência compartilhada entre os dois irmãos — August Ambros e Ambros August", s: "doc", src: "Cruzamento fotográfico / Livro do Centenário" }
+          ] }
         ]
       },
       {
@@ -240,7 +256,10 @@ title: "Árvore Genealógica (v5.2)"
         papel: "Linha Direta. Embarcou solteiro, casou no Brasil.",
         sub: "Cônjuge: Philippine Saft",
         blocos: [
-          { t: "Registros", f: [ { r: "Prole", v: "15 Filhos confirmados (DESAMB 05)", s: "doc", src: "Foto de 1925 / Base v5.2" } ] }
+          { t: "Registros", f: [
+            { r: "Prole", v: "15 Filhos confirmados (DESAMB 05)", s: "doc", src: "Foto de 1925 / Base v6.0" },
+            { r: "Ofício", v: "Fotografia era competência compartilhada entre os dois irmãos — August Ambros e Ambros August", s: "doc", src: "Cruzamento fotográfico / Livro do Centenário" }
+          ] }
         ]
       },
       {
@@ -252,27 +271,27 @@ title: "Árvore Genealógica (v5.2)"
           {
             t: "Irmãos Nomeados (1 a 8)",
             f: [
-              { r: "G4-01", v: "Paulo Vicente Rücker", s: "doc", src: "Base v5.2" },
-              { r: "G4-02", v: "Maria Emma Rücker", s: "doc", src: "Base v5.2" },
-              { r: "G4-03", v: "Gottfried Anton Rücker (12/01/1904 - 18/02/1949)", s: "epi", src: "Base v5.2" },
-              { r: "G4-04", v: "Bertholdo Rücker", s: "doc", src: "Base v5.2" },
-              { r: "G4-05", v: "Aloísio Rücker", s: "doc", src: "Base v5.2" },
-              { r: "G4-06", v: "Ewaldo Rücker", s: "doc", src: "Base v5.2" },
-              { r: "G4-07", v: "Hedwig Rücker", s: "doc", src: "Base v5.2" },
-              { r: "G4-08", v: "Luisa Victória Rücker", s: "doc", src: "Base v5.2" }
+              { r: "G4-01", v: "Paulo Vicente Rücker", s: "doc", src: "Base v6.0" },
+              { r: "G4-02", v: "Maria Emma Rücker", s: "doc", src: "Base v6.0" },
+              { r: "G4-03", v: "Gottfried Anton Rücker (12/01/1904 - 18/02/1949)", s: "epi", src: "Base v6.0" },
+              { r: "G4-04", v: "Bertholdo Rücker", s: "doc", src: "Base v6.0" },
+              { r: "G4-05", v: "Aloísio Rücker", s: "doc", src: "Base v6.0" },
+              { r: "G4-06", v: "Ewaldo Rücker", s: "doc", src: "Base v6.0" },
+              { r: "G4-07", v: "Hedwig Rücker", s: "doc", src: "Base v6.0" },
+              { r: "G4-08", v: "Luisa Victória Rücker", s: "doc", src: "Base v6.0" }
             ]
           },
           {
             t: "Irmãos Nomeados (9 a 16)",
             f: [
-              { r: "G4-09", v: "Rudolfo Rücker", s: "doc", src: "Base v5.2" },
+              { r: "G4-09", v: "Rudolfo Rücker", s: "doc", src: "Base v6.0" },
               { r: "G4-10", v: "[Entrada Revogada - Walter pertence a SC]", s: "conf", src: "DESAMB 05" },
-              { r: "G4-11", v: "Adolf Rücker (09/11/1912 - 11/01/1914)", s: "epi", src: "Base v5.2" },
-              { r: "G4-12", v: "José Rücker (03/04/1914 - 21/01/2006)", s: "epi", src: "Base v5.2" },
-              { r: "G4-13", v: "Adalberto Rücker (n. 1915)", s: "doc", src: "Base v5.2" },
-              { r: "G4-14", v: "Augusto Guilherme Rücker (23/08/1916 - 25/05/1997)", s: "epi", src: "Base v5.2" },
-              { r: "G4-15", v: "Siegmundo Rücker (23/05/1918 - 01/03/1986). Cônjuge: Cecy Dexheimer", s: "epi", src: "Base v5.2" },
-              { r: "G4-16", v: "Albano Rücker. Cônjuge: Bárbara Herta Rücker (1925-1994)", s: "doc", src: "Base v5.2 / Lápide pareada" }
+              { r: "G4-11", v: "Adolf Rücker (09/11/1912 - 11/01/1914)", s: "epi", src: "Base v6.0" },
+              { r: "G4-12", v: "José Rücker (03/04/1914 - 21/01/2006)", s: "epi", src: "Base v6.0" },
+              { r: "G4-13", v: "Adalberto Rücker (n. 1915)", s: "doc", src: "Base v6.0" },
+              { r: "G4-14", v: "Augusto Guilherme Rücker (23/08/1916 - 25/05/1997)", s: "epi", src: "Base v6.0" },
+              { r: "G4-15", v: "Siegmundo Rücker (23/05/1918 - 01/03/1986). Fotógrafo comercial — Foto Rücker, Estrela. Cônjuge: Cecy Dexheimer", s: "epi", src: "Base v6.0 / DESAMB local" },
+              { r: "G4-16", v: "Albano Rücker. Cônjuge: Bárbara Herta Rücker (1925-1994)", s: "doc", src: "Base v6.0 / Lápide pareada" }
             ]
           }
         ]
@@ -286,11 +305,11 @@ title: "Árvore Genealógica (v5.2)"
           {
             t: "Filhos Identificados",
             f: [
-              { r: "G4-WR", v: "Walter (Valter) Rücker", s: "doc", src: "Base v5.2" },
-              { r: "G4-HR", v: "Herberto Rücker ('Opa' Herbert) (18/01/1906 - 06/08/1999). Cônjuge: Olydia Regina Orth (1913-1979)", s: "epi", src: "Confirmado com luz rasante (Base v5.2)" },
-              { r: "G4-SG", v: "Siegmund Rücker", s: "doc", src: "Base v5.2" },
-              { r: "G4-MX", v: "Max (Maximiliano) Rücker", s: "doc", src: "Base v5.2" },
-              { r: "G4-AL", v: "Albano Rücker (SC)", s: "doc", src: "Base v5.2" }
+              { r: "G4-WR", v: "Walter (Valter) Rücker", s: "doc", src: "Base v6.0" },
+              { r: "G4-HR", v: "Herberto Rücker ('Opa' Herbert) (18/01/1906 - 06/08/1999). Cônjuge: Olydia Regina Orth (1913-1979)", s: "epi", src: "Confirmado com luz rasante (Base v6.0)" },
+              { r: "G4-SG", v: "Siegmund Rücker", s: "doc", src: "Base v6.0" },
+              { r: "G4-MX", v: "Max (Maximiliano) Rücker", s: "doc", src: "Base v6.0" },
+              { r: "G4-AL", v: "Albano Rücker (SC)", s: "doc", src: "Base v6.0" }
             ]
           }
         ]
@@ -304,14 +323,14 @@ title: "Árvore Genealógica (v5.2)"
           {
             t: "Filhos Conhecidos",
             f: [
-              { r: "G5", v: "Leonardo Rucker (16/03/1945 - 27/11/2023). Cônjuge: Ivone Rücker", s: "epi", src: "Base v5.2" },
-              { r: "G5", v: "Sérgio Adriano Rucker (08/09/1946 - 28/03/2015). Cônjuge: Irene", s: "epi", src: "Base v5.2" },
-              { r: "G5", v: "Bruno Rücker", s: "doc", src: "Base v5.2" },
-              { r: "G5", v: "Francisco Rücker", s: "doc", src: "Base v5.2" },
-              { r: "G5", v: "José Rücker ('Seu José')", s: "doc", src: "Base v5.2" },
-              { r: "G5", v: "Inês Rücker (c. Bertoldo Lerner)", s: "doc", src: "Base v5.2" },
-              { r: "G5", v: "Jacinta Rücker", s: "doc", src: "Base v5.2" },
-              { r: "G5", v: "Maria Rücker", s: "doc", src: "Base v5.2" }
+              { r: "G5", v: "Leonardo Rucker (16/03/1945 - 27/11/2023). Cônjuge: Ivone Rücker", s: "epi", src: "Base v6.0" },
+              { r: "G5", v: "Sérgio Adriano Rucker (08/09/1946 - 28/03/2015). Cônjuge: Irene", s: "epi", src: "Base v6.0" },
+              { r: "G5", v: "Bruno Rücker", s: "doc", src: "Base v6.0" },
+              { r: "G5", v: "Francisco Rücker", s: "doc", src: "Livro do Centenário / Base v6.0" },
+              { r: "G5", v: "José Rücker ('Seu José')", s: "doc", src: "Base v6.0" },
+              { r: "G5", v: "Inês Rücker (c. Bertoldo Lerner)", s: "doc", src: "Base v6.0" },
+              { r: "G5", v: "Jacinta Rücker", s: "doc", src: "Base v6.0" },
+              { r: "G5", v: "Maria Rücker", s: "doc", src: "Base v6.0" }
             ]
           }
         ]
@@ -325,15 +344,31 @@ title: "Árvore Genealógica (v5.2)"
           {
             t: "Linha de Leonardo",
             f: [
-              { r: "G6", v: "Edelmar Rücker (n. 13/06/1985). Cônjuge: Suelen Kerber Rücker", s: "doc", src: "Base v5.2" },
-              { r: "G7", v: "Wesley (Filho de Edelmar)", s: "doc", src: "Base v5.2" }
+              { r: "G6", v: "Edelmar Rücker (n. 13/06/1985). Cônjuge: Suelen Kerber Rücker", s: "doc", src: "Base v6.0" },
+              { r: "G7", v: "Wesley (Filho de Edelmar)", s: "doc", src: "Base v6.0" }
             ]
           },
           {
             t: "Linha de Sérgio Adriano",
             f: [
-              { r: "G6", v: "Izanir Rücker", s: "doc", src: "Base v5.2" },
-              { r: "G6", v: "Idelmar Rücker", s: "doc", src: "Base v5.2" }
+              { r: "G6", v: "Izanir Rücker", s: "doc", src: "Base v6.0" },
+              { r: "G6", v: "Idelmar Rücker", s: "doc", src: "Base v6.0" }
+            ]
+          }
+        ]
+      },
+      {
+        id: "ricardo_tp", ger: "Pesquisa Aberta · Convergência Não Confirmada", linha: "aberta", iniciais: "RT",
+        nome: "Ricardo Rücker (Três Passos)", vida: "1904 - 1995",
+        papel: "Imigrante silesiano, fundador do Hospital São José em Três Passos, RS. Parentesco com a linhagem principal NÃO comprovado.",
+        sub: "Convergência sob investigação",
+        blocos: [
+          {
+            t: "Elementos de Convergência",
+            f: [
+              { r: "Hospedagem", v: "Em 1924, hospedou-se na casa de 'August Rücker' em Maratá", s: "hip", src: "Pesquisa web / não verificado em fonte primária" },
+              { r: "Origem", v: "Ambas as famílias originárias da mesma microrregião do vale de Kłodzko, Silésia", s: "hip", src: "Pesquisa web / não verificado em fonte primária" },
+              { r: "Pendências", v: "Requer verificação paroquial e notarial. Leads: Jardim Temático Genealógico Rückert-Thal (Três Passos) e Jornal Atos e Fatos", s: "hip", src: "Base v6.0 — linha de pesquisa aberta" }
             ]
           }
         ]
@@ -360,7 +395,7 @@ title: "Árvore Genealógica (v5.2)"
         gerAtual = p.ger;
       }
       
-      var attrLinha = p.linha === 'direta' ? ' data-linha="direta"' : '';
+      var attrLinha = p.linha === 'direta' ? ' data-linha="direta"' : (p.linha === 'aberta' ? ' data-linha="aberta"' : '');
       html += '<button class="rkr-cartao" data-id="' + p.id + '"' + attrLinha + ' aria-current="false">' +
                 '<div class="rkr-chapa">' + p.iniciais + '</div>' +
                 '<div>' +
@@ -445,5 +480,3 @@ title: "Árvore Genealógica (v5.2)"
   iniciarEventos();
 })();
 </script>
-arvore.html
-Exibindo arvore.html.
