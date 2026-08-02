@@ -71,28 +71,35 @@ title: "Árvore Genealógica (v6.0)"
 .rkr-nome{font-family:Georgia,serif;font-size:1.15rem;color:var(--claro);line-height:1.25;display:block;}
 .rkr-vida{font-family:var(--mono);font-size:0.66rem;color:var(--mudo);margin-top:0.4rem;display:block;line-height:1.45;}
 .rkr-papel{font-size:0.9rem;color:var(--soft);margin-top:0.5rem;line-height:1.5;display:block;}
-.rkr-selo{display:inline-block;margin-top:0.6rem;font-family:var(--mono);font-size:0.6rem;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--terra);border:1px solid var(--terra);border-radius:4px;padding:2px 7px;}
 
-.rkr-ficha{margin-top:2.2rem;border:1px solid var(--borda);border-radius:10px;
-  background:var(--superficie);padding:1.6rem 1.4rem;display:none;}
-.rkr-ficha.aberta{display:block;}
-.rkr-ficha-topo{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;}
-.rkr-ficha h2{font-family:Georgia,serif;font-size:1.7rem;color:var(--claro);line-height:1.2;text-align:left;margin:0;}
-.rkr-ficha-sub{font-family:var(--mono);font-size:0.68rem;color:var(--ouro);letter-spacing:.1em;text-transform:uppercase;margin-top:0.4rem;}
+/* ---- painel de detalhe, agora INLINE dentro da grade da geração ---- */
+.rkr-detalhe{
+  flex:1 1 100%;
+  max-width:100%;
+  margin-top:0.2rem;
+  border:1px solid var(--ouro);
+  border-radius:10px;
+  background:var(--superficie);
+  padding:1.4rem 1.3rem;
+  animation:rkrAbrir .18s ease-out;
+}
+@keyframes rkrAbrir{ from{opacity:0; transform:translateY(-6px);} to{opacity:1; transform:translateY(0);} }
+.rkr-detalhe-topo{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;}
+.rkr-detalhe h2{font-family:Georgia,serif;font-size:1.5rem;color:var(--claro);line-height:1.2;text-align:left;margin:0;}
+.rkr-detalhe-sub{font-family:var(--mono);font-size:0.66rem;color:var(--ouro);letter-spacing:.1em;text-transform:uppercase;margin-top:0.35rem;}
 .rkr-fechar{background:none;border:1px solid var(--borda);border-radius:6px;color:var(--soft);
-  font-family:var(--mono);font-size:0.68rem;padding:0.4rem 0.8rem;cursor:pointer;}
+  font-family:var(--mono);font-size:0.66rem;padding:0.4rem 0.8rem;cursor:pointer;flex:0 0 auto;}
 .rkr-fechar:hover{border-color:var(--ouro);color:var(--ouro);}
 
-.rkr-bloco{margin-top:1.7rem;}
-.rkr-bloco h3{font-family:var(--mono);font-size:0.66rem;letter-spacing:.16em;text-transform:uppercase;
+.rkr-bloco{margin-top:1.4rem;}
+.rkr-bloco h3{font-family:var(--mono);font-size:0.64rem;letter-spacing:.16em;text-transform:uppercase;
   color:var(--mudo);padding-bottom:0.5rem;border-bottom:1px solid var(--borda);margin:0 0 0.7rem;}
-.rkr-fato{display:grid;grid-template-columns:12px 1fr;gap:0.8rem;padding:0.6rem 0;align-items:start;}
+.rkr-fato{display:grid;grid-template-columns:12px 1fr;gap:0.8rem;padding:0.55rem 0;align-items:start;}
 .rkr-fato+.rkr-fato{border-top:1px dotted rgba(138,133,120,.28);}
 .rkr-fato .rkr-ponto{margin-top:8px;}
-.rkr-rot{font-family:var(--mono);font-size:0.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mudo);display:block;margin-bottom:0.25rem;}
-.rkr-val{font-size:1rem;color:#e8e4da;display:block;line-height:1.6;}
-.rkr-src{font-family:var(--mono);font-size:0.66rem;color:var(--mudo);margin-top:0.4rem;display:block;line-height:1.6;}
+.rkr-rot{font-family:var(--mono);font-size:0.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mudo);display:block;margin-bottom:0.2rem;}
+.rkr-val{font-size:0.96rem;color:#e8e4da;display:block;line-height:1.55;}
+.rkr-src{font-family:var(--mono);font-size:0.64rem;color:var(--mudo);margin-top:0.35rem;display:block;line-height:1.55;}
 .rkr.filtrado .rkr-fato[data-status="inf"],.rkr.filtrado .rkr-fato[data-status="hip"]{opacity:.2;}
 
 .rkr-secao{margin-top:3.4rem; width: 100%;}
@@ -117,10 +124,10 @@ title: "Árvore Genealógica (v6.0)"
   .rkr-cartao{width:100%;}
   .rkr-item{grid-template-columns:1fr;gap:0.6rem;}
   .rkr-tag{width:fit-content;}
-  .rkr-ficha{padding:1.2rem 1.1rem;}
-  .rkr-ficha h2{font-size:1.4rem;}
+  .rkr-detalhe{padding:1.1rem 1rem;}
+  .rkr-detalhe h2{font-size:1.3rem;}
 }
-@media (prefers-reduced-motion:reduce){.rkr *{transition:none!important;}}
+@media (prefers-reduced-motion:reduce){.rkr *{transition:none!important;animation:none!important;}}
 </style>
 
 <div class="rkr" id="rkrRaiz">
@@ -139,13 +146,6 @@ title: "Árvore Genealógica (v6.0)"
   </div>
 
   <div class="rkr-arvore" id="rkrArvore"></div>
-  
-  <div class="rkr-ficha" id="rkrFicha" role="region" aria-live="polite">
-    <div class="rkr-controles" style="justify-content: flex-end; margin-bottom: 0;">
-       <button class="rkr-btn" id="rkrFechar" type="button">Fechar ficha</button>
-    </div>
-    <div id="rkrFichaConteudo"></div>
-  </div>
 
   <section class="rkr-secao">
     <h2>Notas de Desambiguação & Arbitragem</h2>
@@ -378,23 +378,21 @@ title: "Árvore Genealógica (v6.0)"
 
   var raiz = document.getElementById('rkrArvore');
   var desamb = document.getElementById('rkrDesamb');
-  var ficha = document.getElementById('rkrFicha');
-  var fichaConteudo = document.getElementById('rkrFichaConteudo');
-  var btnFechar = document.getElementById('rkrFechar');
   var btnFiltro = document.getElementById('rkrFiltro');
   var raizGlobal = document.getElementById('rkrRaiz');
+  var abertoId = null;
 
   function renderizarArvore() {
     var html = '';
     var gerAtual = '';
-    
+
     DADOS.pessoas.forEach(function(p) {
       if (p.ger && p.ger !== gerAtual) {
         if (gerAtual !== '') html += '</div><div class="rkr-elo"></div>';
-        html += '<div class="rkr-gerlabel">' + p.ger + '</div><div class="rkr-ger">';
+        html += '<div class="rkr-gerlabel">' + p.ger + '</div><div class="rkr-ger" id="ger-' + gerId(p.ger) + '">';
         gerAtual = p.ger;
       }
-      
+
       var attrLinha = p.linha === 'direta' ? ' data-linha="direta"' : (p.linha === 'aberta' ? ' data-linha="aberta"' : '');
       html += '<button class="rkr-cartao" data-id="' + p.id + '"' + attrLinha + ' aria-current="false">' +
                 '<div class="rkr-chapa">' + p.iniciais + '</div>' +
@@ -409,6 +407,70 @@ title: "Árvore Genealógica (v6.0)"
     raiz.innerHTML = html;
   }
 
+  function gerId(nome) {
+    return nome.replace(/[^a-zA-Z0-9]+/g, '-').toLowerCase();
+  }
+
+  function montarDetalheHTML(pessoa) {
+    var fHtml = '<div class="rkr-detalhe-topo">' +
+                  '<div><h2>' + pessoa.nome + '</h2><div class="rkr-detalhe-sub">' + pessoa.sub + '</div></div>' +
+                  '<button class="rkr-fechar" type="button" data-fechar="1">Fechar</button>' +
+                '</div>';
+
+    if (pessoa.blocos) {
+      pessoa.blocos.forEach(function(b) {
+        fHtml += '<div class="rkr-bloco"><h3>' + b.t + '</h3>';
+        b.f.forEach(function(f) {
+          fHtml += '<div class="rkr-fato" data-status="' + f.s + '">' +
+                     '<i class="rkr-ponto ' + f.s + '"></i><div><span class="rkr-rot">' + f.r + '</span><span class="rkr-val">' + f.v + '</span><span class="rkr-src">' + f.src + '</span></div>' +
+                   '</div>';
+        });
+        fHtml += '</div>';
+      });
+    }
+    return fHtml;
+  }
+
+  function fecharDetalheAberto() {
+    var atual = raiz.querySelector('.rkr-detalhe');
+    if (atual) atual.remove();
+    raiz.querySelectorAll('.rkr-cartao').forEach(function(b){ b.setAttribute('aria-current','false'); });
+    abertoId = null;
+  }
+
+  function abrirDetalhe(btn, pessoa) {
+    fecharDetalheAberto();
+
+    var painel = document.createElement('div');
+    painel.className = 'rkr-detalhe';
+    painel.setAttribute('role', 'region');
+    painel.setAttribute('aria-live', 'polite');
+    painel.innerHTML = montarDetalheHTML(pessoa);
+
+    // Insere o painel logo depois do cartão clicado, dentro da mesma grade (.rkr-ger).
+    // Como o painel usa flex-basis 100%, ele quebra para a linha seguinte,
+    // aparecendo imediatamente abaixo da linha em que o cartão está.
+    btn.insertAdjacentElement('afterend', painel);
+
+    btn.setAttribute('aria-current', 'true');
+    abertoId = pessoa.id;
+
+    painel.querySelector('[data-fechar="1"]').addEventListener('click', function(e){
+      e.stopPropagation();
+      fecharDetalheAberto();
+    });
+
+    // Rolagem suave só o suficiente para garantir que o painel fique visível,
+    // sem saltar para longe do cartão.
+    requestAnimationFrame(function(){
+      var rect = painel.getBoundingClientRect();
+      var foraDaTela = rect.bottom > window.innerHeight || rect.top < 0;
+      if (foraDaTela) {
+        painel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+  }
+
   function renderizarDesambiguacao() {
     var html = '';
     for (var key in DADOS.desambiguacoes) {
@@ -416,7 +478,7 @@ title: "Árvore Genealógica (v6.0)"
         var d = DADOS.desambiguacoes[key];
         var ladosHtml = '';
         d.lados.forEach(function(l) { ladosHtml += '<div class="rkr-lado"><b>' + l[0] + '</b>' + l[1] + '</div>'; });
-        
+
         html += '<div class="rkr-item">' +
                   '<div class="rkr-tag">' + d.tag + '</div>' +
                   '<div>' +
@@ -432,39 +494,22 @@ title: "Árvore Genealógica (v6.0)"
   }
 
   function iniciarEventos() {
-    var cartoes = document.querySelectorAll('.rkr-cartao');
-    
-    cartoes.forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        cartoes.forEach(function(b) { b.setAttribute('aria-current', 'false'); });
-        btn.setAttribute('aria-current', 'true');
-        
-        var pessoa = DADOS.pessoas.find(p => p.id === btn.getAttribute('data-id'));
-        if (!pessoa) return;
+    raiz.addEventListener('click', function(ev){
+      var btn = ev.target.closest('.rkr-cartao');
+      if (!btn) return;
 
-        var fHtml = '<div class="rkr-ficha-topo"><div><h2>' + pessoa.nome + '</h2><div class="rkr-ficha-sub">' + pessoa.sub + '</div></div></div>';
-        
-        if (pessoa.blocos) {
-          pessoa.blocos.forEach(function(b) {
-            fHtml += '<div class="rkr-bloco"><h3>' + b.t + '</h3>';
-            b.f.forEach(function(f) {
-              fHtml += '<div class="rkr-fato" data-status="' + f.s + '">' +
-                         '<i class="rkr-ponto ' + f.s + '"></i><div><span class="rkr-rot">' + f.r + '</span><span class="rkr-val">' + f.v + '</span><span class="rkr-src">' + f.src + '</span></div>' +
-                       '</div>';
-            });
-            fHtml += '</div>';
-          });
-        }
-        
-        fichaConteudo.innerHTML = fHtml;
-        ficha.classList.add('aberta');
-        if(window.innerWidth <= 768) ficha.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
+      var id = btn.getAttribute('data-id');
 
-    btnFechar.addEventListener('click', function() {
-      ficha.classList.remove('aberta');
-      cartoes.forEach(function(b) { b.setAttribute('aria-current', 'false'); });
+      // Clicar de novo no mesmo cartão fecha o painel (comportamento de toggle).
+      if (id === abertoId) {
+        fecharDetalheAberto();
+        return;
+      }
+
+      var pessoa = DADOS.pessoas.find(function(p){ return p.id === id; });
+      if (!pessoa) return;
+
+      abrirDetalhe(btn, pessoa);
     });
 
     btnFiltro.addEventListener('click', function() {
