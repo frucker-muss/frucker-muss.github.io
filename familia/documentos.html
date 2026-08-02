@@ -1,0 +1,382 @@
+---
+layout: default
+title: "Acervo Visual"
+---
+
+<p class="rkd-intro">
+  Retratos, sepulturas e documentos escritos que sustentam a Árvore Genealógica. Cada item traz o grau de certeza da leitura — toque em um card para abrir em tela cheia, com zoom e deslocamento.
+</p>
+
+<style>
+.rkd{
+  --ouro:#d4af6a;
+  --sage:#8a9e86;
+  --terra:#c0714f;
+  --mudo:#8a8578;
+  --soft:#b8b2a3;
+  --claro:#f2efe6;
+  --borda:#2a2a2a;
+  --superficie:#1a1a1a;
+  --mono:ui-monospace,"SFMono-Regular","Roboto Mono",Menlo,Consolas,monospace;
+  color:#e8e4da;
+}
+.rkd *{box-sizing:border-box;}
+.rkd p,.rkd h2,.rkd h3{margin:0;padding:0;}
+.rkd-intro{color:#b8b2a3;max-width:620px;margin:0 auto 2rem;text-align:center;font-size:1.1rem;}
+
+.rkd-legenda{display:flex;flex-wrap:wrap;gap:0.6rem 1.2rem;justify-content:center;
+  font-family:var(--mono);font-size:0.68rem;color:var(--mudo);margin:0 auto 2.4rem;max-width:640px;}
+.rkd-legenda span{display:flex;align-items:center;gap:0.45rem;}
+.rkd-ponto{width:9px;height:9px;border-radius:50%;display:inline-block;flex:0 0 9px;}
+.rkd-ponto[data-status="confirmado"]{background:var(--ouro);}
+.rkd-ponto[data-status="resolvido"]{background:var(--sage);}
+.rkd-ponto[data-status="naoverificado"]{background:var(--terra);}
+
+.rkd-secao{margin-top:2.8rem;}
+.rkd-secao:first-of-type{margin-top:0;}
+.rkd-secao h2,.rkd-secao h3{font-family:Georgia,serif;font-size:1.5rem;color:var(--claro);text-align:center;margin-bottom:0.4rem;}
+.rkd-secao-nota{font-size:0.9rem;color:var(--mudo);text-align:center;max-width:560px;margin:0 auto 1.4rem;line-height:1.6;}
+
+.rkd-grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1rem;}
+
+.rkd-vazio{color:var(--mudo);font-size:0.88rem;font-style:italic;border:1px dashed var(--borda);
+  border-radius:10px;padding:1.7rem 1.2rem;text-align:center;}
+
+.rkd-card{position:relative;display:block;width:100%;padding:0;text-align:left;
+  font-family:inherit;color:inherit;background:var(--superficie);border:1px solid var(--borda);
+  border-radius:10px;overflow:hidden;cursor:pointer;transition:border-color .2s ease,transform .2s ease;}
+.rkd-card:hover,.rkd-card:focus-visible{border-color:var(--ouro);transform:translateY(-2px);}
+.rkd-card:focus-visible{outline:2px solid var(--ouro);outline-offset:2px;}
+
+.rkd-thumb{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#0f0f0f;}
+
+.rkd-badge{position:absolute;top:8px;right:8px;font-family:var(--mono);font-size:0.58rem;
+  letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border-radius:4px;
+  background:rgba(18,18,18,.85);border:1px solid;line-height:1.4;}
+.rkd-badge[data-status="confirmado"]{color:var(--ouro);border-color:var(--ouro);}
+.rkd-badge[data-status="resolvido"]{color:var(--sage);border-color:var(--sage);}
+.rkd-badge[data-status="naoverificado"]{color:var(--terra);border-color:var(--terra);}
+
+.rkd-legenda-card{display:block;padding:0.6rem 0.7rem;font-size:0.84rem;color:var(--soft);line-height:1.4;}
+
+/* ---------- Lightbox ---------- */
+.rkd-lightbox{position:fixed;inset:0;background:rgba(8,8,8,.94);z-index:1000;
+  display:none;flex-direction:column;}
+.rkd-lightbox[aria-hidden="false"]{display:flex;}
+.rkd-lb-topo{display:flex;justify-content:space-between;align-items:center;
+  padding:0.9rem 1.1rem;gap:1rem;flex:0 0 auto;}
+.rkd-lb-titulo{font-family:Georgia,serif;color:var(--claro);font-size:1.05rem;line-height:1.3;}
+.rkd-lb-acoes{display:flex;gap:0.5rem;flex:0 0 auto;}
+.rkd-lb-btn{font-family:var(--mono);font-size:0.72rem;background:transparent;color:var(--soft);
+  border:1px solid rgba(212,175,106,.4);border-radius:6px;padding:0.35rem 0.75rem;cursor:pointer;}
+.rkd-lb-btn:hover{border-color:var(--ouro);color:var(--ouro);}
+
+.rkd-lb-palco{position:relative;flex:1 1 auto;overflow:hidden;display:flex;
+  align-items:center;justify-content:center;touch-action:none;cursor:grab;min-height:0;}
+.rkd-lb-palco.arrastando{cursor:grabbing;}
+.rkd-lb-img{max-width:90%;max-height:90%;user-select:none;-webkit-user-drag:none;will-change:transform;}
+
+.rkd-lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(18,18,18,.65);
+  border:1px solid var(--borda);color:var(--soft);width:42px;height:42px;border-radius:50%;
+  font-size:1.5rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.rkd-lb-nav:hover{border-color:var(--ouro);color:var(--ouro);}
+.rkd-lb-nav:disabled{opacity:0.2;cursor:default;}
+.rkd-lb-prev{left:1rem;}
+.rkd-lb-next{right:1rem;}
+
+.rkd-lb-legenda{flex:0 0 auto;text-align:center;color:var(--mudo);font-size:0.85rem;
+  padding:0.8rem 1.1rem 1.2rem;max-width:640px;margin:0 auto;}
+
+@media (max-width:480px){
+  .rkd-grade{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:0.7rem;}
+  .rkd-lb-nav{width:36px;height:36px;font-size:1.25rem;}
+  .rkd-lb-titulo{font-size:0.92rem;}
+}
+@media (prefers-reduced-motion:reduce){.rkd *{transition:none!important;}}
+</style>
+
+<div class="rkd" id="rkdRaiz">
+
+  <div class="rkd-legenda">
+    <span><i class="rkd-ponto" data-status="confirmado"></i> Dado confirmado</span>
+    <span><i class="rkd-ponto" data-status="resolvido"></i> Resolvido</span>
+    <span><i class="rkd-ponto" data-status="naoverificado"></i> Leitura não verificada</span>
+  </div>
+
+  <div id="rkdGalerias"></div>
+
+  <p style="text-align:center;margin-top:2.8rem;"><a href="{{ '/familia.html' | relative_url }}">← Voltar para Família</a></p>
+
+</div>
+
+<div class="rkd-lightbox" id="rkdLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Visualizador de imagem">
+  <div class="rkd-lb-topo">
+    <span class="rkd-lb-titulo" id="rkdLbTitulo"></span>
+    <div class="rkd-lb-acoes">
+      <button class="rkd-lb-btn" id="rkdLbReset" type="button" title="Redefinir zoom">100%</button>
+      <button class="rkd-lb-btn" id="rkdLbFechar" type="button" aria-label="Fechar">Fechar ✕</button>
+    </div>
+  </div>
+  <div class="rkd-lb-palco" id="rkdLbPalco">
+    <img class="rkd-lb-img" id="rkdLbImg" src="" alt="" draggable="false">
+    <button class="rkd-lb-nav rkd-lb-prev" id="rkdLbPrev" type="button" aria-label="Item anterior">‹</button>
+    <button class="rkd-lb-nav rkd-lb-next" id="rkdLbNext" type="button" aria-label="Próximo item">›</button>
+  </div>
+  <p class="rkd-lb-legenda" id="rkdLbLegenda"></p>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+// Cada item: { id, titulo, status: "confirmado"|"resolvido"|"naoverificado",
+//              thumb: caminho da miniatura, full: caminho da imagem em tela cheia (opcional, usa thumb),
+//              legenda: texto exibido no lightbox }. Preencher "itens" das subseções depois que as imagens existirem.
+var SECOES = [
+  {
+    titulo: "Fontes",
+    nota: "Registros documentais e epigráficos usados como fonte primária na reconstrução genealógica — certidões, lápides, cartas, listas de embarque e demais evidências do acervo.",
+    subsecoes: [
+      {
+        chave: "fontes-primarias",
+        titulo: "Fontes Primárias",
+        nota: "Certidões, listas de embarque, registros oficiais e epigrafia funerária — evidência direta (DOC, DOC-2, EPI).",
+        itens: []
+      },
+      {
+        chave: "outros-documentos",
+        titulo: "Outros Documentos",
+        nota: "Cartas, transcrições de entrevistas e materiais complementares de valor interpretativo (INF, TO, TO-ARQUIVISTA).",
+        itens: []
+      }
+    ]
+  },
+  {
+    titulo: "Álbum de Família",
+    nota: "Registro fotográfico da família, nem sempre com valor probatório isolado — retratos, reuniões e eventos.",
+    subsecoes: [
+      { chave: "retratos-identificados", titulo: "Retratos Identificados", itens: [] },
+      { chave: "retratos-nao-identificados", titulo: "Retratos Não Identificados", itens: [] },
+      { chave: "fotos-grupo-eventos", titulo: "Fotos de Grupo e Eventos", itens: [] }
+    ]
+  }
+];
+
+var STATUS_LABEL = {
+  confirmado: "Confirmado",
+  resolvido: "Resolvido",
+  naoverificado: "Leitura não verificada"
+};
+
+// Mapa achatado chave-da-subseção → subseção, usado pelo lightbox para localizar itens.
+var SUBSECOES = {};
+SECOES.forEach(function(secao) {
+  secao.subsecoes.forEach(function(sub) { SUBSECOES[sub.chave] = sub; });
+});
+
+var raizGalerias = document.getElementById('rkdGalerias');
+
+function montarCardHTML(subKey, item, idx) {
+  return '<button class="rkd-card" type="button" data-sub="' + subKey + '" data-idx="' + idx + '">' +
+           '<span class="rkd-badge" data-status="' + item.status + '">' + (STATUS_LABEL[item.status] || '') + '</span>' +
+           '<img class="rkd-thumb" src="' + item.thumb + '" alt="' + (item.titulo || '') + '" loading="lazy">' +
+           '<span class="rkd-legenda-card">' + (item.titulo || '') + '</span>' +
+         '</button>';
+}
+
+function renderizarSubsecao(sub) {
+  var itens = sub.itens || [];
+  var html = '<div class="rkd-secao"><h3>' + sub.titulo + '</h3>';
+  if (sub.nota) html += '<p class="rkd-secao-nota">' + sub.nota + '</p>';
+  if (itens.length === 0) {
+    html += '<p class="rkd-vazio">Nenhum item adicionado ainda — galeria em preparação.</p>';
+  } else {
+    html += '<div class="rkd-grade">';
+    itens.forEach(function(item, idx) { html += montarCardHTML(sub.chave, item, idx); });
+    html += '</div>';
+  }
+  html += '</div>';
+  return html;
+}
+
+function renderizarSecao(secao) {
+  var html = '<section class="rkd-secao"><h2>' + secao.titulo + '</h2>';
+  if (secao.nota) html += '<p class="rkd-secao-nota">' + secao.nota + '</p>';
+  secao.subsecoes.forEach(function(sub) { html += renderizarSubsecao(sub); });
+  html += '</section>';
+  return html;
+}
+
+function renderizarTudo() {
+  var html = '';
+  SECOES.forEach(function(secao) { html += renderizarSecao(secao); });
+  raizGalerias.innerHTML = html;
+}
+
+/* ---------- Lightbox: estado e navegação ---------- */
+var lightbox = document.getElementById('rkdLightbox');
+var palco = document.getElementById('rkdLbPalco');
+var img = document.getElementById('rkdLbImg');
+var tituloEl = document.getElementById('rkdLbTitulo');
+var legendaEl = document.getElementById('rkdLbLegenda');
+var btnFechar = document.getElementById('rkdLbFechar');
+var btnReset = document.getElementById('rkdLbReset');
+var btnPrev = document.getElementById('rkdLbPrev');
+var btnNext = document.getElementById('rkdLbNext');
+
+var galAtual = null, indiceAtual = 0, elementoAnterior = null;
+var scale = 1, posX = 0, posY = 0;
+var activePointers = {};
+var isPanning = false, dragStart = null;
+var pinchStartDist = 0, pinchStartScale = 1;
+
+function clamp(v, min, max) { return Math.min(max, Math.max(min, v)); }
+function distancia(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
+
+function aplicarTransform() {
+  img.style.transform = 'translate(' + posX + 'px,' + posY + 'px) scale(' + scale + ')';
+  btnReset.textContent = Math.round(scale * 100) + '%';
+}
+
+function resetZoom() {
+  scale = 1; posX = 0; posY = 0;
+  aplicarTransform();
+}
+
+function aplicarZoomEm(clientX, clientY, novaEscala) {
+  var rect = img.getBoundingClientRect();
+  var cx = clientX - (rect.left + rect.width / 2);
+  var cy = clientY - (rect.top + rect.height / 2);
+  var ratio = novaEscala / scale;
+  posX = posX - cx * (ratio - 1);
+  posY = posY - cy * (ratio - 1);
+  scale = novaEscala;
+  if (scale <= 1) { scale = 1; posX = 0; posY = 0; }
+  aplicarTransform();
+}
+
+function carregarItem() {
+  var item = SUBSECOES[galAtual].itens[indiceAtual];
+  img.src = item.full || item.thumb;
+  img.alt = item.titulo || '';
+  tituloEl.textContent = item.titulo || '';
+  legendaEl.textContent = item.legenda || '';
+  var itens = SUBSECOES[galAtual].itens;
+  btnPrev.disabled = itens.length <= 1;
+  btnNext.disabled = itens.length <= 1;
+  resetZoom();
+}
+
+function navegar(delta) {
+  var itens = SUBSECOES[galAtual].itens;
+  if (itens.length <= 1) return;
+  indiceAtual = (indiceAtual + delta + itens.length) % itens.length;
+  carregarItem();
+}
+
+function abrirLightbox(subKey, idx) {
+  var itens = SUBSECOES[subKey] && SUBSECOES[subKey].itens;
+  if (!itens || !itens.length) return;
+  galAtual = subKey;
+  indiceAtual = idx;
+  elementoAnterior = document.activeElement;
+  carregarItem();
+  lightbox.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  btnFechar.focus();
+}
+
+function fecharLightbox() {
+  lightbox.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  img.src = '';
+  activePointers = {};
+  isPanning = false;
+  if (elementoAnterior && typeof elementoAnterior.focus === 'function') elementoAnterior.focus();
+}
+
+raizGalerias.addEventListener('click', function(ev) {
+  var btn = ev.target.closest('.rkd-card');
+  if (!btn) return;
+  abrirLightbox(btn.getAttribute('data-sub'), parseInt(btn.getAttribute('data-idx'), 10));
+});
+
+btnFechar.addEventListener('click', fecharLightbox);
+btnReset.addEventListener('click', resetZoom);
+btnPrev.addEventListener('click', function() { navegar(-1); });
+btnNext.addEventListener('click', function() { navegar(1); });
+
+lightbox.addEventListener('click', function(e) {
+  if (e.target === lightbox) fecharLightbox();
+});
+
+document.addEventListener('keydown', function(e) {
+  if (lightbox.getAttribute('aria-hidden') === 'true') return;
+  if (e.key === 'Escape') fecharLightbox();
+  else if (e.key === 'ArrowLeft') navegar(-1);
+  else if (e.key === 'ArrowRight') navegar(1);
+  else if (e.key === '+' || e.key === '=') aplicarZoomEm(window.innerWidth / 2, window.innerHeight / 2, clamp(scale * 1.2, 1, 6));
+  else if (e.key === '-') aplicarZoomEm(window.innerWidth / 2, window.innerHeight / 2, clamp(scale / 1.2, 1, 6));
+});
+
+palco.addEventListener('wheel', function(e) {
+  e.preventDefault();
+  var fator = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+  aplicarZoomEm(e.clientX, e.clientY, clamp(scale * fator, 1, 6));
+}, { passive: false });
+
+palco.addEventListener('dblclick', function(e) {
+  if (scale > 1) { resetZoom(); }
+  else { aplicarZoomEm(e.clientX, e.clientY, 2.5); }
+});
+
+palco.addEventListener('pointerdown', function(e) {
+  if (e.target !== img) return;
+  palco.setPointerCapture(e.pointerId);
+  activePointers[e.pointerId] = { x: e.clientX, y: e.clientY };
+  var ids = Object.keys(activePointers);
+  if (ids.length === 1) {
+    isPanning = true;
+    dragStart = { x: e.clientX, y: e.clientY, posX: posX, posY: posY };
+    palco.classList.add('arrastando');
+  } else if (ids.length === 2) {
+    isPanning = false;
+    var pts = ids.map(function(id) { return activePointers[id]; });
+    pinchStartDist = distancia(pts[0], pts[1]);
+    pinchStartScale = scale;
+  }
+});
+
+palco.addEventListener('pointermove', function(e) {
+  if (!activePointers[e.pointerId]) return;
+  activePointers[e.pointerId] = { x: e.clientX, y: e.clientY };
+  var ids = Object.keys(activePointers);
+  if (ids.length === 2) {
+    var pts = ids.map(function(id) { return activePointers[id]; });
+    var dist = distancia(pts[0], pts[1]);
+    var novaEscala = clamp(pinchStartScale * (dist / pinchStartDist), 1, 6);
+    var meio = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 };
+    aplicarZoomEm(meio.x, meio.y, novaEscala);
+  } else if (ids.length === 1 && isPanning) {
+    posX = dragStart.posX + (e.clientX - dragStart.x);
+    posY = dragStart.posY + (e.clientY - dragStart.y);
+    aplicarTransform();
+  }
+});
+
+function encerrarPonteiro(e) {
+  delete activePointers[e.pointerId];
+  var ids = Object.keys(activePointers);
+  isPanning = ids.length === 1;
+  if (isPanning) {
+    var p = activePointers[ids[0]];
+    dragStart = { x: p.x, y: p.y, posX: posX, posY: posY };
+  }
+  palco.classList.remove('arrastando');
+}
+palco.addEventListener('pointerup', encerrarPonteiro);
+palco.addEventListener('pointercancel', encerrarPonteiro);
+
+renderizarTudo();
+})();
+</script>
