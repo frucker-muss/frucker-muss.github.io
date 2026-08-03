@@ -69,17 +69,29 @@ title: "Acervo Visual"
 .rkd-lb-acoes{display:flex;gap:0.5rem;flex:0 0 auto;}
 .rkd-lb-btn{font-family:var(--mono);font-size:0.72rem;background:transparent;color:var(--soft);
   border:1px solid rgba(212,175,106,.4);border-radius:6px;padding:0.35rem 0.75rem;cursor:pointer;}
-.rkd-lb-btn:hover{border-color:var(--ouro);color:var(--ouro);}
+.rkd-lb-btn:hover{border-color:#d4af6a;color:#d4af6a;}
 
 .rkd-lb-palco{position:relative;flex:1 1 auto;overflow:hidden;display:flex;
   align-items:center;justify-content:center;touch-action:none;cursor:grab;min-height:0;}
 .rkd-lb-palco.arrastando{cursor:grabbing;}
-.rkd-lb-img{max-width:90%;max-height:90%;user-select:none;-webkit-user-drag:none;will-change:transform;}
+.rkd-lb-imgwrap{position:relative;display:inline-block;line-height:0;will-change:transform;}
+.rkd-lb-img{max-width:90vw;max-height:78vh;display:block;user-select:none;-webkit-user-drag:none;}
+.rkd-lb-marcadores{position:absolute;inset:0;pointer-events:none;}
+.rkd-lb-marcador{position:absolute;width:12px;height:12px;margin:0;padding:0;border:none;
+  border-radius:50%;background:#d4af6a;opacity:.6;cursor:pointer;pointer-events:auto;
+  transform:translate(-50%,-50%);transition:opacity .15s ease,transform .15s ease;}
+.rkd-lb-marcador:hover,.rkd-lb-marcador:focus-visible{opacity:.95;transform:translate(-50%,-50%) scale(1.3);}
+.rkd-lb-marcador:focus-visible{outline:2px solid var(--claro);outline-offset:2px;}
+
+.rkd-lb-pessoa-painel{flex:0 0 auto;background:#161616;border-top:1px solid var(--borda);
+  padding:0.9rem 1.1rem;color:var(--soft);font-size:0.9rem;}
+.rkd-lb-pessoa-painel[hidden]{display:none;}
+.rkd-lb-pessoa-painel h4{font-family:Georgia,serif;font-size:1.05rem;color:var(--claro);margin:0 0 .2rem;}
 
 .rkd-lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(18,18,18,.65);
   border:1px solid var(--borda);color:var(--soft);width:42px;height:42px;border-radius:50%;
   font-size:1.5rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;}
-.rkd-lb-nav:hover{border-color:var(--ouro);color:var(--ouro);}
+.rkd-lb-nav:hover{border-color:#d4af6a;color:#d4af6a;}
 .rkd-lb-nav:disabled{opacity:0.2;cursor:default;}
 .rkd-lb-prev{left:1rem;}
 .rkd-lb-next{right:1rem;}
@@ -118,10 +130,14 @@ title: "Acervo Visual"
     </div>
   </div>
   <div class="rkd-lb-palco" id="rkdLbPalco">
-    <img class="rkd-lb-img" id="rkdLbImg" src="" alt="" draggable="false">
+    <div class="rkd-lb-imgwrap" id="rkdLbImgWrap">
+      <img class="rkd-lb-img" id="rkdLbImg" src="" alt="" draggable="false">
+      <div class="rkd-lb-marcadores" id="rkdLbMarcadores"></div>
+    </div>
     <button class="rkd-lb-nav rkd-lb-prev" id="rkdLbPrev" type="button" aria-label="Item anterior">‹</button>
     <button class="rkd-lb-nav rkd-lb-next" id="rkdLbNext" type="button" aria-label="Próximo item">›</button>
   </div>
+  <div class="rkd-lb-pessoa-painel" id="rkdLbPessoaPainel" hidden></div>
   <p class="rkd-lb-legenda" id="rkdLbLegenda"></p>
 </div>
 
@@ -131,7 +147,10 @@ title: "Acervo Visual"
 
 // Cada item: { id, titulo, status: "confirmado"|"resolvido"|"naoverificado",
 //              thumb: caminho da miniatura, full: caminho da imagem em tela cheia (opcional, usa thumb),
-//              legenda: texto exibido no lightbox }. Preencher "itens" das subseções depois que as imagens existirem.
+//              legenda: texto exibido no lightbox,
+//              pessoas: array opcional [{ genId, nome, x, y }] — x/y em % (0-100) da imagem exibida;
+//              o marcador renderizado no lightbox desloca y para baixo (queixo/ombro) }.
+// Preencher "itens" das subseções depois que as imagens existirem.
 var SECOES = [
   {
     titulo: "Fontes",
@@ -155,7 +174,27 @@ var SECOES = [
     titulo: "Álbum de Família",
     nota: "Registro fotográfico da família, nem sempre com valor probatório isolado — retratos, reuniões e eventos.",
     subsecoes: [
-      { chave: "retratos-identificados", titulo: "Retratos Identificados", itens: [] },
+      { chave: "retratos-identificados", titulo: "Retratos Identificados", itens: [
+        {
+          id: "jose-zita-c1963",
+          titulo: "José e Zita Rücker, c. 1963-1966",
+          status: "naoverificado",
+          thumb: "/assets/familia/jose_zita.jpeg",
+          legenda: "Retrato de família de José Rücker (G4-12) e Zita Rücker (G4-12c), com Ulrich August ('Uli', G5-UA) e outros familiares. Fonte: identificação de Ana Maria Bonamigo Bolzan, grupo Família Rücker.",
+          pessoas: [
+            { genId: null, nome: "Maria Helena", x: 14, y: 22 },
+            { genId: "G5-UA", nome: "Ulrich August Rücker ('Uli')", x: 30, y: 15 },
+            { genId: null, nome: "Úrsula", x: 34, y: 25 },
+            { genId: "G4-12c", nome: "Zita Rücker", x: 52, y: 24 },
+            { genId: "G4-12", nome: "José Rücker", x: 58, y: 17 },
+            { genId: null, nome: "Martha", x: 71, y: 24 },
+            { genId: null, nome: "Esther", x: 88, y: 22 },
+            { genId: null, nome: "Ana Maria Bonamigo Bolzan (criança na foto)", x: 42, y: 62 },
+            { genId: null, nome: "José Urbano", x: 58, y: 55 },
+            { genId: null, nome: "Maria do Carmo", x: 76, y: 65 }
+          ]
+        }
+      ] },
       { chave: "retratos-nao-identificados", titulo: "Retratos Não Identificados", itens: [] },
       { chave: "fotos-grupo-eventos", titulo: "Fotos de Grupo e Eventos", itens: [] }
     ]
@@ -217,6 +256,9 @@ function renderizarTudo() {
 var lightbox = document.getElementById('rkdLightbox');
 var palco = document.getElementById('rkdLbPalco');
 var img = document.getElementById('rkdLbImg');
+var imgWrap = document.getElementById('rkdLbImgWrap');
+var marcadoresLayer = document.getElementById('rkdLbMarcadores');
+var pessoaPainel = document.getElementById('rkdLbPessoaPainel');
 var tituloEl = document.getElementById('rkdLbTitulo');
 var legendaEl = document.getElementById('rkdLbLegenda');
 var btnFechar = document.getElementById('rkdLbFechar');
@@ -234,7 +276,7 @@ function clamp(v, min, max) { return Math.min(max, Math.max(min, v)); }
 function distancia(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
 
 function aplicarTransform() {
-  img.style.transform = 'translate(' + posX + 'px,' + posY + 'px) scale(' + scale + ')';
+  imgWrap.style.transform = 'translate(' + posX + 'px,' + posY + 'px) scale(' + scale + ')';
   btnReset.textContent = Math.round(scale * 100) + '%';
 }
 
@@ -244,7 +286,7 @@ function resetZoom() {
 }
 
 function aplicarZoomEm(clientX, clientY, novaEscala) {
-  var rect = img.getBoundingClientRect();
+  var rect = imgWrap.getBoundingClientRect();
   var cx = clientX - (rect.left + rect.width / 2);
   var cy = clientY - (rect.top + rect.height / 2);
   var ratio = novaEscala / scale;
@@ -255,12 +297,40 @@ function aplicarZoomEm(clientX, clientY, novaEscala) {
   aplicarTransform();
 }
 
+function esconderPessoaPainel() {
+  pessoaPainel.hidden = true;
+  pessoaPainel.innerHTML = '';
+}
+
+function mostrarPessoaPainel(pessoa) {
+  // TODO: quando genId apontar para uma página de perfil publicada, trocar o nome por um link.
+  pessoaPainel.innerHTML = '<h4>' + (pessoa.nome || '') + '</h4>';
+  pessoaPainel.hidden = false;
+}
+
+function renderizarMarcadores(item) {
+  var pessoas = item.pessoas || [];
+  if (!pessoas.length) {
+    marcadoresLayer.innerHTML = '';
+    return;
+  }
+  var html = '';
+  pessoas.forEach(function(p, i) {
+    var top = Math.min(100, (p.y || 0) + 9);
+    html += '<button class="rkd-lb-marcador" type="button" title="' + (p.nome || '') + '" ' +
+              'data-idx="' + i + '" style="left:' + p.x + '%;top:' + top + '%"></button>';
+  });
+  marcadoresLayer.innerHTML = html;
+}
+
 function carregarItem() {
   var item = SUBSECOES[galAtual].itens[indiceAtual];
+  esconderPessoaPainel();
   img.src = item.full || item.thumb;
   img.alt = item.titulo || '';
   tituloEl.textContent = item.titulo || '';
   legendaEl.textContent = item.legenda || '';
+  renderizarMarcadores(item);
   var itens = SUBSECOES[galAtual].itens;
   btnPrev.disabled = itens.length <= 1;
   btnNext.disabled = itens.length <= 1;
@@ -290,6 +360,8 @@ function fecharLightbox() {
   lightbox.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
   img.src = '';
+  marcadoresLayer.innerHTML = '';
+  esconderPessoaPainel();
   activePointers = {};
   isPanning = false;
   if (elementoAnterior && typeof elementoAnterior.focus === 'function') elementoAnterior.focus();
@@ -305,6 +377,14 @@ btnFechar.addEventListener('click', fecharLightbox);
 btnReset.addEventListener('click', resetZoom);
 btnPrev.addEventListener('click', function() { navegar(-1); });
 btnNext.addEventListener('click', function() { navegar(1); });
+
+marcadoresLayer.addEventListener('click', function(ev) {
+  var btn = ev.target.closest('.rkd-lb-marcador');
+  if (!btn) return;
+  var item = SUBSECOES[galAtual].itens[indiceAtual];
+  var pessoa = (item.pessoas || [])[parseInt(btn.getAttribute('data-idx'), 10)];
+  if (pessoa) mostrarPessoaPainel(pessoa);
+});
 
 lightbox.addEventListener('click', function(e) {
   if (e.target === lightbox) fecharLightbox();
