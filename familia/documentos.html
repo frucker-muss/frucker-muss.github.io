@@ -174,7 +174,27 @@ var SECOES = [
     titulo: "Álbum de Família",
     nota: "Registro fotográfico da família, nem sempre com valor probatório isolado — retratos, reuniões e eventos.",
     subsecoes: [
-      { chave: "retratos-identificados", titulo: "Retratos Identificados", itens: [] },
+      { chave: "retratos-identificados", titulo: "Retratos Identificados", itens: [
+        {
+          id: "jose-zita-c1963",
+          titulo: "José e Zita Rücker, c. 1963-1966",
+          status: "naoverificado",
+          thumb: "/assets/familia/jose_zita.jpeg",
+          legenda: "Retrato de família de José Rücker (G4-12) e Zita Rücker (G4-12c), com Ulrich August ('Uli', G5-UA) e outros familiares. Fonte: identificação de Ana Maria Bonamigo Bolzan, grupo Família Rücker.",
+          pessoas: [
+            { genId: null, nome: "Maria Helena", x: 14, y: 22 },
+            { genId: "G5-UA", nome: "Ulrich August Rücker ('Uli')", x: 30, y: 15 },
+            { genId: null, nome: "Úrsula", x: 34, y: 25 },
+            { genId: "G4-12c", nome: "Zita Rücker", x: 52, y: 24 },
+            { genId: "G4-12", nome: "José Rücker", x: 58, y: 17 },
+            { genId: null, nome: "Martha", x: 71, y: 24 },
+            { genId: null, nome: "Esther", x: 88, y: 22 },
+            { genId: null, nome: "Ana Maria Bonamigo Bolzan (criança na foto)", x: 42, y: 62 },
+            { genId: null, nome: "José Urbano", x: 58, y: 55 },
+            { genId: null, nome: "Maria do Carmo", x: 76, y: 65 }
+          ]
+        }
+      ] },
       { chave: "retratos-nao-identificados", titulo: "Retratos Não Identificados", itens: [] },
       { chave: "fotos-grupo-eventos", titulo: "Fotos de Grupo e Eventos", itens: [] }
     ]
