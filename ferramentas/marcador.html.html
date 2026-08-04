@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Marcador de Fotos · Acervo Rücker</title>
+<style>
+  :root{
+    --ouro:#d4af6a; --sage:#8a9e86; --terra:#c0714f; --mudo:#8a8578;
+    --soft:#b8b2a3; --claro:#f2efe6; --borda:#2a2a2a; --superficie:#1a1a1a;
+    --fundo:#121212;
+  }
+  *{box-sizing:border-box;}
+  body{background:var(--fundo);color:#e8e4da;font-family:ui-monospace,"SFMono-Regular","Roboto Mono",Menlo,Consolas,monospace;margin:0;padding:1.5rem;}
+  h1{font-family:Georgia,serif;color:var(--claro);font-size:1.4rem;margin:0 0 .3rem;}
+  .sub{color:var(--soft);font-size:.85rem;margin:0 0 1.5rem;max-width:680px;}
+  .layout{display:grid;grid-template-columns:1fr 380px;gap:1.5rem;align-items:start;}
+  @media (max-width:900px){.layout{grid-template-columns:1fr;}}
+  .painel{background:var(--superficie);border:1px solid var(--borda);border-radius:10px;padding:1rem;}
+  .campo{margin-bottom:.8rem;}
+  .campo label{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;color:var(--mudo);margin-bottom:.25rem;}
+  .campo input, .campo select, .campo textarea{
+    width:100%;background:#0f0f0f;border:1px solid var(--borda);color:var(--claro);
+    padding:.5rem;border-radius:6px;font-family:inherit;font-size:.85rem;
+  }
+  .campo textarea{resize:vertical;min-height:60px;}
+  .drop{border:2px dashed var(--borda);border-radius:10px;padding:2rem;text-align:center;color:var(--mudo);cursor:pointer;margin-bottom:1rem;display:block;}
+  .drop:hover, .drop:active{border-color:var(--ouro);color:var(--soft);}
+  #stage{position:relative;display:inline-block;max-width:100%;line-height:0;user-select:none;touch-action:none;}
+  #img{max-width:100%;display:block;cursor:crosshair;border-radius:6px;-webkit-user-drag:none;touch-action:none;}
+  .caixa{position:absolute;border:2px solid var(--ouro);background:rgba(212,175,106,.15);
+    box-sizing:border-box;cursor:pointer;}
+  .caixa .numero{position:absolute;top:-1px;left:-1px;background:var(--ouro);color:#1a1a1a;
+    font-size:.65rem;font-weight:bold;padding:0 4px;line-height:1.4;}
+  .caixa .apagar{position:absolute;top:-1px;right:-1px;background:var(--terra);color:#fff;
+    font-size:.65rem;font-weight:bold;width:16px;height:16px;line-height:16px;text-align:center;
+    cursor:pointer;}
+  .caixa-temp{position:absolute;border:2px dashed var(--claro);background:rgba(242,239,230,.12);
+    box-sizing:border-box;pointer-events:none;}
+  .lista-pessoa{background:#0f0f0f;border:1px solid var(--borda);border-radius:6px;padding:.6rem;margin-bottom:.5rem;}
+  .lista-pessoa .linha{display:flex;gap:.4rem;margin-bottom:.35rem;}
+  .lista-pessoa input{flex:1;}
+  .lista-pessoa .del{flex:0 0 auto;background:var(--terra);border:none;color:#fff;border-radius:5px;padding:0 .6rem;cursor:pointer;}
+  .coords{font-size:.68rem;color:var(--mudo);}
+  button.acao{background:var(--ouro);color:#1a1a1a;border:none;border-radius:6px;padding:.6rem 1rem;
+    font-family:inherit;font-weight:bold;cursor:pointer;font-size:.85rem;}
+  button.acao:hover{opacity:.85;}
+  button.secundaria{background:transparent;border:1px solid var(--borda);color:var(--soft);}
+  #saida{width:100%;min-height:280px;background:#0f0f0f;border:1px solid var(--borda);color:var(--sage);
+    padding:.8rem;border-radius:6px;font-size:.78rem;white-space:pre;overflow:auto;}
+  .contador{color:var(--ouro);font-weight:bold;}
+  .dica{font-size:.78rem;color:var(--mudo);margin:.5rem 0;}
+</style>
+</head>
+<body>
+
+<h1>Marcador de Fotos — Acervo Rücker</h1>
+<p class="sub">Suba a foto, clique e arraste um retângulo em volta de cada pessoa (do jeito que você recorta uma área numa foto). Digite o nome na lista ao lado. Clique rápido sem arrastar também funciona (cria uma caixa padrão pra ajustar depois). No final, clique em "Gerar código" e cole no array ITENS do documentos.html. Nada sai do seu navegador.</p>
+
+<div class="layout">
+  <div>
+    <label class="drop" id="drop" for="fileInput">Toque aqui ou arraste a foto pra começar</label>
+    <input type="file" id="fileInput" accept="image/*" style="position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;">
+    <div id="stage" style="display:none;">
+      <img id="img" draggable="false">
+    </div>
+    <p class="dica" id="dica" style="display:none;">Clique e arraste em volta de um rosto/pessoa pra criar uma área. Clique no "✕" no canto da caixa pra apagar.</p>
+  </div>
+
+  <div class="painel">
+    <div class="campo">
+      <label>ID (sem espaços, ex: nome-evento-ano)</label>
+      <input id="campoId" placeholder="ex: aniversario-vo-augusto-1945">
+    </div>
+    <div class="campo">
+      <label>Título</label>
+      <input id="campoTitulo" placeholder="ex: Aniversário do Vô Augusto, 1945">
+    </div>
+    <div class="campo">
+      <label>Subcategoria</label>
+      <input id="campoSubcategoria" value="Retratos Identificados">
+    </div>
+    <div class="campo">
+      <label>Status</label>
+      <select id="campoStatus">
+        <option value="naoverificado" selected>naoverificado</option>
+        <option value="resolvido">resolvido</option>
+        <option value="confirmado">confirmado</option>
+      </select>
+    </div>
+    <div class="campo">
+      <label>Caminho do arquivo (thumb)</label>
+      <input id="campoThumb" placeholder="/assets/img/documentos/nome-do-arquivo.jpg">
+    </div>
+    <div class="campo">
+      <label>Legenda</label>
+      <textarea id="campoLegenda" placeholder="Texto que aparece no lightbox..."></textarea>
+    </div>
+
+    <hr style="border-color:var(--borda);margin:1rem 0;">
+
+    <div class="campo">
+      <label>Pessoas marcadas (<span class="contador" id="contador">0</span>)</label>
+      <div id="listaPessoas"></div>
+    </div>
+
+    <button class="acao" id="btnGerar" style="width:100%;margin-top:.5rem;">Gerar código</button>
+    <button class="acao secundaria" id="btnCopiar" style="width:100%;margin-top:.5rem;display:none;">Copiar código</button>
+
+    <textarea id="saida" style="display:none;" readonly></textarea>
+  </div>
+</div>
+
+<script>
+(function(){
+  var drop = document.getElementById('drop');
+  var fileInput = document.getElementById('fileInput');
+  var stage = document.getElementById('stage');
+  var imgEl = document.getElementById('img');
+  var dica = document.getElementById('dica');
+  var listaPessoas = document.getElementById('listaPessoas');
+  var contador = document.getElementById('contador');
+  var saida = document.getElementById('saida');
+  var btnGerar = document.getElementById('btnGerar');
+  var btnCopiar = document.getElementById('btnCopiar');
+
+  var pessoas = []; // {x, y, w, h, nome, genId}  -- x,y = canto superior-esquerdo em %, w,h = largura/altura em %
+  var arrastando = false;
+  var inicioX = 0, inicioY = 0;
+  var caixaTemp = null;
+
+  drop.addEventListener('dragover', function(e){ e.preventDefault(); drop.style.borderColor = 'var(--ouro)'; });
+  drop.addEventListener('dragleave', function(){ drop.style.borderColor = ''; });
+  drop.addEventListener('drop', function(e){
+    e.preventDefault();
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) carregarImagem(e.dataTransfer.files[0]);
+  });
+  fileInput.addEventListener('change', function(){
+    if (fileInput.files && fileInput.files[0]) carregarImagem(fileInput.files[0]);
+  });
+
+  function carregarImagem(file) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      imgEl.src = e.target.result;
+      stage.style.display = 'inline-block';
+      dica.style.display = 'block';
+      drop.textContent = 'Foto carregada — clique em "Clique aqui" pra trocar';
+      var nomeBase = file.name.replace(/\.[^/.]+$/, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g,'');
+      document.getElementById('campoId').value = nomeBase;
+      document.getElementById('campoThumb').value = '/assets/img/documentos/' + file.name.toLowerCase().replace(/\s+/g,'-');
+      pessoas = [];
+      renderTudo();
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function pctX(clientX, rect) { return Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100)); }
+  function pctY(clientY, rect) { return Math.max(0, Math.min(100, ((clientY - rect.top) / rect.height) * 100)); }
+
+  imgEl.addEventListener('pointerdown', function(e){
+    e.preventDefault();
+    imgEl.setPointerCapture(e.pointerId);
+    var rect = imgEl.getBoundingClientRect();
+    arrastando = true;
+    inicioX = pctX(e.clientX, rect);
+    inicioY = pctY(e.clientY, rect);
+    caixaTemp = document.createElement('div');
+    caixaTemp.className = 'caixa-temp';
+    stage.appendChild(caixaTemp);
+    atualizarCaixaTemp(inicioX, inicioY, inicioX, inicioY);
+  });
+
+  imgEl.addEventListener('pointermove', function(e){
+    if (!arrastando) return;
+    var rect = imgEl.getBoundingClientRect();
+    var atualX = pctX(e.clientX, rect);
+    var atualY = pctY(e.clientY, rect);
+    atualizarCaixaTemp(inicioX, inicioY, atualX, atualY);
+  });
+
+  imgEl.addEventListener('pointerup', function(e){
+    if (!arrastando) return;
+    arrastando = false;
+    var rect = imgEl.getBoundingClientRect();
+    var fimX = pctX(e.clientX, rect);
+    var fimY = pctY(e.clientY, rect);
+    if (caixaTemp) { caixaTemp.remove(); caixaTemp = null; }
+
+    var x1 = Math.min(inicioX, fimX), x2 = Math.max(inicioX, fimX);
+    var y1 = Math.min(inicioY, fimY), y2 = Math.max(inicioY, fimY);
+    var largura = x2 - x1, altura = y2 - y1;
+
+    // clique simples sem arrastar (ou arraste muito pequeno) -> cria caixa padrão centrada no clique
+    if (largura < 1.5 || altura < 1.5) {
+      largura = 8; altura = 10;
+      x1 = Math.max(0, Math.min(100 - largura, inicioX - largura/2));
+      y1 = Math.max(0, Math.min(100 - altura, inicioY - altura/2));
+    }
+
+    pessoas.push({ x: round1(x1), y: round1(y1), w: round1(largura), h: round1(altura), nome: '', genId: '' });
+    renderTudo();
+  });
+
+  function round1(n) { return Math.round(n * 10) / 10; }
+
+  function atualizarCaixaTemp(x1, y1, x2, y2) {
+    var left = Math.min(x1, x2), top = Math.min(y1, y2);
+    var w = Math.abs(x2 - x1), h = Math.abs(y2 - y1);
+    caixaTemp.style.left = left + '%';
+    caixaTemp.style.top = top + '%';
+    caixaTemp.style.width = w + '%';
+    caixaTemp.style.height = h + '%';
+  }
+
+  function renderCaixas() {
+    stage.querySelectorAll('.caixa').forEach(function(c){ c.remove(); });
+    pessoas.forEach(function(p, i){
+      var c = document.createElement('div');
+      c.className = 'caixa';
+      c.style.left = p.x + '%';
+      c.style.top = p.y + '%';
+      c.style.width = p.w + '%';
+      c.style.height = p.h + '%';
+      var num = document.createElement('span');
+      num.className = 'numero';
+      num.textContent = i + 1;
+      c.appendChild(num);
+      var apagar = document.createElement('span');
+      apagar.className = 'apagar';
+      apagar.textContent = '✕';
+      apagar.addEventListener('click', function(ev){
+        ev.stopPropagation();
+        pessoas.splice(i, 1);
+        renderTudo();
+      });
+      c.appendChild(apagar);
+      stage.appendChild(c);
+    });
+  }
+
+  function renderLista() {
+    listaPessoas.innerHTML = '';
+    contador.textContent = pessoas.length;
+    pessoas.forEach(function(p, i){
+      var div = document.createElement('div');
+      div.className = 'lista-pessoa';
+      div.innerHTML =
+        '<div class="linha">' +
+          '<input type="text" placeholder="Nome da pessoa" value="' + (p.nome||'').replace(/"/g,'&quot;') + '" data-idx="' + i + '" data-campo="nome">' +
+          '<button class="del" data-idx="' + i + '">✕</button>' +
+        '</div>' +
+        '<div class="linha">' +
+          '<input type="text" placeholder="genId (opcional, ex: G4-15)" value="' + (p.genId||'').replace(/"/g,'&quot;') + '" data-idx="' + i + '" data-campo="genId">' +
+        '</div>' +
+        '<div class="coords">área ' + (i+1) + ': x ' + p.x + '%, y ' + p.y + '%, largura ' + p.w + '%, altura ' + p.h + '%</div>';
+      listaPessoas.appendChild(div);
+    });
+    listaPessoas.querySelectorAll('input').forEach(function(inp){
+      inp.addEventListener('input', function(){
+        var idx = parseInt(inp.getAttribute('data-idx'), 10);
+        var campo = inp.getAttribute('data-campo');
+        pessoas[idx][campo] = inp.value;
+      });
+    });
+    listaPessoas.querySelectorAll('.del').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var idx = parseInt(btn.getAttribute('data-idx'), 10);
+        pessoas.splice(idx, 1);
+        renderTudo();
+      });
+    });
+  }
+
+  function renderTudo() {
+    renderCaixas();
+    renderLista();
+  }
+
+  function gerarCodigo() {
+    var id = document.getElementById('campoId').value.trim() || 'sem-id';
+    var titulo = document.getElementById('campoTitulo').value.trim();
+    var subcategoria = document.getElementById('campoSubcategoria').value.trim();
+    var status = document.getElementById('campoStatus').value;
+    var thumb = document.getElementById('campoThumb').value.trim();
+    var legenda = document.getElementById('campoLegenda').value.trim();
+
+    var linhasPessoas = pessoas.map(function(p){
+      var genIdTxt = p.genId ? '"' + p.genId.trim() + '"' : 'null';
+      var nomeTxt = (p.nome || '(nome pendente)').replace(/"/g, '\\"');
+      return '      { genId: ' + genIdTxt + ', nome: "' + nomeTxt + '", x: ' + p.x + ', y: ' + p.y + ', w: ' + p.w + ', h: ' + p.h + ' }';
+    }).join(',\n');
+
+    var codigo =
+'  {\n' +
+'    id: "' + id + '",\n' +
+'    categoria: "fotos",\n' +
+'    subcategoria: "' + subcategoria.replace(/"/g,'\\"') + '",\n' +
+'    titulo: "' + titulo.replace(/"/g,'\\"') + '",\n' +
+'    status: "' + status + '",\n' +
+'    thumb: "' + thumb + '",\n' +
+'    legenda: "' + legenda.replace(/"/g,'\\"') + '",\n' +
+'    pessoas: [\n' + linhasPessoas + '\n    ]\n' +
+'  }';
+
+    saida.value = codigo;
+    saida.style.display = 'block';
+    btnCopiar.style.display = 'inline-block';
+  }
+
+  btnGerar.addEventListener('click', gerarCodigo);
+  btnCopiar.addEventListener('click', function(){
+    saida.select();
+    document.execCommand('copy');
+    btnCopiar.textContent = 'Copiado ✓';
+    setTimeout(function(){ btnCopiar.textContent = 'Copiar código'; }, 1500);
+  });
+})();
+</script>
+</body>
+</html>
