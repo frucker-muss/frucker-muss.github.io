@@ -178,316 +178,60 @@ var ITENS = [
       { genId: null, nome: "José Urbano", x: 58, y: 55 },
       { genId: null, nome: "Maria do Carmo", x: 76, y: 65 }
     ]
+  },
+  {
+    id: "sepultamento-vo-pina-1946",
+    categoria: "fotos",
+    subcategoria: "Retratos Identificados",
+    titulo: "Enterro da Vó Pina, 26/06/1946",
+    status: "naoverificado",
+    thumb: "/assets/img/documentos/sepultamento-da-vo-pina.jpg",
+    legenda: "Sepultamento de Philippine Saft Rücker (G3-PS, 'Vó Pina'), no jazigo familiar de São Pedro do Maratá. Reúne parte dos treze filhos sobreviventes de August Ambros e Philippine, com netos. Edição: Paulo R. Rücker.",
+    pessoas: [
+      { genId: "G4-13", nome: "Adalberto Rücker", x: 17, y: 9 },
+      { genId: "G4-06", nome: "Ewaldo Rücker", x: 23, y: 11 },
+      { genId: null, nome: "Adolfo Jaeger", x: 32, y: 15 },
+      { genId: null, nome: "Renata (a confirmar)", x: 39, y: 17 },
+      { genId: "G4-09", nome: "Rudolfo Rücker", x: 45, y: 15 },
+      { genId: "G4-15", nome: "Siegmundo Rücker", x: 51, y: 14 },
+      { genId: "G4-08", nome: "Luisa Victória Rücker", x: 58, y: 12 },
+      { genId: "G4-CD", nome: "Cecy (Ceci) Dexheimer Rücker", x: 56, y: 18 },
+      { genId: "G4-07", nome: "Hedwig Rücker", x: 68, y: 12 },
+      { genId: null, nome: "Anísia (a confirmar)", x: 76, y: 12 },
+      { genId: null, nome: "Iris (a confirmar)", x: 82, y: 12 },
+      { genId: "G4-14", nome: "Augusto Guilherme Rücker", x: 27, y: 16 },
+      { genId: "G3-AA", nome: "August Ambros Rücker ('Vô Augusto')", x: 26, y: 27 },
+      { genId: "G5-PR", nome: "Paulo Renato Rucker", x: 41, y: 26 },
+      { genId: null, nome: "Aurea Filipina Rücker ('Pina', bebê)", x: 48, y: 24 },
+      { genId: null, nome: "Astrid (poss. G5-BK, Berlindes Astrid Küchemann)", x: 73, y: 21 },
+      { genId: null, nome: "Marlene", x: 58, y: 42 },
+      { genId: null, nome: "Theodoro", x: 76, y: 40 }
+    ]
+  },
+  {
+    id: "enterro-vo-pina-cemiterio-1946",
+    categoria: "fotos",
+    subcategoria: "Retratos Identificados",
+    titulo: "Enterro da Vó Pina no cemitério, 26/06/1946",
+    status: "naoverificado",
+    thumb: "/assets/img/documentos/enterro-vo-pina.jpg",
+    legenda: "Família reunida junto à sepultura de Philippine Saft Rücker (G3-PS, 'Vó Pina'), no jazigo familiar de São Pedro do Maratá — mesmo dia da foto do jardim. Edição: Paulo R. Rücker.",
+    pessoas: [
+      { genId: null, nome: "Augusto (a confirmar)", x: 7, y: 42 },
+      { genId: "G4-06", nome: "Ewaldo Rücker", x: 15, y: 30 },
+      { genId: null, nome: "Dora (a confirmar)", x: 13, y: 45 },
+      { genId: "G4-09", nome: "Rudolfo Rücker", x: 28, y: 20 },
+      { genId: null, nome: "Iris (a confirmar)", x: 25, y: 42 },
+      { genId: null, nome: "Aurea Filipina Rücker ('Pina')", x: 35, y: 35 },
+      { genId: "G4-CD", nome: "Cecy (Ceci) Dexheimer Rücker", x: 40, y: 42 },
+      { genId: "G4-15", nome: "Siegmundo Rücker", x: 48, y: 22 },
+      { genId: "G5-PR", nome: "Paulo Renato Rucker", x: 42, y: 55 },
+      { genId: null, nome: "Gertrudes (neta, a confirmar)", x: 48, y: 68 },
+      { genId: null, nome: "Anísia (a confirmar)", x: 58, y: 38 },
+      { genId: "G4-16", nome: "Albano Rücker", x: 66, y: 35 },
+      { genId: null, nome: "Hertha (a confirmar)", x: 75, y: 38 },
+      { genId: null, nome: "Marlene", x: 52, y: 72 },
+      { genId: null, nome: "Renata", x: 38, y: 88 }
+    ]
   }
 ];
-
-var CATEGORIAS = [
-  { chave: "fotos", rotulo: "Fotos",
-    nota: "Registro fotográfico da família, nem sempre com valor probatório isolado — retratos, reuniões e eventos.",
-    vazio: "Nenhuma foto adicionada ainda." },
-  { chave: "videos", rotulo: "Vídeos",
-    nota: "Vídeos que documentam histórias, memórias e momentos da família.",
-    vazio: "Nenhum vídeo adicionado ainda." },
-  { chave: "audios", rotulo: "Áudios",
-    nota: "Gravações de entrevistas, depoimentos e memórias orais da família.",
-    vazio: "Nenhum áudio adicionado ainda." },
-  { chave: "docs", rotulo: "Docs",
-    nota: "Registros documentais e epigráficos, cartas e transcrições usados como fonte na reconstrução genealógica — certidões, lápides, listas de embarque e materiais complementares.",
-    vazio: "Nenhum documento adicionado ainda." }
-];
-
-var STATUS_LABEL = {
-  confirmado: "Confirmado",
-  resolvido: "Resolvido",
-  naoverificado: "Leitura não verificada"
-};
-
-var categoriaAtiva = CATEGORIAS[0].chave;
-
-var raizAbas = document.getElementById('rkdAbas');
-var notaEl = document.getElementById('rkdCategoriaNota');
-var raizGalerias = document.getElementById('rkdGalerias');
-
-function itensPorCategoria(categoria) {
-  return ITENS.filter(function(item) { return item.categoria === categoria; });
-}
-
-function montarCardHTML(categoria, item, idx) {
-  var subcat = item.subcategoria ? '<span class="rkd-subcat-card">' + item.subcategoria + '</span>' : '';
-  return '<button class="rkd-card" type="button" data-cat="' + categoria + '" data-idx="' + idx + '">' +
-           '<img class="rkd-thumb" src="' + item.thumb + '" alt="' + (item.titulo || '') + '" loading="lazy">' +
-           '<span class="rkd-card-rodape">' +
-             subcat +
-             '<span class="rkd-legenda-card">' + (item.titulo || '') + '</span>' +
-             '<span class="rkd-status-card"><i class="rkd-ponto" data-status="' + item.status + '"></i>' + (STATUS_LABEL[item.status] || '') + '</span>' +
-           '</span>' +
-         '</button>';
-}
-
-function montarAbaHTML(cat) {
-  var ativa = cat.chave === categoriaAtiva;
-  return '<button class="rkd-aba' + (ativa ? ' ativa' : '') + '" type="button" role="tab" ' +
-           'aria-selected="' + (ativa ? 'true' : 'false') + '" data-categoria="' + cat.chave + '">' +
-           cat.rotulo +
-         '</button>';
-}
-
-function renderizarAbas() {
-  var html = '';
-  CATEGORIAS.forEach(function(cat) { html += montarAbaHTML(cat); });
-  raizAbas.innerHTML = html;
-}
-
-function categoriaAtual() {
-  return CATEGORIAS.filter(function(c) { return c.chave === categoriaAtiva; })[0];
-}
-
-function renderizarNota() {
-  notaEl.textContent = categoriaAtual().nota || '';
-}
-
-function renderizarGaleria() {
-  var cat = categoriaAtual();
-  var itens = itensPorCategoria(categoriaAtiva);
-  var html = '';
-  if (itens.length === 0) {
-    html = '<p class="rkd-vazio">' + cat.vazio + '</p>';
-  } else {
-    html = '<div class="rkd-grade">';
-    itens.forEach(function(item, idx) { html += montarCardHTML(categoriaAtiva, item, idx); });
-    html += '</div>';
-  }
-  raizGalerias.innerHTML = html;
-}
-
-function renderizarTudo() {
-  renderizarAbas();
-  renderizarNota();
-  renderizarGaleria();
-}
-
-/* ---------- Lightbox: estado e navegação ---------- */
-var lightbox = document.getElementById('rkdLightbox');
-var palco = document.getElementById('rkdLbPalco');
-var img = document.getElementById('rkdLbImg');
-var imgWrap = document.getElementById('rkdLbImgWrap');
-var marcadoresLayer = document.getElementById('rkdLbMarcadores');
-var pessoaPainel = document.getElementById('rkdLbPessoaPainel');
-var tituloEl = document.getElementById('rkdLbTitulo');
-var legendaEl = document.getElementById('rkdLbLegenda');
-var btnFechar = document.getElementById('rkdLbFechar');
-var btnReset = document.getElementById('rkdLbReset');
-var btnPrev = document.getElementById('rkdLbPrev');
-var btnNext = document.getElementById('rkdLbNext');
-
-var galAtual = null, indiceAtual = 0, elementoAnterior = null;
-var scale = 1, posX = 0, posY = 0;
-var activePointers = {};
-var isPanning = false, dragStart = null;
-var pinchStartDist = 0, pinchStartScale = 1;
-
-function clamp(v, min, max) { return Math.min(max, Math.max(min, v)); }
-function distancia(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
-
-function aplicarTransform() {
-  imgWrap.style.transform = 'translate(' + posX + 'px,' + posY + 'px) scale(' + scale + ')';
-  btnReset.textContent = Math.round(scale * 100) + '%';
-}
-
-function resetZoom() {
-  scale = 1; posX = 0; posY = 0;
-  aplicarTransform();
-}
-
-function aplicarZoomEm(clientX, clientY, novaEscala) {
-  var rect = imgWrap.getBoundingClientRect();
-  var cx = clientX - (rect.left + rect.width / 2);
-  var cy = clientY - (rect.top + rect.height / 2);
-  var ratio = novaEscala / scale;
-  posX = posX - cx * (ratio - 1);
-  posY = posY - cy * (ratio - 1);
-  scale = novaEscala;
-  if (scale <= 1) { scale = 1; posX = 0; posY = 0; }
-  aplicarTransform();
-}
-
-function esconderPessoaPainel() {
-  pessoaPainel.classList.remove('visivel');
-  pessoaPainel.innerHTML = '';
-}
-
-function mostrarPessoaPainel(pessoa) {
-  // TODO: quando genId apontar para uma página de perfil publicada, trocar o nome por um link.
-  pessoaPainel.innerHTML = '<h4>' + (pessoa.nome || '') + '</h4>';
-  pessoaPainel.classList.add('visivel');
-}
-
-function renderizarMarcadores(item) {
-  var pessoas = item.pessoas || [];
-  if (!pessoas.length) {
-    marcadoresLayer.innerHTML = '';
-    return;
-  }
-  var html = '';
-  pessoas.forEach(function(p, i) {
-    var top = Math.min(100, (p.y || 0) + 9);
-    html += '<span class="rkd-lb-marcador-wrap" style="left:' + p.x + '%;top:' + top + '%">' +
-              '<i class="rkd-lb-marcador-halo" aria-hidden="true"></i>' +
-              '<button class="rkd-lb-marcador" type="button" title="' + (p.nome || '') + '" data-idx="' + i + '"></button>' +
-            '</span>';
-  });
-  marcadoresLayer.innerHTML = html;
-}
-
-function carregarItem() {
-  var itens = itensPorCategoria(galAtual);
-  var item = itens[indiceAtual];
-  esconderPessoaPainel();
-  img.src = item.full || item.thumb;
-  img.alt = item.titulo || '';
-  tituloEl.textContent = item.titulo || '';
-  legendaEl.textContent = item.legenda || '';
-  renderizarMarcadores(item);
-  btnPrev.disabled = itens.length <= 1;
-  btnNext.disabled = itens.length <= 1;
-  resetZoom();
-}
-
-function navegar(delta) {
-  var itens = itensPorCategoria(galAtual);
-  if (itens.length <= 1) return;
-  indiceAtual = (indiceAtual + delta + itens.length) % itens.length;
-  carregarItem();
-}
-
-function abrirLightbox(categoria, idx) {
-  var itens = itensPorCategoria(categoria);
-  if (!itens.length) return;
-  galAtual = categoria;
-  indiceAtual = idx;
-  elementoAnterior = document.activeElement;
-  carregarItem();
-  lightbox.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-  btnFechar.focus();
-}
-
-function fecharLightbox() {
-  lightbox.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
-  img.src = '';
-  marcadoresLayer.innerHTML = '';
-  esconderPessoaPainel();
-  activePointers = {};
-  isPanning = false;
-  if (elementoAnterior && typeof elementoAnterior.focus === 'function') elementoAnterior.focus();
-}
-
-raizAbas.addEventListener('click', function(ev) {
-  var btn = ev.target.closest('.rkd-aba');
-  if (!btn) return;
-  var categoria = btn.getAttribute('data-categoria');
-  if (categoria === categoriaAtiva) return;
-  categoriaAtiva = categoria;
-  renderizarTudo();
-});
-
-raizGalerias.addEventListener('click', function(ev) {
-  var btn = ev.target.closest('.rkd-card');
-  if (!btn) return;
-  abrirLightbox(btn.getAttribute('data-cat'), parseInt(btn.getAttribute('data-idx'), 10));
-});
-
-btnFechar.addEventListener('click', fecharLightbox);
-btnReset.addEventListener('click', resetZoom);
-btnPrev.addEventListener('click', function() { navegar(-1); });
-btnNext.addEventListener('click', function() { navegar(1); });
-
-marcadoresLayer.addEventListener('click', function(ev) {
-  var btn = ev.target.closest('.rkd-lb-marcador');
-  if (!btn) return;
-  var idx = parseInt(btn.getAttribute('data-idx'), 10);
-  var item = itensPorCategoria(galAtual)[indiceAtual];
-  var pessoa = (item.pessoas || [])[idx];
-  if (!pessoa) return;
-  mostrarPessoaPainel(pessoa);
-  var atual = marcadoresLayer.querySelector('.rkd-lb-marcador-wrap.ativo');
-  if (atual) atual.classList.remove('ativo');
-  var wrap = btn.closest('.rkd-lb-marcador-wrap');
-  if (wrap) wrap.classList.add('ativo');
-});
-
-lightbox.addEventListener('click', function(e) {
-  if (e.target === lightbox) fecharLightbox();
-});
-
-document.addEventListener('keydown', function(e) {
-  if (lightbox.getAttribute('aria-hidden') === 'true') return;
-  if (e.key === 'Escape') fecharLightbox();
-  else if (e.key === 'ArrowLeft') navegar(-1);
-  else if (e.key === 'ArrowRight') navegar(1);
-  else if (e.key === '+' || e.key === '=') aplicarZoomEm(window.innerWidth / 2, window.innerHeight / 2, clamp(scale * 1.2, 1, 6));
-  else if (e.key === '-') aplicarZoomEm(window.innerWidth / 2, window.innerHeight / 2, clamp(scale / 1.2, 1, 6));
-});
-
-palco.addEventListener('wheel', function(e) {
-  e.preventDefault();
-  var fator = e.deltaY < 0 ? 1.15 : 1 / 1.15;
-  aplicarZoomEm(e.clientX, e.clientY, clamp(scale * fator, 1, 6));
-}, { passive: false });
-
-palco.addEventListener('dblclick', function(e) {
-  if (scale > 1) { resetZoom(); }
-  else { aplicarZoomEm(e.clientX, e.clientY, 2.5); }
-});
-
-palco.addEventListener('pointerdown', function(e) {
-  if (e.target !== img) return;
-  palco.setPointerCapture(e.pointerId);
-  activePointers[e.pointerId] = { x: e.clientX, y: e.clientY };
-  var ids = Object.keys(activePointers);
-  if (ids.length === 1) {
-    isPanning = true;
-    dragStart = { x: e.clientX, y: e.clientY, posX: posX, posY: posY };
-    palco.classList.add('arrastando');
-  } else if (ids.length === 2) {
-    isPanning = false;
-    var pts = ids.map(function(id) { return activePointers[id]; });
-    pinchStartDist = distancia(pts[0], pts[1]);
-    pinchStartScale = scale;
-  }
-});
-
-palco.addEventListener('pointermove', function(e) {
-  if (!activePointers[e.pointerId]) return;
-  activePointers[e.pointerId] = { x: e.clientX, y: e.clientY };
-  var ids = Object.keys(activePointers);
-  if (ids.length === 2) {
-    var pts = ids.map(function(id) { return activePointers[id]; });
-    var dist = distancia(pts[0], pts[1]);
-    var novaEscala = clamp(pinchStartScale * (dist / pinchStartDist), 1, 6);
-    var meio = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 };
-    aplicarZoomEm(meio.x, meio.y, novaEscala);
-  } else if (ids.length === 1 && isPanning) {
-    posX = dragStart.posX + (e.clientX - dragStart.x);
-    posY = dragStart.posY + (e.clientY - dragStart.y);
-    aplicarTransform();
-  }
-});
-
-function encerrarPonteiro(e) {
-  delete activePointers[e.pointerId];
-  var ids = Object.keys(activePointers);
-  isPanning = ids.length === 1;
-  if (isPanning) {
-    var p = activePointers[ids[0]];
-    dragStart = { x: p.x, y: p.y, posX: posX, posY: posY };
-  }
-  palco.classList.remove('arrastando');
-}
-palco.addEventListener('pointerup', encerrarPonteiro);
-palco.addEventListener('pointercancel', encerrarPonteiro);
-
-renderizarTudo();
-})();
-</script>
