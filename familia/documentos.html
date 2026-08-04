@@ -178,6 +178,61 @@ var ITENS = [
       { genId: null, nome: "José Urbano", x: 58, y: 55 },
       { genId: null, nome: "Maria do Carmo", x: 76, y: 65 }
     ]
+  },
+  {
+    id: "sepultamento-vo-pina-1946",
+    categoria: "fotos",
+    subcategoria: "Retratos Identificados",
+    titulo: "Enterro da Vó Pina, 26/06/1946",
+    status: "naoverificado",
+    thumb: "/assets/img/documentos/sepultamento-da-vo-pina.jpg",
+    legenda: "Sepultamento de Philippine Saft Rücker (G3-PS, 'Vó Pina'), no jazigo familiar de São Pedro do Maratá. Reúne parte dos treze filhos sobreviventes de August Ambros e Philippine, com netos. Edição: Paulo R. Rücker.",
+    pessoas: [
+      { genId: "G4-13", nome: "Adalberto Rücker", x: 17, y: 9 },
+      { genId: "G4-06", nome: "Ewaldo Rücker", x: 23, y: 11 },
+      { genId: null, nome: "Adolfo Jaeger", x: 32, y: 15 },
+      { genId: null, nome: "Renata (a confirmar)", x: 39, y: 17 },
+      { genId: "G4-09", nome: "Rudolfo Rücker", x: 45, y: 15 },
+      { genId: "G4-15", nome: "Siegmundo Rücker", x: 51, y: 14 },
+      { genId: "G4-08", nome: "Luisa Victória Rücker", x: 58, y: 12 },
+      { genId: "G4-CD", nome: "Cecy (Ceci) Dexheimer Rücker", x: 56, y: 18 },
+      { genId: "G4-07", nome: "Hedwig Rücker", x: 68, y: 12 },
+      { genId: null, nome: "Anísia (a confirmar)", x: 76, y: 12 },
+      { genId: null, nome: "Iris (a confirmar)", x: 82, y: 12 },
+      { genId: "G4-14", nome: "Augusto Guilherme Rücker", x: 27, y: 16 },
+      { genId: "G3-AA", nome: "August Ambros Rücker ('Vô Augusto')", x: 26, y: 27 },
+      { genId: "G5-PR", nome: "Paulo Renato Rucker", x: 41, y: 26 },
+      { genId: null, nome: "Aurea Filipina Rücker ('Pina', bebê)", x: 48, y: 24 },
+      { genId: null, nome: "Astrid (poss. G5-BK, Berlindes Astrid Küchemann)", x: 73, y: 21 },
+      { genId: null, nome: "Marlene", x: 58, y: 42 },
+      { genId: null, nome: "Theodoro", x: 76, y: 40 }
+    ]
+  },
+  {
+    id: "enterro-vo-pina-cemiterio-1946",
+    categoria: "fotos",
+    subcategoria: "Retratos Identificados",
+    titulo: "Enterro da Vó Pina no cemitério, 26/06/1946",
+    status: "naoverificado",
+    thumb: "/assets/img/documentos/enterro-vo-pina.jpg",
+    legenda: "Família reunida junto à sepultura de Philippine Saft Rücker (G3-PS, 'Vó Pina'), no jazigo familiar de São Pedro do Maratá — mesmo dia da foto do jardim. Edição: Paulo R. Rücker.",
+    pessoas: [
+      { genId: null, nome: "Augusto (a confirmar)", x: 7, y: 42 },
+      { genId: "G4-06", nome: "Ewaldo Rücker", x: 15, y: 30 },
+      { genId: null, nome: "Dora (a confirmar)", x: 13, y: 45 },
+      { genId: "G4-09", nome: "Rudolfo Rücker", x: 28, y: 20 },
+      { genId: null, nome: "Iris (a confirmar)", x: 25, y: 42 },
+      { genId: null, nome: "Aurea Filipina Rücker ('Pina')", x: 35, y: 35 },
+      { genId: "G4-CD", nome: "Cecy (Ceci) Dexheimer Rücker", x: 40, y: 42 },
+      { genId: "G4-15", nome: "Siegmundo Rücker", x: 48, y: 22 },
+      { genId: "G5-PR", nome: "Paulo Renato Rucker", x: 42, y: 55 },
+      { genId: null, nome: "Gertrudes (neta, a confirmar)", x: 48, y: 68 },
+      { genId: null, nome: "Anísia (a confirmar)", x: 58, y: 38 },
+      { genId: "G4-16", nome: "Albano Rücker", x: 66, y: 35 },
+      { genId: null, nome: "Hertha (a confirmar)", x: 75, y: 38 },
+      { genId: null, nome: "Marlene", x: 52, y: 72 },
+      { genId: null, nome: "Renata", x: 38, y: 88 }
+    ]
   }
 ];
 
@@ -317,7 +372,6 @@ function esconderPessoaPainel() {
 }
 
 function mostrarPessoaPainel(pessoa) {
-  // TODO: quando genId apontar para uma página de perfil publicada, trocar o nome por um link.
   pessoaPainel.innerHTML = '<h4>' + (pessoa.nome || '') + '</h4>';
   pessoaPainel.classList.add('visivel');
 }
