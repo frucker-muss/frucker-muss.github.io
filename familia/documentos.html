@@ -76,7 +76,14 @@ title: "Acervo Visual"
 .rkd-lb-imgwrap{position:relative;display:inline-block;line-height:0;will-change:transform;}
 .rkd-lb-img{max-width:90vw;max-height:78vh;display:block;user-select:none;-webkit-user-drag:none;}
 .rkd-lb-marcadores{position:absolute;inset:0;pointer-events:none;}
-.rkd-lb-marcador{position:absolute;width:12px;height:12px;margin:0;padding:0;border:none;
+.rkd-lb-marcador-wrap{position:absolute;width:0;height:0;transform:translate(-50%,-50%);}
+.rkd-lb-marcador-halo{position:absolute;left:50%;top:50%;width:54px;height:54px;
+  transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(212,175,106,.55) 0%,rgba(212,175,106,0) 70%);
+  opacity:0;transition:opacity .2s ease;}
+.rkd-lb-marcador-wrap:hover .rkd-lb-marcador-halo,
+.rkd-lb-marcador-wrap.ativo .rkd-lb-marcador-halo{opacity:1;}
+.rkd-lb-marcador{position:absolute;left:50%;top:50%;width:12px;height:12px;margin:0;padding:0;border:none;
   border-radius:50%;background:#d4af6a;opacity:.6;cursor:pointer;pointer-events:auto;
   transform:translate(-50%,-50%);transition:opacity .15s ease,transform .15s ease;}
 .rkd-lb-marcador:hover,.rkd-lb-marcador:focus-visible{opacity:.95;transform:translate(-50%,-50%) scale(1.3);}
@@ -322,8 +329,10 @@ function renderizarMarcadores(item) {
   var html = '';
   pessoas.forEach(function(p, i) {
     var top = Math.min(100, (p.y || 0) + 9);
-    html += '<button class="rkd-lb-marcador" type="button" title="' + (p.nome || '') + '" ' +
-              'data-idx="' + i + '" style="left:' + p.x + '%;top:' + top + '%"></button>';
+    html += '<span class="rkd-lb-marcador-wrap" style="left:' + p.x + '%;top:' + top + '%">' +
+              '<i class="rkd-lb-marcador-halo" aria-hidden="true"></i>' +
+              '<button class="rkd-lb-marcador" type="button" title="' + (p.nome || '') + '" data-idx="' + i + '"></button>' +
+            '</span>';
   });
   marcadoresLayer.innerHTML = html;
 }
@@ -395,9 +404,15 @@ btnNext.addEventListener('click', function() { navegar(1); });
 marcadoresLayer.addEventListener('click', function(ev) {
   var btn = ev.target.closest('.rkd-lb-marcador');
   if (!btn) return;
+  var idx = parseInt(btn.getAttribute('data-idx'), 10);
   var item = itensPorCategoria(galAtual)[indiceAtual];
-  var pessoa = (item.pessoas || [])[parseInt(btn.getAttribute('data-idx'), 10)];
-  if (pessoa) mostrarPessoaPainel(pessoa);
+  var pessoa = (item.pessoas || [])[idx];
+  if (!pessoa) return;
+  mostrarPessoaPainel(pessoa);
+  var atual = marcadoresLayer.querySelector('.rkd-lb-marcador-wrap.ativo');
+  if (atual) atual.classList.remove('ativo');
+  var wrap = btn.closest('.rkd-lb-marcador-wrap');
+  if (wrap) wrap.classList.add('ativo');
 });
 
 lightbox.addEventListener('click', function(e) {
