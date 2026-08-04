@@ -24,18 +24,19 @@ title: "Acervo Visual"
 .rkd p,.rkd h2,.rkd h3{margin:0;padding:0;}
 .rkd-intro{color:#b8b2a3;max-width:620px;margin:0 auto 2rem;text-align:center;font-size:1.1rem;}
 
-.rkd-legenda{display:flex;flex-wrap:wrap;gap:0.6rem 1.2rem;justify-content:center;
-  font-family:var(--mono);font-size:0.68rem;color:var(--mudo);margin:0 auto 2.4rem;max-width:640px;}
-.rkd-legenda span{display:flex;align-items:center;gap:0.45rem;}
+.rkd-abas{display:flex;justify-content:center;flex-wrap:wrap;gap:0.5rem;margin:0 auto 2rem;}
+.rkd-aba{font-family:var(--mono);font-size:0.78rem;letter-spacing:.03em;text-transform:uppercase;
+  background:transparent;color:var(--mudo);border:1px solid var(--borda);border-radius:999px;
+  padding:0.5rem 1.1rem;cursor:pointer;transition:border-color .2s ease,color .2s ease;}
+.rkd-aba:hover{color:var(--soft);border-color:var(--soft);}
+.rkd-aba.ativa,.rkd-aba.ativa:hover{color:var(--ouro);border-color:var(--ouro);}
+
+.rkd-categoria-nota{font-size:0.9rem;color:var(--mudo);text-align:center;max-width:560px;margin:0 auto 1.4rem;line-height:1.6;}
+
 .rkd-ponto{width:9px;height:9px;border-radius:50%;display:inline-block;flex:0 0 9px;}
 .rkd-ponto[data-status="confirmado"]{background:var(--ouro);}
 .rkd-ponto[data-status="resolvido"]{background:var(--sage);}
 .rkd-ponto[data-status="naoverificado"]{background:var(--terra);}
-
-.rkd-secao{margin-top:2.8rem;}
-.rkd-secao:first-of-type{margin-top:0;}
-.rkd-secao h2,.rkd-secao h3{font-family:Georgia,serif;font-size:1.5rem;color:var(--claro);text-align:center;margin-bottom:0.4rem;}
-.rkd-secao-nota{font-size:0.9rem;color:var(--mudo);text-align:center;max-width:560px;margin:0 auto 1.4rem;line-height:1.6;}
 
 .rkd-grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1rem;}
 
@@ -50,14 +51,12 @@ title: "Acervo Visual"
 
 .rkd-thumb{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#0f0f0f;}
 
-.rkd-badge{position:absolute;top:8px;right:8px;font-family:var(--mono);font-size:0.58rem;
-  letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border-radius:4px;
-  background:rgba(18,18,18,.85);border:1px solid;line-height:1.4;}
-.rkd-badge[data-status="confirmado"]{color:var(--ouro);border-color:var(--ouro);}
-.rkd-badge[data-status="resolvido"]{color:var(--sage);border-color:var(--sage);}
-.rkd-badge[data-status="naoverificado"]{color:var(--terra);border-color:var(--terra);}
-
-.rkd-legenda-card{display:block;padding:0.6rem 0.7rem;font-size:0.84rem;color:var(--soft);line-height:1.4;}
+.rkd-card-rodape{display:block;padding:0.6rem 0.7rem;}
+.rkd-subcat-card{display:block;font-family:var(--mono);font-size:0.62rem;letter-spacing:.05em;
+  text-transform:uppercase;color:var(--mudo);margin-bottom:0.3rem;}
+.rkd-legenda-card{display:block;font-size:0.84rem;color:var(--soft);line-height:1.4;}
+.rkd-status-card{display:flex;align-items:center;gap:0.4rem;margin-top:0.35rem;font-size:0.84rem;color:var(--mudo);}
+.rkd-status-card .rkd-ponto{width:7px;height:7px;flex:0 0 7px;}
 
 /* ---------- Lightbox ---------- */
 .rkd-lightbox{position:fixed;inset:0;background:rgba(8,8,8,.94);z-index:1000;
@@ -109,11 +108,8 @@ title: "Acervo Visual"
 
 <div class="rkd" id="rkdRaiz">
 
-  <div class="rkd-legenda">
-    <span><i class="rkd-ponto" data-status="confirmado"></i> Dado confirmado</span>
-    <span><i class="rkd-ponto" data-status="resolvido"></i> Resolvido</span>
-    <span><i class="rkd-ponto" data-status="naoverificado"></i> Leitura não verificada</span>
-  </div>
+  <div class="rkd-abas" id="rkdAbas" role="tablist" aria-label="Categorias do acervo"></div>
+  <p class="rkd-categoria-nota" id="rkdCategoriaNota"></p>
 
   <div id="rkdGalerias"></div>
 
@@ -145,60 +141,50 @@ title: "Acervo Visual"
 (function(){
 "use strict";
 
-// Cada item: { id, titulo, status: "confirmado"|"resolvido"|"naoverificado",
+// Cada item: { id, categoria: "fotos"|"videos"|"audios"|"docs",
+//              subcategoria: rótulo livre opcional (tag pequena, sem estrutura fixa),
+//              titulo, status: "confirmado"|"resolvido"|"naoverificado",
 //              thumb: caminho da miniatura, full: caminho da imagem em tela cheia (opcional, usa thumb),
 //              legenda: texto exibido no lightbox,
 //              pessoas: array opcional [{ genId, nome, x, y }] — x/y em % (0-100) da imagem exibida;
 //              o marcador renderizado no lightbox desloca y para baixo (queixo/ombro) }.
-// Preencher "itens" das subseções depois que as imagens existirem.
-var SECOES = [
+var ITENS = [
   {
-    titulo: "Fontes",
-    nota: "Registros documentais e epigráficos usados como fonte primária na reconstrução genealógica — certidões, lápides, cartas, listas de embarque e demais evidências do acervo.",
-    subsecoes: [
-      {
-        chave: "fontes-primarias",
-        titulo: "Fontes Primárias",
-        nota: "Certidões, listas de embarque, registros oficiais e epigrafia funerária — evidência direta (DOC, DOC-2, EPI).",
-        itens: []
-      },
-      {
-        chave: "outros-documentos",
-        titulo: "Outros Documentos",
-        nota: "Cartas, transcrições de entrevistas e materiais complementares de valor interpretativo (INF, TO, TO-ARQUIVISTA).",
-        itens: []
-      }
-    ]
-  },
-  {
-    titulo: "Álbum de Família",
-    nota: "Registro fotográfico da família, nem sempre com valor probatório isolado — retratos, reuniões e eventos.",
-    subsecoes: [
-      { chave: "retratos-identificados", titulo: "Retratos Identificados", itens: [
-        {
-          id: "jose-zita-c1963",
-          titulo: "José e Zita Rücker, c. 1963-1966",
-          status: "naoverificado",
-          thumb: "/assets/familia/jose_zita.jpeg",
-          legenda: "Retrato de família de José Rücker (G4-12) e Zita Rücker (G4-12c), com Ulrich August ('Uli', G5-UA) e outros familiares. Fonte: identificação de Ana Maria Bonamigo Bolzan, grupo Família Rücker.",
-          pessoas: [
-            { genId: null, nome: "Maria Helena", x: 14, y: 22 },
-            { genId: "G5-UA", nome: "Ulrich August Rücker ('Uli')", x: 30, y: 15 },
-            { genId: null, nome: "Úrsula", x: 34, y: 25 },
-            { genId: "G4-12c", nome: "Zita Rücker", x: 52, y: 24 },
-            { genId: "G4-12", nome: "José Rücker", x: 58, y: 17 },
-            { genId: null, nome: "Martha", x: 71, y: 24 },
-            { genId: null, nome: "Esther", x: 88, y: 22 },
-            { genId: null, nome: "Ana Maria Bonamigo Bolzan (criança na foto)", x: 42, y: 62 },
-            { genId: null, nome: "José Urbano", x: 58, y: 55 },
-            { genId: null, nome: "Maria do Carmo", x: 76, y: 65 }
-          ]
-        }
-      ] },
-      { chave: "retratos-nao-identificados", titulo: "Retratos Não Identificados", itens: [] },
-      { chave: "fotos-grupo-eventos", titulo: "Fotos de Grupo e Eventos", itens: [] }
+    id: "jose-zita-c1963",
+    categoria: "fotos",
+    subcategoria: "Retratos Identificados",
+    titulo: "José e Zita Rücker, c. 1963-1966",
+    status: "naoverificado",
+    thumb: "/assets/familia/jose_zita.jpeg",
+    legenda: "Retrato de família de José Rücker (G4-12) e Zita Rücker (G4-12c), com Ulrich August ('Uli', G5-UA) e outros familiares. Fonte: identificação de Ana Maria Bonamigo Bolzan, grupo Família Rücker.",
+    pessoas: [
+      { genId: null, nome: "Maria Helena", x: 14, y: 22 },
+      { genId: "G5-UA", nome: "Ulrich August Rücker ('Uli')", x: 30, y: 15 },
+      { genId: null, nome: "Úrsula", x: 34, y: 25 },
+      { genId: "G4-12c", nome: "Zita Rücker", x: 52, y: 24 },
+      { genId: "G4-12", nome: "José Rücker", x: 58, y: 17 },
+      { genId: null, nome: "Martha", x: 71, y: 24 },
+      { genId: null, nome: "Esther", x: 88, y: 22 },
+      { genId: null, nome: "Ana Maria Bonamigo Bolzan (criança na foto)", x: 42, y: 62 },
+      { genId: null, nome: "José Urbano", x: 58, y: 55 },
+      { genId: null, nome: "Maria do Carmo", x: 76, y: 65 }
     ]
   }
+];
+
+var CATEGORIAS = [
+  { chave: "fotos", rotulo: "Fotos",
+    nota: "Registro fotográfico da família, nem sempre com valor probatório isolado — retratos, reuniões e eventos.",
+    vazio: "Nenhuma foto adicionada ainda." },
+  { chave: "videos", rotulo: "Vídeos",
+    nota: "Vídeos que documentam histórias, memórias e momentos da família.",
+    vazio: "Nenhum vídeo adicionado ainda." },
+  { chave: "audios", rotulo: "Áudios",
+    nota: "Gravações de entrevistas, depoimentos e memórias orais da família.",
+    vazio: "Nenhum áudio adicionado ainda." },
+  { chave: "docs", rotulo: "Docs",
+    nota: "Registros documentais e epigráficos, cartas e transcrições usados como fonte na reconstrução genealógica — certidões, lápides, listas de embarque e materiais complementares.",
+    vazio: "Nenhum documento adicionado ainda." }
 ];
 
 var STATUS_LABEL = {
@@ -207,49 +193,68 @@ var STATUS_LABEL = {
   naoverificado: "Leitura não verificada"
 };
 
-// Mapa achatado chave-da-subseção → subseção, usado pelo lightbox para localizar itens.
-var SUBSECOES = {};
-SECOES.forEach(function(secao) {
-  secao.subsecoes.forEach(function(sub) { SUBSECOES[sub.chave] = sub; });
-});
+var categoriaAtiva = CATEGORIAS[0].chave;
 
+var raizAbas = document.getElementById('rkdAbas');
+var notaEl = document.getElementById('rkdCategoriaNota');
 var raizGalerias = document.getElementById('rkdGalerias');
 
-function montarCardHTML(subKey, item, idx) {
-  return '<button class="rkd-card" type="button" data-sub="' + subKey + '" data-idx="' + idx + '">' +
-           '<span class="rkd-badge" data-status="' + item.status + '">' + (STATUS_LABEL[item.status] || '') + '</span>' +
+function itensPorCategoria(categoria) {
+  return ITENS.filter(function(item) { return item.categoria === categoria; });
+}
+
+function montarCardHTML(categoria, item, idx) {
+  var subcat = item.subcategoria ? '<span class="rkd-subcat-card">' + item.subcategoria + '</span>' : '';
+  return '<button class="rkd-card" type="button" data-cat="' + categoria + '" data-idx="' + idx + '">' +
            '<img class="rkd-thumb" src="' + item.thumb + '" alt="' + (item.titulo || '') + '" loading="lazy">' +
-           '<span class="rkd-legenda-card">' + (item.titulo || '') + '</span>' +
+           '<span class="rkd-card-rodape">' +
+             subcat +
+             '<span class="rkd-legenda-card">' + (item.titulo || '') + '</span>' +
+             '<span class="rkd-status-card"><i class="rkd-ponto" data-status="' + item.status + '"></i>' + (STATUS_LABEL[item.status] || '') + '</span>' +
+           '</span>' +
          '</button>';
 }
 
-function renderizarSubsecao(sub) {
-  var itens = sub.itens || [];
-  var html = '<div class="rkd-secao"><h3>' + sub.titulo + '</h3>';
-  if (sub.nota) html += '<p class="rkd-secao-nota">' + sub.nota + '</p>';
-  if (itens.length === 0) {
-    html += '<p class="rkd-vazio">Nenhum item adicionado ainda — galeria em preparação.</p>';
-  } else {
-    html += '<div class="rkd-grade">';
-    itens.forEach(function(item, idx) { html += montarCardHTML(sub.chave, item, idx); });
-    html += '</div>';
-  }
-  html += '</div>';
-  return html;
+function montarAbaHTML(cat) {
+  var ativa = cat.chave === categoriaAtiva;
+  return '<button class="rkd-aba' + (ativa ? ' ativa' : '') + '" type="button" role="tab" ' +
+           'aria-selected="' + (ativa ? 'true' : 'false') + '" data-categoria="' + cat.chave + '">' +
+           cat.rotulo +
+         '</button>';
 }
 
-function renderizarSecao(secao) {
-  var html = '<section class="rkd-secao"><h2>' + secao.titulo + '</h2>';
-  if (secao.nota) html += '<p class="rkd-secao-nota">' + secao.nota + '</p>';
-  secao.subsecoes.forEach(function(sub) { html += renderizarSubsecao(sub); });
-  html += '</section>';
-  return html;
+function renderizarAbas() {
+  var html = '';
+  CATEGORIAS.forEach(function(cat) { html += montarAbaHTML(cat); });
+  raizAbas.innerHTML = html;
+}
+
+function categoriaAtual() {
+  return CATEGORIAS.filter(function(c) { return c.chave === categoriaAtiva; })[0];
+}
+
+function renderizarNota() {
+  notaEl.textContent = categoriaAtual().nota || '';
+}
+
+function renderizarGaleria() {
+  var cat = categoriaAtual();
+  var itens = itensPorCategoria(categoriaAtiva);
+  var html = '';
+  if (itens.length === 0) {
+    html = '<p class="rkd-vazio">' + cat.vazio + '</p>';
+  } else {
+    html = '<div class="rkd-grade">';
+    itens.forEach(function(item, idx) { html += montarCardHTML(categoriaAtiva, item, idx); });
+    html += '</div>';
+  }
+  raizGalerias.innerHTML = html;
 }
 
 function renderizarTudo() {
-  var html = '';
-  SECOES.forEach(function(secao) { html += renderizarSecao(secao); });
-  raizGalerias.innerHTML = html;
+  renderizarAbas();
+  renderizarNota();
+  renderizarGaleria();
 }
 
 /* ---------- Lightbox: estado e navegação ---------- */
@@ -324,30 +329,30 @@ function renderizarMarcadores(item) {
 }
 
 function carregarItem() {
-  var item = SUBSECOES[galAtual].itens[indiceAtual];
+  var itens = itensPorCategoria(galAtual);
+  var item = itens[indiceAtual];
   esconderPessoaPainel();
   img.src = item.full || item.thumb;
   img.alt = item.titulo || '';
   tituloEl.textContent = item.titulo || '';
   legendaEl.textContent = item.legenda || '';
   renderizarMarcadores(item);
-  var itens = SUBSECOES[galAtual].itens;
   btnPrev.disabled = itens.length <= 1;
   btnNext.disabled = itens.length <= 1;
   resetZoom();
 }
 
 function navegar(delta) {
-  var itens = SUBSECOES[galAtual].itens;
+  var itens = itensPorCategoria(galAtual);
   if (itens.length <= 1) return;
   indiceAtual = (indiceAtual + delta + itens.length) % itens.length;
   carregarItem();
 }
 
-function abrirLightbox(subKey, idx) {
-  var itens = SUBSECOES[subKey] && SUBSECOES[subKey].itens;
-  if (!itens || !itens.length) return;
-  galAtual = subKey;
+function abrirLightbox(categoria, idx) {
+  var itens = itensPorCategoria(categoria);
+  if (!itens.length) return;
+  galAtual = categoria;
   indiceAtual = idx;
   elementoAnterior = document.activeElement;
   carregarItem();
@@ -367,10 +372,19 @@ function fecharLightbox() {
   if (elementoAnterior && typeof elementoAnterior.focus === 'function') elementoAnterior.focus();
 }
 
+raizAbas.addEventListener('click', function(ev) {
+  var btn = ev.target.closest('.rkd-aba');
+  if (!btn) return;
+  var categoria = btn.getAttribute('data-categoria');
+  if (categoria === categoriaAtiva) return;
+  categoriaAtiva = categoria;
+  renderizarTudo();
+});
+
 raizGalerias.addEventListener('click', function(ev) {
   var btn = ev.target.closest('.rkd-card');
   if (!btn) return;
-  abrirLightbox(btn.getAttribute('data-sub'), parseInt(btn.getAttribute('data-idx'), 10));
+  abrirLightbox(btn.getAttribute('data-cat'), parseInt(btn.getAttribute('data-idx'), 10));
 });
 
 btnFechar.addEventListener('click', fecharLightbox);
@@ -381,7 +395,7 @@ btnNext.addEventListener('click', function() { navegar(1); });
 marcadoresLayer.addEventListener('click', function(ev) {
   var btn = ev.target.closest('.rkd-lb-marcador');
   if (!btn) return;
-  var item = SUBSECOES[galAtual].itens[indiceAtual];
+  var item = itensPorCategoria(galAtual)[indiceAtual];
   var pessoa = (item.pessoas || [])[parseInt(btn.getAttribute('data-idx'), 10)];
   if (pessoa) mostrarPessoaPainel(pessoa);
 });
