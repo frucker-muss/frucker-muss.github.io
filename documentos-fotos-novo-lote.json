@@ -1,0 +1,196 @@
+{
+  "_notaTecnica": "Arquivo nomeado - lote de 7 fotos da pasta 'Photos' do Google Drive (parentId 1f8D8O-AcFErRaDWI7LJHtW-XQw_WkNg_), preparado em 04/08/2026 para popular familia/documentos.html. Estrutura provisória: adaptar aos nomes de campo reais do 'itens' array já existente no site (Claude Code deve ler documentos.html primeiro e mapear os campos). Pessoas com id iniciado em 'G' referenciam o SITE_SNAPSHOT.md v6.0; pessoas sem id são NOVAS, ainda não catalogadas em nenhuma versão do acervo (v5.1 docx nem v6.0 site) e precisam de confirmação do Nando antes de entrar no arvore.html.",
+
+  "itens": [
+    {
+      "idInterno": "foto-1945-aniversario-80anos",
+      "driveFileId": "1F2Cz1g2joKmLCuZO_JAdGbX3AKmX8PPt",
+      "driveTitle": "August e família 1945",
+      "arquivoDestinoSugerido": "assets/img/documentos/1945-aniversario-80anos-vo-augusto.jpg",
+      "categoria": "Álbum de Família",
+      "subcategoria": "Fotos de Grupo e Eventos",
+      "data": "1945-03-11",
+      "local": null,
+      "status": "confirmado",
+      "legendaEmbutidaNaImagem": true,
+      "correspondeAcervo": "FOT-03 / FOT-04 (Retrato dos 80 anos do Vô Augusto)",
+      "descricao": "Foto tirada em 11.03.1945, no dia dos 80 anos de August Ambros Rücker. Foi a última reunião com os 13 filhos vivos. Edição com legendas por Paulo R. Rücker.",
+      "observacoes": "Nomes já aparecem impressos na própria imagem (edição do Paulo Renato) — não há versão 'limpa' disponível no momento. Sistema de marcadores mantido para consistência de dados e busca, mesmo com legenda embutida.",
+      "pessoas": [
+        {"nome": "August Ambros Rücker", "apelido": "Vô Augusto", "id": "G3-AA", "confirmado": true},
+        {"nome": "Philippine Saft Rücker", "apelido": "Vó Pina", "id": "G3-PS", "confirmado": true},
+        {"nome": "Augusto Guilherme Rücker", "id": "G4-14", "confirmado": true},
+        {"nome": "Siegmundo Rücker", "id": "G4-15", "confirmado": true},
+        {"nome": "Cecy Dexheimer Rücker", "apelido": "Cecy", "id": "G4-CD", "confirmado": true, "obs": "esposa de Siegmundo (correção genealógica de 2026, ver recent_updates)"},
+        {"nome": "Albano Rücker (RS)", "id": "G4-16", "confirmado": true},
+        {"nome": "Rudolfo Rücker", "id": "G4-09", "confirmado": true},
+        {"nome": "José Rücker", "id": "G4-12", "confirmado": true},
+        {"nome": "Adalberto Rücker", "id": "G4-13", "confirmado": true},
+        {"nome": "Maria Emma Rücker", "id": "G4-02", "confirmado": true},
+        {"nome": "Godofredo (Gottfried Anton) Rücker", "id": "G4-03", "confirmado": true},
+        {"nome": "Bertholdo Rücker", "id": "G4-04", "confirmado": true},
+        {"nome": "Aloísio Rücker", "id": "G4-05", "confirmado": true},
+        {"nome": "Ewaldo Rücker", "id": "G4-06", "confirmado": true},
+        {"nome": "Hedwig Rücker", "id": "G4-07", "confirmado": true, "obs": "aparece como 'Hedwig Kayser' na legenda — Edmundo Kayser é o genro/marido"},
+        {"nome": "Luísa Victória Rücker", "apelido": "Liesel / Lisel", "id": "G4-08", "confirmado": true},
+        {"nome": "Paulo Renato Rücker", "id": "G5-PR", "confirmado": true, "obs": "13 meses de idade, filho de Siegmundo e Cecy"},
+        {"nome": "Berlindes Astrid Küchemann", "id": "G5-BK", "confirmado": false, "obs": "PDF sugere que 'Astrid Marta' pode ser o mesmo nome composto de Berlindes, separado erroneamente na legenda, ou uma prima homônima — precisa confirmação"},
+        {"nome": "Edmundo Kayser", "id": null, "confirmado": false, "obs": "genro, linhagem Kayser, casado com uma das filhas (provavelmente Hedwig)"},
+        {"nome": "Augusto Jaeger", "id": null, "confirmado": false, "obs": "linhagem Jaeger, provável genro"},
+        {"nome": "Adolfo Jaeger", "id": null, "confirmado": false, "obs": "linhagem Jaeger, provável genro"},
+        {"nome": "Elli", "id": null, "confirmado": false, "obs": "identidade civil pendente"},
+        {"nome": "Anisia", "id": null, "confirmado": false, "obs": "identidade civil pendente"},
+        {"nome": "Erika", "id": null, "confirmado": false, "obs": "neta, Geração V, filiação exata pendente"},
+        {"nome": "Hildegart", "id": null, "confirmado": false, "obs": "neta, Geração V, filiação exata pendente"},
+        {"nome": "Theodoro", "id": null, "confirmado": false, "obs": "neto, Geração V, filiação exata pendente"},
+        {"nome": "Curt", "id": null, "confirmado": false, "obs": "neto, Geração V, filiação exata pendente"},
+        {"nome": "Gertrudes", "id": null, "confirmado": false, "obs": "neta, Geração V, filiação exata pendente"},
+        {"nome": "Otto", "id": null, "confirmado": false, "obs": "neto, Geração V, filiação exata pendente"}
+      ]
+    },
+
+    {
+      "idInterno": "foto-1945-ferias-verao-sao-pedro",
+      "driveFileId": "1Vh1DLrlca8xQs03w79s8aipG8F0AemVz",
+      "driveTitle": "Vó August férias de verão",
+      "arquivoDestinoSugerido": "assets/img/documentos/1945-ferias-verao-sao-pedro.jpg",
+      "categoria": "Álbum de Família",
+      "subcategoria": "Fotos de Grupo e Eventos",
+      "data": "1945-01-10",
+      "local": "São Pedro",
+      "status": "naoverificado",
+      "legendaEmbutidaNaImagem": true,
+      "correspondeAcervo": null,
+      "descricao": "Foto tirada em 10.01.1945, em São Pedro, nas 'férias de verão', segundo informação da tia Dora. Não corresponde a nenhuma foto catalogada no PDF de análise nem no docx v5.1 — é uma foto NOVA para o acervo.",
+      "observacoes": "Contém 6 nomes que não constam em nenhuma versão do acervo (Holde, Waldemar, Sigfried, Orsula, Marta, Maria Helena, Erica, Romeo Weissheimer) — candidatos a novos indivíduos para a v5.2 do docx. Confirmar com Nando antes de adicionar ao arvore.html.",
+      "pessoas": [
+        {"nome": "Ewaldo Rücker", "id": "G4-06", "confirmado": true},
+        {"nome": "José Rücker", "id": "G4-12", "confirmado": true},
+        {"nome": "Philippine Saft Rücker", "apelido": "Vó Pina", "id": "G3-PS", "confirmado": true},
+        {"nome": "August Ambros Rücker", "apelido": "Vô Augusto", "id": "G3-AA", "confirmado": true},
+        {"nome": "Siegmundo Rücker", "id": "G4-15", "confirmado": true},
+        {"nome": "Augusto Guilherme Rücker", "id": "G4-14", "confirmado": true},
+        {"nome": "Rudolfo Rücker", "id": "G4-09", "confirmado": true},
+        {"nome": "Paulo Renato Rücker", "id": "G5-PR", "confirmado": false, "obs": "legenda mostra 'PAULO' e 'RENATO' em linhas separadas — pode ser Paulo Renato (11 meses nesta data) ou dois nomes distintos, precisa confirmação"},
+        {"nome": "Holde", "id": null, "confirmado": false, "obs": "NOVO — não catalogado em nenhuma versão do acervo"},
+        {"nome": "Waldemar", "id": null, "confirmado": false, "obs": "NOVO — não catalogado em nenhuma versão do acervo"},
+        {"nome": "Sigfried", "id": null, "confirmado": false, "obs": "NOVO — não catalogado em nenhuma versão do acervo"},
+        {"nome": "Orsula", "id": null, "confirmado": false, "obs": "NOVO — não catalogado em nenhuma versão do acervo"},
+        {"nome": "Marta", "id": null, "confirmado": false, "obs": "NOVO — não catalogado em nenhuma versão do acervo"},
+        {"nome": "Romeo Weissheimer", "id": null, "confirmado": false, "obs": "NOVO — provável genro, linhagem Weissheimer, não catalogado"},
+        {"nome": "Maria Helena", "id": null, "confirmado": false, "obs": "NOVO — não catalogado em nenhuma versão do acervo"},
+        {"nome": "Erica", "id": null, "confirmado": false, "obs": "NOVO — cuidado: não confundir com 'Erika' da foto de 1945 (FOT-03/04), pode ser a mesma pessoa com grafia diferente ou pessoa distinta"}
+      ]
+    },
+
+    {
+      "idInterno": "foto-1957-marata-rs-sao-miguel",
+      "driveFileId": "19-_Lm1_IaRcFLrWQH0rxSee43RICggFd",
+      "driveTitle": "Maratá RS 1957",
+      "arquivoDestinoSugerido": "assets/img/documentos/1957-marata-rs-sao-miguel.jpg",
+      "categoria": "Álbum de Família",
+      "subcategoria": "Fotos de Grupo e Eventos",
+      "data": "1957-09-29",
+      "local": "Maratá, RS",
+      "status": "naoverificado",
+      "legendaEmbutidaNaImagem": true,
+      "correspondeAcervo": null,
+      "descricao": "Foto tirada em 29.09.1957, dia de São Miguel ('Michels-kerb'), padroeiro de Maratá. Foto NOVA, não catalogada no PDF de análise nem no docx v5.1.",
+      "observacoes": "ATENÇÃO: existem DOIS Maratás no acervo — Maratá (RS), onde Godofredo Rücker exerceu odontologia, e Maratá (SC), onde Ambros August e Amália Rücker foram líderes comunitários (ramo catarinense, FOT-02). Esta foto é do Maratá RS. Contém 8 nomes não catalogados (Ruben, Toninho, Maris, Hedi, Inha, Margarida, Paulo António, Bernardete, Pedro António). O nome 'Pina' aparece nesta foto de 1957, mas Philippine Saft Rücker (Vó Pina) já havia falecido em 1946 — provavelmente uma neta ou bisneta batizada em homenagem, precisa confirmação de Nando.",
+      "pessoas": [
+        {"nome": "Dora", "id": null, "confirmado": false, "obs": "provável a mesma 'tia Dora' citada como fonte da legenda da foto de férias de 1945"},
+        {"nome": "Augusto Guilherme Rücker", "id": "G4-14", "confirmado": true},
+        {"nome": "Siegmundo Rücker", "id": "G4-15", "confirmado": true},
+        {"nome": "Anisia", "id": null, "confirmado": false, "obs": "mesmo nome já visto na foto de 1945 (FOT-03/04) — possivelmente a mesma pessoa, precisa confirmação"},
+        {"nome": "Ruben", "id": null, "confirmado": false, "obs": "NOVO"},
+        {"nome": "Toninho", "id": null, "confirmado": false, "obs": "NOVO"},
+        {"nome": "Maris", "id": null, "confirmado": false, "obs": "NOVO — possivelmente apelido de 'Maria'"},
+        {"nome": "Hedi", "id": null, "confirmado": false, "obs": "NOVO — possivelmente apelido de 'Hedwig'"},
+        {"nome": "Inha", "id": null, "confirmado": false, "obs": "NOVO — apelido"},
+        {"nome": "Margarida", "id": null, "confirmado": false, "obs": "NOVO"},
+        {"nome": "Paulo António", "id": null, "confirmado": false, "obs": "NOVO"},
+        {"nome": "Pina", "id": null, "confirmado": false, "obs": "ATENÇÃO: NÃO é Philippine Saft Rücker (falecida em 1946) — provável neta/bisneta homônima, confirmar com Nando"},
+        {"nome": "Bernardete", "id": null, "confirmado": false, "obs": "NOVO"},
+        {"nome": "Pedro António", "id": null, "confirmado": false, "obs": "NOVO"}
+      ]
+    },
+
+    {
+      "idInterno": "foto-natal-august-pina",
+      "driveFileId": "1z_RdFPQl23wYoml-D0F7OP9sN3UmW9QU",
+      "driveTitle": "Vos August e Pina - Natal",
+      "arquivoDestinoSugerido": "assets/img/documentos/natal-vos-august-pina.jpg",
+      "categoria": "Álbum de Família",
+      "subcategoria": "Retratos Identificados",
+      "data": null,
+      "local": null,
+      "status": "naoverificado",
+      "legendaEmbutidaNaImagem": false,
+      "correspondeAcervo": null,
+      "descricao": "Foto de Natal de August Ambros e Philippine (Vó Pina) Rücker. Sem legenda embutida — imagem 'limpa', ideal para o padrão de marcadores do site.",
+      "observacoes": "Sem OCR de nomes detectado pelo Drive — provavelmente só o casal aparece. Confirmar com Nando se há mais pessoas na foto.",
+      "pessoas": [
+        {"nome": "August Ambros Rücker", "apelido": "Vô Augusto", "id": "G3-AA", "confirmado": false, "obs": "presença a confirmar visualmente"},
+        {"nome": "Philippine Saft Rücker", "apelido": "Vó Pina", "id": "G3-PS", "confirmado": false, "obs": "presença a confirmar visualmente"}
+      ]
+    },
+
+    {
+      "idInterno": "foto-vicente-e-familia",
+      "driveFileId": "1fTk9vGEJQBcUaDhK_Fz2xCJ2Yqi_N-x7",
+      "driveTitle": "Vicente e fam",
+      "arquivoDestinoSugerido": "assets/img/documentos/vicente-e-familia.jpg",
+      "categoria": "Álbum de Família",
+      "subcategoria": "Retratos Identificados",
+      "data": null,
+      "local": null,
+      "status": "naoverificado",
+      "legendaEmbutidaNaImagem": false,
+      "correspondeAcervo": null,
+      "descricao": "Possível foto de Paulo Vicente Rücker [G4-01] e família — PDF indica que sua morte ficou entre c.1925 e 11/03/1945 (ausente das fotos FOT-03/04), causa não estabelecida. Se confirmado, esta seria uma das poucas ou única foto conhecida dele.",
+      "observacoes": "ALTO VALOR GENEALÓGICO SE CONFIRMADO — Paulo Vicente Rücker [G4-01] tem poucos registros no acervo. Precisa confirmação visual/de Nando antes de qualquer publicação com essa identificação.",
+      "pessoas": [
+        {"nome": "Paulo Vicente Rücker", "id": "G4-01", "confirmado": false, "obs": "identificação por título do arquivo, não confirmada — verificar com Nando"}
+      ]
+    },
+
+    {
+      "idInterno": "foto-familias-evaldo-adalberto-1950",
+      "driveFileId": "1z2r1BpqR7-aDCN4iJo8XYPuZY4bhBmQx",
+      "driveTitle": "Famílias Evaldo e Adalberto 1950",
+      "arquivoDestinoSugerido": "assets/img/documentos/1950-familias-evaldo-adalberto.jpg",
+      "categoria": "Álbum de Família",
+      "subcategoria": "Fotos de Grupo e Eventos",
+      "data": "1950",
+      "local": null,
+      "status": "naoverificado",
+      "legendaEmbutidaNaImagem": false,
+      "correspondeAcervo": null,
+      "descricao": "Fotografia das famílias de Ewaldo Rücker [G4-06] e Adalberto Rücker [G4-13], 1950.",
+      "observacoes": "Sem legenda embutida. Precisa de identificação individual dos membros (cônjuges e filhos de Ewaldo e Adalberto) com Nando.",
+      "pessoas": [
+        {"nome": "Ewaldo Rücker", "id": "G4-06", "confirmado": false, "obs": "presença a confirmar visualmente"},
+        {"nome": "Adalberto Rücker", "id": "G4-13", "confirmado": false, "obs": "presença a confirmar visualmente"}
+      ]
+    },
+
+    {
+      "idInterno": "foto-enterro-vo-pina",
+      "driveFileId": "1OMkb4GOHb1L5LLkLrCLANv-_DLs62keb",
+      "driveTitle": "Enterro vó pina",
+      "arquivoDestinoSugerido": "assets/img/documentos/enterro-vo-pina.jpg",
+      "categoria": "Álbum de Família",
+      "subcategoria": "Fotos de Grupo e Eventos",
+      "data": "1946",
+      "local": null,
+      "status": "naoverificado",
+      "legendaEmbutidaNaImagem": false,
+      "correspondeAcervo": null,
+      "descricao": "Fotografia do funeral de Philippine Saft Rücker (Vó Pina) [G3-PS], falecida em 1946.",
+      "observacoes": "Conteúdo sensível (funeral) — considerar com cuidado ao publicar. Sem legenda embutida; identificação dos presentes pendente.",
+      "pessoas": [
+        {"nome": "Philippine Saft Rücker", "apelido": "Vó Pina", "id": "G3-PS", "confirmado": true, "obs": "homenageada, não presente na foto por definição"}
+      ]
+    }
+  ]
+}
