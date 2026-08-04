@@ -56,6 +56,8 @@
 <h1>Marcador de Fotos — Acervo Rücker</h1>
 <p class="sub">Suba a foto, clique e arraste um retângulo em volta de cada pessoa (do jeito que você recorta uma área numa foto). Digite o nome na lista ao lado. Clique rápido sem arrastar também funciona (cria uma caixa padrão pra ajustar depois). No final, clique em "Gerar código" e cole no array ITENS do documentos.html. Nada sai do seu navegador.</p>
 
+<p class="sub" style="margin-top:-.5rem;">Se você não é da parte técnica do site, não se preocupe com os campos abaixo — pode deixar como estão. O importante é marcar as pessoas e escrever os nomes.</p>
+
 <div class="layout">
   <div>
     <label class="drop" id="drop" for="fileInput">Toque aqui ou arraste a foto pra começar</label>
@@ -107,6 +109,18 @@
     <button class="acao secundaria" id="btnCopiar" style="width:100%;margin-top:.5rem;display:none;">Copiar código</button>
 
     <textarea id="saida" style="display:none;" readonly></textarea>
+
+    <div id="passoFinal" style="display:none;margin-top:1rem;padding:.8rem;background:#0f0f0f;border:1px solid var(--ouro);border-radius:8px;">
+      <p style="font-size:.8rem;color:var(--soft);margin:0 0 .6rem;line-height:1.5;">
+        <strong style="color:var(--ouro);">Falta só enviar:</strong><br>
+        1. Cole o código copiado no campo de texto do formulário.<br>
+        2. Anexe a foto original (sem tratamento nenhum) no campo de foto do formulário.<br>
+        3. Envie — o Nando recebe e cuida do resto.
+      </p>
+      <a href="https://forms.gle/MAY913vupvStXXgP7" target="_blank" rel="noopener" style="text-decoration:none;">
+        <button class="acao" style="width:100%;">Abrir formulário de colaboração →</button>
+      </a>
+    </div>
   </div>
 </div>
 
@@ -305,6 +319,7 @@
     saida.value = codigo;
     saida.style.display = 'block';
     btnCopiar.style.display = 'inline-block';
+    document.getElementById('passoFinal').style.display = 'block';
   }
 
   btnGerar.addEventListener('click', gerarCodigo);
