@@ -89,9 +89,11 @@ title: "Acervo Visual"
 .rkd-lb-marcador:hover,.rkd-lb-marcador:focus-visible{opacity:.95;transform:translate(-50%,-50%) scale(1.3);}
 .rkd-lb-marcador:focus-visible{outline:2px solid var(--claro);outline-offset:2px;}
 
-.rkd-lb-pessoa-painel{flex:0 0 auto;background:#161616;border-top:1px solid var(--borda);
-  padding:0.9rem 1.1rem;color:var(--soft);font-size:0.9rem;}
-.rkd-lb-pessoa-painel[hidden]{display:none;}
+.rkd-lb-pessoa-painel{flex:0 0 auto;max-height:0;opacity:0;overflow:hidden;
+  background:#211e1a;border-top:1px solid #2a2a2a;border-left:3px solid #d4af6a;
+  padding:0 1.1rem;color:var(--soft);font-size:0.9rem;
+  transition:max-height .2s ease,opacity .2s ease,padding .2s ease;}
+.rkd-lb-pessoa-painel.visivel{max-height:220px;opacity:1;padding:0.9rem 1.1rem;}
 .rkd-lb-pessoa-painel h4{font-family:Georgia,serif;font-size:1.05rem;color:var(--claro);margin:0 0 .2rem;}
 
 .rkd-lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(18,18,18,.65);
@@ -140,7 +142,7 @@ title: "Acervo Visual"
     <button class="rkd-lb-nav rkd-lb-prev" id="rkdLbPrev" type="button" aria-label="Item anterior">‹</button>
     <button class="rkd-lb-nav rkd-lb-next" id="rkdLbNext" type="button" aria-label="Próximo item">›</button>
   </div>
-  <div class="rkd-lb-pessoa-painel" id="rkdLbPessoaPainel" hidden></div>
+  <div class="rkd-lb-pessoa-painel" id="rkdLbPessoaPainel"></div>
   <p class="rkd-lb-legenda" id="rkdLbLegenda"></p>
 </div>
 
@@ -310,14 +312,14 @@ function aplicarZoomEm(clientX, clientY, novaEscala) {
 }
 
 function esconderPessoaPainel() {
-  pessoaPainel.hidden = true;
+  pessoaPainel.classList.remove('visivel');
   pessoaPainel.innerHTML = '';
 }
 
 function mostrarPessoaPainel(pessoa) {
   // TODO: quando genId apontar para uma página de perfil publicada, trocar o nome por um link.
   pessoaPainel.innerHTML = '<h4>' + (pessoa.nome || '') + '</h4>';
-  pessoaPainel.hidden = false;
+  pessoaPainel.classList.add('visivel');
 }
 
 function renderizarMarcadores(item) {
