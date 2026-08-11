@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#121212">
   <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+
+  <!-- Open Graph / Twitter Card -->
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}Família Rücker{% endif %}">
+  <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}Genealogia e registros históricos da família Rücker.{% endif %}">
+  <meta property="og:image" content="https://rucker.life/assets/img/og-familia-rucker.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://rucker.life{{ page.url }}">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}Família Rücker{% endif %}">
+  <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}Genealogia e registros históricos da família Rücker.{% endif %}">
+  <meta name="twitter:image" content="https://rucker.life/assets/img/og-familia-rucker.jpg">
   <style>
   :root {
     --bg: #121212;
