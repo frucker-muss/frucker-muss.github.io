@@ -102,28 +102,8 @@ title: "Árvore Genealógica (v6.0)"
 .rkr-src{font-family:var(--mono);font-size:0.64rem;color:var(--mudo);margin-top:0.35rem;display:block;line-height:1.55;}
 .rkr.filtrado .rkr-fato[data-status="inf"],.rkr.filtrado .rkr-fato[data-status="hip"]{opacity:.2;}
 
-.rkr-secao{margin-top:3.4rem; width: 100%;}
-.rkr-secao h2{font-family:Georgia,serif;font-size:1.6rem;color:var(--claro);margin:0 0 0.4rem;text-align:center;}
-.rkr-secao-nota{font-size:0.95rem;color:var(--mudo);max-width:600px;margin:0 auto 1.8rem;text-align:center;}
-
-.rkr-desamb{border-top:1px solid var(--terra);}
-.rkr-item{border-bottom:1px solid var(--borda);padding:1.4rem 0;display:grid;grid-template-columns:86px 1fr;gap:1.1rem;}
-.rkr-tag{font-family:var(--mono);font-size:0.62rem;letter-spacing:.08em;color:var(--terra);
-  border:1px solid var(--terra);border-radius:4px;padding:4px 6px;height:fit-content;text-align:center;}
-.rkr-item h4{font-family:Georgia,serif;font-size:1.2rem;color:var(--claro);line-height:1.3;margin:0;}
-.rkr-versus{display:grid;gap:0.6rem;margin:0.9rem 0;}
-.rkr-lado{border-left:2px solid var(--borda);padding-left:0.85rem;font-size:0.95rem;color:var(--soft);}
-.rkr-lado b{font-family:var(--mono);font-size:0.62rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--mudo);display:block;font-weight:normal;margin-bottom:0.2rem;}
-.rkr-regra{font-size:0.95rem;color:#e8e4da;border-left:2px solid var(--ouro);padding-left:0.85rem;margin-bottom:0.7rem;}
-.rkr-regra b{font-family:var(--mono);font-size:0.62rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--ouro);display:block;font-weight:normal;margin-bottom:0.2rem;}
-.rkr-arbitro{font-family:var(--mono);font-size:0.7rem;color:var(--mudo);border-left:2px solid var(--sage);padding-left:0.85rem;line-height:1.7;}
-
 @media (max-width:480px){
   .rkr-cartao{width:100%;}
-  .rkr-item{grid-template-columns:1fr;gap:0.6rem;}
-  .rkr-tag{width:fit-content;}
   .rkr-detalhe{padding:1.1rem 1rem;}
   .rkr-detalhe h2{font-size:1.3rem;}
 }
@@ -147,59 +127,15 @@ title: "Árvore Genealógica (v6.0)"
 
   <div class="rkr-arvore" id="rkrArvore"></div>
 
-  <section class="rkr-secao">
-    <h2>Notas de Desambiguação & Arbitragem</h2>
-    <p class="rkr-secao-nota">Regras aplicadas para sanar divergências e homofonias nos registros (v6.0).</p>
-    <div class="rkr-desamb" id="rkrDesamb"></div>
-  </section>
+  <p style="text-align: center; font-size: 0.85rem; color: var(--mudo); margin-top: 3rem; width: 100%;">
+    <a href="{{ '/familia/metodologia.html' | relative_url }}">Notas de desambiguação e metodologia de pesquisa →</a>
+  </p>
 
 </div>
 
 <script>
 (function(){
   var DADOS = {
-    desambiguacoes: {
-      desamb01: {
-        tag: "DESAMB 01",
-        titulo: "Anton, Ambros August e August Ambros: Três indivíduos distintos",
-        lados: [
-          ["Erro Frequente", "Considerar Anton como variação de Augusto."],
-          ["Fato Consolidado", "São três irmãos. Anton (46), Ambros August (28) e August Ambros (28 declarados) embarcaram em 1898."]
-        ],
-        regra: "A REGRA R1 ESTABELECE QUE NÃO SE DEVE FUNDIR OS IRMÃOS. Nomes do meio devem ser respeitados.",
-        arbitro: "Lista de Hamburgo (1898) / Base v6.0"
-      },
-      desamb05: {
-        tag: "DESAMB 05",
-        titulo: "A prole de August Ambros e a posição de Walter",
-        lados: [
-          ["Ramo Direto", "August Ambros tem 15 filhos contados fotograficamente em 1925."],
-          ["Walter", "Foi alocado equivocadamente na linha direta em árvores antigas."]
-        ],
-        regra: "Walter pertence ao ramo de SC (filho de Ambros August). Quatorze filhos nomeados + Adolf fecham os quinze de August Ambros, confirmando a tradição oral.",
-        arbitro: "Validação fotográfica de 1925 / Base v6.0"
-      },
-      desamb11: {
-        tag: "DESAMB 11",
-        titulo: "Homonímia de prenomes entre as descendências dos dois irmãos",
-        lados: [
-          ["Risco", "Um mesmo prenome aparece nas duas linhagens (August Ambros e Ambros August), levando a atribuições cruzadas incorretas em registros antigos."],
-          ["Regra Geral", "Qualquer prenome presente na descendência de um irmão deve ser tratado como possível também na descendência do outro, até prova em contrário."]
-        ],
-        regra: "NUNCA ATRIBUIR UM DESCENDENTE A UM RAMO APENAS PELO PRENOME. Exigir data, cônjuge ou fonte fotográfica/epigráfica que amarre a pessoa ao ramo correto.",
-        arbitro: "Regra geral de método arquivístico / Base v6.0"
-      },
-      desamb12: {
-        tag: "DESAMB 12",
-        titulo: "Quase-homofonia no Ramo SC (Geração V/VI)",
-        lados: [
-          ["Cunhadas", "Ivone Rücker (casada com Leonardo) vs Irene Rücker (casada com Sérgio Adriano)."],
-          ["Primos", "Edelmar Rücker (filho de Leonardo) vs Idelmar Rücker (filho de Sérgio Adriano)."]
-        ],
-        regra: "Não atribuir registros unicamente pela grafia. Discriminação por paternidade ou matrimônio é mandatória.",
-        arbitro: "Regra L13 de método arquivístico / Base v6.0"
-      }
-    },
     pessoas: [
       {
         id: "georg", ger: "Geração I", linha: "direta", iniciais: "GR",
@@ -314,8 +250,7 @@ title: "Árvore Genealógica (v6.0)"
               { r: "G4-WR", v: "Walter (Valter) Rücker", s: "doc", src: "Base v6.0" },
               { r: "G4-HR", v: "Herberto Rücker ('Opa' Herbert) (18/01/1906 - 06/08/1999). Cônjuge: Olydia Regina Orth (1913-1979)", s: "epi", src: "Confirmado com luz rasante (Base v6.0)" },
               { r: "G4-SG", v: "Siegmund Rücker", s: "doc", src: "Base v6.0" },
-              { r: "G4-MX", v: "Max (Maximiliano) Rücker", s: "doc", src: "Base v6.0" },
-              { r: "G4-AL", v: "Albano Rücker (SC)", s: "doc", src: "Base v6.0" }
+              { r: "G4-MX", v: "Max (Maximiliano) Rücker", s: "doc", src: "Base v6.0" }
             ]
           }
         ]
@@ -383,7 +318,6 @@ title: "Árvore Genealógica (v6.0)"
   };
 
   var raiz = document.getElementById('rkrArvore');
-  var desamb = document.getElementById('rkrDesamb');
   var btnFiltro = document.getElementById('rkrFiltro');
   var raizGlobal = document.getElementById('rkrRaiz');
   var abertoId = null;
@@ -477,28 +411,6 @@ title: "Árvore Genealógica (v6.0)"
     });
   }
 
-  function renderizarDesambiguacao() {
-    var html = '';
-    for (var key in DADOS.desambiguacoes) {
-      if (DADOS.desambiguacoes.hasOwnProperty(key)) {
-        var d = DADOS.desambiguacoes[key];
-        var ladosHtml = '';
-        d.lados.forEach(function(l) { ladosHtml += '<div class="rkr-lado"><b>' + l[0] + '</b>' + l[1] + '</div>'; });
-
-        html += '<div class="rkr-item">' +
-                  '<div class="rkr-tag">' + d.tag + '</div>' +
-                  '<div>' +
-                    '<h4>' + d.titulo + '</h4>' +
-                    '<div class="rkr-versus">' + ladosHtml + '</div>' +
-                    '<div class="rkr-regra"><b>Regra Adotada</b>' + d.regra + '</div>' +
-                    '<div class="rkr-arbitro">' + d.arbitro + '</div>' +
-                  '</div>' +
-                '</div>';
-      }
-    }
-    desamb.innerHTML = html;
-  }
-
   function iniciarEventos() {
     raiz.addEventListener('click', function(ev){
       var btn = ev.target.closest('.rkr-cartao');
@@ -527,7 +439,6 @@ title: "Árvore Genealógica (v6.0)"
   }
 
   renderizarArvore();
-  renderizarDesambiguacao();
   iniciarEventos();
 })();
 </script>
