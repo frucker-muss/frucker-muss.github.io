@@ -35,8 +35,19 @@ title: "Mapa das Migrações"
 
 .rkm-palco{display:grid;grid-template-columns:1.5fr 1fr;gap:0;border:1px solid var(--borda);
   border-radius:10px;overflow:hidden;background:var(--superficie);}
-.rkm-esq{padding:1rem;border-right:1px solid var(--borda);}
-.rkm-svg{width:100%;height:auto;display:block;}
+.rkm-esq{padding:1rem;border-right:1px solid var(--borda);position:relative;}
+.rkm-svg{width:100%;height:auto;display:block;touch-action:pan-y;cursor:grab;}
+.rkm-svg.arrastando{cursor:grabbing;}
+.rkm-zoom-ctrl{position:absolute;right:1.5rem;bottom:1.5rem;display:flex;flex-direction:column;
+  gap:0.4rem;z-index:2;}
+.rkm-zoom-btn{width:34px;height:34px;border-radius:8px;background:rgba(18,18,18,.85);
+  border:1px solid var(--borda);color:var(--soft);font-family:var(--mono);font-size:1rem;
+  line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:border-color .2s ease,color .2s ease;}
+.rkm-zoom-btn:hover,.rkm-zoom-btn:focus-visible{border-color:var(--ouro);color:var(--ouro);}
+.rkm-zoom-btn:focus-visible{outline:2px solid var(--ouro);outline-offset:2px;}
+.rkm-zoom-dica{position:absolute;left:1.5rem;bottom:1.5rem;font-family:var(--mono);font-size:0.62rem;
+  color:var(--mudo);z-index:2;pointer-events:none;}
 .rkm-svg .rot{stroke-width:5;fill:none;}
 .rkm-svg .rot-hit{stroke-width:26;fill:none;stroke:transparent;cursor:pointer;}
 .rkm-svg .no{cursor:pointer;stroke:#121212;stroke-width:2;}
@@ -118,6 +129,12 @@ title: "Mapa das Migrações"
   <div class="rkm-palco">
     <div class="rkm-esq">
       <svg class="rkm-svg" id="rkmSvg" viewBox="0 0 960 830" xmlns="http://www.w3.org/2000/svg"></svg>
+      <p class="rkm-zoom-dica">Pinça, roda do mouse ou os botões para ampliar</p>
+      <div class="rkm-zoom-ctrl">
+        <button class="rkm-zoom-btn" id="rkmZoomIn" type="button" aria-label="Ampliar">+</button>
+        <button class="rkm-zoom-btn" id="rkmZoomOut" type="button" aria-label="Reduzir">−</button>
+        <button class="rkm-zoom-btn" id="rkmZoomReset" type="button" aria-label="Redefinir zoom">⤾</button>
+      </div>
     </div>
     <aside class="rkm-dir" id="rkmCtx">
       <p class="rkm-vazio">Toque em um ponto do diagrama para ver o contexto da etapa.</p>
@@ -242,7 +259,7 @@ function montarSVG(){
     html += '<text class="nolab" x="'+(n.x+dx)+'" y="'+(n.y+5)+'" text-anchor="'+anchor+'">'+n.nome+'</text>';
   });
 
-  svg.innerHTML = html;
+  svg.innerHTML = '<g id="rkmZoomG">' + html + '</g>';
 
   function ativarNo(id){
     svg.querySelectorAll('.no').forEach(function(c){ c.setAttribute('data-on','0'); });
@@ -262,6 +279,144 @@ function montarSVG(){
       ctx.innerHTML = montarCtxRotaHTML(ROTAS[+el.getAttribute('data-idx')]);
     });
   });
+}
+
+function iniciarZoom(){
+  var svg = document.getElementById('rkmSvg');
+  var g = document.getElementById('rkmZoomG');
+  var ESCALA_MIN = 1, ESCALA_MAX = 5;
+  var escala = 1, tx = 0, ty = 0;
+
+  // Ponto do SVG (em unidades do viewBox) sob um dado ponto x,y da tela.
+  var pt = svg.createSVGPoint();
+  function pontoSVG(clientX, clientY){
+    pt.x = clientX; pt.y = clientY;
+    return pt.matrixTransform(svg.getScreenCTM().inverse());
+  }
+
+  function limitar(v, min, max){ return Math.max(min, Math.min(max, v)); }
+
+  function aplicar(){
+    escala = limitar(escala, ESCALA_MIN, ESCALA_MAX);
+    // Não deixa arrastar para fora de uma margem razoável do conteúdo.
+    var margem = 400 * escala;
+    tx = limitar(tx, -960*escala - margem + 960, margem);
+    ty = limitar(ty, -830*escala - margem + 830, margem);
+    g.setAttribute('transform', 'translate('+tx+','+ty+') scale('+escala+')');
+  }
+
+  // Zoom centrado num ponto fixo da tela (o cursor, o centro do pinch, ou o
+  // centro do SVG): acha o ponto do conteúdo (antes da transformação) que
+  // está sob o cursor, muda a escala, e recalcula tx/ty para que esse mesmo
+  // ponto continue exatamente sob o cursor.
+  function zoomEm(clientX, clientY, fatorEscala){
+    var p = pontoSVG(clientX, clientY);
+    var wx = (p.x - tx) / escala;
+    var wy = (p.y - ty) / escala;
+    escala = limitar(escala * fatorEscala, ESCALA_MIN, ESCALA_MAX);
+    tx = p.x - wx * escala;
+    ty = p.y - wy * escala;
+    aplicar();
+  }
+
+  function resetar(){ escala = 1; tx = 0; ty = 0; aplicar(); }
+
+  // --- Roda do mouse / pinch de trackpad (a maioria dos navegadores dispara
+  // pinch de trackpad como 'wheel' com ctrlKey verdadeiro) ---
+  svg.addEventListener('wheel', function(ev){
+    if (!ev.ctrlKey && Math.abs(ev.deltaY) < 3) return;
+    ev.preventDefault();
+    var fator = ev.deltaY < 0 ? 1.15 : 1/1.15;
+    zoomEm(ev.clientX, ev.clientY, fator);
+  }, { passive:false });
+
+  // --- Pinch de dois dedos (touch) ---
+  var pinchDist0 = null, escala0 = 1;
+  var arrastando = false, ultimoX = 0, ultimoY = 0;
+
+  function distancia(t0, t1){
+    var dx = t0.clientX - t1.clientX, dy = t0.clientY - t1.clientY;
+    return Math.sqrt(dx*dx + dy*dy);
+  }
+  function meio(t0, t1){
+    return { x:(t0.clientX+t1.clientX)/2, y:(t0.clientY+t1.clientY)/2 };
+  }
+
+  svg.addEventListener('touchstart', function(ev){
+    if (ev.touches.length === 2){
+      pinchDist0 = distancia(ev.touches[0], ev.touches[1]);
+      escala0 = escala;
+      arrastando = false;
+    } else if (ev.touches.length === 1 && escala > 1){
+      arrastando = true;
+      ultimoX = ev.touches[0].clientX;
+      ultimoY = ev.touches[0].clientY;
+    }
+  }, { passive:true });
+
+  svg.addEventListener('touchmove', function(ev){
+    if (ev.touches.length === 2 && pinchDist0){
+      ev.preventDefault();
+      var d = distancia(ev.touches[0], ev.touches[1]);
+      var m = meio(ev.touches[0], ev.touches[1]);
+      var p = pontoSVG(m.x, m.y);
+      var wx = (p.x - tx) / escala;
+      var wy = (p.y - ty) / escala;
+      escala = limitar(escala0 * (d / pinchDist0), ESCALA_MIN, ESCALA_MAX);
+      tx = p.x - wx * escala;
+      ty = p.y - wy * escala;
+      aplicar();
+    } else if (ev.touches.length === 1 && arrastando){
+      ev.preventDefault();
+      var dxTela = ev.touches[0].clientX - ultimoX;
+      var dyTela = ev.touches[0].clientY - ultimoY;
+      var escalaTela = svg.clientWidth / 960;
+      tx += dxTela / escalaTela;
+      ty += dyTela / escalaTela;
+      ultimoX = ev.touches[0].clientX;
+      ultimoY = ev.touches[0].clientY;
+      aplicar();
+    }
+  }, { passive:false });
+
+  svg.addEventListener('touchend', function(ev){
+    if (ev.touches.length < 2) pinchDist0 = null;
+    if (ev.touches.length === 0) arrastando = false;
+  });
+
+  // --- Arrastar com o mouse (desktop), só conta como arraste acima de um limiar,
+  // para não atrapalhar o clique normal nos pontos/rotas ---
+  var mouseBaixo = false, moveu = false, msX = 0, msY = 0;
+  svg.addEventListener('mousedown', function(ev){
+    mouseBaixo = true; moveu = false; msX = ev.clientX; msY = ev.clientY;
+  });
+  window.addEventListener('mousemove', function(ev){
+    if (!mouseBaixo) return;
+    var dx = ev.clientX - msX, dy = ev.clientY - msY;
+    if (!moveu && (Math.abs(dx) > 4 || Math.abs(dy) > 4)) { moveu = true; svg.classList.add('arrastando'); }
+    if (moveu){
+      var escalaTela = svg.clientWidth / 960;
+      tx += dx / escalaTela;
+      ty += dy / escalaTela;
+      msX = ev.clientX; msY = ev.clientY;
+      aplicar();
+    }
+  });
+  window.addEventListener('mouseup', function(){
+    mouseBaixo = false; svg.classList.remove('arrastando');
+  });
+
+  svg.addEventListener('dblclick', function(ev){ ev.preventDefault(); resetar(); });
+
+  document.getElementById('rkmZoomIn').addEventListener('click', function(){
+    var r = svg.getBoundingClientRect();
+    zoomEm(r.left + r.width/2, r.top + r.height/2, 1.4);
+  });
+  document.getElementById('rkmZoomOut').addEventListener('click', function(){
+    var r = svg.getBoundingClientRect();
+    zoomEm(r.left + r.width/2, r.top + r.height/2, 1/1.4);
+  });
+  document.getElementById('rkmZoomReset').addEventListener('click', resetar);
 }
 
 function mostrarContexto(id){
@@ -313,5 +468,6 @@ function montarTimeline(){
 
 montarSVG();
 montarTimeline();
+iniciarZoom();
 })();
 </script>
