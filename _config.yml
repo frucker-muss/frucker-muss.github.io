@@ -11,5 +11,24 @@ kramdown:
 plugins:
   - jekyll-sitemap
 
+# Documentos internos do projeto (guias para IA, relatórios, snapshots) —
+# não são conteúdo público e não devem ser publicados nem indexados.
+# (mantém também a lista padrão de exclusão do Jekyll, que este campo substitui por completo)
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - AGENTS.md
+  - GUIA-PROCESSO-FOTOS-ACERVO.md
+  - RELATORIO_FASE0.md
+  - SITE_SNAPSHOT.md
+
 # Remova ou comente a linha abaixo para evitar sobreposição de estilos
 # theme: jekyll-theme-architect
