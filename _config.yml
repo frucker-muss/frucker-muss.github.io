@@ -1,4 +1,15 @@
 title: Rucker.life
 description: Família
+lang: pt-BR
+url: "https://rucker.life"
+baseurl: ""
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+plugins:
+  - jekyll-sitemap
+
 # Remova ou comente a linha abaixo para evitar sobreposição de estilos
 # theme: jekyll-theme-architect
