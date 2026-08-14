@@ -2,6 +2,7 @@
 layout: cronica
 title: "Georg Rücker"
 subtitle: "Da servidão hereditária à ação individual no nascente capitalismo silesiano"
+description: "A trajetória de Georg Rücker, nascido em 1789 em Johannesberg, da servidão hereditária à ascensão no capitalismo nascente da Silésia."
 ---
 
 ### 1. A submissão feudal e as origens (1789 – 1806)
