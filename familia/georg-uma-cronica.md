@@ -2,6 +2,7 @@
 layout: cronica
 title: "Georg - Uma Crônica"
 subtitle: "Johannesberg, Silésia · 1789"
+description: "Uma crônica literária sobre Georg Rücker, nascido em 1789 em Johannesberg, na Silésia prussiana."
 ---
 
 Vou te contar sobre o Georg.

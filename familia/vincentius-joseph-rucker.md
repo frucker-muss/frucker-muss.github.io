@@ -2,6 +2,7 @@
 layout: cronica
 title: "Vincentius Joseph Rücker"
 subtitle: "Do Bürgerthum prussiano à fuga pelo Atlântico"
+description: "A trajetória de Vincentius Joseph Rücker, do Bürgerthum prussiano do século XIX à travessia do Atlântico rumo ao Brasil."
 ---
 
 ### 1. A ascensão social (1827 – meados do século XIX)

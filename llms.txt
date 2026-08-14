@@ -1,0 +1,35 @@
+# Rucker.life
+
+> Rucker.life é um site genealógico e histórico da família Rücker, com origem na Silésia prussiana (região hoje na Polônia) e ramos estabelecidos no Rio Grande do Sul, Santa Catarina e Paraná, no Brasil. O conteúdo combina uma árvore genealógica documentada, um mapa das migrações da família, um acervo visual de fotos e documentos, e crônicas literárias que reconstroem a vida de cada personagem a partir de fontes históricas e depoimentos orais.
+
+O site é mantido por descendentes da família como um projeto de memória e pesquisa histórica. As informações são classificadas por grau de evidência (documental, indícios, tradição oral), e essa metodologia é explicada em uma página dedicada.
+
+## Páginas principais
+
+- [Início](https://rucker.life/): Página inicial do site.
+- [Família Rücker](https://rucker.life/familia.html): Ponto de partida para a genealogia — árvore, mapa, acervo, crônicas e pessoas.
+- [Árvore Genealógica](https://rucker.life/familia/arvore.html): Árvore genealógica completa da família, de Georg (1789) aos ramos atuais, com fontes documentais e orais.
+- [Mapa das Migrações](https://rucker.life/familia/mapa.html): Diagrama esquemático da rota migratória da família, da Silésia ao sul do Brasil.
+- [Acervo Visual](https://rucker.life/familia/documentos.html): Retratos, sepulturas e documentos escritos que sustentam a árvore genealógica.
+- [Pessoas](https://rucker.life/familia/pessoas.html): Perfis individuais de membros da família, com origem, trajetória e fontes.
+- [Crônicas](https://rucker.life/familia/cronicas.html): Reconstruções narrativas da vida de cada personagem, em estilo literário.
+- [Causos](https://rucker.life/familia/causos.html): Histórias soltas e memórias da família (em construção).
+- [Metodologia](https://rucker.life/familia/metodologia.html): Explicação dos critérios de evidência e desambiguação usados na árvore genealógica.
+
+## Perfis de pessoas
+
+- [Georg Rücker](https://rucker.life/familia/georg-rucker.html): Da servidão hereditária à ação individual no nascente capitalismo silesiano.
+- [Vincentius Joseph Rücker](https://rucker.life/familia/vincentius-joseph-rucker.html): Do Bürgerthum prussiano à fuga pelo Atlântico rumo ao Brasil.
+
+## Crônicas literárias
+
+- [Georg - Uma Crônica](https://rucker.life/familia/georg-uma-cronica.html): Crônica literária sobre Georg Rücker, em Johannesberg, Silésia, 1789.
+- [Vincenz - Uma Crônica](https://rucker.life/familia/vincenz-uma-cronica.html): Crônica sobre a renúncia de Vincentius Joseph Rücker e a travessia do Atlântico.
+- [O Regente da Fronteira](https://rucker.life/familia/ambrosio-augusto-uma-cronica.html): A jornada de Ambrósio Augusto Rücker, da Silésia à fundação de Maratá, em Porto União (SC).
+- [Albano Rücker — o moço que revelava o mundo](https://rucker.life/familia/albano-rucker-uma-cronica.html): O fotógrafo de Estrela que trazia o mundo para dentro de casa antes que ele chegasse pelos jornais.
+
+## Observações
+
+- O conteúdo é majoritariamente em português brasileiro.
+- As informações genealógicas seguem uma hierarquia de evidência (documentos, indícios, tradição oral) explicada na página de Metodologia; discrepâncias e desambiguações entre fontes são tratadas ali, não escondidas do leitor.
+- Para dúvidas, correções ou contribuições de dados familiares, use o contato indicado nas páginas do site.
