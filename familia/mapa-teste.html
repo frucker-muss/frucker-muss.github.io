@@ -1,0 +1,246 @@
+---
+layout: default
+title: "Teste — Protótipo MapLibre"
+permalink: /familia/mapa-teste.html
+robots: noindex, nofollow
+---
+
+<meta name="robots" content="noindex, nofollow">
+
+<p style="max-width:640px;margin:0 auto 1.5rem;text-align:center;font-family:ui-monospace,monospace;font-size:0.78rem;color:#b8b2a3;padding:0 1rem;line-height:1.6;">
+  PÁGINA DE TESTE — não é a versão final, não está linkada em nenhum menu do site.
+  Protótipo de migração do diagrama esquemático atual (mapa.html) para um mapa
+  geográfico real com MapLibre GL JS + OpenFreeMap (sem token, sem custo).
+  Coordenadas de Wölfelsgrund, Maratá (RS) e Porto União (SC) confirmadas em
+  fontes externas; a estação Nova Galícia (demolida, sem geocodificação oficial)
+  está aproximada. A rota oceânica é uma linha reta simplificada.
+</p>
+
+<link href="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.css" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.js"></script>
+<style>
+  :root{
+    --ouro:#d4af6a; --mudo:#8a8578; --soft:#b8b2a3; --claro:#f2efe6;
+    --borda:#2a2a2a; --superficie:#1a1a1a; --mono:ui-monospace,"SFMono-Regular","Roboto Mono",Menlo,Consolas,monospace;
+  }
+  .rkt *{box-sizing:border-box;}
+  .rkt{font-family:Georgia,serif;color:var(--claro);}
+  .rkt .palco{display:grid;grid-template-columns:1.4fr 1fr;gap:0;border-top:1px solid var(--borda);
+    border-bottom:1px solid var(--borda);min-height:520px;}
+  .rkt #rktMap{width:100%;height:520px;}
+  .rkt .painel{background:var(--superficie);border-left:1px solid var(--borda);padding:1.1rem 1.2rem;
+    display:flex;flex-direction:column;}
+  .rkt .painel h3{font-family:Georgia,serif;font-size:1.25rem;margin:0 0 .2rem;color:var(--claro);font-weight:normal;}
+  .rkt .painel .sub{font-family:var(--mono);font-size:0.65rem;color:var(--mudo);margin-bottom:.9rem;}
+  .rkt .painel .selo{display:inline-block;margin-bottom:.7rem;font-family:var(--mono);font-size:0.6rem;
+    letter-spacing:.1em;text-transform:uppercase;border-radius:4px;padding:2px 7px;
+    color:var(--ouro);border:1px solid var(--ouro);}
+  .rkt .painel p{font-size:0.9rem;color:var(--soft);line-height:1.65;margin:0 0 .6rem;}
+  .rkt .vazio{color:var(--mudo);font-style:italic;font-size:0.88rem;}
+  .rkt .controles{display:flex;gap:.5rem;justify-content:center;padding:1rem;}
+  .rkt .btn{font-family:var(--mono);font-size:0.72rem;letter-spacing:.05em;text-transform:uppercase;
+    background:#161616;border:1px solid var(--borda);color:var(--soft);border-radius:8px;
+    padding:.55rem 1rem;cursor:pointer;transition:border-color .2s,color .2s;}
+  .rkt .btn:hover{border-color:var(--ouro);color:var(--ouro);}
+  .rkt .legenda{display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;justify-content:center;
+    font-family:var(--mono);font-size:0.65rem;color:var(--mudo);padding:0 1rem 1rem;}
+  .rkt .legenda span{display:flex;align-items:center;gap:.4rem;}
+  .rkt .tra{width:18px;height:0;border-top-width:2px;border-top-style:solid;display:inline-block;}
+  @media (max-width:820px){ .rkt .palco{grid-template-columns:1fr;} .rkt #rktMap{height:380px;} }
+</style>
+
+<div class="rkt">
+  <div class="legenda">
+    <span><i class="tra" style="border-top-color:#e0dccf;border-top-style:dashed"></i> Trem</span>
+    <span><i class="tra" style="border-top-color:#7fb3d5;border-top-style:dotted"></i> Vapor oceânico</span>
+    <span><i class="tra" style="border-top-color:#8fc1d8"></i> Vapor fluvial</span>
+    <span><i class="tra" style="border-top-color:#c98a5e"></i> Carreta</span>
+    <span><i class="tra" style="border-top-color:#c98a5e;border-top-style:dotted"></i> A pé</span>
+  </div>
+
+  <div class="palco">
+    <div id="rktMap"></div>
+    <aside class="painel" id="rktPainel">
+      <p class="vazio">Toque em um ponto do mapa, ou aperte "Reproduzir viagem" para acompanhar o trajeto completo.</p>
+    </aside>
+  </div>
+
+  <div class="controles">
+    <button class="btn" id="rktBtnPlay">▶ Reproduzir viagem</button>
+    <button class="btn" id="rktBtnReset">⤾ Reiniciar vista</button>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+var COR = { comum:"#d4af6a", rs:"#c0714f", pr:"#8a9e86" };
+var MODO = {
+  trem:    { stroke:"#e0dccf", dash:[2,1.5], label:"Trem" },
+  vapor:   { stroke:"#7fb3d5", dash:[0.2,2], label:"Vapor oceânico" },
+  fluvial: { stroke:"#8fc1d8", dash:[1,0],   label:"Vapor fluvial" },
+  carreta: { stroke:"#c98a5e", dash:[1,0],   label:"Carreta" },
+  pe:      { stroke:"#c98a5e", dash:[0.3,1.6], label:"A pé" }
+};
+
+var NOS = [
+  { id:"johannesberg", lon:16.74, lat:50.26, ramo:"comum", nome:"Johannesberg", sub:"Silésia prussiana [aprox.]",
+    ctx:["Georg Rücker nasce em 1789 em Johannesberg — o patriarca da linhagem que emigraria oitenta anos depois. Localização aproximada, no mesmo vale de Wölfelsgrund."] },
+  { id:"wolfelsgrund", lon:16.7667, lat:50.2281, ramo:"comum", nome:"Wölfelsgrund", sub:"hoje Międzygórze, Polônia — condado de Kłodzko",
+    ctx:["A poucos quilômetros de Johannesberg, no mesmo vale. Ponto de referência para a origem de toda a família."] },
+  { id:"hamburgo", lon:9.9937, lat:53.5511, ramo:"comum", nome:"Hamburgo", sub:"embarque, 1898 — 3ª classe",
+    ctx:["Anton (46), August Ambros (33) e Ambros August (28) embarcam juntos, solteiros, em 1898 — os três irmãos que a Lista de Hamburgo confirma como indivíduos distintos."] },
+  { id:"riogrande", lon:-52.0986, lat:-32.0350, ramo:"comum", nome:"Rio Grande", sub:"porto de desembarque",
+    ctx:["Fim da travessia atlântica, 26 a 30 dias em Zwischendeck. Início do trecho fluvial rumo ao interior do Rio Grande do Sul."] },
+  { id:"portoalegre", lon:-51.2177, lat:-30.0346, ramo:"comum", nome:"Porto Alegre", sub:"baldeação fluvial",
+    ctx:["Ponto de baldeação entre o vapor de rio maior e as embarcações menores que seguem para o Vale do Caí."] },
+  { id:"cai", lon:-51.3781, lat:-29.5644, ramo:"comum", nome:"São Sebastião do Caí", sub:"fim da navegação",
+    ctx:["Aqui termina o trecho navegável. Dali em diante, o restante da viagem é feito por terra, de carreta."] },
+  { id:"doisirmaos", lon:-51.0864, lat:-29.6081, ramo:"comum", nome:"Dois Irmãos", sub:"Colônia 16 — chegada em 1898",
+    ctx:["Ponto de chegada da família em 1898. Os dois irmãos August Ambros e Ambros August seguem juntos daqui até Maratá (RS) — não se separam ainda."] },
+  { id:"marata", lon:-51.5573, lat:-29.5457, ramo:"rs", nome:"Maratá", sub:"São Pedro do Maratá (RS) — os dois irmãos, lado a lado",
+    ctx:["August Ambros se estabelece aqui definitivamente com Philippine Saft — origem dos 15 filhos confirmados fotograficamente em 1925.",
+         "O irmão Ambros August também mora aqui, na mesma comunidade e paróquia, por cerca de duas décadas (c. 1904/1906 a 1921). Os dois irmãos convivem lado a lado até 1921, quando Ambrósio Augusto parte com a comitiva de 53 pessoas rumo a Santa Catarina."] },
+  { id:"novagalicia", lon:-51.14, lat:-26.28, ramo:"pr", nome:"Nova Galícia", sub:"Estação Ferroviária, Porto União (SC) — inaugurada em 1908 [aprox.]",
+    ctx:["Ponto de desembarque da comitiva de 1921: cinco dias e quatro noites de trem partindo de Maratá (RS), chegando em 8 de setembro de 1921."] },
+  { id:"portouniao", lon:-51.0817, lat:-26.2389, ramo:"pr", nome:"Porto União", sub:"colônia de Maratá catarinense — ramo Ambros August (SC)",
+    ctx:["Ambros August se estabelece aqui com Amalia Rathmann. Origem do ramo de Ambros August (Herberto, Walter, Max)."] }
+];
+
+var ROTAS = [
+  { de:"johannesberg", para:"wolfelsgrund", modo:"pe", ramo:"comum" },
+  { de:"wolfelsgrund", para:"hamburgo", modo:"trem", ramo:"comum" },
+  { de:"hamburgo", para:"riogrande", modo:"vapor", ramo:"comum" },
+  { de:"riogrande", para:"portoalegre", modo:"fluvial", ramo:"comum" },
+  { de:"portoalegre", para:"cai", modo:"fluvial", ramo:"comum" },
+  { de:"cai", para:"doisirmaos", modo:"carreta", ramo:"comum" },
+  { de:"doisirmaos", para:"marata", modo:"carreta", ramo:"comum" },
+  { de:"marata", para:"novagalicia", modo:"trem", ramo:"pr" },
+  { de:"novagalicia", para:"portouniao", modo:"carreta", ramo:"pr" }
+];
+
+function porId(id){ return NOS.filter(function(n){return n.id===id;})[0]; }
+
+function mostrarContexto(n){
+  var html = '<span class="selo">'+(n.ramo==='comum'?'Tronco comum':(n.ramo==='rs'?'Ramo Maratá (RS)':'Ramo Porto União (SC)'))+'</span>';
+  html += '<h3>'+n.nome+'</h3><p class="sub">'+n.sub+'</p>';
+  n.ctx.forEach(function(p){ html += '<p>'+p+'</p>'; });
+  document.getElementById('rktPainel').innerHTML = html;
+}
+
+var map = new maplibregl.Map({
+  container: 'rktMap',
+  style: 'https://tiles.openfreemap.org/styles/dark',
+  center: [-25, 5],
+  zoom: 1.6
+});
+
+map.on('load', function(){
+
+  ROTAS.forEach(function(r, i){
+    var a = porId(r.de), b = porId(r.para);
+    var m = MODO[r.modo];
+    var srcId = 'rkt-rota-'+i;
+    map.addSource(srcId, {
+      type: 'geojson',
+      data: { type:'Feature', geometry:{ type:'LineString', coordinates:[[a.lon,a.lat],[b.lon,b.lat]] } }
+    });
+    map.addLayer({
+      id: srcId, type: 'line', source: srcId,
+      layout: { 'line-cap':'round', 'line-join':'round' },
+      paint: {
+        'line-color': m.stroke,
+        'line-width': 2.6,
+        'line-dasharray': m.dash
+      }
+    });
+  });
+
+  map.addSource('rkt-pontos', {
+    type: 'geojson',
+    data: {
+      type:'FeatureCollection',
+      features: NOS.map(function(n){
+        return { type:'Feature', properties:{ id:n.id, cor:COR[n.ramo], nome:n.nome },
+                 geometry:{ type:'Point', coordinates:[n.lon,n.lat] } };
+      })
+    }
+  });
+  map.addLayer({
+    id:'rkt-pontos-circ', type:'circle', source:'rkt-pontos',
+    paint:{
+      'circle-radius': 6,
+      'circle-color': ['get','cor'],
+      'circle-stroke-color': '#121212',
+      'circle-stroke-width': 2
+    }
+  });
+  map.addLayer({
+    id:'rkt-pontos-label', type:'symbol', source:'rkt-pontos',
+    layout:{
+      'text-field': ['get','nome'],
+      'text-size': 12,
+      'text-offset': [0, 1.2],
+      'text-anchor': 'top'
+    },
+    paint:{ 'text-color':'#f2efe6', 'text-halo-color':'#0b0b0b', 'text-halo-width':1.4 }
+  });
+
+  map.addSource('rkt-viajante', {
+    type:'geojson',
+    data:{ type:'Feature', geometry:{ type:'Point', coordinates:[NOS[0].lon, NOS[0].lat] } }
+  });
+  map.addLayer({
+    id:'rkt-viajante', type:'circle', source:'rkt-viajante',
+    paint:{ 'circle-radius': 5, 'circle-color': '#ffffff', 'circle-stroke-color':'#d4af6a', 'circle-stroke-width':3 }
+  });
+  map.setLayoutProperty('rkt-viajante', 'visibility', 'none');
+
+  map.on('click', 'rkt-pontos-circ', function(e){
+    mostrarContexto(porId(e.features[0].properties.id));
+  });
+  map.on('mouseenter','rkt-pontos-circ', function(){ map.getCanvas().style.cursor='pointer'; });
+  map.on('mouseleave','rkt-pontos-circ', function(){ map.getCanvas().style.cursor=''; });
+
+  function lerp(a,b,t){ return a+(b-a)*t; }
+
+  function animarTrecho(idx, callback){
+    if (idx >= ROTAS.length){ if(callback) callback(); return; }
+    var r = ROTAS[idx], a = porId(r.de), b = porId(r.para);
+    mostrarContexto(a);
+    map.setLayoutProperty('rkt-viajante','visibility','visible');
+    map.flyTo({ center:[lerp(a.lon,b.lon,0.5), lerp(a.lat,b.lat,0.5)], zoom: idx<3?2.2:4.4, duration:900 });
+
+    var dur = 1400, t0 = null;
+    function passo(ts){
+      if (!t0) t0 = ts;
+      var t = Math.min(1, (ts - t0) / dur);
+      var lon = lerp(a.lon, b.lon, t), lat = lerp(a.lat, b.lat, t);
+      map.getSource('rkt-rota-'+idx).setData({
+        type:'Feature', geometry:{ type:'LineString', coordinates:[[a.lon,a.lat],[lon,lat]] }
+      });
+      map.getSource('rkt-viajante').setData({ type:'Feature', geometry:{ type:'Point', coordinates:[lon,lat] } });
+      if (t < 1) requestAnimationFrame(passo);
+      else {
+        mostrarContexto(b);
+        setTimeout(function(){ animarTrecho(idx+1, callback); }, 550);
+      }
+    }
+    requestAnimationFrame(passo);
+  }
+
+  document.getElementById('rktBtnPlay').addEventListener('click', function(){
+    ROTAS.forEach(function(r,i){
+      var a = porId(r.de);
+      map.getSource('rkt-rota-'+i).setData({ type:'Feature', geometry:{ type:'LineString', coordinates:[[a.lon,a.lat]] } });
+    });
+    animarTrecho(0, function(){ map.setLayoutProperty('rkt-viajante','visibility','none'); });
+  });
+
+  document.getElementById('rktBtnReset').addEventListener('click', function(){
+    map.flyTo({ center:[-25,5], zoom:1.6, duration:1200 });
+  });
+});
+})();
+</script>
