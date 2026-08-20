@@ -1,0 +1,619 @@
+---
+layout: default
+title: "Árvore Genealógica — Protótipo"
+description: "Protótipo isolado de árvore genealógica dinâmica baseada em JSON, para validação interna. Não é a árvore oficial do site."
+---
+
+<div class="arvp" id="arvpRaiz">
+
+  <p class="arvp-badge-wrap"><span class="arvp-badge">Protótipo · dados de teste</span></p>
+  <p class="arvp-intro">
+    Renderização dinâmica a partir de <code>assets/data/pessoas.json</code> (7 registros). Página isolada, não ligada à navegação principal do site — a árvore oficial continua em <a href="{{ '/familia/arvore.html' | relative_url }}">/familia/arvore.html</a>.
+  </p>
+
+  <div class="arvp-arvore" id="arvpArvore" aria-live="polite">
+    <p class="arvp-carregando">Carregando dados…</p>
+  </div>
+
+  <noscript><p class="arvp-intro">Esta página precisa de JavaScript para renderizar a árvore.</p></noscript>
+
+  <div class="arvp-sheet-fundo" id="arvpFundo" hidden></div>
+  <div class="arvp-sheet" id="arvpSheet" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="arvpSheetTitulo">
+    <button type="button" class="arvp-sheet-fechar" id="arvpFechar" aria-label="Fechar painel">✕</button>
+    <div class="arvp-sheet-conteudo" id="arvpConteudo"></div>
+  </div>
+
+</div>
+
+<style>
+.arvp{
+  --arvp-mono: ui-monospace,"SFMono-Regular","Roboto Mono",Menlo,Consolas,monospace;
+  color: var(--text);
+}
+.arvp *, .arvp *::before, .arvp *::after{ box-sizing: border-box; }
+
+.arvp-badge-wrap{ text-align: center; margin: 0 0 1.2rem; }
+.arvp-badge{
+  display: inline-block;
+  font-family: var(--arvp-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px dashed var(--gold);
+  border-radius: 4px;
+  padding: 0.3rem 0.7rem;
+}
+
+.arvp-intro{
+  max-width: 560px;
+  margin: 0 auto 2.6rem;
+  text-align: center;
+  color: var(--text-mute);
+  font-family: var(--arvp-mono);
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+.arvp-intro a{ color: var(--gold); }
+.arvp-intro code{
+  font-family: var(--arvp-mono);
+  color: var(--text-soft);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1rem 0.35rem;
+}
+
+.arvp-carregando{ text-align: center; color: var(--text-mute); font-family: var(--arvp-mono); font-size: 0.8rem; }
+
+.arvp-arvore{ display: flex; flex-direction: column; align-items: center; }
+.arvp-ramo{ display: flex; flex-direction: column; align-items: center; }
+.arvp-filhos-wrap{ display: flex; flex-direction: column; align-items: center; }
+
+.arvp-elo{ width: 1px; height: 26px; background: var(--border); margin: 0.2rem 0; }
+
+.arvp-geracao{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.4rem;
+  margin-top: 0.2rem;
+}
+
+.arvp-unidade{
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.arvp-conector{
+  width: 18px;
+  height: 1px;
+  background: var(--border);
+  flex: 0 0 auto;
+}
+
+.arvp-cartao{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  width: 210px;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.arvp-cartao:hover, .arvp-cartao:focus-visible{
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  outline: none;
+}
+.arvp-cartao:focus-visible{ outline: 2px solid var(--gold); outline-offset: 2px; }
+
+.arvp-nome-linha{
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+.arvp-nome{
+  font-family: Georgia, serif;
+  font-size: 1.05rem;
+  color: #f2efe6;
+  line-height: 1.3;
+}
+.arvp-apelido{
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  margin-top: 0.15rem;
+  display: block;
+}
+.arvp-vida{
+  font-family: var(--arvp-mono);
+  font-size: 0.66rem;
+  color: var(--text-mute);
+  margin-top: 0.5rem;
+  display: block;
+  line-height: 1.5;
+}
+
+.arvp-duvida{
+  background: none;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  line-height: 1;
+  font-size: 0.66rem;
+  padding: 0;
+  cursor: pointer;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.arvp-duvida:hover, .arvp-duvida:focus-visible{ background: rgba(212,175,106,.15); outline: none; }
+
+.arvp-popover{
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+  z-index: 5;
+  background: #121212;
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  font-family: var(--arvp-mono);
+  font-size: 0.68rem;
+  line-height: 1.55;
+  color: var(--text-soft);
+  width: max-content;
+  max-width: 220px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.4);
+}
+.arvp-popover--aberta{ display: block; }
+
+.arvp-expandir{
+  margin-top: 0.9rem;
+  background: none;
+  border: 1px dashed var(--border);
+  color: var(--text-mute);
+  font-family: var(--arvp-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
+}
+.arvp-expandir:hover, .arvp-expandir:focus-visible{ border-color: var(--gold); color: var(--gold); outline: none; }
+
+/* ---- bottom sheet ---- */
+.arvp-sheet-fundo{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  z-index: 40;
+}
+.arvp-sheet{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 41;
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--surface);
+  border-top: 1px solid var(--gold);
+  border-radius: 16px 16px 0 0;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 1.3rem 1.4rem 2rem;
+  transform: translateY(100%);
+  transition: transform 0.25s ease;
+}
+.arvp-sheet--aberto{ transform: translateY(0); }
+
+.arvp-sheet-fechar{
+  position: sticky;
+  top: 0;
+  float: right;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-soft);
+  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.arvp-sheet-fechar:hover, .arvp-sheet-fechar:focus-visible{ border-color: var(--gold); color: var(--gold); outline: none; }
+
+.arvp-sheet-conteudo h2{
+  font-family: Georgia, serif;
+  font-size: 1.5rem;
+  color: #f2efe6;
+  text-align: left;
+  line-height: 1.25;
+  margin: 0.3rem 0 0;
+  clear: both;
+}
+.arvp-sheet-apelido{
+  font-family: Georgia, serif;
+  font-style: italic;
+  color: var(--text-soft);
+  margin: 0.3rem 0 0;
+}
+.arvp-sheet-bloco{ margin-top: 1.4rem; }
+.arvp-sheet-bloco h3{
+  font-family: var(--arvp-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.45rem;
+  margin: 0 0 0.65rem;
+}
+.arvp-sheet-bloco p{ margin: 0 0 0.5rem; font-size: 0.95rem; line-height: 1.6; color: var(--text); }
+.arvp-sheet-foto{ width: 100%; max-width: 320px; border-radius: 8px; display: block; margin: 0.4rem 0; }
+.arvp-sheet-lista{ list-style: none; margin: 0; padding: 0; }
+.arvp-sheet-lista li{ padding: 0.45rem 0; border-top: 1px dotted rgba(138,133,120,.28); }
+.arvp-sheet-lista li:first-child{ border-top: none; }
+.arvp-sheet-lista a{ color: var(--gold); }
+
+@media (max-width: 480px){
+  .arvp-cartao{ width: 100%; max-width: 280px; }
+  .arvp-sheet{ padding: 1.1rem 1.1rem 1.6rem; border-radius: 14px 14px 0 0; }
+  .arvp-sheet-conteudo h2{ font-size: 1.3rem; }
+}
+@media (prefers-reduced-motion: reduce){ .arvp *{ transition: none !important; } }
+</style>
+
+<script>
+(function(){
+  "use strict";
+
+  var URL_DADOS = "{{ '/assets/data/pessoas.json' | relative_url }}";
+  var DADOS = {};
+
+  function temFilhos(pessoa){
+    return Array.isArray(pessoa.filhos) && pessoa.filhos.length > 0;
+  }
+
+  function formatarVida(pessoa){
+    if (pessoa.nascimento && pessoa.morte) return pessoa.nascimento + " – " + pessoa.morte;
+    if (pessoa.nascimento) return "n. " + pessoa.nascimento;
+    if (pessoa.morte) return "† " + pessoa.morte;
+    return "";
+  }
+
+  function fecharTodosPopovers(){
+    document.querySelectorAll(".arvp-popover--aberta").forEach(function(el){
+      el.classList.remove("arvp-popover--aberta");
+    });
+  }
+
+  // ---- cartão de uma pessoa ----
+  function criarCartaoPessoa(idPessoa){
+    var pessoa = DADOS[idPessoa];
+
+    var cartao = document.createElement("div");
+    cartao.className = "arvp-cartao";
+    cartao.setAttribute("role", "button");
+    cartao.setAttribute("tabindex", "0");
+    cartao.dataset.id = idPessoa;
+
+    var linhaNome = document.createElement("span");
+    linhaNome.className = "arvp-nome-linha";
+
+    var nomeEl = document.createElement("span");
+    nomeEl.className = "arvp-nome";
+    nomeEl.textContent = pessoa.nome;
+    linhaNome.appendChild(nomeEl);
+
+    if (pessoa.duvida){
+      var duvidaBtn = document.createElement("button");
+      duvidaBtn.type = "button";
+      duvidaBtn.className = "arvp-duvida";
+      duvidaBtn.textContent = "*";
+      duvidaBtn.setAttribute("aria-label", "Nota sobre incerteza nesta informação");
+
+      var popover = document.createElement("span");
+      popover.className = "arvp-popover";
+      popover.setAttribute("role", "tooltip");
+      popover.textContent = pessoa.duvida.nota;
+
+      duvidaBtn.addEventListener("click", function(ev){
+        ev.stopPropagation();
+        var jaAberta = popover.classList.contains("arvp-popover--aberta");
+        fecharTodosPopovers();
+        if (!jaAberta) popover.classList.add("arvp-popover--aberta");
+      });
+
+      linhaNome.appendChild(duvidaBtn);
+      linhaNome.appendChild(popover);
+    }
+
+    cartao.appendChild(linhaNome);
+
+    if (pessoa.apelido){
+      var apelidoEl = document.createElement("span");
+      apelidoEl.className = "arvp-apelido";
+      apelidoEl.textContent = "“" + pessoa.apelido + "”";
+      cartao.appendChild(apelidoEl);
+    }
+
+    var vida = formatarVida(pessoa);
+    if (vida){
+      var vidaEl = document.createElement("span");
+      vidaEl.className = "arvp-vida";
+      vidaEl.textContent = vida;
+      cartao.appendChild(vidaEl);
+    }
+
+    function abrirEstePainel(){ abrirPainel(idPessoa); }
+    cartao.addEventListener("click", abrirEstePainel);
+    cartao.addEventListener("keydown", function(ev){
+      if (ev.key === "Enter" || ev.key === " "){
+        ev.preventDefault();
+        abrirEstePainel();
+      }
+    });
+
+    return cartao;
+  }
+
+  // ---- unidade: pessoa + cônjuge (se houver) ----
+  function criarUnidade(idPessoa){
+    var unidade = document.createElement("div");
+    unidade.className = "arvp-unidade";
+    unidade.appendChild(criarCartaoPessoa(idPessoa));
+
+    var pessoa = DADOS[idPessoa];
+    if (pessoa.conjuge && DADOS[pessoa.conjuge]){
+      var conector = document.createElement("span");
+      conector.className = "arvp-conector";
+      conector.setAttribute("aria-hidden", "true");
+      unidade.appendChild(conector);
+      unidade.appendChild(criarCartaoPessoa(pessoa.conjuge));
+    }
+    return unidade;
+  }
+
+  // ---- bloco de filhos: linha de conexão + geração ----
+  function criarBlocoFilhos(idsFilhos){
+    var wrap = document.createElement("div");
+    wrap.className = "arvp-filhos-wrap";
+
+    var elo = document.createElement("div");
+    elo.className = "arvp-elo";
+    elo.setAttribute("aria-hidden", "true");
+    wrap.appendChild(elo);
+
+    wrap.appendChild(criarGeracao(idsFilhos));
+    return wrap;
+  }
+
+  function criarGeracao(idsFilhos){
+    var geracao = document.createElement("div");
+    geracao.className = "arvp-geracao";
+    idsFilhos.forEach(function(id){
+      geracao.appendChild(criarRamo(id, false));
+    });
+    return geracao;
+  }
+
+  // ---- botão de expandir/recolher, genérico e reutilizável ----
+  function criarBotaoExpandir(idPessoa, ramoEl){
+    var pessoa = DADOS[idPessoa];
+    var n = pessoa.filhos.length;
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "arvp-expandir";
+    var blocoFilhosEl = null;
+
+    function rotulo(){
+      return blocoFilhosEl ? "[ recolher ▴ ]" : "[ " + n + (n === 1 ? " filho" : " filhos") + " ▾ ]";
+    }
+    btn.textContent = rotulo();
+
+    btn.addEventListener("click", function(ev){
+      ev.stopPropagation();
+      if (blocoFilhosEl){
+        blocoFilhosEl.remove();
+        blocoFilhosEl = null;
+      } else {
+        blocoFilhosEl = criarBlocoFilhos(pessoa.filhos);
+        ramoEl.appendChild(blocoFilhosEl);
+      }
+      btn.textContent = rotulo();
+    });
+
+    return btn;
+  }
+
+  // ---- ramo: unidade da pessoa + (geração de filhos, já aberta ou atrás de um botão) ----
+  function criarRamo(idPessoa, autoExpandir){
+    var ramo = document.createElement("div");
+    ramo.className = "arvp-ramo";
+    ramo.appendChild(criarUnidade(idPessoa));
+
+    var pessoa = DADOS[idPessoa];
+    if (temFilhos(pessoa)){
+      if (autoExpandir){
+        ramo.appendChild(criarBlocoFilhos(pessoa.filhos));
+      } else {
+        ramo.appendChild(criarBotaoExpandir(idPessoa, ramo));
+      }
+    }
+    return ramo;
+  }
+
+  // ---- painel (bottom sheet) ----
+  function criarBlocoSheet(titulo, filho){
+    var bloco = document.createElement("div");
+    bloco.className = "arvp-sheet-bloco";
+    var h3 = document.createElement("h3");
+    h3.textContent = titulo;
+    bloco.appendChild(h3);
+    bloco.appendChild(filho);
+    return bloco;
+  }
+
+  function renderPainel(idPessoa){
+    var pessoa = DADOS[idPessoa];
+    var conteudo = document.getElementById("arvpConteudo");
+    conteudo.innerHTML = "";
+    conteudo.scrollTop = 0;
+
+    var titulo = document.createElement("h2");
+    titulo.id = "arvpSheetTitulo";
+    titulo.textContent = pessoa.nome;
+    conteudo.appendChild(titulo);
+
+    if (pessoa.apelido){
+      var apelido = document.createElement("p");
+      apelido.className = "arvp-sheet-apelido";
+      apelido.textContent = "“" + pessoa.apelido + "”";
+      conteudo.appendChild(apelido);
+    }
+
+    var linhasDatas = [];
+    if (pessoa.nascimento){
+      linhasDatas.push("Nascimento: " + pessoa.nascimento + (pessoa.local_nascimento ? " — " + pessoa.local_nascimento : ""));
+    }
+    if (pessoa.morte){
+      linhasDatas.push("Morte: " + pessoa.morte + (pessoa.local_morte ? " — " + pessoa.local_morte : ""));
+    }
+    if (linhasDatas.length){
+      var datasWrap = document.createElement("div");
+      linhasDatas.forEach(function(texto){
+        var p = document.createElement("p");
+        p.textContent = texto;
+        datasWrap.appendChild(p);
+      });
+      conteudo.appendChild(criarBlocoSheet("Datas", datasWrap));
+    }
+
+    if (Array.isArray(pessoa.fotos) && pessoa.fotos.length > 0){
+      var img = document.createElement("img");
+      img.className = "arvp-sheet-foto";
+      img.src = pessoa.fotos[0];
+      img.alt = pessoa.nome;
+      conteudo.appendChild(criarBlocoSheet("Foto", img));
+    }
+
+    if (Array.isArray(pessoa.documentos) && pessoa.documentos.length > 0){
+      var listaDocs = document.createElement("ul");
+      listaDocs.className = "arvp-sheet-lista";
+      pessoa.documentos.forEach(function(doc){
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        a.href = (doc && doc.url) ? doc.url : doc;
+        a.textContent = (doc && doc.titulo) ? doc.titulo : a.href;
+        a.target = "_blank";
+        a.rel = "noopener";
+        li.appendChild(a);
+        listaDocs.appendChild(li);
+      });
+      conteudo.appendChild(criarBlocoSheet("Documentos", listaDocs));
+    }
+
+    if (pessoa.cronica){
+      var pCronica = document.createElement("p");
+      var aCronica = document.createElement("a");
+      aCronica.href = pessoa.cronica;
+      aCronica.textContent = "Ler crônica →";
+      aCronica.target = "_blank";
+      aCronica.rel = "noopener";
+      pCronica.appendChild(aCronica);
+      conteudo.appendChild(criarBlocoSheet("Crônica", pCronica));
+    }
+
+    var relacoes = [];
+    if (pessoa.pai && DADOS[pessoa.pai]) relacoes.push({ rotulo: "Pai", id: pessoa.pai });
+    if (pessoa.mae && DADOS[pessoa.mae]) relacoes.push({ rotulo: "Mãe", id: pessoa.mae });
+    if (pessoa.conjuge && DADOS[pessoa.conjuge]) relacoes.push({ rotulo: "Cônjuge", id: pessoa.conjuge });
+    if (Array.isArray(pessoa.filhos)){
+      pessoa.filhos.forEach(function(idFilho){
+        if (DADOS[idFilho]) relacoes.push({ rotulo: "Filho(a)", id: idFilho });
+      });
+    }
+    if (relacoes.length){
+      var listaRel = document.createElement("ul");
+      listaRel.className = "arvp-sheet-lista";
+      relacoes.forEach(function(rel){
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        a.href = "#";
+        a.textContent = rel.rotulo + ": " + DADOS[rel.id].nome;
+        a.addEventListener("click", function(ev){
+          ev.preventDefault();
+          renderPainel(rel.id);
+        });
+        li.appendChild(a);
+        listaRel.appendChild(li);
+      });
+      conteudo.appendChild(criarBlocoSheet("Relações", listaRel));
+    }
+  }
+
+  function abrirPainel(idPessoa){
+    renderPainel(idPessoa);
+    document.getElementById("arvpFundo").hidden = false;
+    var sheet = document.getElementById("arvpSheet");
+    sheet.classList.add("arvp-sheet--aberto");
+    sheet.setAttribute("aria-hidden", "false");
+    document.documentElement.style.overflow = "hidden";
+  }
+
+  function fecharPainel(){
+    var sheet = document.getElementById("arvpSheet");
+    sheet.classList.remove("arvp-sheet--aberto");
+    sheet.setAttribute("aria-hidden", "true");
+    document.getElementById("arvpFundo").hidden = true;
+    document.documentElement.style.overflow = "";
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById("arvpFechar").addEventListener("click", fecharPainel);
+    document.getElementById("arvpFundo").addEventListener("click", fecharPainel);
+    document.addEventListener("keydown", function(ev){
+      if (ev.key === "Escape") fecharPainel();
+    });
+    document.addEventListener("click", function(ev){
+      if (!ev.target.closest(".arvp-duvida")) fecharTodosPopovers();
+    });
+
+    fetch(URL_DADOS)
+      .then(function(resp){
+        if (!resp.ok) throw new Error("HTTP " + resp.status);
+        return resp.json();
+      })
+      .then(function(dados){
+        DADOS = dados;
+        var container = document.getElementById("arvpArvore");
+        container.innerHTML = "";
+        container.appendChild(criarRamo("P001", true));
+      })
+      .catch(function(erro){
+        var container = document.getElementById("arvpArvore");
+        container.innerHTML = "";
+        var p = document.createElement("p");
+        p.className = "arvp-carregando";
+        p.textContent = "Não foi possível carregar os dados (" + erro.message + ").";
+        container.appendChild(p);
+      });
+  });
+})();
+</script>
