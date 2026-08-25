@@ -7,6 +7,8 @@
   <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
   <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}Genealogia e registros históricos da família Rücker.{% endif %}">
   <link rel="canonical" href="https://rucker.life{{ page.url }}">
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/img/favicon.svg' | relative_url }}">
+  <link rel="apple-touch-icon" href="{{ '/assets/img/og-familia-rucker.jpg' | relative_url }}">
 
   <!-- Open Graph / Twitter Card -->
   <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}Família Rücker{% endif %}">
@@ -47,6 +49,23 @@
   img { max-width: 100%; height: auto; }
   a { color: #d4af6a; text-decoration: none; }
   a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid #d4af6a;
+    outline-offset: 2px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 0.8rem;
+    top: -3.5rem;
+    background: #d4af6a;
+    color: #121212;
+    padding: 0.45rem 0.8rem;
+    border-radius: 6px;
+    z-index: 100;
+    font-weight: bold;
+  }
+  .skip-link:focus { top: 0.8rem; }
 
   /* ---------- Cabeçalho ---------- */
   .site-header {
@@ -80,6 +99,23 @@
     border: none;
     border-top: 1px solid #2a2a2a;
     margin: 3rem 0;
+  }
+
+  .home-hero {
+    text-align: center;
+    max-width: 34rem;
+    margin: 0 auto 2.2rem;
+  }
+  .home-hero h1 {
+    margin: 0 0 0.55rem;
+    font-size: 2.1rem;
+    color: #f2efe6;
+  }
+  .home-hero p {
+    margin: 0;
+    color: #b8b2a3;
+    font-size: 1.12rem;
+    line-height: 1.55;
   }
 
   /* ---------- Grade de cartões ---------- */
@@ -129,6 +165,23 @@
     line-height: 1.5;
   }
   .card--family { min-height: 240px; }
+  .card-kicker {
+    font-size: 0.7rem;
+    color: #8a8578;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .card--muted {
+    border-style: dashed;
+    opacity: 0.85;
+    cursor: default;
+  }
+  .card--muted:hover {
+    border-color: #2a2a2a;
+    transform: none;
+  }
 
   /* ---------- Crônicas ---------- */
   .cronica {
@@ -256,6 +309,13 @@
   .causo-body em { color: #c9c3b4; }
   .causo-body strong { color: #f2efe6; }
 
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
   /* ---------- Celular ---------- */
   @media (max-width: 480px) {
     .page-content { padding: 1.8rem 1.1rem 3rem; }
@@ -263,17 +323,19 @@
     .card { min-height: 150px; padding: 1.6rem 1.3rem; }
     .card--family { min-height: 200px; }
     .card h3 { font-size: 1.5rem; }
+    .home-hero h1 { font-size: 1.75rem; }
     .cronica { font-size: 1.05rem; }
     .cronica-header h1 { font-size: 2rem; }
   }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#conteudo">Ir ao conteúdo</a>
   <header class="site-header">
     <a href="{{ '/' | relative_url }}" class="site-header-title">Rucker.life</a>
   </header>
 
-  <main class="page-content">
+  <main id="conteudo" class="page-content">
     {{ content }}
   </main>
 </body>
