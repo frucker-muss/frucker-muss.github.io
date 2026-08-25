@@ -5,7 +5,7 @@ antes de propor ou aplicar mudanças neste repositório. Não é específico de 
 ferramenta — mantenha o conteúdo genérico e atualizado conforme a estrutura do
 site mudar.
 
-Última atualização: 2026-08-12.
+Última atualização: 2026-08-25.
 
 ## 1. O que é este site
 
@@ -40,8 +40,8 @@ só quer conhecer a própria história — ver seção 2.
 
 ## 3. Mapa de páginas
 
-- `index.html` — home do site. Hub para "Família" e placeholder "Outros" (em
-  construção).
+- `index.html` — home: frase de entrada + um caminho ("Entrar no acervo") e
+  placeholder "Outros" (em construção, **não é link**). Lote 1 (2026-08-25).
 - `familia.html` — hub da família, duas seções:
   - Fileira de topo, cards "Interativo" (borda dourada): **Árvore Genealógica**,
     **Mapa das Migrações**, **Documentos**, **Pessoas**, **Crônicas**, **Causos**.
@@ -55,15 +55,16 @@ só quer conhecer a própria história — ver seção 2.
   01, 05, 11, 12). Conteúdo técnico, só para quem quiser se aprofundar no método.
 - `familia/mapa.html` — mapa esquemático de migração (SVG), dados em array de
   nós/rotas.
-- `familia/documentos.html` — galeria de documentos/fotos. Estrutura pronta
-  (`SECOES` → `subsecoes` → `itens`), mas **todas as subseções ainda estão vazias**
-  (`itens: []`) — conteúdo pendente, não é bug.
+- `familia/documentos.html` — galeria de fotos/documentos. Hoje o catálogo ainda
+  vive em JavaScript gerado na mão (`ITENS`). **Lote 2** (pendente): fotos em
+  `assets/img/documentos/`, metadados em `_data/acervo.json` — **nunca** editar
+  esta página para adicionar foto.
 - `familia/pessoas.html` — índice de perfis individuais (hoje: Georg Rücker,
   Vincentius Joseph Rücker). Badge "Pessoas".
 - `familia/cronicas.html` — índice de crônicas literárias (hoje: Georg,
   Vincentius, Ambrósio Augusto). Badge "Crônica Literária".
-- `familia/causos.html` — placeholder "em construção" para histórias soltas e
-  memórias da família. Sem conteúdo real ainda.
+- `familia/causos.html` — índice de causos. Já existe pelo menos um causo
+  publicado (`o-causo-do-berlet.html`).
 - `familia/georg-rucker.md`, `familia/vincentius-joseph-rucker.md` — perfis
   individuais (`layout: cronica` — o nome do layout é reaproveitado para
   qualquer artigo de texto corrido, não é exclusivo de crônicas literárias).
@@ -159,3 +160,35 @@ e ajustar título/texto/href é mais seguro do que criar CSS novo.
 - Ao terminar uma mudança estrutural (nova página, novo tipo de card, nova
   seção do hub), **atualizar este arquivo** para refletir o novo estado —
   ele só é útil se ficar correto.
+
+## 9. Lotes de atualização (fila combinada com o mantenedor)
+
+Trabalhar **um lote por conversa nova**. Esta conversa já carregada não deve
+continuar o lote seguinte — o histórico queima crédito.
+
+Público: família, inclusive **idosos no celular**. Foto antiga ruim com **10+
+pessoas** tem que dar para apontar um rosto de cada vez, com dedo grosso, e
+mandar sem terminar a foto. Sem conta, sem "gerar código", sem arrastar
+retângulo preciso.
+
+Demanda: alta no começo (muita foto e muita identificação), depois estabiliza
+com poucas mudanças. Por isso o fluxo do mantenedor é **aprovar lote**, não
+editar HTML a cada recado. Novos pedidos do mantenedor entram no fim da fila;
+não furam o lote em andamento.
+
+| Lote | Estado | O que é |
+|---|---|---|
+| **1** | feito (2026-08-25) | Home com um caminho, 404, favicon. Outros deixa de ser link. |
+| **2** | próximo | Fotos sem gerar código: JPG em `assets/img/documentos/` aparece sozinho; título/pessoas em `_data/acervo.json`. Parente continua mandando recado; o mantenedor publica com um prompt. |
+| **2c** | depois do 2 | Idoso no celular toca a foto (ou um rosto) → recado já **vinculado àquela imagem** → WhatsApp/e-mail/`acervorucker@gmail.com` com um código curto → o mantenedor **só aprova**. Pode identificar 1 de 10 e enviar. "Não sei" é válido. Duas opiniões sobre o mesmo rosto ficam na fila até ele escolher. Nada vai ao ar sem aprovação. |
+| **3** | depois | Árvore mais usável (índice de pessoas, busca) e o que ainda faltar de crônica. |
+
+**Não fazer no 2c antes do 2:** sem catálogo fora do HTML, o "código para aprovar" volta a ser JavaScript frágil.
+
+Privacidade (seção 2): nunca expor WhatsApp/telefone pessoal do administrador.
+Canal público de colaboração: `acervorucker@gmail.com` / Google Forms. O 2c
+pode pré-preencher mensagem de WhatsApp **da família para o canal do acervo**,
+não o número pessoal.
+
+Site estático: não há backend. "Aprovar" = mesclar a ficha no `acervo.json` e
+publicar. A foto já está na pasta; a identificação é que entra na fila.
