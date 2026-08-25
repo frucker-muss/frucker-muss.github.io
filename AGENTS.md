@@ -160,35 +160,77 @@ e ajustar título/texto/href é mais seguro do que criar CSS novo.
 - Ao terminar uma mudança estrutural (nova página, novo tipo de card, nova
   seção do hub), **atualizar este arquivo** para refletir o novo estado —
   ele só é útil se ficar correto.
+- **Lotes (seção 9):** não propor mudança que desfaça um lote recém-publicado.
+  Pedido novo adapta o lote *aberto*, não o feito.
 
-## 9. Lotes de atualização (fila combinada com o mantenedor)
+## 9. Lotes de atualização — racionalidade do processo
 
-Trabalhar **um lote por conversa nova**. Esta conversa já carregada não deve
-continuar o lote seguinte — o histórico queima crédito.
+Dois eixos, sempre juntos: **o usuário do site** (família, idoso no celular) e
+**os tokens do mantenedor**. Um lote que deixa a família melhor mas obriga a
+refazer HTML na semana seguinte é lote mal calculado.
+
+### Estados
+
+| Estado | O que fazer com pedido novo |
+|---|---|
+| **Feito** | Congelado. Só bug. Não restilizar amanhã o que publicou hoje. |
+| **Aberto** (o próximo a implementar) | Molde vivo. O pedido **entra aqui** se couber na fundação. Recalcula o lote; não empilha "lote 17". |
+| **Fila** | Ideia que não cabe no aberto sem estourar a conversa **ou** sem a fundação que o aberto ainda vai deixar. Fica para depois, já desenhada para *usar* o que o aberto entregar. |
+
+Mudar de ideia é permitido. Enquanto o lote **não foi implementado**, ele se
+adapta. Depois de no ar, só mexe com ordem explícita ("desfaz o lote N") ou
+correção.
+
+### Como calcular um lote (antes de escrever código)
+
+1. **Uma conversa nova, um lote, um PR.** Histórico velho queima crédito — não
+   continuar o lote seguinte na conversa que acabou de publicar o anterior.
+2. **Fundação, não enfeite.** O lote de hoje deixa o formato que o de amanhã
+   preenche. Não entrega UI que o próximo vai jogar fora.
+3. **Teste do dia seguinte:** "se ele pedir X amanhã, eu vou ter que desfazer
+   o que publiquei hoje?" Se sim, ou X entra no lote aberto *agora*, ou o lote
+   aberto já nasce no formato final e X vai para a fila — nunca o meio-termo
+   que se rasga.
+4. **Cabe no plano.** Se não cabe numa sessão, parte no mesmo alicerce
+   (`2a` plumbing / `2b` conteúdo), nunca um redesenho.
+5. **Pedido novo no meio do caminho:** absorve no **aberto** se for a mesma
+   fundação; senão vai para a fila, dito em voz alta ("isso é 2c, não 2").
+6. **Não fura lote em implementação.** Recalcular a fila é barato; misturar
+   dois lotes no mesmo PR é caro e gera retrabalho.
+
+Exemplo desta fila: o **2** já entrega o schema de ficha (`id`, `thumb`,
+`pessoas`, `status`) que o **2c** vai preencher. O **2 não** constrói o toque
+do idoso no celular — isso é 2c. Assim o 2c não reescreve `documentos.html`.
+
+### Fila atual
+
+Trabalhar **um lote por conversa nova**.
 
 Público: família, inclusive **idosos no celular**. Foto antiga ruim com **10+
 pessoas** tem que dar para apontar um rosto de cada vez, com dedo grosso, e
 mandar sem terminar a foto. Sem conta, sem "gerar código", sem arrastar
 retângulo preciso.
 
-Demanda: alta no começo (muita foto e muita identificação), depois estabiliza
-com poucas mudanças. Por isso o fluxo do mantenedor é **aprovar lote**, não
-editar HTML a cada recado. Novos pedidos do mantenedor entram no fim da fila;
-não furam o lote em andamento.
+Demanda: alta no começo, depois estabiliza. O mantenedor **aprova lote**, não
+edita HTML a cada recado.
 
-| Lote | Estado | O que é |
-|---|---|---|
-| **1** | feito (2026-08-25) | Home com um caminho, 404, favicon. Outros deixa de ser link. |
-| **2** | próximo | Fotos sem gerar código: JPG em `assets/img/documentos/` aparece sozinho; título/pessoas em `_data/acervo.json`. Parente continua mandando recado; o mantenedor publica com um prompt. |
-| **2c** | depois do 2 | Idoso no celular toca a foto (ou um rosto) → recado já **vinculado àquela imagem** → WhatsApp/e-mail/`acervorucker@gmail.com` com um código curto → o mantenedor **só aprova**. Pode identificar 1 de 10 e enviar. "Não sei" é válido. Duas opiniões sobre o mesmo rosto ficam na fila até ele escolher. Nada vai ao ar sem aprovação. |
-| **3** | depois | Árvore mais usável (índice de pessoas, busca) e o que ainda faltar de crônica. |
+| Lote | Estado | O que é | Fundação que deixa |
+|---|---|---|---|
+| **1** | feito (2026-08-25) | Home com um caminho, 404, favicon. Outros deixa de ser link. | Home estável; não reabrir no 2. |
+| **2** | **aberto** | Fotos sem gerar código: JPG em `assets/img/documentos/` aparece sozinho; título/pessoas em `_data/acervo.json`. Schema de ficha já no formato do 2c. Sem UI de toque. | Catálogo fora do HTML. |
+| **2c** | fila (depois do 2) | Idoso toca a foto → recado **já vinculado** → WhatsApp/e-mail/`acervorucker@gmail.com` com código curto → mantenedor **só aprova**. 1 de 10 nomes basta. "Não sei" vale. Duas opiniões na fila até ele escolher. | Fila de identificação, sem backend. |
+| **3** | fila | Árvore mais usável (índice de pessoas, busca) e o que ainda faltar de crônica. | — |
 
-**Não fazer no 2c antes do 2:** sem catálogo fora do HTML, o "código para aprovar" volta a ser JavaScript frágil.
+Pedidos futuros (busca na galeria, Drive automático, etc.) **não furam o 2**.
+Entram no aberto se forem a mesma fundação (JSON/pasta); senão na fila, no
+lugar sequencial que não desfaça o 2.
+
+**Não fazer 2c antes do 2:** sem catálogo fora do HTML, o "código para aprovar"
+volta a ser JavaScript frágil.
 
 Privacidade (seção 2): nunca expor WhatsApp/telefone pessoal do administrador.
-Canal público de colaboração: `acervorucker@gmail.com` / Google Forms. O 2c
-pode pré-preencher mensagem de WhatsApp **da família para o canal do acervo**,
-não o número pessoal.
+Canal público: `acervorucker@gmail.com` / Google Forms. O 2c pode pré-preencher
+mensagem de WhatsApp **da família para o canal do acervo**, não o número pessoal.
 
 Site estático: não há backend. "Aprovar" = mesclar a ficha no `acervo.json` e
 publicar. A foto já está na pasta; a identificação é que entra na fila.
