@@ -7,6 +7,14 @@ site mudar.
 
 Última atualização: 2026-08-25.
 
+## 0. Ao reabrir a conversa (ler em voz alta)
+
+O mantenedor manda ideias com `ideia: …`.
+Responder em **uma linha**: é lote **2**, **2c** ou **fila** — **sem implementar**.
+Implementar só quando ele pedir o lote, em **chat novo**.
+Não continuar o lote seguinte na conversa que publicou o anterior.
+Pedido novo adapta o lote *aberto*; lote *feito* não se desfaz (seção 9).
+
 ## 1. O que é este site
 
 Site estático Jekyll, hospedado no GitHub Pages, repositório
