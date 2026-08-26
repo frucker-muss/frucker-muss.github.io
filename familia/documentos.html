@@ -161,26 +161,14 @@ description: "Retratos, sepulturas e documentos escritos que sustentam a árvore
   <p class="rkd-lb-legenda" id="rkdLbLegenda"></p>
 </div>
 
-<script type="application/json" id="rkd-fichas">{{ site.data.acervo.itens | jsonify }}</script>
-<script type="application/json" id="rkd-arquivos">[{% for f in site.static_files %}{% if f.path contains "img/documentos/" %}{{ f.path | jsonify }},{% endif %}{% endfor %}""]</script>
 <script>
 (function(){
 "use strict";
 
-// Catálogo fora do HTML (lote 2): fichas em _data/acervo.json.
-// JPG em assets/img/documentos/ sem ficha ainda aparece no build.
+// Catálogo fora do HTML (lote 2): fichas em /assets/data/acervo.json
+// (cópia de _data/acervo.json). Lista da pasta em
+// /assets/data/documentos-arquivos.json — JPG sem ficha ainda aparece.
 // Nunca editar esta página para adicionar foto.
-function rkdParseTag(id) {
-  var el = document.getElementById(id);
-  if (!el) return [];
-  try {
-    var v = JSON.parse(el.textContent);
-    if (Array.isArray(v)) return v.filter(function(x) { return typeof x === "string" ? x.length > 0 : !!x; });
-    return [];
-  } catch (e) { return []; }
-}
-var FICHAS = rkdParseTag("rkd-fichas");
-var ARQUIVOS_PASTA = rkdParseTag("rkd-arquivos");
 
 function rkdNormPath(p) {
   if (!p) return "";
@@ -225,8 +213,7 @@ function rkdMesclar(fichas, arquivos) {
   return out;
 }
 
-var ITENS = rkdMesclar(FICHAS, ARQUIVOS_PASTA);
-
+var ITENS = [];
 
 var CATEGORIAS = [
   { chave: "fotos", rotulo: "Fotos",
@@ -544,6 +531,21 @@ function encerrarPonteiro(e) {
 palco.addEventListener('pointerup', encerrarPonteiro);
 palco.addEventListener('pointercancel', encerrarPonteiro);
 
-renderizarTudo();
+function rkdCarregarCatalogo() {
+  return Promise.all([
+    fetch("/assets/data/acervo.json").then(function(r) { return r.json(); }),
+    fetch("/assets/data/documentos-arquivos.json").then(function(r) { return r.json(); })
+  ]).then(function(pair) {
+    var fichas = (pair[0] && pair[0].itens) ? pair[0].itens : [];
+    var arquivos = Array.isArray(pair[1]) ? pair[1] : [];
+    ITENS = rkdMesclar(fichas, arquivos);
+    renderizarTudo();
+  }).catch(function() {
+    ITENS = [];
+    renderizarTudo();
+  });
+}
+
+rkdCarregarCatalogo();
 })();
 </script>
