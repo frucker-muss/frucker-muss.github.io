@@ -11,7 +11,7 @@ kramdown:
 plugins:
   - jekyll-sitemap
 
-# Documentos internos do projeto (guias para IA, relatórios, snapshots) —
+# Documentos internos do projeto (guias para IA, relatórios, snapshots, conversas) —
 # não são conteúdo público e não devem ser publicados nem indexados.
 # (mantém também a lista padrão de exclusão do Jekyll, que este campo substitui por completo)
 exclude:
@@ -29,6 +29,7 @@ exclude:
   - GUIA-PROCESSO-FOTOS-ACERVO.md
   - RELATORIO_FASE0.md
   - SITE_SNAPSHOT.md
+  - _notas/
 
 # Remova ou comente a linha abaixo para evitar sobreposição de estilos
 # theme: jekyll-theme-architect
