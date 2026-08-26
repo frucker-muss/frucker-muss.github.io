@@ -90,6 +90,19 @@ Isso é feito pela IA (Claude), não por você manualmente:
 
 ---
 
+## 6. Lote 2c — sugestão da família (celular)
+
+Parente não edita GitHub. No visualizador da galeria:
+
+1. Toca **Quem é esta pessoa?**
+2. Escreve **um** nome, ou toca **Não sei**.
+3. Aparece um código `RK2C-…` já ligado à foto.
+4. Envia por e-mail (`acervorucker@gmail.com`) ou pelo formulário.
+
+O mantenedor recebe o código + nome, confere, e **só então** atualiza a ficha em `_data/acervo.json` (nunca o HTML).
+
+---
+
 ## Checklist rápido (cole isso no início de uma conversa nova com qualquer IA)
 
 ```

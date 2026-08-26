@@ -9,7 +9,7 @@ site mudar.
 
 ## 0. Ao voltar
 
-`ideia: …` → uma linha: **2c**, **3** ou **fila**. Não implementar.
+`ideia: …` → uma linha: **3** ou **fila**. Não implementar.
 Construir só em **chat novo**, quando pedir o lote.
 
 ## 1. O que é este site
@@ -65,6 +65,10 @@ só quer conhecer a própria história — ver seção 2.
   `_data/acervo.json`); lista da pasta em `assets/data/documentos-arquivos.json`;
   JPGs em `assets/img/documentos/`. Arquivo listado sem ficha ainda aparece.
   **Nunca** editar esta página para adicionar foto. Lote 2 (2026-08-26).
+  Lote **2c** (2026-08-26): no visualizador, o botão **Quem é esta pessoa?**
+  gera um código `RK2C-…` (um nome por vez; “Não sei” vale) e envia por
+  `acervorucker@gmail.com` ou Google Forms. A ficha só muda quando o
+  mantenedor aprovar e editar o JSON — a família não mexe no GitHub.
 - `familia/pessoas.html` — índice de perfis individuais (hoje: Georg Rücker,
   Vincentius Joseph Rücker). Badge "Pessoas".
 - `familia/cronicas.html` — índice de crônicas literárias (hoje: Georg,
@@ -177,18 +181,16 @@ Um lote = um chat novo = um PR. O de hoje não pode obrigar a refazer HTML amanh
 |---|---|---|
 | **1** feito | Home, 404, favicon | não reabrir |
 | **2** feito | Foto na pasta aparece; ficha em `assets/data/acervo.json` | não reabrir |
-| **2c** fila | Idoso toca a foto no celular → você aprova um código | precisa do 2 |
+| **2c** feito | Idoso toca a foto no celular → código `RK2C-…`; você aprova no JSON | não reabrir |
 | **3** fila | Árvore mais fácil | depois |
 
-O **2** deixou o formato da ficha (`id`, `thumb`, `titulo`, `legenda`, `categoria`, `tipo`, `data`, `decada`, `local`, `status`, `pessoas[]` com `genId`, `nome`, `x,y,w,h`). Miniaturas com `loading="lazy"`. O **2c** só preenche — sem toque de idoso no 2, sem JS gerado no HTML. Sem restilizar a home.
-
-Família, inclusive idoso no celular: um toque, um nome, “não sei” vale. Canal: `acervorucker@gmail.com` / Forms — nunca WhatsApp pessoal (seção 2).
+O **2** deixou o formato da ficha (`id`, `thumb`, `titulo`, `legenda`, `categoria`, `tipo`, `data`, `decada`, `local`, `status`, `pessoas[]` com `genId`, `nome`, `x,y,w,h`). Miniaturas com `loading="lazy"`. O **2c** só preenche — um toque, um nome, “não sei” vale; canal `acervorucker@gmail.com` / Forms; nunca WhatsApp pessoal (seção 2). Sem restilizar a home.
 
 ### Backlog (2026-08-26)
 
 Já no **2** (não reabrir): lazy-load; campos de década/tipo na ficha.
 
-**2c:** “sugerir identificação”; legendas com grau de certeza (usa `status`).
+Já no **2c** (não reabrir): sugerir identificação; grau de certeza no visualizador (`status`).
 
 **3:** busca na árvore; expandir gerações; clique na pessoa → foto/crônica.
 
