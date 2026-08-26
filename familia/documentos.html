@@ -698,10 +698,33 @@ function rkdCarregarCatalogo() {
     var arquivos = Array.isArray(pair[1]) ? pair[1] : [];
     ITENS = rkdMesclar(fichas, arquivos);
     renderizarTudo();
+    rkdAbrirFotoDaUrl();
   }).catch(function() {
     ITENS = [];
     renderizarTudo();
   });
+}
+
+function rkdAbrirFotoDaUrl() {
+  var id = "";
+  try { id = new URLSearchParams(window.location.search).get("foto") || ""; }
+  catch (e) { id = ""; }
+  if (!id) return;
+  var item = null;
+  for (var i = 0; i < ITENS.length; i++) {
+    if (ITENS[i].id === id) { item = ITENS[i]; break; }
+  }
+  if (!item) return;
+  var cat = item.categoria || "fotos";
+  categoriaAtiva = cat;
+  renderizarTudo();
+  var lista = itensPorCategoria(cat);
+  var idx = -1;
+  for (var j = 0; j < lista.length; j++) {
+    if (lista[j].id === id) { idx = j; break; }
+  }
+  if (idx < 0) return;
+  abrirLightbox(cat, idx);
 }
 
 rkdCarregarCatalogo();

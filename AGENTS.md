@@ -9,8 +9,8 @@ site mudar.
 
 ## 0. Ao voltar
 
-`ideia: …` → uma linha: **3** ou **fila**. Não implementar.
-Construir só em **chat novo**, quando pedir o lote.
+`ideia: …` → uma linha: **fila**. Lote 3 publicado. Não misturar com o lote 1/2/2c/3.
+Construir lote novo só em **chat novo**, quando pedir o lote.
 
 ## 1. O que é este site
 
@@ -55,7 +55,9 @@ só quer conhecer a própria história — ver seção 2.
     pode ter os dois cards lado a lado quando existem as duas versões.
 - `familia/arvore.html` — árvore genealógica interativa. Dados em
   `DADOS.pessoas` (array; ver `RELATORIO_FASE0.md` para o schema completo de
-  cada campo). Link discreto no final para `metodologia.html`.
+  cada campo). Lote **3** (2026-08-26): busca por nome; gerações recolhíveis
+  (I–III abertas); no painel, links para crônica/perfil e para
+  `documentos.html?foto=`. Link discreto no final para `metodologia.html`.
 - `familia/metodologia.html` — notas de desambiguação/arbitragem (hoje: DESAMB
   01, 05, 11, 12). Conteúdo técnico, só para quem quiser se aprofundar no método.
 - `familia/mapa.html` — mapa esquemático de migração (SVG), dados em array de
@@ -182,9 +184,11 @@ Um lote = um chat novo = um PR. O de hoje não pode obrigar a refazer HTML amanh
 | **1** feito | Home, 404, favicon | não reabrir |
 | **2** feito | Foto na pasta aparece; ficha em `assets/data/acervo.json` | não reabrir |
 | **2c** feito | Idoso toca a foto no celular → código `RK2C-…`; você aprova no JSON | não reabrir |
-| **3** fila | Árvore mais fácil | depois |
+| **3** feito | Árvore mais fácil: busca, gerações que abrem, clique → foto/crônica | não reabrir |
 
 O **2** deixou o formato da ficha (`id`, `thumb`, `titulo`, `legenda`, `categoria`, `tipo`, `data`, `decada`, `local`, `status`, `pessoas[]` com `genId`, `nome`, `x,y,w,h`). Miniaturas com `loading="lazy"`. O **2c** só preenche — um toque, um nome, “não sei” vale; canal `acervorucker@gmail.com` / Forms; nunca WhatsApp pessoal (seção 2). Sem restilizar a home.
+
+O **3** não mexe na home nem no catálogo. Busca por nome; gerações I–III abertas, o resto recolhido até tocar; no painel da pessoa, links para perfil/crônica (quando existem) e para fotos do acervo (`documentos.html?foto=`).
 
 ### Backlog (2026-08-26)
 
@@ -192,8 +196,8 @@ Já no **2** (não reabrir): lazy-load; campos de década/tipo na ficha.
 
 Já no **2c** (não reabrir): sugerir identificação; grau de certeza no visualizador (`status`).
 
-**3:** busca na árvore; expandir gerações; clique na pessoa → foto/crônica.
+Já no **3** (não reabrir depois de publicado): busca na árvore; expandir gerações; clique na pessoa → foto/crônica.
 
-**Fila** (depois do 2, sem reabrir o 1): 3–4 fotos na home puxadas do JSON; citação/causo; contadores; três caminhos em Família; filtros da galeria; zoom/pan; hover/transições; modo claro; rodapé com data; mapa interativo; linha do tempo; GEDCOM.
+**Fila** (depois do 3, sem reabrir 1/2/2c): 3–4 fotos na home puxadas do JSON; citação/causo; contadores; três caminhos em Família; filtros da galeria; zoom/pan; hover/transições; modo claro; rodapé com data; mapa interativo; linha do tempo; GEDCOM.
 
 Já existe — não refazer: tema escuro/dourado; formulário de contribuição; frase da Silésia na home.
