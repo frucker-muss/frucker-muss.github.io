@@ -5,7 +5,7 @@ antes de propor ou aplicar mudanças neste repositório. Não é específico de 
 ferramenta — mantenha o conteúdo genérico e atualizado conforme a estrutura do
 site mudar.
 
-Última atualização: 2026-08-25.
+Última atualização: 2026-08-26.
 
 ## 0. Ao voltar
 
@@ -179,6 +179,18 @@ Um lote = um chat novo = um PR. O de hoje não pode obrigar a refazer HTML amanh
 | **2c** fila | Idoso toca a foto no celular → você aprova um código | precisa do 2 |
 | **3** fila | Árvore mais fácil | depois |
 
-O **2** já deixa o formato da ficha (`id`, quem aparece, status). O **2c** só preenche — sem toque de idoso no 2, sem JS gerado no HTML.
+O **2** já deixa o formato da ficha (`id`, quem aparece, `status`, década, tipo). O **2c** só preenche — sem toque de idoso no 2, sem JS gerado no HTML. No **2**: lazy-load (senão a galeria se reedita depois). Sem restilizar a home.
 
 Família, inclusive idoso no celular: um toque, um nome, “não sei” vale. Canal: `acervorucker@gmail.com` / Forms — nunca WhatsApp pessoal (seção 2).
+
+### Backlog (2026-08-26)
+
+Entra no **2** (mesma fundação): lazy-load; campos de década/tipo na ficha.
+
+**2c:** “sugerir identificação”; legendas com grau de certeza (usa `status`).
+
+**3:** busca na árvore; expandir gerações; clique na pessoa → foto/crônica.
+
+**Fila** (depois do 2, sem reabrir o 1): 3–4 fotos na home puxadas do JSON; citação/causo; contadores; três caminhos em Família; filtros da galeria; zoom/pan; hover/transições; modo claro; rodapé com data; mapa interativo; linha do tempo; GEDCOM.
+
+Já existe — não refazer: tema escuro/dourado; formulário de contribuição; frase da Silésia na home.
