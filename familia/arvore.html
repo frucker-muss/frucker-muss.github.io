@@ -77,7 +77,8 @@ description: "Árvore genealógica da família Rücker, de Georg (1789) aos ramo
 .rkr-detalhe{
   flex:1 1 100%;
   max-width:100%;
-  margin-top:0.2rem;
+  margin-top:0.35rem;
+  margin-bottom:0.35rem;
   border:1px solid var(--ouro);
   border-radius:10px;
   background:var(--superficie);
@@ -103,6 +104,40 @@ description: "Árvore genealógica da família Rücker, de Georg (1789) aos ramo
 .rkr-src{font-family:var(--mono);font-size:0.64rem;color:var(--mudo);margin-top:0.35rem;display:block;line-height:1.55;}
 .rkr.filtrado .rkr-fato[data-status="inf"],.rkr.filtrado .rkr-fato[data-status="hip"]{opacity:.2;}
 
+.rkr-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
+.rkr-busca-wrap{width:100%;max-width:440px;margin:0 auto 1.1rem;}
+.rkr-busca{
+  width:100%;font-family:Georgia,serif;font-size:1.08rem;line-height:1.4;
+  background:var(--superficie);color:var(--claro);border:1px solid var(--borda);
+  border-radius:8px;padding:0.8rem 1rem;min-height:48px;
+}
+.rkr-busca::placeholder{color:var(--mudo);}
+.rkr-busca:focus{outline:2px solid var(--ouro);outline-offset:2px;border-color:var(--ouro);}
+.rkr-busca-status{font-family:var(--mono);font-size:0.68rem;color:var(--mudo);text-align:center;margin:0.5rem 0 0;}
+
+.rkr-gerbloco{width:100%;display:flex;flex-direction:column;align-items:center;}
+.rkr-gerbloco[hidden]{display:none !important;}
+.rkr-gerbtn{
+  font-family:var(--mono);font-size:0.66rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--mudo);background:transparent;border:1px solid var(--borda);border-radius:999px;
+  padding:0.55rem 1.1rem;cursor:pointer;margin:1.15rem 0 0.75rem;min-height:44px;max-width:100%;
+}
+.rkr-gerbtn:hover,.rkr-gerbtn:focus-visible{border-color:var(--ouro);color:var(--ouro);}
+.rkr-gerbtn[aria-expanded="true"]{color:var(--ouro);border-color:rgba(212,175,106,.45);}
+.rkr-gercont{width:100%;display:flex;flex-direction:column;align-items:center;}
+.rkr-gercont[hidden]{display:none !important;}
+.rkr-cartao[hidden]{display:none !important;}
+
+.rkr-links{display:flex;flex-direction:column;gap:0.55rem;margin-top:1.3rem;}
+.rkr-link{
+  display:flex;align-items:center;justify-content:space-between;gap:0.8rem;
+  background:rgba(212,175,106,.06);border:1px solid rgba(212,175,106,.35);
+  border-radius:8px;padding:0.75rem 1rem;color:var(--claro);text-decoration:none;
+  min-height:44px;font-size:0.95rem;text-align:left;
+}
+.rkr-link:hover{border-color:var(--ouro);color:var(--ouro);text-decoration:none;}
+.rkr-link-tipo{font-family:var(--mono);font-size:0.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ouro);flex:0 0 auto;}
+
 @media (max-width:480px){
   .rkr-cartao{width:100%;}
   .rkr-detalhe{padding:1.1rem 1rem;}
@@ -113,8 +148,15 @@ description: "Árvore genealógica da família Rücker, de Georg (1789) aos ramo
 
 <div class="rkr" id="rkrRaiz">
 
+  <div class="rkr-busca-wrap">
+    <label class="rkr-sr" for="rkrBusca">Buscar um nome na árvore</label>
+    <input type="search" id="rkrBusca" class="rkr-busca" placeholder="Buscar um nome…" autocomplete="off" enterkeyhint="search">
+    <p class="rkr-busca-status" id="rkrBuscaStatus" hidden></p>
+  </div>
+
   <div class="rkr-controles">
     <button class="rkr-btn" id="rkrFiltro" aria-pressed="false" type="button">Ocultar Hipóteses / Inferências</button>
+    <button class="rkr-btn" id="rkrRamif" aria-pressed="false" type="button">Abrir ramificações</button>
   </div>
 
   <div class="rkr-legenda">
@@ -1073,17 +1115,138 @@ description: "Árvore genealógica da família Rücker, de Georg (1789) aos ramo
 
   var raiz = document.getElementById('rkrArvore');
   var btnFiltro = document.getElementById('rkrFiltro');
+  var btnRamif = document.getElementById('rkrRamif');
   var raizGlobal = document.getElementById('rkrRaiz');
+  var buscaEl = document.getElementById('rkrBusca');
+  var buscaStatus = document.getElementById('rkrBuscaStatus');
   var abertoId = null;
+  var consulta = '';
+  var acervoItens = [];
+  var gerAberta = {};
+
+  var PAGINAS = {
+    georg: [
+      { tipo: 'Perfil', titulo: 'Georg Rücker', href: '/familia/georg-rucker.html' },
+      { tipo: 'Crônica', titulo: 'Georg — Uma Crônica', href: '/familia/georg-uma-cronica.html' }
+    ],
+    vincentius: [
+      { tipo: 'Perfil', titulo: 'Vincentius Joseph Rücker', href: '/familia/vincentius-joseph-rucker.html' },
+      { tipo: 'Crônica', titulo: 'Vincentius — Uma Crônica', href: '/familia/vincenz-uma-cronica.html' }
+    ],
+    g3_am: [
+      { tipo: 'Crônica', titulo: 'O Regente da Fronteira', href: '/familia/ambrosio-augusto-uma-cronica.html' }
+    ],
+    g4_albano: [
+      { tipo: 'Crônica', titulo: 'O moço que revelava o mundo', href: '/familia/albano-rucker-uma-cronica.html' }
+    ],
+    g4_jose: [
+      { tipo: 'Crônica', titulo: 'José Rücker — Uma Crônica', href: '/familia/jose-rucker-uma-cronica.html' }
+    ]
+  };
+
+  function gerId(nome) {
+    return String(nome || '')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-zA-Z0-9]+/g, '-')
+      .replace(/^-|-$/g, '')
+      .toLowerCase();
+  }
+
+  function geracaoAbertaPorPadrao(ger) {
+    return ger === 'Geração I' || ger === 'Geração II' || ger === 'Geração III';
+  }
+
+  function geracoes() {
+    var lista = [];
+    DADOS.pessoas.forEach(function(p) {
+      if (p.ger && lista.indexOf(p.ger) === -1) lista.push(p.ger);
+    });
+    return lista;
+  }
+
+  function normNome(s) {
+    return String(s || '')
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\([^)]*\)/g, ' ')
+      .replace(/['"“”‘’.]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function pessoaCombina(p, q) {
+    if (!q) return true;
+    return normNome([p.nome, p.vida, p.papel, p.sub].join(' ')).indexOf(q) !== -1;
+  }
+
+  function nomesBatem(a, b) {
+    if (/a confirmar/i.test(String(a || '')) || /a confirmar/i.test(String(b || ''))) return false;
+    var na = normNome(a), nb = normNome(b);
+    if (!na || !nb) return false;
+    if (na === nb) return true;
+    var curta = na.length <= nb.length ? na : nb;
+    var longa = na.length <= nb.length ? nb : na;
+    if (curta.indexOf(' ') !== -1 && longa.indexOf(curta) !== -1) return true;
+
+    var stop = { rucker: 1, ruecker: 1 };
+    function given(s) {
+      return s.split(' ').filter(function(t) { return t && !stop[t]; });
+    }
+    function temSobrenome(s) {
+      return /(^|\s)(rucker|ruecker)(\s|$)/.test(s);
+    }
+    var ga = given(na), gb = given(nb);
+    if (!ga.length || !gb.length || ga[0] !== gb[0]) return false;
+    if (temSobrenome(na) !== temSobrenome(nb)) return false;
+    var short = ga.length <= gb.length ? ga : gb;
+    var longg = ga.length <= gb.length ? gb : ga;
+    for (var i = 0; i < short.length; i++) {
+      if (longg.indexOf(short[i]) === -1) return false;
+    }
+    return true;
+  }
+
+  function fotosDaPessoa(pessoa) {
+    if (!acervoItens.length) return [];
+    var out = [];
+    acervoItens.forEach(function(item) {
+      var pessoas = item.pessoas || [];
+      var bate = pessoas.some(function(pe) { return nomesBatem(pessoa.nome, pe.nome); });
+      if (bate) out.push(item);
+    });
+    return out;
+  }
+
+  function estaAberta(ger) {
+    if (Object.prototype.hasOwnProperty.call(gerAberta, ger)) return gerAberta[ger];
+    return geracaoAbertaPorPadrao(ger);
+  }
+
+  function definirAberta(ger, valor) {
+    gerAberta[ger] = valor;
+  }
 
   function renderizarArvore() {
     var html = '';
     var gerAtual = '';
+    var nGer = 0;
 
     DADOS.pessoas.forEach(function(p) {
       if (p.ger && p.ger !== gerAtual) {
-        if (gerAtual !== '') html += '</div><div class="rkr-elo"></div>';
-        html += '<div class="rkr-gerlabel">' + p.ger + '</div><div class="rkr-ger" id="ger-' + gerId(p.ger) + '">';
+        if (gerAtual !== '') html += '</div></div></div>';
+        nGer += 1;
+        var gid = gerId(p.ger);
+        var aberta = estaAberta(p.ger);
+        var nPessoas = DADOS.pessoas.filter(function(x) { return x.ger === p.ger; }).length;
+        html += '<div class="rkr-gerbloco" data-ger="' + gid + '">' +
+                  (gerAtual !== '' ? '<div class="rkr-elo" aria-hidden="true"></div>' : '') +
+                  '<button type="button" class="rkr-gerbtn" data-toggle-ger="' + gid + '" aria-expanded="' + aberta + '">' +
+                    p.ger + ' · ' + nPessoas +
+                  '</button>' +
+                  '<div class="rkr-gercont" data-ger-cont="' + gid + '"' + (aberta ? '' : ' hidden') + '>' +
+                    '<div class="rkr-ger" id="ger-' + gid + '">';
         gerAtual = p.ger;
       }
 
@@ -1097,12 +1260,63 @@ description: "Árvore genealógica da família Rücker, de Georg (1789) aos ramo
                 '</div>' +
               '</button>';
     });
-    if (gerAtual !== '') html += '</div>';
+    if (gerAtual !== '') html += '</div></div></div>';
     raiz.innerHTML = html;
+    aplicarBusca();
   }
 
-  function gerId(nome) {
-    return nome.replace(/[^a-zA-Z0-9]+/g, '-').toLowerCase();
+  function aplicarBusca() {
+    var q = consulta;
+    var visiveis = 0;
+    DADOS.pessoas.forEach(function(p) {
+      var btn = raiz.querySelector('.rkr-cartao[data-id="' + p.id + '"]');
+      if (!btn) return;
+      var ok = pessoaCombina(p, q);
+      btn.hidden = !ok;
+      if (ok) visiveis += 1;
+    });
+
+    geracoes().forEach(function(ger) {
+      var gid = gerId(ger);
+      var bloco = raiz.querySelector('.rkr-gerbloco[data-ger="' + gid + '"]');
+      var cont = raiz.querySelector('[data-ger-cont="' + gid + '"]');
+      var toggle = raiz.querySelector('[data-toggle-ger="' + gid + '"]');
+      if (!bloco || !cont || !toggle) return;
+      var nMatch = DADOS.pessoas.filter(function(p) { return p.ger === ger && pessoaCombina(p, q); }).length;
+      bloco.hidden = q !== '' && nMatch === 0;
+      var aberta = q !== '' ? nMatch > 0 : estaAberta(ger);
+      cont.hidden = !aberta;
+      toggle.setAttribute('aria-expanded', aberta ? 'true' : 'false');
+      toggle.textContent = ger + ' · ' + nMatch;
+    });
+
+    if (!q) {
+      buscaStatus.hidden = true;
+      buscaStatus.textContent = '';
+    } else {
+      buscaStatus.hidden = false;
+      buscaStatus.textContent = visiveis === 0
+        ? 'Ninguém com esse nome na árvore.'
+        : (visiveis === 1 ? '1 pessoa' : visiveis + ' pessoas');
+    }
+  }
+
+  function montarLinksHTML(pessoa) {
+    var links = (PAGINAS[pessoa.id] || []).slice();
+    fotosDaPessoa(pessoa).forEach(function(item) {
+      links.push({
+        tipo: 'Foto',
+        titulo: item.titulo || 'Foto do acervo',
+        href: '/familia/documentos.html?foto=' + encodeURIComponent(item.id)
+      });
+    });
+    if (!links.length) return '';
+    var html = '<div class="rkr-bloco"><h3>Ver também</h3><div class="rkr-links">';
+    links.forEach(function(l) {
+      html += '<a class="rkr-link" href="' + l.href + '"><span>' + l.titulo + '</span><span class="rkr-link-tipo">' + l.tipo + '</span></a>';
+    });
+    html += '</div></div>';
+    return html;
   }
 
   function montarDetalheHTML(pessoa) {
@@ -1122,6 +1336,7 @@ description: "Árvore genealógica da família Rücker, de Georg (1789) aos ramo
         fHtml += '</div>';
       });
     }
+    fHtml += montarLinksHTML(pessoa);
     return fHtml;
   }
 
@@ -1141,9 +1356,6 @@ description: "Árvore genealógica da família Rücker, de Georg (1789) aos ramo
     painel.setAttribute('aria-live', 'polite');
     painel.innerHTML = montarDetalheHTML(pessoa);
 
-    // Insere o painel logo depois do cartão clicado, dentro da mesma grade (.rkr-ger).
-    // Como o painel usa flex-basis 100%, ele quebra para a linha seguinte,
-    // aparecendo imediatamente abaixo da linha em que o cartão está.
     btn.insertAdjacentElement('afterend', painel);
 
     btn.setAttribute('aria-current', 'true');
@@ -1154,8 +1366,6 @@ description: "Árvore genealógica da família Rücker, de Georg (1789) aos ramo
       fecharDetalheAberto();
     });
 
-    // Rolagem suave só o suficiente para garantir que o painel fique visível,
-    // sem saltar para longe do cartão.
     requestAnimationFrame(function(){
       var rect = painel.getBoundingClientRect();
       var foraDaTela = rect.bottom > window.innerHeight || rect.top < 0;
@@ -1165,14 +1375,53 @@ description: "Árvore genealógica da família Rücker, de Georg (1789) aos ramo
     });
   }
 
+  function abrirPessoaPorId(id) {
+    var pessoa = DADOS.pessoas.find(function(p){ return p.id === id; });
+    if (!pessoa) return;
+    definirAberta(pessoa.ger, true);
+    renderizarArvore();
+    var btn = raiz.querySelector('.rkr-cartao[data-id="' + id + '"]');
+    if (btn) abrirDetalhe(btn, pessoa);
+  }
+
+  function ramificacoesAbertas() {
+    return geracoes().every(function(ger) {
+      if (geracaoAbertaPorPadrao(ger)) return true;
+      return estaAberta(ger);
+    });
+  }
+
+  function atualizarBotaoRamif() {
+    var todas = ramificacoesAbertas();
+    btnRamif.setAttribute('aria-pressed', todas ? 'true' : 'false');
+    btnRamif.textContent = todas ? 'Recolher ramificações' : 'Abrir ramificações';
+  }
+
   function iniciarEventos() {
     raiz.addEventListener('click', function(ev){
+      var toggle = ev.target.closest('[data-toggle-ger]');
+      if (toggle) {
+        var gid = toggle.getAttribute('data-toggle-ger');
+        var ger = geracoes().filter(function(g) { return gerId(g) === gid; })[0];
+        if (!ger) return;
+        var nova = !estaAberta(ger);
+        definirAberta(ger, nova);
+        var cont = raiz.querySelector('[data-ger-cont="' + gid + '"]');
+        if (cont) cont.hidden = !nova;
+        toggle.setAttribute('aria-expanded', nova ? 'true' : 'false');
+        if (!nova && abertoId) {
+          var aberta = DADOS.pessoas.find(function(p){ return p.id === abertoId; });
+          if (aberta && gerId(aberta.ger) === gid) fecharDetalheAberto();
+        }
+        atualizarBotaoRamif();
+        return;
+      }
+
       var btn = ev.target.closest('.rkr-cartao');
       if (!btn) return;
 
       var id = btn.getAttribute('data-id');
 
-      // Clicar de novo no mesmo cartão fecha o painel (comportamento de toggle).
       if (id === abertoId) {
         fecharDetalheAberto();
         return;
@@ -1190,9 +1439,51 @@ description: "Árvore genealógica da família Rücker, de Georg (1789) aos ramo
       raizGlobal.classList.toggle('filtrado', !p);
       btnFiltro.textContent = p ? "Ocultar Hipóteses / Inferências" : "Mostrar todos os dados";
     });
+
+    btnRamif.addEventListener('click', function() {
+      var abrir = !ramificacoesAbertas();
+      geracoes().forEach(function(ger) {
+        if (geracaoAbertaPorPadrao(ger)) definirAberta(ger, true);
+        else definirAberta(ger, abrir);
+      });
+      renderizarArvore();
+      atualizarBotaoRamif();
+    });
+
+    var buscaTimer = null;
+    buscaEl.addEventListener('input', function() {
+      clearTimeout(buscaTimer);
+      buscaTimer = setTimeout(function() {
+        consulta = normNome(buscaEl.value);
+        if (abertoId) fecharDetalheAberto();
+        aplicarBusca();
+      }, 80);
+    });
   }
+
+  function lerQuery() {
+    try {
+      var p = new URLSearchParams(window.location.search).get('p');
+      return p ? String(p).trim() : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  fetch('/assets/data/acervo.json').then(function(r) { return r.json(); }).then(function(data) {
+    acervoItens = (data && data.itens) ? data.itens : [];
+    if (abertoId) {
+      var pessoa = DADOS.pessoas.find(function(p){ return p.id === abertoId; });
+      var btn = raiz.querySelector('.rkr-cartao[data-id="' + abertoId + '"]');
+      if (pessoa && btn) abrirDetalhe(btn, pessoa);
+    }
+  }).catch(function() { acervoItens = []; });
 
   renderizarArvore();
   iniciarEventos();
+  atualizarBotaoRamif();
+
+  var pid = lerQuery();
+  if (pid) abrirPessoaPorId(pid);
 })();
 </script>
