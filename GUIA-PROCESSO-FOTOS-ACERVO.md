@@ -9,18 +9,21 @@ Este documento descreve o passo a passo completo para tratar uma foto, identific
 ## 0. Contexto que toda IA precisa saber antes de começar
 
 - O site **rucker.life** é um site **estático** (Jekyll + GitHub Pages). Não tem banco de dados, não tem backend.
-- Toda a informação de "quem é quem" numa foto **fica dentro do código** da página `familia/documentos.html`, num array JavaScript chamado `ITENS`. **Não** fica em metadado EXIF da imagem, nem em nome de arquivo, nem em nenhum outro lugar.
-- Cada foto é um objeto dentro desse array, com esse formato:
+- Toda a informação de "quem é quem" numa foto **fica em `_data/acervo.json`**. A galeria (`familia/documentos.html`) só lê esse arquivo e os JPGs da pasta. **Não** fica em metadado EXIF da imagem, nem no HTML, nem no nome do arquivo.
+- Cada foto é um objeto no array `itens` de `_data/acervo.json`, com esse formato:
 
 ```js
 {
   id: "identificador-unico-sem-espacos",
-  categoria: "fotos",
-  subcategoria: "Retratos Identificados",
-  titulo: "Título curto da foto",
-  status: "naoverificado",   // ou "resolvido" ou "confirmado"
   thumb: "/assets/img/documentos/nome-do-arquivo.jpg",
+  titulo: "Título curto da foto",
   legenda: "Texto que aparece embaixo da foto no site.",
+  categoria: "fotos",
+  tipo: "Retratos Identificados",
+  data: "1946-06-26",       // ou null
+  decada: "1940",           // ou null
+  local: "São Pedro do Maratá",
+  status: "naoverificado",  // ou "resolvido" ou "confirmado"
   pessoas: [
     { genId: "G4-15", nome: "Nome completo da pessoa", x: 51, y: 14, w: 8, h: 10 }
   ]
@@ -70,9 +73,9 @@ Isso é feito pela IA (Claude), não por você manualmente:
 
 ## 5. Publicar no site
 
-1. Peça à IA o **arquivo `documentos.html` completo** (não um trecho pra colar) — isso evita o erro de apagar pedaço do arquivo sem querer, que já aconteceu.
-2. Baixe o arquivo e **substitua diretamente** o `familia/documentos.html` do repositório (arrastar o arquivo baixado pra dentro da pasta, sem copiar/colar texto).
-3. Confirme que a foto tratada (passo 2) está salva em `assets/img/documentos/` com o mesmo nome usado no campo `thumb`.
+1. Coloque o JPG em `assets/img/documentos/` (nome em minúsculas, hífen, sem espaço). Sem ficha, a foto **já aparece** no acervo com título tirado do arquivo.
+2. Acrescente a ficha correspondente em `_data/acervo.json` (array `itens`). **Não** edite `familia/documentos.html` para adicionar foto.
+3. Confirme que o campo `thumb` aponta para o mesmo caminho do arquivo.
 4. No PowerShell, dentro da pasta do repositório:
    ```
    git status
@@ -92,11 +95,12 @@ Isso é feito pela IA (Claude), não por você manualmente:
 ```
 Contexto do projeto rucker.life:
 - Site estático Jekyll/GitHub Pages, SEM backend/banco de dados.
-- Dados de identificação de pessoas em fotos ficam no array ITENS dentro de
-  familia/documentos.html — NUNCA em EXIF da imagem.
+- Dados de identificação de pessoas em fotos ficam em _data/acervo.json —
+  NUNCA em EXIF da imagem, NUNCA em familia/documentos.html.
+- Foto nova: JPG em assets/img/documentos/ + ficha no JSON. Pasta sem ficha
+  ainda aparece.
 - Formato de cada pessoa: { genId, nome, x, y, w, h } (retângulo em %, não ponto).
-- Sempre entregar o documentos.html COMPLETO quando houver mudança, nunca um
-  trecho pra colar manualmente — para não arriscar apagar parte do arquivo.
+  Sem x/y a pessoa fica na ficha e não ganha marcador.
 - Antes de publicar, confirmar que a branch local é "main" (git branch).
 - Genealogia de referência: ACERVO_RUCKER_v5_1.docx (genId no formato G3-AA, G4-15 etc).
 ```
@@ -106,10 +110,10 @@ Contexto do projeto rucker.life:
 | Erro | O que aconteceu | Como evitar |
 |---|---|---|
 | Injetar dados no EXIF | Gemini gravou nome/data como metadado da imagem, sem efeito nenhum no site | Dados de pessoa sempre no array `ITENS`, nunca em EXIF |
-| Editar só um trecho do arquivo | Colar só o array `ITENS` novo apagou sem querer todo o resto do script (lightbox, zoom) | Sempre pedir/gerar o arquivo **inteiro** |
+| Editar `documentos.html` para adicionar foto | O catálogo voltaria para o HTML e o próximo lote quebraria | Só `_data/acervo.json` + JPG na pasta |
 | Publicar em branch errada | Trabalho feito numa branch separada nunca chegava no site publicado | Confirmar com `git branch` que está em `main` antes de publicar |
 | Adivinhar coordenadas x/y | Estimativa visual de posição gerava marcadores mal posicionados/apertados | Usar a ferramenta `marcador-fotos-rucker.html` (clique real, não estimativa) |
 
 ---
 
-*Última atualização: 04/08/2026*
+*Última atualização: 26/08/2026*
