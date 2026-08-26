@@ -9,7 +9,7 @@ site mudar.
 
 ## 0. Ao voltar
 
-`ideia: …` → uma linha: **2**, **2c** ou **fila**. Não implementar.
+`ideia: …` → uma linha: **2c**, **3** ou **fila**. Não implementar.
 Construir só em **chat novo**, quando pedir o lote.
 
 ## 1. O que é este site
@@ -60,10 +60,11 @@ só quer conhecer a própria história — ver seção 2.
   01, 05, 11, 12). Conteúdo técnico, só para quem quiser se aprofundar no método.
 - `familia/mapa.html` — mapa esquemático de migração (SVG), dados em array de
   nós/rotas.
-- `familia/documentos.html` — galeria de fotos/documentos. Hoje o catálogo ainda
-  vive em JavaScript gerado na mão (`ITENS`). **Lote 2** (pendente): fotos em
-  `assets/img/documentos/`, metadados em `_data/acervo.json` — **nunca** editar
-  esta página para adicionar foto.
+- `familia/documentos.html` — galeria de fotos/documentos. O catálogo **não**
+  vive neste HTML. Fichas em `_data/acervo.json`; JPGs em
+  `assets/img/documentos/`. Arquivo na pasta sem ficha ainda aparece (ficha
+  mínima no build). **Nunca** editar esta página para adicionar foto. Lote 2
+  (2026-08-26).
 - `familia/pessoas.html` — índice de perfis individuais (hoje: Georg Rücker,
   Vincentius Joseph Rücker). Badge "Pessoas".
 - `familia/cronicas.html` — índice de crônicas literárias (hoje: Georg,
@@ -175,17 +176,17 @@ Um lote = um chat novo = um PR. O de hoje não pode obrigar a refazer HTML amanh
 | | | |
 |---|---|---|
 | **1** feito | Home, 404, favicon | não reabrir |
-| **2** aberto | Foto na pasta aparece; ficha em `_data/acervo.json` | catálogo fora do HTML |
+| **2** feito | Foto na pasta aparece; ficha em `_data/acervo.json` | não reabrir |
 | **2c** fila | Idoso toca a foto no celular → você aprova um código | precisa do 2 |
 | **3** fila | Árvore mais fácil | depois |
 
-O **2** já deixa o formato da ficha (`id`, quem aparece, `status`, década, tipo). O **2c** só preenche — sem toque de idoso no 2, sem JS gerado no HTML. No **2**: lazy-load (senão a galeria se reedita depois). Sem restilizar a home.
+O **2** deixou o formato da ficha (`id`, `thumb`, `titulo`, `legenda`, `categoria`, `tipo`, `data`, `decada`, `local`, `status`, `pessoas[]` com `genId`, `nome`, `x,y,w,h`). Miniaturas com `loading="lazy"`. O **2c** só preenche — sem toque de idoso no 2, sem JS gerado no HTML. Sem restilizar a home.
 
 Família, inclusive idoso no celular: um toque, um nome, “não sei” vale. Canal: `acervorucker@gmail.com` / Forms — nunca WhatsApp pessoal (seção 2).
 
 ### Backlog (2026-08-26)
 
-Entra no **2** (mesma fundação): lazy-load; campos de década/tipo na ficha.
+Já no **2** (não reabrir): lazy-load; campos de década/tipo na ficha.
 
 **2c:** “sugerir identificação”; legendas com grau de certeza (usa `status`).
 
