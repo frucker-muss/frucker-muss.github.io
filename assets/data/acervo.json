@@ -1,0 +1,774 @@
+{
+  "itens": [
+    {
+      "id": "jose-zita-c1963",
+      "thumb": "/assets/familia/jose_zita.jpeg",
+      "titulo": "José e Ignês Schuh Rücker, Zita, c. 1963-1966",
+      "legenda": "Retrato de família de José Rücker e Ignês Schuh Rücker, Zita, com Ulrich August ('Uli') e outros familiares. Fonte: identificação de Ana Maria Bonamigo Bolzan, grupo Família Rücker.",
+      "categoria": "fotos",
+      "tipo": "Retratos Identificados",
+      "data": null,
+      "decada": "1960",
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [
+        {
+          "genId": null,
+          "nome": "Maria Helena",
+          "x": 9.5,
+          "y": 18.5,
+          "w": 9,
+          "h": 11
+        },
+        {
+          "genId": "G5-UA",
+          "nome": "Ulrich August Rücker ('Uli')",
+          "x": 25.5,
+          "y": 11.5,
+          "w": 9,
+          "h": 11
+        },
+        {
+          "genId": null,
+          "nome": "Úrsula",
+          "x": 29.5,
+          "y": 21.5,
+          "w": 9,
+          "h": 11
+        },
+        {
+          "genId": "G4-12c",
+          "nome": "Ignês Schuh Rücker, Zita",
+          "x": 47.5,
+          "y": 20.5,
+          "w": 9,
+          "h": 11
+        },
+        {
+          "genId": "G4-12",
+          "nome": "José Rücker",
+          "x": 53.5,
+          "y": 13.5,
+          "w": 9,
+          "h": 11
+        },
+        {
+          "genId": null,
+          "nome": "Martha",
+          "x": 66.5,
+          "y": 20.5,
+          "w": 9,
+          "h": 11
+        },
+        {
+          "genId": null,
+          "nome": "Esther",
+          "x": 83.5,
+          "y": 18.5,
+          "w": 9,
+          "h": 11
+        },
+        {
+          "genId": null,
+          "nome": "Ana Maria Bonamigo Bolzan (criança na foto)",
+          "x": 37.5,
+          "y": 58.5,
+          "w": 9,
+          "h": 11
+        },
+        {
+          "genId": null,
+          "nome": "José Urbano",
+          "x": 53.5,
+          "y": 51.5,
+          "w": 9,
+          "h": 11
+        },
+        {
+          "genId": null,
+          "nome": "Maria do Carmo",
+          "x": 71.5,
+          "y": 61.5,
+          "w": 9,
+          "h": 11
+        }
+      ]
+    },
+    {
+      "id": "sepultamento-vo-pina-1946",
+      "thumb": "/assets/img/documentos/sepultamento-da-vo-pina.jpg",
+      "titulo": "Enterro da Vó Pina, 26/06/1946",
+      "legenda": "Sepultamento de Philippine Saft Rücker ('Vó Pina'), no jazigo familiar de São Pedro do Maratá. Reúne parte dos treze filhos sobreviventes de August Ambros e Philippine, com netos. Edição: Paulo R. Rücker.",
+      "categoria": "fotos",
+      "tipo": "Retratos Identificados",
+      "data": "1946-06-26",
+      "decada": "1940",
+      "local": "São Pedro do Maratá",
+      "status": "naoverificado",
+      "pessoas": [
+        {
+          "genId": "G4-13",
+          "nome": "Adalberto Rücker",
+          "x": 14.0,
+          "y": 6.6,
+          "w": 6,
+          "h": 7.5
+        },
+        {
+          "genId": "G4-06",
+          "nome": "Ewaldo Rücker",
+          "x": 20.0,
+          "y": 8.6,
+          "w": 6,
+          "h": 7.5
+        },
+        {
+          "genId": null,
+          "nome": "Adolfo Jaeger",
+          "x": 29.0,
+          "y": 12.6,
+          "w": 6,
+          "h": 7.5
+        },
+        {
+          "genId": null,
+          "nome": "Renata (a confirmar)",
+          "x": 36.0,
+          "y": 14.6,
+          "w": 6,
+          "h": 7.5
+        },
+        {
+          "genId": "G4-09",
+          "nome": "Rudolfo Rücker",
+          "x": 42.0,
+          "y": 12.6,
+          "w": 6,
+          "h": 7.5
+        },
+        {
+          "genId": "G4-15",
+          "nome": "Siegmundo Rücker",
+          "x": 48.0,
+          "y": 11.6,
+          "w": 6,
+          "h": 7.5
+        },
+        {
+          "genId": "G4-08",
+          "nome": "Luisa Victória Rücker",
+          "x": 55.0,
+          "y": 9.6,
+          "w": 6,
+          "h": 7.5
+        },
+        {
+          "genId": "G4-CD",
+          "nome": "Cecy (Ceci) Dexheimer Rücker",
+          "x": 53.0,
+          "y": 15.6,
+          "w": 6,
+          "h": 7.5
+        },
+        {
+          "genId": "G4-07",
+          "nome": "Hedwig Rücker",
+          "x": 65.0,
+          "y": 9.6,
+          "w": 6,
+          "h": 7.5
+        },
+        {
+          "genId": null,
+          "nome": "Anísia (a confirmar)",
+          "x": 73.0,
+          "y": 9.6,
+          "w": 6,
+          "h": 7.5
+        },
+        {
+          "genId": null,
+          "nome": "Iris (a confirmar)",
+          "x": 79.0,
+          "y": 9.6,
+          "w": 6,
+          "h": 7.5
+        },
+        {
+          "genId": "G4-14",
+          "nome": "Augusto Guilherme Rücker",
+          "x": 24.0,
+          "y": 13.6,
+          "w": 6,
+          "h": 7.5
+        },
+        {
+          "genId": "G3-AA",
+          "nome": "August Ambros Rücker ('Vô Augusto')",
+          "x": 23.0,
+          "y": 24.6,
+          "w": 6,
+          "h": 7.5
+        },
+        {
+          "genId": "G5-PR",
+          "nome": "Paulo Renato Rucker",
+          "x": 38.0,
+          "y": 23.6,
+          "w": 6,
+          "h": 7.5
+        },
+        {
+          "genId": null,
+          "nome": "Aurea Filipina Rücker ('Pina', bebê)",
+          "x": 45.0,
+          "y": 21.6,
+          "w": 6,
+          "h": 7.5
+        },
+        {
+          "genId": null,
+          "nome": "Astrid (possivelmente Berlindes Astrid Küchemann)",
+          "x": 70.0,
+          "y": 18.6,
+          "w": 6,
+          "h": 7.5
+        },
+        {
+          "genId": null,
+          "nome": "Marlene",
+          "x": 55.0,
+          "y": 39.6,
+          "w": 6,
+          "h": 7.5
+        },
+        {
+          "genId": null,
+          "nome": "Theodoro",
+          "x": 73.0,
+          "y": 37.6,
+          "w": 6,
+          "h": 7.5
+        }
+      ]
+    },
+    {
+      "id": "enterro-vo-pina-cemiterio-1946",
+      "thumb": "/assets/img/documentos/enterro-vo-pina.jpg",
+      "titulo": "Enterro da Vó Pina no cemitério, 26/06/1946",
+      "legenda": "Família reunida junto à sepultura de Philippine Saft Rücker ('Vó Pina'), no jazigo familiar de São Pedro do Maratá — mesmo dia da foto do jardim. Edição: Paulo R. Rücker.",
+      "categoria": "fotos",
+      "tipo": "Retratos Identificados",
+      "data": "1946-06-26",
+      "decada": "1940",
+      "local": "São Pedro do Maratá",
+      "status": "naoverificado",
+      "pessoas": [
+        {
+          "genId": null,
+          "nome": "Augusto (a confirmar)",
+          "x": 3.5,
+          "y": 39.1,
+          "w": 7,
+          "h": 9
+        },
+        {
+          "genId": "G4-06",
+          "nome": "Ewaldo Rücker",
+          "x": 11.5,
+          "y": 27.1,
+          "w": 7,
+          "h": 9
+        },
+        {
+          "genId": null,
+          "nome": "Dora (a confirmar)",
+          "x": 9.5,
+          "y": 42.1,
+          "w": 7,
+          "h": 9
+        },
+        {
+          "genId": "G4-09",
+          "nome": "Rudolfo Rücker",
+          "x": 24.5,
+          "y": 17.1,
+          "w": 7,
+          "h": 9
+        },
+        {
+          "genId": null,
+          "nome": "Iris (a confirmar)",
+          "x": 21.5,
+          "y": 39.1,
+          "w": 7,
+          "h": 9
+        },
+        {
+          "genId": null,
+          "nome": "Aurea Filipina Rücker ('Pina')",
+          "x": 31.5,
+          "y": 32.1,
+          "w": 7,
+          "h": 9
+        },
+        {
+          "genId": "G4-CD",
+          "nome": "Cecy (Ceci) Dexheimer Rücker",
+          "x": 36.5,
+          "y": 39.1,
+          "w": 7,
+          "h": 9
+        },
+        {
+          "genId": "G4-15",
+          "nome": "Siegmundo Rücker",
+          "x": 44.5,
+          "y": 19.1,
+          "w": 7,
+          "h": 9
+        },
+        {
+          "genId": "G5-PR",
+          "nome": "Paulo Renato Rucker",
+          "x": 38.5,
+          "y": 52.1,
+          "w": 7,
+          "h": 9
+        },
+        {
+          "genId": null,
+          "nome": "Gertrudes (neta, a confirmar)",
+          "x": 44.5,
+          "y": 65.1,
+          "w": 7,
+          "h": 9
+        },
+        {
+          "genId": null,
+          "nome": "Anísia (a confirmar)",
+          "x": 54.5,
+          "y": 35.1,
+          "w": 7,
+          "h": 9
+        },
+        {
+          "genId": "G4-16",
+          "nome": "Albano Rücker",
+          "x": 62.5,
+          "y": 32.1,
+          "w": 7,
+          "h": 9
+        },
+        {
+          "genId": null,
+          "nome": "Herta (a confirmar)",
+          "x": 71.5,
+          "y": 35.1,
+          "w": 7,
+          "h": 9
+        },
+        {
+          "genId": null,
+          "nome": "Marlene",
+          "x": 48.5,
+          "y": 69.1,
+          "w": 7,
+          "h": 9
+        },
+        {
+          "genId": null,
+          "nome": "Renata",
+          "x": 34.5,
+          "y": 85.1,
+          "w": 7,
+          "h": 9
+        }
+      ]
+    },
+    {
+      "id": "vicente-e-familia",
+      "thumb": "/assets/img/documentos/vicente-e-familia.jpg",
+      "titulo": "Vincentius Joseph Rücker e família",
+      "legenda": "Vincentius Joseph Rücker com os filhos August Ambros (ramo gaúcho) e Ambros August (ramo catarinense), suas esposas Philippine Saft e Amalia Rathmann, e o neto Paulo Vicente Rücker. Registro raro reunindo os dois ramos antes da separação geográfica.",
+      "categoria": "fotos",
+      "tipo": "Retratos Identificados",
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [
+        {
+          "genId": "G2-VJ",
+          "nome": "Vincentius Joseph Rücker",
+          "x": 47.5,
+          "y": 52.5,
+          "w": 10,
+          "h": 12
+        },
+        {
+          "genId": "G3-PS",
+          "nome": "Philippine Saft Rücker",
+          "x": 16.5,
+          "y": 21.3,
+          "w": 10,
+          "h": 12
+        },
+        {
+          "genId": "G3-AA",
+          "nome": "August Ambros Rücker",
+          "x": 13.5,
+          "y": 52.0,
+          "w": 10,
+          "h": 12
+        },
+        {
+          "genId": "G3-AM",
+          "nome": "Ambros August Rücker",
+          "x": 74.2,
+          "y": 51.2,
+          "w": 10,
+          "h": 12
+        },
+        {
+          "genId": "G3-AK",
+          "nome": "Amalia Rathmann Rücker",
+          "x": 76.7,
+          "y": 22.2,
+          "w": 10,
+          "h": 12
+        },
+        {
+          "genId": "G4-01",
+          "nome": "Paulo Vicente Rücker",
+          "x": 28.2,
+          "y": 30.1,
+          "w": 10,
+          "h": 12
+        }
+      ]
+    },
+    {
+      "id": "1945-aniversario-80anos-vo-augusto",
+      "thumb": "/assets/img/documentos/1945-aniversario-80anos-vo-augusto.jpg",
+      "titulo": "80 anos de August Ambros Rücker, 11/03/1945",
+      "legenda": "Foto tirada em 11.03.1945, no dia dos 80 anos de August Ambros Rücker. Foi a última reunião com os 13 filhos vivos. Edição com legendas por Paulo R. Rücker.",
+      "categoria": "fotos",
+      "tipo": "Fotos de Grupo e Eventos",
+      "data": "1945-03-11",
+      "decada": "1940",
+      "local": null,
+      "status": "confirmado",
+      "pessoas": [
+        {
+          "genId": "G3-AA",
+          "nome": "August Ambros Rücker ('Vô Augusto')"
+        },
+        {
+          "genId": "G3-PS",
+          "nome": "Philippine Saft Rücker ('Vó Pina')"
+        },
+        {
+          "genId": "G4-14",
+          "nome": "Augusto Guilherme Rücker"
+        },
+        {
+          "genId": "G4-15",
+          "nome": "Siegmundo Rücker"
+        },
+        {
+          "genId": "G4-CD",
+          "nome": "Cecy Dexheimer Rücker"
+        },
+        {
+          "genId": "G4-16",
+          "nome": "Albano Rücker"
+        },
+        {
+          "genId": "G4-09",
+          "nome": "Rudolfo Rücker"
+        },
+        {
+          "genId": "G4-12",
+          "nome": "José Rücker"
+        },
+        {
+          "genId": "G4-13",
+          "nome": "Adalberto Rücker"
+        },
+        {
+          "genId": "G4-02",
+          "nome": "Maria Emma Rücker"
+        },
+        {
+          "genId": "G4-03",
+          "nome": "Godofredo (Gottfried Anton) Rücker"
+        },
+        {
+          "genId": "G4-04",
+          "nome": "Bertholdo Rücker"
+        },
+        {
+          "genId": "G4-05",
+          "nome": "Aloísio Rücker"
+        },
+        {
+          "genId": "G4-06",
+          "nome": "Ewaldo Rücker"
+        },
+        {
+          "genId": "G4-07",
+          "nome": "Hedwig Rücker"
+        },
+        {
+          "genId": "G4-08",
+          "nome": "Luísa Victória Rücker"
+        },
+        {
+          "genId": "G5-PR",
+          "nome": "Paulo Renato Rücker"
+        },
+        {
+          "genId": null,
+          "nome": "Berlindes Astrid Küchemann (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Edmundo Kayser (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Augusto Jaeger (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Adolfo Jaeger (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Elli (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Anisia (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Erika (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Hildegart (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Theodoro (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Curt (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Gertrudes (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Otto (a confirmar)"
+        }
+      ]
+    },
+    {
+      "id": "1945-ferias-verao-sao-pedro",
+      "thumb": "/assets/img/documentos/1945-ferias-verao-sao-pedro.jpg",
+      "titulo": "Férias de verão em São Pedro, 10/01/1945",
+      "legenda": "Foto tirada em 10.01.1945, em São Pedro, nas férias de verão, segundo informação da tia Dora.",
+      "categoria": "fotos",
+      "tipo": "Fotos de Grupo e Eventos",
+      "data": "1945-01-10",
+      "decada": "1940",
+      "local": "São Pedro",
+      "status": "naoverificado",
+      "pessoas": [
+        {
+          "genId": "G4-06",
+          "nome": "Ewaldo Rücker"
+        },
+        {
+          "genId": "G4-12",
+          "nome": "José Rücker"
+        },
+        {
+          "genId": "G3-PS",
+          "nome": "Philippine Saft Rücker ('Vó Pina')"
+        },
+        {
+          "genId": "G3-AA",
+          "nome": "August Ambros Rücker ('Vô Augusto')"
+        },
+        {
+          "genId": "G4-15",
+          "nome": "Siegmundo Rücker"
+        },
+        {
+          "genId": "G4-14",
+          "nome": "Augusto Guilherme Rücker"
+        },
+        {
+          "genId": "G4-09",
+          "nome": "Rudolfo Rücker"
+        },
+        {
+          "genId": "G5-PR",
+          "nome": "Paulo Renato Rücker (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Holde (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Waldemar (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Sigfried (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Orsula (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Marta (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Romeo Weissheimer (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Maria Helena (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Erica (a confirmar)"
+        }
+      ]
+    },
+    {
+      "id": "1950-familias-evaldo-adalberto",
+      "thumb": "/assets/img/documentos/1950-familias-evaldo-adalberto.jpg",
+      "titulo": "Famílias de Ewaldo e Adalberto Rücker, 1950",
+      "legenda": "Fotografia das famílias de Ewaldo Rücker e Adalberto Rücker, 1950.",
+      "categoria": "fotos",
+      "tipo": "Fotos de Grupo e Eventos",
+      "data": "1950",
+      "decada": "1950",
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [
+        {
+          "genId": "G4-06",
+          "nome": "Ewaldo Rücker (a confirmar)"
+        },
+        {
+          "genId": "G4-13",
+          "nome": "Adalberto Rücker (a confirmar)"
+        }
+      ]
+    },
+    {
+      "id": "1957-marata-rs-sao-miguel",
+      "thumb": "/assets/img/documentos/1957-marata-rs-sao-miguel.jpg",
+      "titulo": "São Miguel em Maratá (RS), 29/09/1957",
+      "legenda": "Foto tirada em 29.09.1957, dia de São Miguel (Michels-kerb), padroeiro de Maratá (RS).",
+      "categoria": "fotos",
+      "tipo": "Fotos de Grupo e Eventos",
+      "data": "1957-09-29",
+      "decada": "1950",
+      "local": "Maratá, RS",
+      "status": "naoverificado",
+      "pessoas": [
+        {
+          "genId": null,
+          "nome": "Dora (a confirmar)"
+        },
+        {
+          "genId": "G4-14",
+          "nome": "Augusto Guilherme Rücker"
+        },
+        {
+          "genId": "G4-15",
+          "nome": "Siegmundo Rücker"
+        },
+        {
+          "genId": null,
+          "nome": "Anisia (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Ruben (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Toninho (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Maris (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Hedi (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Inha (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Margarida (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Paulo António (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Pina (a confirmar; não é Philippine Saft, falecida em 1946)"
+        },
+        {
+          "genId": null,
+          "nome": "Bernardete (a confirmar)"
+        },
+        {
+          "genId": null,
+          "nome": "Pedro António (a confirmar)"
+        }
+      ]
+    },
+    {
+      "id": "natal-vos-august-pina",
+      "thumb": "/assets/img/documentos/natal-vos-august-pina.jpg",
+      "titulo": "Natal de August Ambros e Philippine Rücker",
+      "legenda": "Foto de Natal de August Ambros e Philippine (Vó Pina) Rücker.",
+      "categoria": "fotos",
+      "tipo": "Retratos Identificados",
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [
+        {
+          "genId": "G3-AA",
+          "nome": "August Ambros Rücker ('Vô Augusto') (a confirmar)"
+        },
+        {
+          "genId": "G3-PS",
+          "nome": "Philippine Saft Rücker ('Vó Pina') (a confirmar)"
+        }
+      ]
+    }
+  ]
+}
