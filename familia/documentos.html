@@ -5,7 +5,7 @@ description: "Retratos, sepulturas e documentos escritos que sustentam a árvore
 ---
 
 <p class="rkd-intro">
-  Retratos, sepulturas e documentos escritos que sustentam a Árvore Genealógica. Cada item traz o grau de certeza da leitura — toque em um card para abrir em tela cheia, com zoom e deslocamento.
+  Retratos, sepulturas e documentos escritos que sustentam a Árvore Genealógica. Cada item traz o grau de certeza da leitura — toque em um card para abrir em tela cheia. Se reconhecer alguém, um toque basta: um nome de cada vez, e “não sei” também vale.
 </p>
 
 <style>
@@ -116,7 +116,38 @@ description: "Retratos, sepulturas e documentos escritos que sustentam a árvore
 .rkd-lb-next{right:1rem;}
 
 .rkd-lb-legenda{flex:0 0 auto;text-align:center;color:var(--mudo);font-size:0.85rem;
-  padding:0.8rem 1.1rem 1.2rem;max-width:640px;margin:0 auto;}
+  padding:0.8rem 1.1rem 0.4rem;max-width:640px;margin:0 auto;}
+
+.rkd-lb-status{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:var(--mudo);
+  margin-left:0.6rem;vertical-align:middle;}
+.rkd-lb-status .rkd-ponto{width:7px;height:7px;}
+
+/* Lote 2c — identificação no celular */
+.rkd-lb-quem{flex:0 0 auto;padding:0.55rem 1rem 1rem;display:flex;justify-content:center;}
+.rkd-lb-quem-btn{min-height:52px;width:100%;max-width:420px;font-family:Georgia,serif;font-size:1.1rem;
+  background:rgba(212,175,106,.12);color:var(--claro);border:1px solid var(--ouro);border-radius:10px;
+  cursor:pointer;padding:0.7rem 1rem;}
+.rkd-lb-quem-btn:hover{background:rgba(212,175,106,.2);}
+
+.rkd-sug{display:none;flex:0 0 auto;background:#211e1a;border-top:1px solid #2a2a2a;padding:1rem 1.1rem 1.3rem;}
+.rkd-sug.aberta{display:block;}
+.rkd-sug h3{font-family:Georgia,serif;font-size:1.2rem;color:var(--claro);margin:0 0 0.35rem;text-align:center;}
+.rkd-sug p{color:var(--soft);font-size:0.95rem;line-height:1.45;text-align:center;margin:0 0 0.85rem;}
+.rkd-sug-foto{font-family:var(--mono);font-size:0.72rem;color:var(--mudo);text-align:center;margin:0 0 0.8rem;}
+.rkd-sug input{display:block;width:100%;max-width:420px;margin:0 auto 0.8rem;min-height:52px;
+  font-size:16px;font-family:Georgia,serif;padding:0.7rem 0.85rem;border-radius:8px;
+  border:1px solid var(--borda);background:#121212;color:var(--claro);}
+.rkd-sug-acoes{display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;max-width:420px;margin:0 auto;}
+.rkd-sug-acoes button,.rkd-sug-acoes a{min-height:52px;flex:1 1 140px;font-size:1rem;font-family:Georgia,serif;
+  border-radius:10px;padding:0.65rem 0.8rem;cursor:pointer;text-align:center;text-decoration:none;
+  display:flex;align-items:center;justify-content:center;}
+.rkd-sug-enviar{background:var(--ouro);color:#121212;border:none;font-weight:bold;}
+.rkd-sug-naosei{background:transparent;color:var(--soft);border:1px solid var(--borda);}
+.rkd-sug-cancelar{background:transparent;color:var(--mudo);border:1px dashed var(--borda);flex-basis:100%;}
+.rkd-sug-codigo{font-family:var(--mono);font-size:1.35rem;letter-spacing:.08em;color:var(--ouro);
+  text-align:center;margin:0.4rem 0 0.8rem;word-break:break-all;}
+.rkd-sug-mail{background:var(--ouro);color:#121212;border:none;font-weight:bold;}
+.rkd-sug-form{background:transparent;color:var(--ouro);border:1px solid var(--ouro);}
 
 @media (max-width:480px){
   .rkd-grade{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:0.7rem;}
@@ -159,6 +190,33 @@ description: "Retratos, sepulturas e documentos escritos que sustentam a árvore
   </div>
   <div class="rkd-lb-pessoa-painel" id="rkdLbPessoaPainel"></div>
   <p class="rkd-lb-legenda" id="rkdLbLegenda"></p>
+  <div class="rkd-lb-quem" id="rkdLbQuemBarra">
+    <button class="rkd-lb-quem-btn" id="rkdLbQuem" type="button">Quem é esta pessoa?</button>
+  </div>
+  <div class="rkd-sug" id="rkdSugerir" aria-live="polite">
+    <div id="rkdSugPassoPergunta">
+      <h3>Um nome de cada vez</h3>
+      <p>Quem você reconhece nesta foto? Se não souber, isso também vale.</p>
+      <p class="rkd-sug-foto" id="rkdSugFoto"></p>
+      <input id="rkdSugNome" type="text" inputmode="text" autocomplete="name" maxlength="80" placeholder="Nome completo, se souber">
+      <div class="rkd-sug-acoes">
+        <button class="rkd-sug-enviar" id="rkdSugEnviar" type="button">Enviar este nome</button>
+        <button class="rkd-sug-naosei" id="rkdSugNaoSei" type="button">Não sei</button>
+        <button class="rkd-sug-cancelar" id="rkdSugCancelar" type="button">Voltar para a foto</button>
+      </div>
+    </div>
+    <div id="rkdSugPassoCodigo" hidden>
+      <h3>Guarde este código</h3>
+      <p>A sugestão ainda não entra no acervo. O mantenedor aprova depois — você não precisa mexer em nada.</p>
+      <p class="rkd-sug-codigo" id="rkdSugCodigo"></p>
+      <p id="rkdSugResumo"></p>
+      <div class="rkd-sug-acoes">
+        <a class="rkd-sug-mail" id="rkdSugMail" href="#">Enviar por e-mail</a>
+        <a class="rkd-sug-form" id="rkdSugForm" href="https://forms.gle/MAY913vupvStXXgP7" target="_blank" rel="noopener noreferrer">Abrir formulário</a>
+        <button class="rkd-sug-cancelar" id="rkdSugOutro" type="button">Outro nome nesta foto</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -352,7 +410,9 @@ function esconderPessoaPainel() {
 }
 
 function mostrarPessoaPainel(pessoa) {
-  pessoaPainel.innerHTML = '<h4>' + (pessoa.nome || '') + '</h4>';
+  var incerto = /a confirmar/i.test(pessoa.nome || "");
+  var extra = incerto ? '<p>Leitura ainda não confirmada. Se souber o nome certo, toque em “Quem é esta pessoa?”.</p>' : '';
+  pessoaPainel.innerHTML = '<h4>' + (pessoa.nome || '') + '</h4>' + extra;
   pessoaPainel.classList.add('visivel');
 }
 
@@ -384,9 +444,12 @@ function carregarItem() {
   esconderPessoaPainel();
   img.src = item.full || item.thumb;
   img.alt = item.titulo || '';
-  tituloEl.textContent = item.titulo || '';
+  tituloEl.innerHTML = (item.titulo || '') +
+    ' <span class="rkd-lb-status"><i class="rkd-ponto" data-status="' + (item.status || 'naoverificado') + '"></i>' +
+    (STATUS_LABEL[item.status] || '') + '</span>';
   legendaEl.textContent = item.legenda || '';
   renderizarMarcadores(item);
+  rkdSugFechar(true);
   btnPrev.disabled = itens.length <= 1;
   btnNext.disabled = itens.length <= 1;
   resetZoom();
@@ -417,6 +480,7 @@ function fecharLightbox() {
   img.src = '';
   marcadoresLayer.innerHTML = '';
   esconderPessoaPainel();
+  rkdSugFechar(true);
   activePointers = {};
   isPanning = false;
   if (elementoAnterior && typeof elementoAnterior.focus === 'function') elementoAnterior.focus();
@@ -530,6 +594,100 @@ function encerrarPonteiro(e) {
 }
 palco.addEventListener('pointerup', encerrarPonteiro);
 palco.addEventListener('pointercancel', encerrarPonteiro);
+
+/* ---------- Lote 2c: um toque, um nome, código para aprovar ---------- */
+var RKD_MAIL = "acervorucker@gmail.com";
+var RKD_FORM = "https://forms.gle/MAY913vupvStXXgP7";
+var sugEl = document.getElementById("rkdSugerir");
+var sugPergunta = document.getElementById("rkdSugPassoPergunta");
+var sugCodigoPasso = document.getElementById("rkdSugPassoCodigo");
+var sugNome = document.getElementById("rkdSugNome");
+var sugFoto = document.getElementById("rkdSugFoto");
+var sugCodigoEl = document.getElementById("rkdSugCodigo");
+var sugResumo = document.getElementById("rkdSugResumo");
+var sugMail = document.getElementById("rkdSugMail");
+var sugForm = document.getElementById("rkdSugForm");
+var btnQuem = document.getElementById("rkdLbQuem");
+var codigoAtual = "";
+var nomeAtual = "";
+
+function rkdItemAtual() {
+  if (!galAtual) return null;
+  return itensPorCategoria(galAtual)[indiceAtual] || null;
+}
+
+function rkdCodigo(item) {
+  var id = (item && item.id) ? String(item.id) : "foto";
+  var slug = id.replace(/[^a-z0-9]+/gi, "").slice(0, 10).toUpperCase() || "FOTO";
+  var n = Date.now().toString(36).toUpperCase();
+  return "RK2C-" + slug + "-" + n.slice(-6);
+}
+
+function rkdSugAbrir() {
+  var item = rkdItemAtual();
+  if (!item) return;
+  sugFoto.textContent = item.titulo || item.id || "";
+  sugNome.value = "";
+  sugPergunta.hidden = false;
+  sugCodigoPasso.hidden = true;
+  sugEl.classList.add("aberta");
+  setTimeout(function() { sugNome.focus(); }, 50);
+}
+
+function rkdSugFechar(silencioso) {
+  sugEl.classList.remove("aberta");
+  sugPergunta.hidden = false;
+  sugCodigoPasso.hidden = true;
+  if (sugNome) sugNome.value = "";
+  if (!silencioso) btnQuem.focus();
+}
+
+function rkdSugConfirmar(nome) {
+  var item = rkdItemAtual();
+  if (!item) return;
+  nomeAtual = nome;
+  codigoAtual = rkdCodigo(item);
+  var corpo = [
+    "Código: " + codigoAtual,
+    "Foto: " + (item.id || ""),
+    "Título: " + (item.titulo || ""),
+    "Sugestão: " + nomeAtual,
+    "",
+    "Um nome por vez. O mantenedor aprova e só então a ficha em acervo.json muda."
+  ].join("\n");
+  var assunto = "Sugestão " + codigoAtual;
+  sugMail.href = "mailto:" + RKD_MAIL +
+    "?subject=" + encodeURIComponent(assunto) +
+    "&body=" + encodeURIComponent(corpo);
+  sugForm.href = RKD_FORM;
+  sugCodigoEl.textContent = codigoAtual;
+  sugResumo.textContent = nomeAtual === "Não sei"
+    ? "Você marcou que não reconhece ninguém nesta foto."
+    : ("Nome sugerido: " + nomeAtual);
+  sugPergunta.hidden = true;
+  sugCodigoPasso.hidden = false;
+}
+
+btnQuem.addEventListener("click", rkdSugAbrir);
+document.getElementById("rkdSugCancelar").addEventListener("click", function() { rkdSugFechar(false); });
+document.getElementById("rkdSugNaoSei").addEventListener("click", function() { rkdSugConfirmar("Não sei"); });
+document.getElementById("rkdSugEnviar").addEventListener("click", function() {
+  var n = (sugNome.value || "").replace(/\s+/g, " ").trim();
+  if (!n) { sugNome.focus(); return; }
+  rkdSugConfirmar(n);
+});
+sugNome.addEventListener("keydown", function(e) {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    document.getElementById("rkdSugEnviar").click();
+  }
+});
+document.getElementById("rkdSugOutro").addEventListener("click", function() {
+  sugNome.value = "";
+  sugPergunta.hidden = false;
+  sugCodigoPasso.hidden = true;
+  sugNome.focus();
+});
 
 function rkdCarregarCatalogo() {
   return Promise.all([
