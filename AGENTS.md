@@ -61,10 +61,10 @@ só quer conhecer a própria história — ver seção 2.
 - `familia/mapa.html` — mapa esquemático de migração (SVG), dados em array de
   nós/rotas.
 - `familia/documentos.html` — galeria de fotos/documentos. O catálogo **não**
-  vive neste HTML. Fichas em `_data/acervo.json`; JPGs em
-  `assets/img/documentos/`. Arquivo na pasta sem ficha ainda aparece (ficha
-  mínima no build). **Nunca** editar esta página para adicionar foto. Lote 2
-  (2026-08-26).
+  vive neste HTML. Fichas em `assets/data/acervo.json` (cópia em
+  `_data/acervo.json`); lista da pasta em `assets/data/documentos-arquivos.json`;
+  JPGs em `assets/img/documentos/`. Arquivo listado sem ficha ainda aparece.
+  **Nunca** editar esta página para adicionar foto. Lote 2 (2026-08-26).
 - `familia/pessoas.html` — índice de perfis individuais (hoje: Georg Rücker,
   Vincentius Joseph Rücker). Badge "Pessoas".
 - `familia/cronicas.html` — índice de crônicas literárias (hoje: Georg,
@@ -176,7 +176,7 @@ Um lote = um chat novo = um PR. O de hoje não pode obrigar a refazer HTML amanh
 | | | |
 |---|---|---|
 | **1** feito | Home, 404, favicon | não reabrir |
-| **2** feito | Foto na pasta aparece; ficha em `_data/acervo.json` | não reabrir |
+| **2** feito | Foto na pasta aparece; ficha em `assets/data/acervo.json` | não reabrir |
 | **2c** fila | Idoso toca a foto no celular → você aprova um código | precisa do 2 |
 | **3** fila | Árvore mais fácil | depois |
 
