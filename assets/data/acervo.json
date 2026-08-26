@@ -747,28 +747,6 @@
           "nome": "Pedro António (a confirmar)"
         }
       ]
-    },
-    {
-      "id": "natal-vos-august-pina",
-      "thumb": "/assets/img/documentos/natal-vos-august-pina.jpg",
-      "titulo": "Natal de August Ambros e Philippine Rücker",
-      "legenda": "Foto de Natal de August Ambros e Philippine (Vó Pina) Rücker.",
-      "categoria": "fotos",
-      "tipo": "Retratos Identificados",
-      "data": null,
-      "decada": null,
-      "local": null,
-      "status": "naoverificado",
-      "pessoas": [
-        {
-          "genId": "G3-AA",
-          "nome": "August Ambros Rücker ('Vô Augusto') (a confirmar)"
-        },
-        {
-          "genId": "G3-PS",
-          "nome": "Philippine Saft Rücker ('Vó Pina') (a confirmar)"
-        }
-      ]
     }
   ]
 }
