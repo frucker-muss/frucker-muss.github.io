@@ -61,6 +61,30 @@ só quer conhecer a própria história — ver seção 2.
   cada campo). Lote **3** (2026-08-26): busca por nome; gerações recolhíveis
   (I–III abertas); no painel, links para crônica/perfil e para
   `documentos.html?foto=`. Link discreto no final para `metodologia.html`.
+  Cita a base genealógica como fonte (campo `src` de cada fato) — ver
+  "Fonte canônica" abaixo para qual versão usar.
+
+## 2.1 Fonte canônica do acervo genealógico
+
+A única fonte de verdade para fatos genealógicos (datas, filiação, cônjuges,
+trajetória) é o documento **`ACERVO_RUCKER_v5_13.md`** (consolidado em
+27/08/2026, salvo no Google Drive do Nando). Ele substitui todas as versões
+anteriores (v5.8 até v5.12) e o rótulo "v6.0" que ainda podia aparecer em
+`familia/arvore.html` — esse "v6.0" era um snapshot paralelo feito só para
+popular a árvore, desalinhado da numeração v5.x real, e já foi corrigido.
+
+Ao adicionar ou revisar qualquer fato em `familia/arvore.html` (ou em
+qualquer outra página), citar a fonte no campo `src` como `"Base v5.13"` (ou
+`"Acervo v5.13"`), nunca `"v6.0"`, `"v5.8"` ou outra versão antiga. Se uma
+versão mais nova do acervo for consolidada depois (v5.14, v6.0 real etc.),
+atualizar este parágrafo e repetir a busca/substituição das citações antigas
+em `familia/arvore.html` — não deixar duas numerações concorrentes no ar.
+
+O `ACERVO_RUCKER_v5_13.md` usa suas próprias etiquetas de evidência
+([DOC], [EPI], [HIP], [TO], [ABERTO] etc. — ver seção 2 das regras
+editoriais deste arquivo) — essas etiquetas nunca aparecem literalmente nas
+páginas públicas; a árvore traduz para os 6 status já existentes
+(`doc`/`epi`/`inf`/`hip`/`conf`/`abt`).
 - `familia/metodologia.html` — notas de desambiguação/arbitragem (DESAMB
   01, 05, 11, 12, 13, 14) e selos de gênero/base (lote **3s**, 2026-08-27).
   Conteúdo técnico, só para quem quiser se aprofundar no método.
