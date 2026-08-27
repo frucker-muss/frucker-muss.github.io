@@ -1,0 +1,2059 @@
+{
+  "_notaTecnica": "Lote gerado automaticamente a partir da pasta Google Drive 03_Em_Tratamento (fileId 1DDmF-gaXEII2ukv9ny9u0rVjb6JGJ1_F) em 2026-08-27. 111 itens processados (48 categoria fotos, 63 categoria docs) de 113 arquivos originais na pasta; 2 itens falharam no download (ver observacoes) e nao estao incluidos neste lote. Metadados EXIF/GPS removidos, convertido para RGB, redimensionado max 1920px, JPEG q90. NAO foi mesclado em _data/acervo.json nem assets/data/acervo.json nem assets/data/documentos-arquivos.json -- aguarda revisao humana antes da injecao (titulos, legendas, datas historicas e identificacao de pessoas ainda precisam ser preenchidos por um humano ou por uma sessao de IA com o contexto do Acervo genealogico).",
+  "_itensComFalhaNoDownload": [
+    {
+      "driveFileId": "1CWHlUETS1YwZmPXg5GihLf1_TC3VFFUr",
+      "driveTitle": "20260809_164412.jpg",
+      "categoria": "fotos",
+      "motivo": "Download MCP retornou 'MCP server session expired' repetidamente (6+ tentativas); arquivo de 6.5MB, dentro do limite de tamanho. Falha provavelmente transitoria desta sessao -- pode ser reprocessado depois."
+    },
+    {
+      "driveFileId": "1XjBLF7PBARrXsdeB4F_oq0tJyecvyNVO",
+      "driveTitle": "20260810_155844.jpg",
+      "categoria": "fotos",
+      "motivo": "Arquivo de 12.1MB excede o limite de 10MB da ferramenta MCP download_file_content. Requer a API padrao do Google Drive para ser baixado."
+    }
+  ],
+  "itens": [
+    {
+      "id": "foto-bruta-2026-08-12-g06w0jgz",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-g06w0jgz.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1xqgjr2SIlcC9QIJKii1TQtukG06W0JgZ",
+        "driveTitle": "IMG-20260810-WA0111.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-10-tm7dk2hc",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-10-tm7dk2hc.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1LhtEDc_T2AF85aXTkAwnuK7ZTm7dK2hc",
+        "driveTitle": "20260810_161313.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-09-kspmb0e",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-09-kspmb0e.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1maOxqVW-zGy_lqEeg7tCZrnyKs_pMB0e",
+        "driveTitle": "20260809_164408.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-wyezjqmo",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-wyezjqmo.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1NRBzUbYqbmBbkVLbj8rE6uHJWYEZjQmO",
+        "driveTitle": "Screenshot_20260811_011434_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "1:14 ter., 11 de ago. \\*  ill 58%  Coleção Digital de Jorr X Hemeroteca Digital Bra X A Federação: Orgam d X  Página  11/8  с  memoria.bn.gov.br/DocReader/D  Ocorrências  《 3/3  3/3  \\+  Federação  Unidade  ANNO XLVIII  Edição 00227  A FEDERAÇÃO  ORG"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-10-v8w6scxv",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-10-v8w6scxv.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1qfqQ88a6jomAo2y0A-vLhWc2v8w6ScXv",
+        "driveTitle": "20260810_161311.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-xs579xen",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-xs579xen.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1NgfdmnzqdpckAjHWyyuPcNMhxS579XEN",
+        "driveTitle": "Screenshot_20260811_004715_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "12:47 ter., 11 de ago. \\*»  Coleção Digital de Jorr X Hemeroteca Digital Bra X  Página  10/16  с  ill 69% i  Diario de Noticias (RS) X  \\+  memoria.bn.gov.br/DocReader/D✩  Ocorrências  《 4/13  PROGRAMAÇÃO DA RADIO FARROUPILHA  Formatura sábado próxim"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-3ie9qcmt",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-3ie9qcmt.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "16LmMhKML4rctwjaXi5LLwogz3ie9qCMt",
+        "driveTitle": "Screenshot_20260811_005151_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-pgc5zdv",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-pgc5zdv.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "16TYMZiqVNLQNBz5kshJua16qpgc5z-dV",
+        "driveTitle": "Screenshot_20260811_010247_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "1:02 ter., 11 de ago.  Coleção Digital de Jorr X Hemeroteca Digital Bra X  Página  1/4  с  ill 63%  Correio Rio Grandense X  \\+  memoria.bn.gov.br/DocReader/D✩✰  Ocorrências  1/10 O  KOL/L≫  Edição 00015  ANO XXXIII  GARIBALDI  QUARTA-FEIRA 8 de Abri"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-b48wqpqf",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-b48wqpqf.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1trvF3QhmMvshnwayVL37uALob48WQpqf",
+        "driveTitle": "Screenshot_20260811_001311_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "memoria.bn.gov.br/DocRea  12:13 B  A  Página  69/75  Ocorrências  5  l37  12/14 O  Edição 00011 e 00012  Livraria Selbach  de J. R. da Fonseca & Cia. Porto Alegre recommenda os seguintes livros de sua edição  Leituras Escolhidas, 1.ª serie ou 3.0 liv"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-fhl0fcul",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-fhl0fcul.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "11nnK4BQ_qdOri5J9g5iPf8TmFhl0fcUl",
+        "driveTitle": "Screenshot_20260811_004227_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "12:42 ter., 11 de ago.  Coleção Digital de Jorr X Hemeroteca Digital Bra X  Página  9/16  с  all 71% i  Diario de Noticias (RS) X +  memoria.bn.gov.br/DocReader/D✩  Ocorrências  \\<1/13  Edição 00191  DESCOBERTO E PRESO EM PORTO ALEGRE HOMICIDA DO TES"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-fx0whyrd",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-fx0whyrd.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1pa2R73mj-Zj8WwMuROw8hToBfx0wHyrD",
+        "driveTitle": "Screenshot_20260811_004248_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "12:42 ter., 11 de ago.  Coleção Digital de Jorr X Hemeroteca Digital Bra X  Página  11/16  с  ll 70% i  Diario de Noticias (RS) X  \\+  :  memoria.bn.gov.br/DocReader/D✩  Edição 00191  Ocorrências  \\<1/13  DIARIO DE NOTICIAS  1/13 O  Cr$ 25,00  FUNDAD"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-n4jwsxgc",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-n4jwsxgc.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1D_Cl3YQs45OgLle7t4_gi7ZJn4jWsxgC",
+        "driveTitle": "Screenshot_20260811_010511_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-bau9buqm",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-bau9buqm.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1RigKhas8YfmIQc5KKnczzRkcbaU9BUqm",
+        "driveTitle": "Screenshot_20260810_234644_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "11:46 B  \\[6\\]  ll 41  memoria.bn.gov.br/DocRea  Página  90/140  Ocorrências  14/14≫ 14/14 O  Edição 00011 e 00012  PUBLICAÇÕES DA LIVRARIA SELBACH  LIVROS RELIGIOSOS DE DEVOÇÃO E MISSA Primeira Historia Biblica, para uso das escolas catholicas.... S"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-09-lfpmdsum",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-09-lfpmdsum.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1oA5r7OpZDxZSDBNf47VFaHY7lFPMdsUm",
+        "driveTitle": "20260809_163416.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-bhnlwf7",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-bhnlwf7.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1U3LDcLtZ3yBQ41AIYy3zckwuBhn-lWf7",
+        "driveTitle": "Screenshot_20260811_011418_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-10-ut1l50rk",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-10-ut1l50rk.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1MGyyO1Hbx44d1kJrLH5O7pkWuT1l50Rk",
+        "driveTitle": "20260810_155431.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-10-vviclg8s",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-10-vviclg8s.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1PMKKqFUpMTCXYbVRjo9D2HduVViclg8S",
+        "driveTitle": "20260810_155529.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-10-cblohi1d",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-10-cblohi1d.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1xboGy96-_TspZfI19sSF4FovcbLOhI1d",
+        "driveTitle": "20260810_155231.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-q2o6o4jn",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-q2o6o4jn.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1ZaApZoJDTlBq5fsL6TtzZj_wq2O6o4Jn",
+        "driveTitle": "Screenshot_20260811_005658_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "12:56 ter., 11 de ago. \\*  Coleção Digital de Jorr X Hemeroteca Digital Bra X  Página  1/14  с  ill 65% i  Diario de Noticias (RS) X +  memoria.bn.gov.br/DocReader/D✩✰  Ocorrências  \\<9/13≫  Edição 00121  DIARIO DE NOTICIAS  ANO XLIV - N° 121 NCS$ 0,"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-ky1umzsu",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-ky1umzsu.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1ZLNXrx0XvRQZYFx7bE58NyickY1UMzsu",
+        "driveTitle": "Screenshot_20260811_010451_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "1:04 ter., 11 de ago. \\*  Coleção Digital de Jorn X  Hemeroteca Digital Bra X  Still 62%  Correio Rio Grandense X +  E  Página  4/4  memoria.bn.gov.br/DocReader/D✩  Edição 00014  mais alguns པ་ས་་་༦པོ་ ས་༥ agrícola se- super-ocupado em constru- hábil"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-4pt7nw8d",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-4pt7nw8d.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1YvtG7we37cYebIZTbAqU6OQk4pT7nw8d",
+        "driveTitle": "Screenshot_20260811_005502_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "12:55 ter., 11 de ago. \\*  Coleção Digital de Jorr X Hemeroteca Digital Bra X  Página  1/32  с  ill 66%  Diario de Noticias (RS) X +  memoria.bn.gov.br/DocReader/D✩✰  Ocorrências  8/13  13≫  DIRETORES: Ernesto Corks  Nelson Dimas  Edição 00021  DIARI"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-09-lgwgfrqj",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-09-lgwgfrqj.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1vOYjqo4j5wr5KDUyeMPpGRThLGWGfRQj",
+        "driveTitle": "20260809_171150.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-fkk7w3di",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-fkk7w3di.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1ZMI-2PZ4z1YjiOcTVIkcxmOefKk7W3di",
+        "driveTitle": "Screenshot_20260811_010235_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "1:02 ter., 11 de ago.  Coleção Digital de Jorr X Hemeroteca Digital Bra X  Página  4/4  с  ll 63% i  Correio Rio Grandense X  \\+  memoria.bn.gov.br/DocReader/D✩✰  Ocorrências  \\<1/10≫  Edição 00015  CORREIO RIOGRANDENSE GARIBALDI Quarta-Feira, 8 de A"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-zfzbbjw",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-zfzbbjw.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1-9D_WMwQtLoBKfcIjTPiOaZXZFZ-bbJw",
+        "driveTitle": "Screenshot_20260811_010458_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "all 62% i  Correio Rio Grandense X  \\+  1:04 ter., 11 de ago.  \\*  Coleção Digital de Jorr X Hemeroteca Digital Bra X  с  memoria.bn.gov.br/DocReader/D  Página  4/4  Edição 00014  Ocorrências  3/10≫ 3/10 O  CORREIO RIOGRANDENSE GARIBALDI-QUARTA-FEIRA"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-10-6rkaio6w",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-10-6rkaio6w.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1-N1hnGY4me2VJx63pXP9Pkxe6rKaIo6W",
+        "driveTitle": "20260810_161030.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-cftett0t",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-cftett0t.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1R9dHygh4SltS-Ri9casaeI0pCfTett0t",
+        "driveTitle": "Screenshot_20260811_004424_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "12:44 ter., 11 de ago.  till 70%  Diario de Noticias (RS) X  \\+  Coleção Digital de Jorr X Hemeroteca Digital Bra X  Página  11/40  с  memoria.bn.gov.br/DocReader/D  Pirto Alegre, 23-2-1964  Ocorrências  2/13 O  Edição 00296  DIARIO DE NOTICIAS  1\\. "
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-xg6rzpul",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-xg6rzpul.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "132Y2i7vQ5gDtPSbOYbFpuv3kXG6RZpUL",
+        "driveTitle": "Screenshot_20260811_005432_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-10-spx8rlyw",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-10-spx8rlyw.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1NOFu3HI50XPmklKuqGo3g-YASPX8RLyw",
+        "driveTitle": "20260810_172907.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-gg3unjwl",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-gg3unjwl.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1wq6jItuy56AArllMPe74Y8N8GG3uNjWL",
+        "driveTitle": "Screenshot_20260811_004414_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "12:44 ter., 11 de ago.  Coleção Digital de Jorr Hemeroteca Digital Bra X  Página  11/40  с  ll 70% i  Diario de Noticias (RS) X +  memoria.bn.gov.br/DocReader/D✩✰  Ocorrências  2/13 O  Edição 00296  candidatos de auditória ou de casa:  1- FRANCISCO C"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-mycihyuw",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-mycihyuw.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1vs6J4HQ9MGAfp5yxYGQ0UE46MycIHYUw",
+        "driveTitle": "Screenshot_20260811_003518_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "12:35 ter., 11 de ago.  A  Coleção Digital de Jorr Hemeroteca Digital Bra X  O Echo (RS) - 1914 a 1962  с  ill 74% i  O Echo (RS) 1914 a 1 X  \\+  :  memoria.bn.gov.br/DocReader/D✩✰  Rücker  Pesquisar  Ocorrências 10/14  \\* Para  Ano 1919\\\\Edição 0000"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-10-rnhy9lay",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-10-rnhy9lay.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1uZFj3c_F4RB2M-6P887W1bMYrnHy9lAy",
+        "driveTitle": "20260810_161046.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-8uihybdk",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-8uihybdk.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1RQIDx8gwGN9CMgaG15o2GSus8UIHybDk",
+        "driveTitle": "Screenshot_20260811_012716_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "1:27 ter., 11 de ago.  ll 53%  Jornal do Dia (RS) - 19 X  \\+  Coleção Digital de Jor X Hemeroteca Digital Bra X  с  memoria.bn.gov.br/DocReader/D✩  Página  6/12  Edição 03276  Marau e Aratiba Aratiba incluídas no incluídas no Plano de Saneamento do J"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-p0kpuhwo",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-p0kpuhwo.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "171yWFdj4nERPdvPWPLnSq2rcP0kPUhWO",
+        "driveTitle": "Screenshot_20260811_004452_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "12:44 ter., 11 de ago.  Coleção Digital de Jorr X Hemeroteca Digital Bra X  Página  1/40  с  ll 70% i  Diario de Noticias (RS) X  \\+  memoria.bn.gov.br/DocReader/D✩✰  Ocorrências  2/13  13 »  40 Páginas  4 Cadernos  Edição 00296  DIARIO DE NOTICIAS  "
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-d8tkil0u",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-d8tkil0u.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1Hq3whPCF6OLfxBdmQpQI-Sv3d8tkIL0U",
+        "driveTitle": "Screenshot_20260810_234701_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "11:47 B  memoria.bn.gov.br/DocRea  6  ll 41  Página  69/75  Ocorrências  12/14\\>\\> O  Edição 00011 e 00012  Livraria Selbach  de J. R. da Fonseca & Cia. Porto Alegre recommenda os seguintes livros de sua edição  Leituras Escolhidas, 1.ª serie ou 3.0 "
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-ypnggfb9",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-ypnggfb9.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1_gyXFQh0AfLqmpk8colB4ZlJypNGgFB9",
+        "driveTitle": "1786408743014.png",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-10-6hyinzh",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-10-6hyinzh.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1_J9xe9HFEs6u6DTnXCGEGrcq6hyiNzh-",
+        "driveTitle": "20260810_161040.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-vnb8mpog",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-vnb8mpog.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1HqCszHDMGC0eYsqlk2u7zfdUVNb8MpOG",
+        "driveTitle": "1786373457698.png",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-mh58ffqe",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-mh58ffqe.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1wFmPgJbskbcqQYmd8LF7sRXpmH58ffqe",
+        "driveTitle": "Screenshot_20260811_004743_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "12:47 ter., 11 de ago. \\*  Coleção Digital de Jorr X Hemeroteca Digital Bra X  Página  1/16  с  ill 68% i  Diario de Noticias (RS) X  \\+  memoria.bn.gov.br/DocReader/D✩✰  Edição 00125  Ocorrências  4/13  DIARIO DE NOTICIAS C  B. A. DIARIO DE NOTICIAS"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-xrwro1ca",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-xrwro1ca.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "11YyXbwCHFwJUmg0Ijxxy5FJXxRwRo1Ca",
+        "driveTitle": "Screenshot_20260811_010100_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "1:01  ter., 11 de ago.  Coleção Digital de Jorr X Hemeroteca Digital Bra X  Página  1/32  с  ill 63%  Diario de Noticias (RS) X +  memoria.bn.gov.br/DocReader/D  Ocorrências  12/13≫ 12/13 O  DIRETORES: Ernesto Corra Nelson Dimas  Edição 00026  DIARIO"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-p8kprm45",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-p8kprm45.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1enX_V1_L9__eSz3QjLBJZhz3p8KpRm45",
+        "driveTitle": "Screenshot_20260811_003742_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "12:37 ter., 11 de ago.  A  Coleção Digital de Jorr Hemeroteca Digital Bra X  O Echo (RS) - 1914 a 1962  с  Rücker  all 72% i  O Echo (RS) - 1914 a 1 X  \\+  :  memoria.bn.gov.br/DocReader/D✩✰  Pesquisar  Ocorrências 10/14  Pastas  Ano 1914  \\* Para  A"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-wv0emirn",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-wv0emirn.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1R6-mySSULZOdN_aL3fNc1iuDwv0eMIrn",
+        "driveTitle": "IMG-20260810-WA0116.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-xzbe3gec",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-xzbe3gec.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1kpP6ldQaQU5O5hJhHN4gStkMxZBe3GEC",
+        "driveTitle": "1786408299915.png",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-10-r5su7yc",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-10-r5su7yc.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1aXSm138pqY7ThBDu2VT12RbuR5su_7yc",
+        "driveTitle": "20260810_161306.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-3rwknvzy",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-3rwknvzy.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "12RznKYEZDWsq74JoZQZGq8Xl3rWkNvZY",
+        "driveTitle": "IMG-20260810-WA0107.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-gteahk0c",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-gteahk0c.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1NFxpIX33O1m8Lb6gAp6e2AElgteAhK0C",
+        "driveTitle": "Screenshot_20260811_005213_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "12:52 ter., 11 de ago. \\*  Coleção Digital de Jorr X Hemeroteca Digital Bra X  Página  1/32  ill 67%  Diario de Noticias (RS) X +  memoria.bn.gov.br/DocReader/D✩  Ocorrências  \\<7/13  Edição 00269  DIARIO DE NOTICIAS  ANO XUN. 269 NC/$ 0,30  PORTO AL"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-uvzabsx",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-uvzabsx.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1dcTG3ViLhYxX2BliydCRtAJs_uvzaBsX",
+        "driveTitle": "Screenshot_20260811_004219_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "12:42 ter., 11 de ago.  ill 71%  Coleção Digital de Jorr X  Hemeroteca Digital Bra X  Diario de Noticias (RS) X  \\+  Página  9/16  memoria.bn.gov.br/DocReader/D✩  Ocorrências  1/13  3  Edição 00191  SUBPREFEITO DE TRÊS DE MAIO TEVE CASA DESTRUÍDA PEL"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-m3bk4xj0",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-m3bk4xj0.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1H5d2Inso8UnJBgfFWD_DQglfM3BK4XJ0",
+        "driveTitle": "1786394677513.png",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-jtyikcle",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-jtyikcle.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1cCP_pDknDmoYfzZoOW1cTrCUjTyikClE",
+        "driveTitle": "Screenshot_20260811_010226_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-avv9qqqq",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-avv9qqqq.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1TP3AOX-Fz1t74oCT3pEFKWtzavv9QqQQ",
+        "driveTitle": "Screenshot_20260811_012736_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": ":::  1:27 ter., 11 de ago.  Coleção Digital de Jorr X Hemeroteca Digital Bra X  Página  1/12  с  ll 53%  Jornal do Dia (RS) - 19 X  \\+  memoria.bn.gov.br/DocReader/D✩  Edição 03276  Ocorrências  4/31 O  Jornal& DIA  12 PÁGINAS  PORTO ALEGRE, 5-FEIRA,"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-wnzy3i4d",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-wnzy3i4d.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1jmguyRvwz-u-Dr_MVGenpFWkwnZY3I4D",
+        "driveTitle": "IMG-20260810-WA0100.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-pdidjhgu",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-pdidjhgu.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1yJjp9qk2DALpg1SOAv0hbqyrpdIdjHGu",
+        "driveTitle": "1786375257086.png",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-5qey7ehs",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-5qey7ehs.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1UBWTTwoiBgBvXUfW7ejZVD6x5Qey7eHS",
+        "driveTitle": "IMG-20260810-WA0129.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-jejz2yn6",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-jejz2yn6.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1Mu0inoDQf1hEXCdTN5CE3K-VjeJz2YN6",
+        "driveTitle": "IMG-20260810-WA0135.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-u0ixqxq",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-u0ixqxq.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1Ob8MOts-pcxA1n4thkbLEyqv-u0IxqXq",
+        "driveTitle": "Screenshot_20260811_012705_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "1:27 ter., 11 de ago.  Coleção Digital de Jorr X  Hemeroteca Digital Bra X  Página  6/12  ill 54%  \\+  Jornal do Dia (RS) - 19 X  memoria.bn.gov.br/DocReader/D✩  Edição 03276  Ocorrências  4/31  3  CAI, 10 (Do corresondente) A Câmara de Vereadores re"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-yjim0dch",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-yjim0dch.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1UWHuFHKA7vXVDshLX5dbPQreyjIm0DCH",
+        "driveTitle": "IMG-20260810-WA0124.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-htko80r6",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-htko80r6.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1z-rkEfsKp__7GoEhm7h6ZZ5dHtKO80r6",
+        "driveTitle": "Screenshot_20260811_005643_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "12:56 ter., 11 de ago. \\*»  Coleção Digital de Jorr X Hemeroteca Digital Bra X  с  ill 65% i  Diario de Noticias (RS) X +  memoria.bn.gov.br/DocReader/D✩✰  Página  10/14  Ocorrências  9/13  Página 2-2. Caderno  TEM DE SER  F muito tempo que os morado"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-dig5okvo",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-dig5okvo.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1XS3PhMUEhpxCene_VnhHkFgYDiG5OKvo",
+        "driveTitle": "Screenshot_20260811_001410_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "12:14 B  A  memoria.bn.gov.br/DocRea  5  ll 36  Página  1/69  Ocorrências  6/14 »  Edição 00011 e 00012  Anno V. Porto Alegre, Estado do Rio Grande do Sul. No. 11/12  ERCIA  REVISTA ILLUSTRADA PARA A MOCIDADE ESTUDIOSA  OTHECA  NACIONAL  R  do  Janei"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-1ygyarqa",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-1ygyarqa.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1ABFhZ5ZE-daXKIf9IYZPp7Y31YGYarqa",
+        "driveTitle": "Screenshot_20260811_000154_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": ".  12:01 B  A  memoria.bn.gov.br/DocRea  Página  Encheist wochentlich zweimal  Der Absmntiperis beträgt for des Rest des Jalurs R 45000, für das gan Jahr 1911 R 7500  Redaktion: Deutsche Straus Telephen Nr. 139.  1\\. Jahrg.  1/4  Edição 00046  Die Fa"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-o8feiyq3",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-o8feiyq3.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "19zsS2mR3uFzpUQ3TnqmB18fdo8feIYQ3",
+        "driveTitle": "Screenshot_20260811_004124_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "12:41 ter., 11 de ago.  A  Coleção Digital de Jorr Hemeroteca Digital Bra X  ll 71% i  O Echo (RS) - 1914 a 1 x +  memoria.bn.gov.br/DocReader/D✩  :  с  O Echo (RS) - 1914 a 1962  Rücker  \\* Para  Pesquisar  Ocorrências 14/14  Ano 1921\\\\Edição 00011 "
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-k1nem5ug",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-k1nem5ug.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1x4NGjSIz4p-4ZSSsV7ALdksQk1NEM5uG",
+        "driveTitle": "IMG-20260810-WA0093.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-10-6dv57gj",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-10-6dv57gj.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1D1hhs_TCVJVOYeGmRfXiYjGZ6Dv57g-j",
+        "driveTitle": "20260810_155802.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-xvwmf7kg",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-xvwmf7kg.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1JwbRhiBtLyobic7Js_xWWEgYxVwMF7KG",
+        "driveTitle": "IMG-20260810-WA0136.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-ltm8ga8",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-ltm8ga8.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "15FkkN_-55SCN_KW2qUG1pW03-ltM8ga8",
+        "driveTitle": "IMG-20260810-WA0098.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-gevoqqwl",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-gevoqqwl.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1q4sg4_H7xNeXx91mUWqNJ_smgEVoQQWl",
+        "driveTitle": "Screenshot_20260811_010046_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "1:00 ter., 11 de ago.  Coleção Digital de Jorr X Hemeroteca Digital Bra X  с  ill 63%  Diario de Noticias (RS) X  \\+  memoria.bn.gov.br/DocReader/D✩✰  Página  21/32  Ocorrências  12/13 O  Porto Alegre 303-1969  Edição 00026  Da Sociedade Aqui do Sino"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-gzomjb8",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-gzomjb8.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1OXE2ULL7H1v6ZITepDl6I2s0Gzom_jB8",
+        "driveTitle": "1786302095901.png",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-10-ki21bfxc",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-10-ki21bfxc.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1ihvmcbUpx8c8Uq6hgdZkjn4mKi21bfxC",
+        "driveTitle": "20260810_161054.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-wxbxxdm",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-wxbxxdm.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "11nnBb1oKtzxt_tjG9RBF6N7cWXBxx-Dm",
+        "driveTitle": "1786375526174.png",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-rsnhfchb",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-rsnhfchb.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1IqSdLB9Ki8sMXe4iHyms2bNdRsNhfCHB",
+        "driveTitle": "Screenshot_20260811_005143_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-v7al4amk",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-v7al4amk.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "102nqh4cCqg6osgrqjRaN5uhjv7Al4AMK",
+        "driveTitle": "Screenshot_20260811_011410_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-gbu6d0d",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-gbu6d0d.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1MFvPDdu5V-D8ZUe7c-HHiPgfGBU6d-0D",
+        "driveTitle": "IMG-20260810-WA0122.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-sdlw3bh8",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-sdlw3bh8.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1J8vIS9uBB11Rs3FS_ioCcmg9sDLW3bh8",
+        "driveTitle": "IMG-20260810-WA0120.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-4coqhgzu",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-4coqhgzu.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "115jzxtZBRGP6CkAHGniwSoBq4COQhgZu",
+        "driveTitle": "IMG-20260810-WA0108.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-kbbmaijn",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-kbbmaijn.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1ULa3osVHyVZcj7yK91Dw3BA-KbbmAijn",
+        "driveTitle": "Screenshot_20260811_005445_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "12:54 ter., 11 de ago. \\*  Coleção Digital de Jorr X Hemeroteca Digital Bra X  с  ill 66% i  Diario de Noticias (RS) X  \\+  memoria.bn.gov.br/DocReader/D✩✰  Página  21/32  Edição 00021  DIARIO DE NOTICIAS  Ocorrências  8/13≫  Porto Alegre 24-3-1968  "
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-10-9wonfasu",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-10-9wonfasu.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1qgEbIz7d_OnQXMEka2VQBlB_9WOnfASu",
+        "driveTitle": "20260810_161055.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-rvxz2rrp",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-rvxz2rrp.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1CpWLlSBkBhfrSDHrFIyOvBU1RVXZ2rrP",
+        "driveTitle": "IMG-20260810-WA0097.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-bv12hcr",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-bv12hcr.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1_X5nlfj89qCur_UIjSPeXPFebv12hc-r",
+        "driveTitle": "1786397485776.png",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-ypad3wxe",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-ypad3wxe.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1bluaMMtspPiNv0tlyqkDgu_cypaD3wxE",
+        "driveTitle": "IMG-20260810-WA0137.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-uwdpfhqr",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-uwdpfhqr.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1GuiK2my6ahk1ZDeKtW8g1900uWdPFhQR",
+        "driveTitle": "1786397661691.png",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-0cf5b28w",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-0cf5b28w.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1oG7PK2V00j9HGF8E6NbkAbcm0cf5b28W",
+        "driveTitle": "Screenshot_20260810_234736_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "\\[6\\]  «  11:47 B  memoria.bn.gov.br/DocRea  Página  39/44  Ocorrências  \\<\\<\\<10/14  Edição 00006  O ECHO  41  243  000000  RECREIO \\*\\*\\*\\*\\*\\*  Observação: Entram no sorteio dos premios de nossos concursos só aquelles que enviarem Soluções (todas "
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-xvqu7uhq",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-xvqu7uhq.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1Q4FSxlT_mdWEZ42TAfC-JoCXXvQU7uhQ",
+        "driveTitle": "1786374679011.png",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-10-hchw1jda",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-10-hchw1jda.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "11WYDxP5cBIaYyKjEVBzRQ9G3HCHw1jda",
+        "driveTitle": "20260810_161319.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-lueqwsjt",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-lueqwsjt.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "15BzijXZFEbgDBSU-ml2TjUxglueqWSJT",
+        "driveTitle": "1786374489523.png",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-tzcxndhx",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-tzcxndhx.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "11nXM3z2hct_YExX2YIqrv22XTzcxNDHx",
+        "driveTitle": "1786397786818.png",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-m6enf66i",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-m6enf66i.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1xdaKRjjUh41mumcA93HWdvbbm6enf66I",
+        "driveTitle": "IMG-20260810-WA0123.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-jahvhg0d",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-jahvhg0d.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1ghVqh1D3lnuBE0-z7eb2B5x0JAhvhG0D",
+        "driveTitle": "Screenshot_20260811_004050_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "12:40 ter., 11 de ago.  A  Coleção Digital de Jorr Hemeroteca Digital Bra X  O Echo (RS) - 1914 a 1962  с  ill 71%  O Echo (RS) - 1914 a 1 X +  memoria.bn.gov.br/DocReader/D✩✰  :  Rücker  Pesquisar  Ocorrências 13/14  \\*Para  Ano 1920\\\\Edição 00006 ("
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-ohafcipw",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-ohafcipw.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1LNhitoXfwI4O2ShDkiA1U1FMoHAfcIpw",
+        "driveTitle": "IMG-20260810-WA0142.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-ipgsi6sg",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-ipgsi6sg.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1dMmTt3SjjYd_TfLn3xy_DzTCIpgSI6sG",
+        "driveTitle": "Screenshot_20260811_000105_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "12:01 B  memoria.bn.gov.br/DocRea  Página  3/4  Edição 00046  Ocorrências  5  39  rückständigen Steuern mit der gesetzmä- sen die ssigen Multe bezahlt werden müssen. Nach tät gelte diesem Termin tritt die gerichtliche Ein- für sei treibung ein. Wir m"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-tumdgmjl",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-tumdgmjl.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1zsW0dwZPKcy7s4y3z9uMnzB2TuMdgmJl",
+        "driveTitle": "IMG-20260810-WA0138.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-nojbnstd",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-nojbnstd.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1t34GPYuxHlY2yvFGOkSeFBvLnOjBNstd",
+        "driveTitle": "IMG-20260810-WA0127.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-bed31mmr",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-bed31mmr.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "17e_rK0-BeAmuauheNP0KpOLLbEd31mMr",
+        "driveTitle": "IMG-20260810-WA0083.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-91jo20yz",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-91jo20yz.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1k9emBtqm00F5T57dEVrcjUO491jo20yZ",
+        "driveTitle": "IMG-20260810-WA0090.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-1zlu4itl",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-1zlu4itl.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1shfeolFrl7_IOaPijnFeGYQ91Zlu4ITL",
+        "driveTitle": "Screenshot_20260810_234613_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "11:46 B  memoria.bn.gov.br/DocRea \\[6\\]  Página  42/46  Edição 00006  Ocorrências  41  13/14≫ 13/14 O  Exercicios para a 1. Communhão e a Communhão Geral Men- sal. Brochura  Exercicios para a Confissão, Communhão e Santa Missa. Broch. 50 exemplares  "
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-uvh6lger",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-uvh6lger.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1j6Hs8PZr3Ag2XoD4o4SvqZpYUvh6LGer",
+        "driveTitle": "IMG-20260810-WA0101.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-igvhl9d",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-igvhl9d.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1khjmm0fmklupD8ZkUBVRqre7IGvH_L9d",
+        "driveTitle": "Screenshot_20260810_234307_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "42  11:43 B  memoria.bn.gov.br/DocRea 5  Página  7/8  Ocorrências  \\<1/114≫  Edição 01511  O  ESTADO-Terça-feira 18 de Maio de 1920  Banco Nacional do Commercio  ANTIGO BANCO DO COMMEERCIO DEPORTO ALEGRE  0000000000  Fundado em 1895 Séde Porto Alegre"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-3ehkt9jw",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-3ehkt9jw.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1-ZLBEgSMxi_wPqIhgdV_3uFa3EhKt9jW",
+        "driveTitle": "1786396092039.png",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-b4o5ya5",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-b4o5ya5.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "14PcQ9S7kuWl3ijXBDQdVVrSkB4o5Ya_5",
+        "driveTitle": "Screenshot_20260811_010039_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "ENLACE EM MONTENEGRO  1  MONTENEGRO, (Do correspondente Rodolfo Maria Rath) Realizou-se recentemente. nesta cidade, o enlace matrimonial do sr. Cilo Hummes com a srta. Aurea Filipina Rücker, da sociedade local. A noiva é fillha do casa\\! Siegmundo Rü"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-4paetxnk",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-4paetxnk.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "13W940jX_NI20Of1Itu4BubQW4pAeTxNk",
+        "driveTitle": "IMG-20260810-WA0115.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-wotlbxke",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-wotlbxke.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1OVyI5sbbawXLDib0aTqDkNieWotlbXKE",
+        "driveTitle": "IMG-20260810-WA0106.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-tslunqu3",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-tslunqu3.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1vcJC58h3b7rhok0RucC8xxjXTSlUnqu3",
+        "driveTitle": "IMG-20260810-WA0058.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-30h3aqef",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-30h3aqef.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1VESx6BcjZmCnECjgNRW6wS0P30H3aQEf",
+        "driveTitle": "Screenshot_20260811_004704_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "12:47 ter., 11 de ago. \\*  ill 69%  Coleção Digital de Jorr X  Hemeroteca Digital Bra X  Diario de Noticias (RS) X  \\+  memoria.bn.gov.br/DocReader/D✩  3  Página  10/16  Edição 00125  Vinte moças estarão receben do seus certificados de conclu. são de"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-bx8jpa34",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-bx8jpa34.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1GtB3GvQU-07HLd2UMis6PnRMbx8jPa34",
+        "driveTitle": "IMG-20260810-WA0130.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-2utrwpvg",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-2utrwpvg.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1Udp3eWrtq_wSnVdLvi7h4RHI2UtRWPVG",
+        "driveTitle": "IMG-20260810-WA0002.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-tpmyzotg",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-tpmyzotg.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1RWKfbm19H-183--evxQk3caWtPMyzoTg",
+        "driveTitle": "1786407441572.png",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-urgajne8",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-urgajne8.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1Hz1aq4xOyiycLF9UTb-uVV_zurgajne8",
+        "driveTitle": "Screenshot_20260810_203955_WhatsApp.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "MÃE  SOMOS ETERNAMENTE GRATOS POR TUDO QUE A SENHORA FEZ POR TODOS NÓS. DESEMPENHOU O MELHOR DOS PAPÉIS, O DE SER MÃE, E MUITAS VEZES PAI TAMBÉM. SABEMOS E ACOMPANHAMOS O QÃO DIFÍCEL FOI A JORDANA, MAS HOJE TEMOS CERTEZA DE QUE TUDO VALEU MUITO A PEN"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-lhw6od84",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-lhw6od84.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1QLTblo5f9U6mKqeWT9pkJkH_LHW6od84",
+        "driveTitle": "IMG-20260810-WA0109.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-cq9mk95l",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-cq9mk95l.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1fegX8-rt2sxJMDrfBY8Pszy6Cq9mk95L",
+        "driveTitle": "IMG-20260810-WA0141.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-cnvwmeel",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-cnvwmeel.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1yN90TF5yRH2aQuigAlIw9JDvCnvwmeEL",
+        "driveTitle": "Screenshot_20260811_005638_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "DAER constrói viadutos, vão dar  acesso à ponte sôbre o Estrela  1 A  ESTRELA (Rudolfo Maria Rath) UMESE, União Municipal dos Estudantes Se- cundários de Estrela, elegeu a sua diretoria para o período 1968.1969, com a seguinte no. minata: presidente,"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-zglfe42w",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-zglfe42w.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1y7XLncuV4wIrrXkIN2fveHI2ZGLfe42w",
+        "driveTitle": "Screenshot_20260811_000123_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "Herr Ernst Rücker in der Hansa teilt uns mit, dass die Firma Rücker Ir- mãos unter dem 17. ds. Mts. aufgelöst wurde und Herr Robert Rücker ausgetre- ten ist. Herr Ernst Rücker wird das Geschäft mit Uebernahme aller Activa und Passiva unter der Firma "
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-53jsnaq",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-53jsnaq.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1jxD0UYcAx9PC2kFWiEDFb1wx53j_SNaq",
+        "driveTitle": "IMG-20260810-WA0024.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "foto-bruta-2026-08-12-gzrynw6i",
+      "thumb": "/assets/img/documentos/foto-bruta-2026-08-12-gzrynw6i.jpg",
+      "titulo": "Foto do acervo (a identificar)",
+      "legenda": "",
+      "categoria": "fotos",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "1eGVgXQj6vJYthqgnhpUuqfDEgZRynw6I",
+        "driveTitle": "IMG-20260806-WA0022.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z"
+      }
+    },
+    {
+      "id": "documento-hemeroteca-2026-08-12-uk9leydo",
+      "thumb": "/assets/img/documentos/documento-hemeroteca-2026-08-12-uk9leydo.jpg",
+      "titulo": "Recorte de hemeroteca (a revisar)",
+      "legenda": "",
+      "categoria": "docs",
+      "tipo": null,
+      "data": null,
+      "decada": null,
+      "local": null,
+      "status": "naoverificado",
+      "pessoas": [],
+      "_origemDrive": {
+        "driveFileId": "14KuCLRbrqbBo7WSUmWODIDlKuk9lEyDO",
+        "driveTitle": "Screenshot_20260811_001255_Chrome.jpg",
+        "driveCreatedTime": "2026-08-12T03:34:54Z",
+        "ocrPreview": "I. Stufe  Deutsches Lesebuch. Zusammengestellt von mehreren Lehrern. II. Stufe  28000  2$500  Lehr- und Lesebuch für Schule und Haus. Zusammengestellt von Math. Grimm und Ambros Rücker  Erste Riblische Geschichte für katholische Schulen Mit Appro-  3"
+      }
+    }
+  ]
+}
