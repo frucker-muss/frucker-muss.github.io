@@ -1,162 +1,202 @@
 ---
 layout: default
 title: "Mapa das Migrações"
-description: "O percurso da família Rücker, de um vale da Silésia em 1816 até os dois destinos no sul do Brasil, em diagrama esquemático."
+description: "O percurso geográfico real da família Rücker, de um vale da Silésia em 1789 até os destinos no sul do Brasil — coordenadas reais, em camadas."
 ---
 
-<p class="rkm-intro">
-  De um vale da Silésia em 1816 até os dois destinos no sul do Brasil. Diagrama esquemático — não é um mapa geográfico real, mas a sequência e a natureza de cada trecho da viagem.
+<p class="rkg-intro">
+  De um vale da Silésia até os destinos no sul do Brasil, em coordenadas geográficas reais. Ative ou desative as camadas abaixo, clique num ponto para abrir o dossiê da etapa, e passe o mouse para ver ano, lugar e evento.
 </p>
 
+<link href="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.css" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.js"></script>
 <style>
-.rkm{
+.rkg{
   --ouro:#d4af6a;
   --sage:#8a9e86;
   --terra:#c0714f;
+  --azul:#4a7f9e;
   --mudo:#8a8578;
   --soft:#b8b2a3;
   --claro:#f2efe6;
   --borda:#2a2a2a;
   --superficie:#1a1a1a;
+  --pergaminho:#e7dcc2;
+  --pergaminho-escuro:#cdbd94;
+  --tinta:#3a2c1a;
   --mono:ui-monospace,"SFMono-Regular","Roboto Mono",Menlo,Consolas,monospace;
   color:#e8e4da;
 }
-.rkm *{box-sizing:border-box;}
-.rkm p,.rkm h2,.rkm h3{margin:0;padding:0;}
-.rkm-intro{color:#b8b2a3;max-width:620px;margin:0 auto 2rem;text-align:center;font-size:1.1rem;}
+.rkg *{box-sizing:border-box;}
+.rkg p,.rkg h2,.rkg h3{margin:0;padding:0;}
+.rkg-intro{color:#b8b2a3;max-width:640px;margin:0 auto 1.8rem;text-align:center;font-size:1.1rem;}
 
-.rkm-legenda{display:flex;flex-wrap:wrap;gap:0.55rem 1.15rem;justify-content:center;
-  font-family:var(--mono);font-size:0.68rem;color:var(--mudo);margin:0 auto 1.6rem;max-width:760px;}
-.rkm-legenda span{display:flex;align-items:center;gap:0.45rem;}
-.rkm-traco{width:20px;height:0;flex:0 0 20px;border-top-width:2px;border-top-style:solid;}
-.rkm-ponto{width:9px;height:9px;border-radius:50%;display:inline-block;flex:0 0 9px;}
-.rkm-ponto.comum{background:var(--ouro);}
-.rkm-ponto.rs{background:var(--terra);}
-.rkm-ponto.pr{background:var(--sage);}
-
-.rkm-palco{display:grid;grid-template-columns:1.5fr 1fr;gap:0;border:1px solid var(--borda);
-  border-radius:10px;overflow:hidden;background:var(--superficie);}
-.rkm-esq{padding:1rem;border-right:1px solid var(--borda);position:relative;}
-.rkm-svg{width:100%;height:auto;display:block;touch-action:pan-y;cursor:grab;}
-.rkm-svg.arrastando{cursor:grabbing;}
-.rkm-zoom-ctrl{position:absolute;right:1.5rem;bottom:1.5rem;display:flex;flex-direction:column;
-  gap:0.4rem;z-index:2;}
-.rkm-zoom-btn{width:34px;height:34px;border-radius:8px;background:rgba(18,18,18,.85);
-  border:1px solid var(--borda);color:var(--soft);font-family:var(--mono);font-size:1rem;
-  line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;
+/* ---------- Camadas + legenda ---------- */
+.rkg-controles{display:flex;flex-direction:column;gap:.7rem;align-items:center;margin:0 auto 1.4rem;max-width:820px;}
+.rkg-camadas{display:flex;flex-wrap:wrap;gap:.5rem .8rem;justify-content:center;}
+.rkg-camada{display:flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:0.7rem;
+  letter-spacing:.02em;color:var(--soft);background:#161616;border:1px solid var(--borda);
+  border-radius:999px;padding:.4rem .8rem .4rem .6rem;cursor:pointer;user-select:none;
   transition:border-color .2s ease,color .2s ease;}
-.rkm-zoom-btn:hover,.rkm-zoom-btn:focus-visible{border-color:var(--ouro);color:var(--ouro);}
-.rkm-zoom-btn:focus-visible{outline:2px solid var(--ouro);outline-offset:2px;}
-.rkm-zoom-dica{position:absolute;left:1.5rem;bottom:1.5rem;font-family:var(--mono);font-size:0.62rem;
-  color:var(--mudo);z-index:2;pointer-events:none;}
-.rkm-svg .rot{stroke-width:5;fill:none;}
-.rkm-svg .rot-hit{stroke-width:26;fill:none;stroke:transparent;cursor:pointer;}
-.rkm-svg .no{cursor:pointer;stroke:#121212;stroke-width:2;}
-.rkm-svg .no-hit{fill:transparent;cursor:pointer;}
-.rkm-svg .no:hover, .rkm-svg .no[data-on="1"]{stroke:var(--claro);}
-.rkm-svg .nolab{font-family:Georgia,serif;font-size:15px;fill:var(--claro);
-  paint-order:stroke;stroke:#0b0b0b;stroke-width:3px;stroke-linejoin:round;}
+.rkg-camada:hover{border-color:var(--camada-cor,var(--ouro));}
+.rkg-camada input{accent-color:var(--camada-cor,var(--ouro));width:14px;height:14px;margin:0;cursor:pointer;}
+.rkg-camada i{width:9px;height:9px;border-radius:50%;background:var(--camada-cor,var(--ouro));flex:0 0 9px;}
+.rkg-camada[data-off="1"]{opacity:.45;}
+.rkg-camada-nota{font-size:0.62rem;color:var(--mudo);font-style:italic;margin-left:.15rem;}
 
-.rkm-dir{padding:1.2rem 1.1rem 1.3rem;min-height:280px;}
-.rkm-dir h3{font-family:var(--mono);font-size:0.66rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--mudo);padding-bottom:0.5rem;border-bottom:1px solid var(--borda);margin:0 0 0.8rem;}
-.rkm-selo{display:inline-block;margin-bottom:.8rem;font-family:var(--mono);font-size:0.6rem;
+.rkg-legenda{display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;justify-content:center;
+  font-family:var(--mono);font-size:0.66rem;color:var(--mudo);}
+.rkg-legenda span{display:flex;align-items:center;gap:.4rem;}
+.rkg-traco{width:20px;height:0;flex:0 0 20px;border-top-width:3px;border-top-style:solid;}
+.rkg-traco.tracejado{border-top-style:dashed;border-top-width:2px;}
+.rkg-ponto{width:9px;height:9px;border-radius:50%;display:inline-block;flex:0 0 9px;}
+
+/* ---------- Palco (carta antiga) ---------- */
+.rkg-palco{display:grid;grid-template-columns:1.5fr 1fr;gap:0;border:1px solid var(--borda);
+  border-radius:10px;overflow:hidden;background:var(--superficie);}
+.rkg-carta{position:relative;padding:.7rem;border-right:1px solid var(--borda);
+  background:linear-gradient(135deg,#2b2213,#1c160c);}
+.rkg-moldura{position:relative;border:2px solid var(--pergaminho-escuro);border-radius:4px;
+  overflow:hidden;box-shadow:inset 0 0 40px rgba(0,0,0,.55);}
+#rkgMap{width:100%;height:560px;filter:sepia(.55) saturate(1.35) contrast(1.08) brightness(.93) hue-rotate(-6deg);}
+.rkg-veu{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at center,transparent 42%,rgba(30,20,8,.55) 100%);
+  mix-blend-mode:multiply;}
+.rkg-grao{position:absolute;inset:0;pointer-events:none;opacity:.10;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");}
+.rkg-cartucho{position:absolute;top:.9rem;left:.9rem;z-index:3;background:rgba(231,220,194,.92);
+  border:1px solid var(--tinta);border-radius:3px;padding:.4rem .7rem;pointer-events:none;
+  box-shadow:0 2px 8px rgba(0,0,0,.4);}
+.rkg-cartucho b{display:block;font-family:Georgia,serif;font-size:.78rem;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--tinta);line-height:1.3;}
+.rkg-cartucho span{display:block;font-family:var(--mono);font-size:.6rem;color:#5a4a30;margin-top:.15rem;}
+.rkg-rosa{position:absolute;bottom:.8rem;right:.8rem;z-index:3;width:52px;height:52px;opacity:.85;
+  pointer-events:none;filter:drop-shadow(0 1px 3px rgba(0,0,0,.5));}
+.rkg-acoes{position:absolute;bottom:.8rem;left:.8rem;z-index:3;display:flex;gap:.4rem;}
+.rkg-acao-btn{font-family:var(--mono);font-size:.62rem;letter-spacing:.04em;text-transform:uppercase;
+  background:rgba(18,18,18,.85);border:1px solid var(--borda);color:var(--soft);border-radius:6px;
+  padding:.35rem .55rem;cursor:pointer;transition:border-color .2s,color .2s;}
+.rkg-acao-btn:hover,.rkg-acao-btn:focus-visible{border-color:var(--ouro);color:var(--ouro);}
+
+.rkg-tooltip{position:fixed;z-index:50;pointer-events:none;background:rgba(231,220,194,.97);
+  border:1px solid var(--tinta);border-radius:4px;padding:.4rem .6rem;max-width:220px;
+  font-family:Georgia,serif;font-size:.78rem;color:var(--tinta);line-height:1.4;
+  box-shadow:0 3px 10px rgba(0,0,0,.45);opacity:0;transition:opacity .12s ease;}
+.rkg-tooltip.on{opacity:1;}
+.rkg-tooltip b{display:block;font-size:.85rem;}
+.rkg-tooltip s{display:block;text-decoration:none;font-family:var(--mono);font-size:.6rem;
+  letter-spacing:.05em;text-transform:uppercase;color:#5a4a30;margin-top:.15rem;}
+
+.rkg-dir{padding:1.2rem 1.1rem 1.3rem;min-height:280px;}
+.rkg-selo{display:inline-block;margin-bottom:.8rem;font-family:var(--mono);font-size:0.6rem;
   letter-spacing:.1em;text-transform:uppercase;border-radius:4px;padding:2px 7px;
   color:var(--ouro);border:1px solid var(--ouro);}
-.rkm-selo[data-t="aberta"]{color:var(--sage);border-color:var(--sage);}
-.rkm-ctx{font-size:0.93rem;color:var(--soft);line-height:1.65;}
-.rkm-ctx+.rkm-ctx{margin-top:.6rem;}
-.rkm-vazio{color:var(--mudo);font-size:0.9rem;font-style:italic;}
+.rkg-ctx{font-size:0.93rem;color:var(--soft);line-height:1.65;}
+.rkg-ctx+.rkg-ctx{margin-top:.6rem;}
+.rkg-vazio{color:var(--mudo);font-size:0.9rem;font-style:italic;}
+.rkg-nome{font-family:Georgia,serif;font-size:1.3rem;color:var(--claro);margin:0 0 .2rem;}
+.rkg-sub{font-family:var(--mono);font-size:0.68rem;color:var(--mudo);margin-bottom:1rem;}
+.rkg-anoevento{font-size:0.85rem;color:var(--ouro);margin-bottom:.8rem;font-style:italic;}
 
-.rkm-secao{margin-top:3rem;}
-.rkm-secao h2{font-family:Georgia,serif;font-size:1.6rem;color:var(--claro);margin:0 0 .4rem;text-align:center;}
-.rkm-secao-nota{font-size:0.95rem;color:var(--mudo);max-width:620px;margin:0 auto 1.6rem;text-align:center;line-height:1.6;}
-.rkm-metodo{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.8rem;}
-.rkm-cartao{display:block;background:#161616;border:1px solid var(--borda);border-radius:10px;
+.rkg-secao{margin-top:3rem;}
+.rkg-secao h2{font-family:Georgia,serif;font-size:1.6rem;color:var(--claro);margin:0 0 .4rem;text-align:center;}
+.rkg-secao-nota{font-size:0.95rem;color:var(--mudo);max-width:620px;margin:0 auto 1.6rem;text-align:center;line-height:1.6;}
+.rkg-metodo{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.8rem;}
+.rkg-cartao{display:block;background:#161616;border:1px solid var(--borda);border-radius:10px;
   padding:0.9rem 1rem;text-decoration:none;color:#e8e4da;
   transition:border-color .2s ease,transform .2s ease;}
-.rkm-cartao:hover{border-color:var(--ouro);transform:translateY(-2px);}
-.rkm-cartao s{display:block;text-decoration:none;font-family:var(--mono);font-size:0.62rem;
+.rkg-cartao:hover{border-color:var(--ouro);transform:translateY(-2px);}
+.rkg-cartao s{display:block;text-decoration:none;font-family:var(--mono);font-size:0.62rem;
   letter-spacing:.1em;text-transform:uppercase;color:var(--ouro);margin-bottom:.35rem;font-weight:bold;}
-.rkm-cartao b{display:block;font-family:Georgia,serif;font-size:1.05rem;font-weight:normal;
+.rkg-cartao b{display:block;font-family:Georgia,serif;font-size:1.05rem;font-weight:normal;
   color:var(--claro);line-height:1.25;margin-bottom:.3rem;}
-.rkm-cartao span{display:block;font-size:0.85rem;line-height:1.5;color:var(--soft);}
-
-/* ---------- Timeline vertical (mobile) ---------- */
-.rkm-timeline{display:none;list-style:none;margin:0;padding:0;border:1px solid var(--borda);
-  border-radius:10px;background:var(--superficie);padding:1.2rem 1rem;}
-.rkm-tl-item{position:relative;padding:0 0 0.2rem 1.6rem;border-left:2px solid var(--borda);}
-.rkm-tl-item:last-child{border-left-color:transparent;}
-.rkm-tl-dot{position:absolute;left:-7px;top:0.5rem;width:12px;height:12px;border-radius:50%;
-  border:2px solid #121212;}
-.rkm-tl-btn{all:unset;box-sizing:border-box;cursor:pointer;display:block;min-height:44px;width:100%;
-  padding:0.6rem 0.7rem;border-radius:8px;margin-bottom:0.6rem;}
-.rkm-tl-btn:hover,.rkm-tl-btn:focus-visible{background:rgba(212,175,106,.08);}
-.rkm-tl-btn:focus-visible{outline:2px solid var(--ouro);outline-offset:2px;}
-.rkm-tl-nome{display:block;font-family:Georgia,serif;font-size:1.1rem;color:var(--claro);line-height:1.3;}
-.rkm-tl-sub{display:block;font-family:var(--mono);font-size:0.72rem;color:var(--mudo);margin-top:.3rem;line-height:1.5;}
-.rkm-tl-leg{display:flex;align-items:center;min-height:44px;padding:0 0 0.2rem 1.6rem;
-  border-left:2px solid var(--borda);}
-.rkm-tl-modo{display:inline-block;font-family:var(--mono);font-size:0.68rem;letter-spacing:.06em;
-  text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1px solid currentColor;}
-.rkm-tl-ctx{display:none;padding:0 0.7rem 0.9rem;}
-.rkm-tl-ctx.aberto{display:block;}
-.rkm-tl-ctx .rkm-ctx{font-size:0.9rem;}
+.rkg-cartao span{display:block;font-size:0.85rem;line-height:1.5;color:var(--soft);}
 
 @media (max-width:820px){
-  .rkm-palco{grid-template-columns:1fr;}
-  .rkm-esq{border-right:0;border-bottom:1px solid var(--borda);}
+  .rkg-palco{grid-template-columns:1fr;}
+  .rkg-carta{border-right:0;border-bottom:1px solid var(--borda);}
 }
 @media (max-width:640px){
-  .rkm-palco{display:none;}
-  .rkm-timeline{display:block;}
+  #rkgMap{height:420px;}
+  .rkg-rosa{width:38px;height:38px;}
 }
-@media (prefers-reduced-motion:reduce){.rkm *{transition:none!important;}}
+@media (prefers-reduced-motion:reduce){.rkg *{transition:none!important;}}
 </style>
 
-<div class="rkm" id="rkmRaiz">
+<div class="rkg" id="rkgRaiz">
 
-  <div class="rkm-legenda">
-    <span><i class="rkm-traco" style="border-top-color:#2b2b28;border-top-style:dashed"></i> Trem</span>
-    <span><i class="rkm-traco" style="border-top-color:#4a7f9e;border-top-style:dotted"></i> Vapor oceânico</span>
-    <span><i class="rkm-traco" style="border-top-color:#6ba3bd"></i> Vapor fluvial</span>
-    <span><i class="rkm-traco" style="border-top-color:#a06a45"></i> Carreta</span>
-    <span><i class="rkm-traco" style="border-top-color:#a06a45;border-top-style:dotted"></i> A pé</span>
-    <span><i class="rkm-ponto comum"></i> Tronco comum</span>
-    <span><i class="rkm-ponto rs"></i> Ramo de Maratá — August Ambros (RS)</span>
-    <span><i class="rkm-ponto pr"></i> Ramo de Porto União — Ambros August (SC)</span>
+  <div class="rkg-controles">
+    <div class="rkg-camadas" id="rkgCamadas">
+      <label class="rkg-camada" data-grupo="europa" style="--camada-cor:#8a8578;">
+        <input type="checkbox" checked><i></i>Europa
+      </label>
+      <label class="rkg-camada" data-grupo="travessia" style="--camada-cor:#4a7f9e;">
+        <input type="checkbox" checked><i></i>Travessia Atlântica
+      </label>
+      <label class="rkg-camada" data-grupo="rs" style="--camada-cor:#c0714f;">
+        <input type="checkbox" checked><i></i>Assentamento RS
+      </label>
+      <label class="rkg-camada" data-grupo="expansao" style="--camada-cor:#8a9e86;">
+        <input type="checkbox" checked><i></i>Expansão SC/PR/MT
+        <span class="rkg-camada-nota">(SC/PR documentados — MT pendente)</span>
+      </label>
+    </div>
+    <div class="rkg-legenda">
+      <span><i class="rkg-traco" style="border-top-color:#7a6a52;"></i> A pé</span>
+      <span><i class="rkg-traco" style="border-top-color:#4a4038;"></i> Trem</span>
+      <span><i class="rkg-traco" style="border-top-color:#2f4d63;"></i> Vapor oceânico</span>
+      <span><i class="rkg-traco" style="border-top-color:#3d6b73;"></i> Vapor fluvial</span>
+      <span><i class="rkg-traco" style="border-top-color:#7a4a2a;"></i> Carreta</span>
+      <span><i class="rkg-traco"></i> Tronco (comum)</span>
+      <span><i class="rkg-traco tracejado"></i> Ramificação</span>
+    </div>
   </div>
 
-  <div class="rkm-palco">
-    <div class="rkm-esq">
-      <svg class="rkm-svg" id="rkmSvg" viewBox="0 0 960 830" xmlns="http://www.w3.org/2000/svg"></svg>
-      <p class="rkm-zoom-dica">Pinça, roda do mouse ou os botões para ampliar</p>
-      <div class="rkm-zoom-ctrl">
-        <button class="rkm-zoom-btn" id="rkmZoomIn" type="button" aria-label="Ampliar">+</button>
-        <button class="rkm-zoom-btn" id="rkmZoomOut" type="button" aria-label="Reduzir">−</button>
-        <button class="rkm-zoom-btn" id="rkmZoomReset" type="button" aria-label="Redefinir zoom">⤾</button>
+  <div class="rkg-palco">
+    <div class="rkg-carta">
+      <div class="rkg-moldura">
+        <div id="rkgMap"></div>
+        <div class="rkg-veu"></div>
+        <div class="rkg-grao"></div>
+        <div class="rkg-cartucho">
+          <b>Rota da Emigração Rücker</b>
+          <span>1789 – 1921 · Silésia → Brasil</span>
+        </div>
+        <svg class="rkg-rosa" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" fill="none" stroke="#e7dcc2" stroke-width="1.2"/>
+          <path d="M50 6 L57 50 L50 94 L43 50 Z" fill="#e7dcc2"/>
+          <path d="M6 50 L50 43 L94 50 L50 57 Z" fill="#e7dcc2" opacity="0.75"/>
+          <path d="M50 6 L54 50 L50 94 L46 50 Z" fill="#3a2c1a" opacity="0.4"/>
+          <text x="50" y="16" text-anchor="middle" font-size="10" fill="#e7dcc2" font-family="Georgia,serif">N</text>
+        </svg>
+        <div class="rkg-acoes">
+          <button class="rkg-acao-btn" id="rkgAjustar" type="button">Ajustar aos pontos</button>
+          <button class="rkg-acao-btn" id="rkgReiniciar" type="button">Vista inicial</button>
+        </div>
       </div>
     </div>
-    <aside class="rkm-dir" id="rkmCtx">
-      <p class="rkm-vazio">Toque em um ponto do diagrama para ver o contexto da etapa.</p>
+    <aside class="rkg-dir" id="rkgCtx">
+      <p class="rkg-vazio">Toque em um ponto do mapa para ver o dossiê da etapa.</p>
     </aside>
   </div>
 
-  <ol class="rkm-timeline" id="rkmTimeline"></ol>
-
-  <div class="rkm-secao">
-    <h2>Como este diagrama foi montado</h2>
-    <p class="rkm-secao-nota">É um esquema — a posição dos pontos indica ordem e ramificação, não localização geográfica real. As distâncias e trajetos exatos não são reproduzidos.</p>
-    <div class="rkm-metodo">
-      <a class="rkm-cartao" href="{{ '/familia/arvore.html' | relative_url }}">
+  <div class="rkg-secao">
+    <h2>Sobre este mapa</h2>
+    <p class="rkg-secao-nota">Pontos em coordenadas WGS84 reais. A rota oceânica (Hamburgo → Rio Grande) é uma linha reta simplificada; a posição da Estação Nova Galícia (demolida) é aproximada. Fontes e grau de certeza de cada trecho estão no dossiê de cada ponto.</p>
+    <div class="rkg-metodo">
+      <a class="rkg-cartao" href="{{ '/familia/arvore.html' | relative_url }}">
         <s>Interativo</s><b>Árvore Genealógica</b>
         <span>Gerações navegáveis, com fonte e grau de certeza em cada informação.</span>
       </a>
-      <a class="rkm-cartao" href="{{ '/familia.html' | relative_url }}">
+      <a class="rkg-cartao" href="{{ '/familia.html' | relative_url }}">
         <s>Acervo</s><b>Artigos e crônicas</b>
         <span>Perfis históricos e crônicas literárias da imigração Rücker.</span>
       </a>
-      <a class="rkm-cartao" href="https://forms.gle/MAY913vupvStXXgP7" target="_blank" rel="noopener">
+      <a class="rkg-cartao" href="{{ '/familia/mapa-diagrama.html' | relative_url }}">
+        <s>Versão anterior</s><b>Diagrama esquemático</b>
+        <span>A versão anterior deste mapa, sem geografia real — mantida como referência.</span>
+      </a>
+      <a class="rkg-cartao" href="https://forms.gle/MAY913vupvStXXgP7" target="_blank" rel="noopener">
         <s>Colaborar</s><b>Falta documento</b>
         <span>Reconheceu um nome, tem foto ou correção? O acervo aceita contribuições.</span>
       </a>
@@ -165,310 +205,214 @@ description: "O percurso da família Rücker, de um vale da Silésia em 1816 at�
 
 </div>
 
+<div class="rkg-tooltip" id="rkgTooltip"></div>
+
 <script>
 (function(){
 "use strict";
 
-var COR = { comum:"#d4af6a", rs:"#c0714f", pr:"#8a9e86" };
+var COR_RAMO = { comum:"#d4af6a", rs:"#c0714f", pr:"#8a9e86" };
+var GRUPO_LABEL = { europa:"Europa", travessia:"Travessia Atlântica", rs:"Assentamento RS", expansao:"Expansão SC/PR/MT" };
 var MODO = {
-  trem:      { stroke:"#e0dccf", dash:"6,5", label:"Trem" },
-  vapor:     { stroke:"#7fb3d5", dash:"1,5", label:"Vapor oceânico" },
-  fluvial:   { stroke:"#8fc1d8", dash:"none", label:"Vapor fluvial" },
-  carreta:   { stroke:"#c98a5e", dash:"none", label:"Carreta" },
-  pe:        { stroke:"#c98a5e", dash:"1,5", label:"A pé" }
+  pe:      { cor:"#7a6a52", label:"A pé" },
+  trem:    { cor:"#4a4038", label:"Trem" },
+  vapor:   { cor:"#2f4d63", label:"Vapor oceânico" },
+  fluvial: { cor:"#3d6b73", label:"Vapor fluvial" },
+  carreta: { cor:"#7a4a2a", label:"Carreta" }
 };
 
 var NOS = [
-  { id:"johannesberg", x:110, y:50, ramo:"comum", nome:"Johannesberg", sub:"Silésia prussiana",
-    ctx:["Georg Rücker nasce em 1789 em Johannesberg — o patriarca da linhagem que emigraria oitenta anos depois."] },
-  { id:"wolfelsgrund", x:90, y:190, ramo:"comum", nome:"Wölfelsgrund", sub:"hoje Międzygórze, Polônia — condado de Kłodzko",
-    ctx:["A poucos quilômetros de Johannesberg, no mesmo vale. Ponto de referência para a origem de toda a família — inclusive de Ricardo Rücker, de Três Passos (ver nota de pesquisa aberta abaixo)."] },
-  { id:"hamburgo", x:330, y:130, ramo:"comum", nome:"Hamburgo", sub:"embarque, 1898 — 3ª classe",
+  { id:"johannesberg", lon:16.74, lat:50.26, ramo:"comum", grupo:"europa",
+    nome:"Johannesberg", sub:"Silésia prussiana [aprox.]", ano:"1789", evento:"Nascimento de Georg Rücker",
+    ctx:["Georg Rücker nasce em 1789 em Johannesberg — o patriarca da linhagem que emigraria oitenta anos depois. Localização aproximada, no mesmo vale de Wölfelsgrund."] },
+  { id:"wolfelsgrund", lon:16.7667, lat:50.2281, ramo:"comum", grupo:"europa",
+    nome:"Wölfelsgrund", sub:"hoje Międzygórze, Polônia — condado de Kłodzko", ano:"—", evento:"Origem do vale familiar",
+    ctx:["A poucos quilômetros de Johannesberg, no mesmo vale. Ponto de referência para a origem de toda a família — inclusive de Ricardo Rücker, de Três Passos (ver Árvore Genealógica, seção de pesquisa aberta)."] },
+  { id:"hamburgo", lon:9.9937, lat:53.5511, ramo:"comum", grupo:"travessia",
+    nome:"Hamburgo", sub:"embarque, 1898 — 3ª classe", ano:"1898", evento:"Embarque de Anton, August Ambros e Ambros August",
     ctx:["Anton (46), August Ambros (33) e Ambros August (28) embarcam juntos, solteiros, em 1898 — os três irmãos que a Lista de Hamburgo confirma como indivíduos distintos."] },
-  { id:"riogrande", x:300, y:320, ramo:"comum", nome:"Rio Grande", sub:"porto de desembarque",
-    ctx:["Fim da travessia atlântica. Início do trecho fluvial rumo ao interior do Rio Grande do Sul."] },
-  { id:"portoalegre", x:520, y:260, ramo:"comum", nome:"Porto Alegre", sub:"baldeação fluvial",
+  { id:"riogrande", lon:-52.0986, lat:-32.0350, ramo:"comum", grupo:"travessia",
+    nome:"Rio Grande", sub:"porto de desembarque", ano:"1898", evento:"Fim da travessia atlântica",
+    ctx:["Fim da travessia atlântica, 26 a 30 dias em Zwischendeck. Início do trecho fluvial rumo ao interior do Rio Grande do Sul."] },
+  { id:"portoalegre", lon:-51.2177, lat:-30.0346, ramo:"comum", grupo:"rs",
+    nome:"Porto Alegre", sub:"baldeação fluvial", ano:"1898", evento:"Baldeação fluvial",
     ctx:["Ponto de baldeação entre o vapor de rio maior e as embarcações menores que seguem para o Vale do Caí."] },
-  { id:"cai", x:540, y:420, ramo:"comum", nome:"São Sebastião do Caí", sub:"fim da navegação",
+  { id:"cai", lon:-51.3781, lat:-29.5644, ramo:"comum", grupo:"rs",
+    nome:"São Sebastião do Caí", sub:"fim da navegação", ano:"1898", evento:"Fim do trecho navegável",
     ctx:["Aqui termina o trecho navegável. Dali em diante, o restante da viagem é feito por terra, de carreta."] },
-  { id:"doisirmaos", x:760, y:360, ramo:"comum", nome:"Dois Irmãos", sub:"Colônia 16 — chegada em 1898",
+  { id:"doisirmaos", lon:-51.0864, lat:-29.6081, ramo:"comum", grupo:"rs",
+    nome:"Dois Irmãos", sub:"Colônia 16 — chegada em 1898", ano:"1898", evento:"Chegada à Colônia 16",
     ctx:["Ponto de chegada da família em 1898. Os dois irmãos August Ambros e Ambros August seguem juntos daqui até Maratá (RS) — não se separam ainda."] },
-  { id:"marata", x:780, y:520, ramo:"rs", nome:"Maratá", sub:"São Pedro do Maratá (RS) — os dois irmãos, lado a lado",
+  { id:"marata", lon:-51.5573, lat:-29.5457, ramo:"rs", grupo:"rs",
+    nome:"Maratá", sub:"São Pedro do Maratá (RS) — os dois irmãos, lado a lado", ano:"1898–1921", evento:"Assentamento dos dois irmãos, lado a lado",
     ctx:["August Ambros se estabelece aqui definitivamente com Philippine Saft — origem dos 15 filhos confirmados fotograficamente em 1925.",
          "O irmão Ambros August também mora aqui, na mesma comunidade e paróquia, por cerca de duas décadas (c. 1904/1906 a 1921) — foi nesse período que nasceram seus filhos Herberto, Max e Walter. Os dois irmãos convivem lado a lado até 1921, quando Ambrósio Augusto parte com a comitiva de 53 pessoas rumo a Santa Catarina.",
          "A ferrovia é parte dessa história: entre Vitória e Maratá (RS), perto de onde a família viveu, a linha férrea media 3,2 km, inaugurada em 1909.",
          "O livro comemorativo do centenário de Maratá confirmou o sobrenome de solteira de Olydia Regina, esposa de Herberto (Orth), e a data exata da leva migratória de 1921 registrada pela comunidade: 8 de setembro de 1921."] },
-  { id:"novagalicia", x:560, y:620, ramo:"pr", nome:"Nova Galícia", sub:"Estação Ferroviária, Porto União (SC) — inaugurada em 1908",
+  { id:"novagalicia", lon:-51.14, lat:-26.28, ramo:"pr", grupo:"expansao",
+    nome:"Nova Galícia", sub:"Estação Ferroviária, Porto União (SC) — inaugurada em 1908 [aprox.]", ano:"1921", evento:"Desembarque da comitiva de 1921",
     ctx:["Ponto de desembarque da comitiva de 1921: cinco dias e quatro noites de trem partindo de Maratá (RS), chegando em 8 de setembro de 1921. Dali em diante, o restante do trajeto até a colônia foi feito por carroça, a cavalo e por picadas abertas a machado."] },
-  { id:"portouniao", x:760, y:760, ramo:"pr", nome:"Porto União", sub:"colônia de Maratá catarinense — ramo Ambros August (SC)",
+  { id:"portouniao", lon:-51.0817, lat:-26.2389, ramo:"pr", grupo:"expansao",
+    nome:"Porto União", sub:"colônia de Maratá catarinense — ramo Ambros August (SC)", ano:"1921", evento:"Assentamento do ramo Ambros August (SC)",
     ctx:["Ambros August se estabelece aqui com Amalia Rathmann. Origem do ramo de Ambros August (Herberto, Walter, Max — a prole conhecida deste casal, número não fechado).",
          "Curiosidade não comprovada: em 1924, um Ricardo Rücker — nascido em 1904 em Lauterbach, no mesmo condado de Kłodzko — hospedou-se na casa de 'August Rücker' em Maratá antes de seguir a pé até Porto União. Parentesco não confirmado; ver Árvore Genealógica, seção de pesquisa aberta."] }
 ];
 
 var ROTAS = [
-  { de:"johannesberg", para:"wolfelsgrund", modo:"pe", ramo:"comum" },
-  { de:"wolfelsgrund", para:"hamburgo", modo:"trem", ramo:"comum" },
-  { de:"hamburgo", para:"riogrande", modo:"vapor", ramo:"comum" },
-  { de:"riogrande", para:"portoalegre", modo:"fluvial", ramo:"comum" },
-  { de:"portoalegre", para:"cai", modo:"fluvial", ramo:"comum" },
-  { de:"cai", para:"doisirmaos", modo:"carreta", ramo:"comum" },
-  { de:"doisirmaos", para:"marata", modo:"carreta", ramo:"comum" },
-  { de:"marata", para:"novagalicia", modo:"trem", ramo:"pr" },
-  { de:"novagalicia", para:"portouniao", modo:"carreta", ramo:"pr" }
+  { de:"johannesberg", para:"wolfelsgrund", modo:"pe", ramo:"comum", grupo:"europa" },
+  { de:"wolfelsgrund", para:"hamburgo", modo:"trem", ramo:"comum", grupo:"europa" },
+  { de:"hamburgo", para:"riogrande", modo:"vapor", ramo:"comum", grupo:"travessia" },
+  { de:"riogrande", para:"portoalegre", modo:"fluvial", ramo:"comum", grupo:"rs" },
+  { de:"portoalegre", para:"cai", modo:"fluvial", ramo:"comum", grupo:"rs" },
+  { de:"cai", para:"doisirmaos", modo:"carreta", ramo:"comum", grupo:"rs" },
+  { de:"doisirmaos", para:"marata", modo:"carreta", ramo:"comum", grupo:"rs" },
+  { de:"marata", para:"novagalicia", modo:"trem", ramo:"pr", grupo:"expansao" },
+  { de:"novagalicia", para:"portouniao", modo:"carreta", ramo:"pr", grupo:"expansao" }
 ];
+
+var GRUPOS = ["europa","travessia","rs","expansao"];
+var VISTA_INICIAL = { center:[-25,5], zoom:1.6 };
 
 function porId(id){ return NOS.filter(function(n){return n.id===id;})[0]; }
 
-function montarCtxHTML(n){
-  var html = '<span class="rkm-selo">'+(n.ramo==='comum'?'Tronco comum':(n.ramo==='rs'?'Ramo Maratá (RS)':'Ramo Porto União (SC)'))+'</span>';
-  html += '<h3 style="font-family:Georgia,serif;font-size:1.3rem;color:var(--claro);border:none;padding:0;margin:0 0 .2rem;">'+n.nome+'</h3>';
-  html += '<p style="font-family:var(--mono);font-size:0.68rem;color:var(--mudo);margin-bottom:1rem;">'+n.sub+'</p>';
-  n.ctx.forEach(function(p){ html += '<p class="rkm-ctx">'+p+'</p>'; });
+function montarCtxNoHTML(n){
+  var html = '<span class="rkg-selo">'+GRUPO_LABEL[n.grupo]+'</span>';
+  html += '<h3 class="rkg-nome">'+n.nome+'</h3>';
+  html += '<p class="rkg-sub">'+n.sub+'</p>';
+  html += '<p class="rkg-anoevento">'+n.ano+' · '+n.evento+'</p>';
+  n.ctx.forEach(function(p){ html += '<p class="rkg-ctx">'+p+'</p>'; });
   return html;
 }
 
 function montarCtxRotaHTML(r){
   var a = porId(r.de), b = porId(r.para), m = MODO[r.modo];
-  var html = '<span class="rkm-selo">' + m.label + '</span>';
-  html += '<h3 style="font-family:Georgia,serif;font-size:1.3rem;color:var(--claro);border:none;padding:0;margin:0 0 .2rem;">' + a.nome + ' → ' + b.nome + '</h3>';
-  html += '<p class="rkm-ctx">Trecho percorrido de ' + a.nome + ' a ' + b.nome + ', em ' + m.label.toLowerCase() + '.</p>';
+  var html = '<span class="rkg-selo">'+m.label+'</span>';
+  html += '<h3 class="rkg-nome">'+a.nome+' → '+b.nome+'</h3>';
+  html += '<p class="rkg-sub">'+(r.ramo==='comum'?'Tronco comum':'Ramificação')+'</p>';
+  html += '<p class="rkg-ctx">Trecho percorrido de '+a.nome+' a '+b.nome+', em '+m.label.toLowerCase()+'.</p>';
   return html;
 }
 
-function montarSVG(){
-  var svg = document.getElementById('rkmSvg');
-  var html = '';
+function mostrarCtx(html){ document.getElementById('rkgCtx').innerHTML = html; }
 
-  ROTAS.forEach(function(r, i){
-    var a = porId(r.de), b = porId(r.para);
-    var m = MODO[r.modo];
-    var corRamo = COR[r.ramo];
-    // Traço visível por cima de um traço largo e invisível — o invisível
-    // é a área real de toque/clique, bem maior que a linha desenhada.
-    html += '<line class="rot-hit" data-idx="'+i+'" x1="'+a.x+'" y1="'+a.y+'" x2="'+b.x+'" y2="'+b.y+'" />';
-    html += '<line class="rot" x1="'+a.x+'" y1="'+a.y+'" x2="'+b.x+'" y2="'+b.y+'" ' +
-            'stroke="'+corRamo+'" stroke-dasharray="'+(m.dash==='none'?'':m.dash)+'" />';
+var map = new maplibregl.Map({
+  container: 'rkgMap',
+  style: 'https://tiles.openfreemap.org/styles/positron',
+  center: VISTA_INICIAL.center,
+  zoom: VISTA_INICIAL.zoom,
+  attributionControl: { compact: true }
+});
+map.addControl(new maplibregl.NavigationControl({ showCompass:false }), 'top-right');
+
+var camadaLayers = {};
+GRUPOS.forEach(function(g){ camadaLayers[g] = []; });
+
+map.on('load', function(){
+
+  GRUPOS.forEach(function(g){
+    var pontos = NOS.filter(function(n){ return n.grupo === g; });
+    var rotas = ROTAS.filter(function(r){ return r.grupo === g; });
+
+    map.addSource('rkg-rts-'+g, {
+      type:'geojson',
+      data:{ type:'FeatureCollection', features: rotas.map(function(r){
+        var a = porId(r.de), b = porId(r.para);
+        return { type:'Feature',
+          properties:{ cor: MODO[r.modo].cor, ramo: r.ramo },
+          geometry:{ type:'LineString', coordinates:[[a.lon,a.lat],[b.lon,b.lat]] } };
+      }) }
+    });
+    map.addLayer({ id:'rkg-linha-tronco-'+g, type:'line', source:'rkg-rts-'+g,
+      filter:['==', ['get','ramo'], 'comum'],
+      layout:{ 'line-cap':'round', 'line-join':'round' },
+      paint:{ 'line-color':['get','cor'], 'line-width':3 } });
+    map.addLayer({ id:'rkg-linha-ramo-'+g, type:'line', source:'rkg-rts-'+g,
+      filter:['!=', ['get','ramo'], 'comum'],
+      layout:{ 'line-cap':'round', 'line-join':'round' },
+      paint:{ 'line-color':['get','cor'], 'line-width':2.2, 'line-dasharray':[2,1.6] } });
+
+    map.addSource('rkg-pts-'+g, {
+      type:'geojson',
+      data:{ type:'FeatureCollection', features: pontos.map(function(n){
+        return { type:'Feature', properties:{ id:n.id, cor:COR_RAMO[n.ramo], nome:n.nome },
+                 geometry:{ type:'Point', coordinates:[n.lon,n.lat] } };
+      }) }
+    });
+    map.addLayer({ id:'rkg-ponto-'+g, type:'circle', source:'rkg-pts-'+g,
+      paint:{ 'circle-radius':6.5, 'circle-color':['get','cor'],
+              'circle-stroke-color':'#2a1f10', 'circle-stroke-width':2 } });
+    map.addLayer({ id:'rkg-label-'+g, type:'symbol', source:'rkg-pts-'+g,
+      layout:{ 'text-field':['get','nome'], 'text-size':11.5, 'text-offset':[0,1.2], 'text-anchor':'top',
+               'text-font':['Noto Sans Regular'] },
+      paint:{ 'text-color':'#2a1f10', 'text-halo-color':'#e7dcc2', 'text-halo-width':1.4 } });
+
+    camadaLayers[g] = ['rkg-linha-tronco-'+g,'rkg-linha-ramo-'+g,'rkg-ponto-'+g,'rkg-label-'+g];
   });
 
-  NOS.forEach(function(n){
-    // Círculo maior e invisível por trás do círculo visível — área de toque de
-    // pelo menos 44x44px (r=22) mesmo com o ponto visual pequeno.
-    html += '<circle class="no-hit" data-id="'+n.id+'" cx="'+n.x+'" cy="'+n.y+'" r="22"></circle>';
-    html += '<circle class="no" data-id="'+n.id+'" data-on="0" cx="'+n.x+'" cy="'+n.y+'" r="8" fill="'+COR[n.ramo]+'"></circle>';
-    var anchor = n.x > 620 ? 'end' : 'start';
-    var dx = n.x > 620 ? -18 : 18;
-    html += '<text class="nolab" x="'+(n.x+dx)+'" y="'+(n.y+5)+'" text-anchor="'+anchor+'">'+n.nome+'</text>';
+  var pontoLayerIds = GRUPOS.map(function(g){ return 'rkg-ponto-'+g; });
+  var rotaLayerIds = GRUPOS.reduce(function(acc,g){ return acc.concat(['rkg-linha-tronco-'+g,'rkg-linha-ramo-'+g]); }, []);
+
+  var tooltip = document.getElementById('rkgTooltip');
+  map.on('mousemove', pontoLayerIds, function(e){
+    var n = porId(e.features[0].properties.id);
+    tooltip.innerHTML = '<b>'+n.nome+'</b><span>'+n.ano+' · '+n.evento+'</span><s>'+GRUPO_LABEL[n.grupo]+'</s>';
+    tooltip.style.left = (e.originalEvent.clientX + 14) + 'px';
+    tooltip.style.top = (e.originalEvent.clientY + 14) + 'px';
+    tooltip.classList.add('on');
+    map.getCanvas().style.cursor = 'pointer';
+  });
+  map.on('mouseleave', pontoLayerIds, function(){
+    tooltip.classList.remove('on');
+    map.getCanvas().style.cursor = '';
   });
 
-  svg.innerHTML = '<g id="rkmZoomG">' + html + '</g>';
+  map.on('click', function(e){
+    var achados = map.queryRenderedFeatures(e.point, { layers: pontoLayerIds.concat(rotaLayerIds) });
+    if (!achados.length) return;
+    var ponto = achados.filter(function(f){ return pontoLayerIds.indexOf(f.layer.id) !== -1; })[0];
+    if (ponto){ mostrarCtx(montarCtxNoHTML(porId(ponto.properties.id))); return; }
+    var lngLat = e.lngLat;
+    var maisPerto = ROTAS.map(function(rt){
+      var a = porId(rt.de), b = porId(rt.para);
+      var mx = (a.lon+b.lon)/2, my = (a.lat+b.lat)/2;
+      var d = Math.pow(mx-lngLat.lng,2)+Math.pow(my-lngLat.lat,2);
+      return { rt:rt, d:d };
+    }).sort(function(a,b){ return a.d-b.d; })[0].rt;
+    mostrarCtx(montarCtxRotaHTML(maisPerto));
+  });
+  pontoLayerIds.concat(rotaLayerIds).forEach(function(id){
+    map.on('mouseenter', id, function(){ map.getCanvas().style.cursor = 'pointer'; });
+    map.on('mouseleave', id, function(){ map.getCanvas().style.cursor = ''; });
+  });
 
-  function ativarNo(id){
-    svg.querySelectorAll('.no').forEach(function(c){ c.setAttribute('data-on','0'); });
-    var visivel = svg.querySelector('.no[data-id="'+id+'"]');
-    if (visivel) visivel.setAttribute('data-on','1');
-    mostrarContexto(id);
+  function bboxVisivel(){
+    var ativos = GRUPOS.filter(function(g){
+      return document.querySelector('.rkg-camada[data-grupo="'+g+'"] input').checked;
+    });
+    var pts = NOS.filter(function(n){ return ativos.indexOf(n.grupo) !== -1; });
+    if (!pts.length) return null;
+    var lons = pts.map(function(n){return n.lon;}), lats = pts.map(function(n){return n.lat;});
+    return [[Math.min.apply(null,lons), Math.min.apply(null,lats)],[Math.max.apply(null,lons), Math.max.apply(null,lats)]];
   }
 
-  svg.querySelectorAll('.no, .no-hit').forEach(function(el){
-    el.addEventListener('click', function(){ ativarNo(el.getAttribute('data-id')); });
+  document.getElementById('rkgAjustar').addEventListener('click', function(){
+    var bbox = bboxVisivel();
+    if (bbox) map.fitBounds(bbox, { padding:60, duration:900, maxZoom:6 });
+  });
+  document.getElementById('rkgReiniciar').addEventListener('click', function(){
+    map.flyTo({ center:VISTA_INICIAL.center, zoom:VISTA_INICIAL.zoom, duration:900 });
   });
 
-  svg.querySelectorAll('.rot-hit').forEach(function(el){
-    el.addEventListener('click', function(){
-      svg.querySelectorAll('.no').forEach(function(c){ c.setAttribute('data-on','0'); });
-      var ctx = document.getElementById('rkmCtx');
-      ctx.innerHTML = montarCtxRotaHTML(ROTAS[+el.getAttribute('data-idx')]);
+  document.querySelectorAll('.rkg-camada').forEach(function(rot){
+    var g = rot.getAttribute('data-grupo');
+    var input = rot.querySelector('input');
+    input.addEventListener('change', function(){
+      var vis = input.checked ? 'visible' : 'none';
+      camadaLayers[g].forEach(function(id){ map.setLayoutProperty(id, 'visibility', vis); });
+      rot.setAttribute('data-off', input.checked ? '0' : '1');
     });
   });
-}
 
-function iniciarZoom(){
-  var svg = document.getElementById('rkmSvg');
-  var g = document.getElementById('rkmZoomG');
-  var ESCALA_MIN = 1, ESCALA_MAX = 5;
-  var escala = 1, tx = 0, ty = 0;
-
-  // Ponto do SVG (em unidades do viewBox) sob um dado ponto x,y da tela.
-  var pt = svg.createSVGPoint();
-  function pontoSVG(clientX, clientY){
-    pt.x = clientX; pt.y = clientY;
-    return pt.matrixTransform(svg.getScreenCTM().inverse());
-  }
-
-  function limitar(v, min, max){ return Math.max(min, Math.min(max, v)); }
-
-  function aplicar(){
-    escala = limitar(escala, ESCALA_MIN, ESCALA_MAX);
-    // Não deixa arrastar para fora de uma margem razoável do conteúdo.
-    var margem = 400 * escala;
-    tx = limitar(tx, -960*escala - margem + 960, margem);
-    ty = limitar(ty, -830*escala - margem + 830, margem);
-    g.setAttribute('transform', 'translate('+tx+','+ty+') scale('+escala+')');
-  }
-
-  // Zoom centrado num ponto fixo da tela (o cursor, o centro do pinch, ou o
-  // centro do SVG): acha o ponto do conteúdo (antes da transformação) que
-  // está sob o cursor, muda a escala, e recalcula tx/ty para que esse mesmo
-  // ponto continue exatamente sob o cursor.
-  function zoomEm(clientX, clientY, fatorEscala){
-    var p = pontoSVG(clientX, clientY);
-    var wx = (p.x - tx) / escala;
-    var wy = (p.y - ty) / escala;
-    escala = limitar(escala * fatorEscala, ESCALA_MIN, ESCALA_MAX);
-    tx = p.x - wx * escala;
-    ty = p.y - wy * escala;
-    aplicar();
-  }
-
-  function resetar(){ escala = 1; tx = 0; ty = 0; aplicar(); }
-
-  // --- Roda do mouse / pinch de trackpad (a maioria dos navegadores dispara
-  // pinch de trackpad como 'wheel' com ctrlKey verdadeiro) ---
-  svg.addEventListener('wheel', function(ev){
-    if (!ev.ctrlKey && Math.abs(ev.deltaY) < 3) return;
-    ev.preventDefault();
-    var fator = ev.deltaY < 0 ? 1.15 : 1/1.15;
-    zoomEm(ev.clientX, ev.clientY, fator);
-  }, { passive:false });
-
-  // --- Pinch de dois dedos (touch) ---
-  var pinchDist0 = null, escala0 = 1;
-  var arrastando = false, ultimoX = 0, ultimoY = 0;
-
-  function distancia(t0, t1){
-    var dx = t0.clientX - t1.clientX, dy = t0.clientY - t1.clientY;
-    return Math.sqrt(dx*dx + dy*dy);
-  }
-  function meio(t0, t1){
-    return { x:(t0.clientX+t1.clientX)/2, y:(t0.clientY+t1.clientY)/2 };
-  }
-
-  svg.addEventListener('touchstart', function(ev){
-    if (ev.touches.length === 2){
-      pinchDist0 = distancia(ev.touches[0], ev.touches[1]);
-      escala0 = escala;
-      arrastando = false;
-    } else if (ev.touches.length === 1 && escala > 1){
-      arrastando = true;
-      ultimoX = ev.touches[0].clientX;
-      ultimoY = ev.touches[0].clientY;
-    }
-  }, { passive:true });
-
-  svg.addEventListener('touchmove', function(ev){
-    if (ev.touches.length === 2 && pinchDist0){
-      ev.preventDefault();
-      var d = distancia(ev.touches[0], ev.touches[1]);
-      var m = meio(ev.touches[0], ev.touches[1]);
-      var p = pontoSVG(m.x, m.y);
-      var wx = (p.x - tx) / escala;
-      var wy = (p.y - ty) / escala;
-      escala = limitar(escala0 * (d / pinchDist0), ESCALA_MIN, ESCALA_MAX);
-      tx = p.x - wx * escala;
-      ty = p.y - wy * escala;
-      aplicar();
-    } else if (ev.touches.length === 1 && arrastando){
-      ev.preventDefault();
-      var dxTela = ev.touches[0].clientX - ultimoX;
-      var dyTela = ev.touches[0].clientY - ultimoY;
-      var escalaTela = svg.clientWidth / 960;
-      tx += dxTela / escalaTela;
-      ty += dyTela / escalaTela;
-      ultimoX = ev.touches[0].clientX;
-      ultimoY = ev.touches[0].clientY;
-      aplicar();
-    }
-  }, { passive:false });
-
-  svg.addEventListener('touchend', function(ev){
-    if (ev.touches.length < 2) pinchDist0 = null;
-    if (ev.touches.length === 0) arrastando = false;
-  });
-
-  // --- Arrastar com o mouse (desktop), só conta como arraste acima de um limiar,
-  // para não atrapalhar o clique normal nos pontos/rotas ---
-  var mouseBaixo = false, moveu = false, msX = 0, msY = 0;
-  svg.addEventListener('mousedown', function(ev){
-    mouseBaixo = true; moveu = false; msX = ev.clientX; msY = ev.clientY;
-  });
-  window.addEventListener('mousemove', function(ev){
-    if (!mouseBaixo) return;
-    var dx = ev.clientX - msX, dy = ev.clientY - msY;
-    if (!moveu && (Math.abs(dx) > 4 || Math.abs(dy) > 4)) { moveu = true; svg.classList.add('arrastando'); }
-    if (moveu){
-      var escalaTela = svg.clientWidth / 960;
-      tx += dx / escalaTela;
-      ty += dy / escalaTela;
-      msX = ev.clientX; msY = ev.clientY;
-      aplicar();
-    }
-  });
-  window.addEventListener('mouseup', function(){
-    mouseBaixo = false; svg.classList.remove('arrastando');
-  });
-
-  svg.addEventListener('dblclick', function(ev){ ev.preventDefault(); resetar(); });
-
-  document.getElementById('rkmZoomIn').addEventListener('click', function(){
-    var r = svg.getBoundingClientRect();
-    zoomEm(r.left + r.width/2, r.top + r.height/2, 1.4);
-  });
-  document.getElementById('rkmZoomOut').addEventListener('click', function(){
-    var r = svg.getBoundingClientRect();
-    zoomEm(r.left + r.width/2, r.top + r.height/2, 1/1.4);
-  });
-  document.getElementById('rkmZoomReset').addEventListener('click', resetar);
-}
-
-function mostrarContexto(id){
-  var n = porId(id);
-  var ctx = document.getElementById('rkmCtx');
-  if (!n) return;
-  ctx.innerHTML = montarCtxHTML(n);
-}
-
-function montarTimeline(){
-  var el = document.getElementById('rkmTimeline');
-  var html = '';
-
-  NOS.forEach(function(n, i){
-    if (i > 0){
-      var r = ROTAS.filter(function(rt){ return rt.de === NOS[i-1].id && rt.para === n.id; })[0];
-      if (r){
-        var m = MODO[r.modo];
-        html += '<li class="rkm-tl-leg"><span class="rkm-tl-modo" style="color:'+m.stroke+';">'+m.label+'</span></li>';
-      }
-    }
-    html += '<li class="rkm-tl-item">' +
-              '<span class="rkm-tl-dot" style="background:'+COR[n.ramo]+';"></span>' +
-              '<button class="rkm-tl-btn" type="button" data-id="'+n.id+'" aria-expanded="false">' +
-                '<span class="rkm-tl-nome">'+n.nome+'</span>' +
-                '<span class="rkm-tl-sub">'+n.sub+'</span>' +
-              '</button>' +
-              '<div class="rkm-tl-ctx" id="tlctx-'+n.id+'"></div>' +
-            '</li>';
-  });
-
-  el.innerHTML = html;
-
-  el.querySelectorAll('.rkm-tl-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var id = btn.getAttribute('data-id');
-      var box = document.getElementById('tlctx-'+id);
-      var aberto = box.classList.contains('aberto');
-      el.querySelectorAll('.rkm-tl-ctx.aberto').forEach(function(b){ b.classList.remove('aberto'); });
-      el.querySelectorAll('.rkm-tl-btn[aria-expanded="true"]').forEach(function(b){ b.setAttribute('aria-expanded','false'); });
-      if (!aberto){
-        box.innerHTML = montarCtxHTML(porId(id));
-        box.classList.add('aberto');
-        btn.setAttribute('aria-expanded','true');
-      }
-    });
-  });
-}
-
-montarSVG();
-montarTimeline();
-iniciarZoom();
+});
 })();
 </script>
