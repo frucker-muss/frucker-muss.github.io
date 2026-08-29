@@ -1,0 +1,326 @@
+---
+layout: default
+title: "O professor Siegmund Rücker"
+description: "Escuta compartilhada: o caderno de registros do professor Siegmund Rücker na Campanha de Nacionalização, 1939–1945. Picada São Gabriel, Lajeado e Setembrina."
+---
+
+<style>
+  .page-content { max-width: 1040px; padding-bottom: 7.5rem; }
+  .escuta { color: #e8e4da; }
+  .escuta-grid {
+    display: grid;
+    gap: 2.2rem;
+  }
+  @media (min-width: 880px) {
+    .escuta-grid { grid-template-columns: 17.5rem minmax(0, 1fr); gap: 2.8rem; }
+  }
+  .escuta-side { text-align: center; }
+  @media (min-width: 880px) { .escuta-side { text-align: left; } }
+  .escuta-cover {
+    width: 11rem;
+    border-radius: 10px;
+    outline: 1px solid rgba(242, 239, 230, 0.1);
+    outline-offset: -1px;
+  }
+  @media (min-width: 880px) { .escuta-cover { width: 100%; } }
+  .escuta-kicker {
+    margin: 1.2rem 0 0.35rem;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #d4af6a;
+  }
+  .escuta-side h1 {
+    margin: 0.2rem 0 0;
+    font-size: 1.85rem;
+    line-height: 1.15;
+    color: #f2efe6;
+    text-align: inherit;
+  }
+  .escuta-sub {
+    margin: 0.45rem 0 0;
+    font-style: italic;
+    color: #b8b2a3;
+    font-size: 1.05rem;
+  }
+  .escuta-lede {
+    margin: 1rem 0 0;
+    color: #b8b2a3;
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+  .escuta-meta {
+    margin: 0.75rem 0 0;
+    font-family: -apple-system, sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8a8578;
+  }
+  .escuta-place {
+    margin: 0.35rem 0 0;
+    font-family: -apple-system, sans-serif;
+    font-size: 0.82rem;
+    color: #8a8578;
+    line-height: 1.4;
+  }
+  .escuta-play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    width: 100%;
+    height: 3rem;
+    margin-top: 1.4rem;
+    background: #d4af6a;
+    color: #121212;
+    border: 0;
+    border-radius: 6px;
+    font-family: -apple-system, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  .escuta-play:hover { text-decoration: none; filter: brightness(1.05); }
+  .escuta-chs { display: none; margin-top: 1.8rem; }
+  @media (min-width: 880px) { .escuta-chs { display: block; } }
+  .escuta-chs p {
+    margin: 0 0 0.6rem;
+    font-family: -apple-system, sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8a8578;
+  }
+  .escuta-ch, .escuta-cue {
+    display: flex;
+    gap: 0.75rem;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    color: #b8b2a3;
+    padding: 0.55rem 0.5rem;
+    border-radius: 6px;
+    font: inherit;
+  }
+  .escuta-ch { justify-content: space-between; align-items: baseline; }
+  .escuta-ch span:first-child { font-size: 0.92rem; line-height: 1.3; }
+  .escuta-ch.is-on, .escuta-cue.is-on { background: #222; color: #f2efe6; }
+  .escuta-ch:hover, .escuta-cue:hover { color: #f2efe6; text-decoration: none; }
+  .escuta-t {
+    flex-shrink: 0;
+    width: 2.6rem;
+    font-family: -apple-system, sans-serif;
+    font-size: 0.72rem;
+    font-variant-numeric: tabular-nums;
+    color: #8a8578;
+  }
+  .escuta-card {
+    background: #1a1a1a;
+    border-radius: 14px;
+    padding: 1.3rem 1.25rem 1.2rem;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+    margin-bottom: 5.5rem;
+  }
+  @media (min-width: 880px) {
+    .escuta-card { padding: 2.2rem 2rem; margin-bottom: 0; }
+  }
+  .escuta-card-kicker {
+    margin: 0 0 0.7rem;
+    font-family: -apple-system, sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #d4af6a;
+  }
+  .escuta-caption {
+    margin: 0;
+    font-size: 1.28rem;
+    line-height: 1.45;
+    color: #f2efe6;
+  }
+  @media (min-width: 880px) { .escuta-caption { font-size: 1.55rem; min-height: 7.5rem; } }
+  .escuta-voice {
+    margin: 1rem 0 0;
+    font-family: -apple-system, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8a8578;
+  }
+  .escuta-tabs {
+    display: flex;
+    gap: 0.2rem;
+    border-bottom: 1px solid #2a2a2a;
+    margin: 1.4rem 0 0.8rem;
+  }
+  .escuta-tabs button {
+    background: none;
+    border: 0;
+    color: #8a8578;
+    font-family: -apple-system, sans-serif;
+    font-size: 0.82rem;
+    padding: 0.75rem 0.85rem;
+    position: relative;
+  }
+  .escuta-tabs button.is-on { color: #f2efe6; }
+  .escuta-tabs button.is-on::after {
+    content: "";
+    position: absolute;
+    left: 0.85rem; right: 0.85rem; bottom: -1px;
+    height: 1px;
+    background: #d4af6a;
+  }
+  .escuta-cue { align-items: flex-start; font-size: 1.02rem; line-height: 1.55; }
+  .escuta-after p { color: #b8b2a3; font-size: 1.08rem; line-height: 1.6; }
+  .escuta-q {
+    list-style: none;
+    background: #1a1a1a;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    margin: 0 0 0.7rem;
+  }
+  .escuta-q span {
+    display: block;
+    font-family: -apple-system, sans-serif;
+    font-size: 0.68rem;
+    color: #d4af6a;
+    margin-bottom: 0.35rem;
+  }
+  .escuta-q p { margin: 0; color: #f2efe6; font-size: 1.08rem; }
+  .escuta-bar {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 40;
+    background: rgba(18,18,18,0.96);
+    border-top: 1px solid #2a2a2a;
+    padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom));
+  }
+  .escuta-bar-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .escuta-bar button {
+    flex-shrink: 0;
+    background: none;
+    border: 0;
+    color: #b8b2a3;
+    width: 2.6rem;
+    height: 2.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+  }
+  .escuta-bar [data-action=bar-play] {
+    background: #d4af6a;
+    color: #121212;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 999px;
+  }
+  .escuta-range { flex: 1; min-width: 0; }
+  .escuta-times {
+    display: flex;
+    justify-content: space-between;
+    font-family: -apple-system, sans-serif;
+    font-size: 0.72rem;
+    font-variant-numeric: tabular-nums;
+    color: #8a8578;
+    margin-bottom: 0.2rem;
+  }
+  .escuta-range input[type=range] {
+    width: 100%;
+    height: 8px;
+    appearance: none;
+    border-radius: 99px;
+    background: #2a2a2a;
+    accent-color: #d4af6a;
+  }
+  .escuta-err { color: #b8b2a3; font-size: 0.9rem; margin-top: 0.8rem; }
+  .escuta-back { text-align: center; margin-top: 2.5rem; }
+  @media (max-width: 640px) {
+    .escuta-bar [data-action=back],
+    .escuta-bar [data-action=fwd] { display: none; }
+  }
+</style>
+
+<article class="escuta" id="escuta"
+  data-audio="{{ '/assets/audio/o-professor-siegmund-rucker.m4a' | relative_url }}"
+  data-json="{{ '/assets/data/escuta-siegmund.json' | relative_url }}"
+  data-share="https://rucker.life/familia/o-professor-siegmund-rucker.html">
+
+  <div class="escuta-grid">
+    <aside class="escuta-side">
+      <img class="escuta-cover" src="{{ '/assets/img/caderno-siegmund.jpg' | relative_url }}" width="900" height="1200" alt="Caderno de capa escura da Livraria Kragg, Porto Alegre, fábrica de livros em branco.">
+      <p class="escuta-kicker">Escuta compartilhada</p>
+      <h1>O professor Siegmund Rücker</h1>
+      <p class="escuta-sub">na Campanha de Nacionalização</p>
+      <p class="escuta-lede">Um caderno de capa escura, comprado em branco na Livraria Kragg de Porto Alegre, guarda a rotina de um professor sozinho diante de dezenas de crianças — e a sombra de um fiscal do Estado Novo.</p>
+      <p class="escuta-meta">17 min · 1939–1945</p>
+      <p class="escuta-place">Picada São Gabriel, Lajeado e Setembrina — hoje Cruzeiro do Sul, RS</p>
+      <button type="button" class="escuta-play" data-action="play">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        <span data-slot="play-label">Ouvir</span>
+      </button>
+      <div class="escuta-chs">
+        <p>Capítulos</p>
+        <div data-slot="chapters"></div>
+      </div>
+    </aside>
+
+    <section>
+      <div class="escuta-card">
+        <p class="escuta-card-kicker" data-slot="chapter">Sessenta crianças numa sala</p>
+        <p class="escuta-caption" data-slot="caption">Imagina entrar numa sala de aula com, sei lá, sessenta crianças variando aí dos seis aos quatorze anos de idade.</p>
+        <p class="escuta-voice" data-slot="voice">Voz 1</p>
+      </div>
+      <p class="escuta-err" data-slot="error" hidden>O áudio não carregou. Recarregue a página.</p>
+
+      <div class="escuta-tabs">
+        <button type="button" class="is-on" data-tab="texto">Transcrição</button>
+        <button type="button" data-tab="depois">Depois da escuta</button>
+      </div>
+      <div data-panel="texto">
+        <div data-slot="cues"></div>
+      </div>
+      <div class="escuta-after" data-panel="depois" hidden>
+        <p>As atas mostram o professor. Não registram o sentimento de quem viveu aquilo. Se puder, transforme o fim deste áudio numa conversa em família.</p>
+        <ol data-slot="questions" style="padding:0;margin:1.2rem 0 0;"></ol>
+      </div>
+    </section>
+  </div>
+
+  <p class="escuta-back"><a href="{{ '/familia.html' | relative_url }}">← Voltar para Família</a></p>
+
+  <div class="escuta-bar">
+    <div class="escuta-bar-inner">
+      <button type="button" data-action="bar-play" aria-label="Ouvir">
+        <svg data-slot="bar-play-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="escuta-range">
+        <div class="escuta-times"><span data-slot="now">0:00</span><span data-slot="dur">17:17</span></div>
+        <label><span class="skip-link" style="position:absolute;left:-9999px">Posição do áudio</span>
+          <input type="range" min="0" max="1037" step="0.1" value="0" data-action="seek">
+        </label>
+      </div>
+      <button type="button" data-action="back" aria-label="Voltar quinze segundos">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+      </button>
+      <button type="button" data-action="fwd" aria-label="Avançar quinze segundos">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.13-9.36L23 10"/></svg>
+      </button>
+      <button type="button" data-action="share" aria-label="Compartilhar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      </button>
+    </div>
+  </div>
+  <audio preload="auto" playsinline></audio>
+</article>
+
+<script src="{{ '/assets/js/escuta-player.js' | relative_url }}" defer></script>
