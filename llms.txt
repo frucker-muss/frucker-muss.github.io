@@ -14,6 +14,8 @@ O site é mantido por descendentes da família como um projeto de memória e pes
 - [Pessoas](https://rucker.life/familia/pessoas.html): Perfis individuais de membros da família, com origem, trajetória e fontes.
 - [Crônicas](https://rucker.life/familia/cronicas.html): Reconstruções narrativas da vida de cada personagem, em estilo literário.
 - [Causos](https://rucker.life/familia/causos.html): Histórias soltas e memórias da família (em construção).
+- [Escutas](https://rucker.life/familia/escutas.html): Áudios do acervo, para ouvir junto.
+- [O professor Siegmund Rücker](https://rucker.life/familia/o-professor-siegmund-rucker.html): Escuta de 17 min sobre o caderno de registros na Campanha de Nacionalização (1939–1945).
 - [Metodologia](https://rucker.life/familia/metodologia.html): Explicação dos critérios de evidência e desambiguação usados na árvore genealógica.
 
 ## Perfis de pessoas

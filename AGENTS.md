@@ -5,7 +5,7 @@ antes de propor ou aplicar mudanças neste repositório. Não é específico de 
 ferramenta — mantenha o conteúdo genérico e atualizado conforme a estrutura do
 site mudar.
 
-Última atualização: 2026-08-27.
+Última atualização: 2026-08-29.
 
 ## 0. Ao voltar
 
@@ -52,7 +52,7 @@ só quer conhecer a própria história — ver seção 2.
   placeholder "Outros" (em construção, **não é link**). Lote 1 (2026-08-25).
 - `familia.html` — hub da família, duas seções:
   - Fileira de topo, cards "Interativo" (borda dourada): **Árvore Genealógica**,
-    **Mapa das Migrações**, **Documentos**, **Pessoas**, **Crônicas**, **Causos**.
+    **Mapa das Migrações**, **Documentos**, **Pessoas**, **Crônicas**, **Causos**, **Escutas**.
   - Seção "Artigos" (`.home-grid`): um card por pessoa, com badge **"Pessoas"**
     (perfil factual) e/ou **"Crônica Literária"** (narrativa). Uma mesma pessoa
     pode ter os dois cards lado a lado quando existem as duas versões.
@@ -105,6 +105,11 @@ páginas públicas; a árvore traduz para os 6 status já existentes
   Vincentius, Ambrósio Augusto). Badge "Crônica Literária".
 - `familia/causos.html` — índice de causos. Já existe pelo menos um causo
   publicado (`o-causo-do-berlet.html`).
+- `familia/escutas.html` — índice de áudios (lote **escutas**, 2026-08-29).
+  Primeiro episódio: `familia/o-professor-siegmund-rucker.html`. Player com
+  transcrição sincronizada; JSON em `assets/data/escuta-siegmund.json`; áudio
+  em `assets/audio/o-professor-siegmund-rucker.m4a`. Gênero **áudio** (já
+  previsto na metodologia). Não reescrever a transcrição sem ouvir o arquivo.
 - `familia/georg-rucker.md`, `familia/vincentius-joseph-rucker.md` — perfis
   individuais (`layout: cronica` — o nome do layout é reaproveitado para
   qualquer artigo de texto corrido, não é exclusivo de crônicas literárias).
@@ -214,6 +219,7 @@ Um lote = um chat novo = um PR. O de hoje não pode obrigar a refazer HTML amanh
 | **2c** feito | Idoso toca a foto no celular → código `RK2C-…`; você aprova no JSON | não reabrir |
 | **3** feito | Árvore mais fácil: busca, gerações que abrem, clique → foto/crônica | não reabrir |
 | **3s** feito | Selos gênero/base em `familia/metodologia.html` | não reabrir |
+| **escutas** feito | Áudio do professor Siegmund Rücker; card Escutas no hub | não reabrir |
 
 O **2** deixou o formato da ficha (`id`, `thumb`, `titulo`, `legenda`, `categoria`, `tipo`, `data`, `decada`, `local`, `status`, `pessoas[]` com `genId`, `nome`, `x,y,w,h`). Miniaturas com `loading="lazy"`. O **2c** só preenche — um toque, um nome, “não sei” vale; canal `acervorucker@gmail.com` / Forms; nunca WhatsApp pessoal (seção 2). Sem restilizar a home.
 
