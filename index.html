@@ -28,10 +28,7 @@ description: "Dois acervos de família: Rücker, da Silésia prussiana, e Mussko
   .acervo {
     display: grid;
     grid-template-columns: 1fr auto;
-    grid-template-areas:
-      "nome etiqueta"
-      "meta meta"
-      "desc seta";
+    grid-template-areas: "nome seta";
     align-items: center;
     column-gap: 1rem;
     row-gap: 0.25rem;
@@ -110,18 +107,12 @@ description: "Dois acervos de família: Rücker, da Silésia prussiana, e Mussko
 <div class="acervos">
 
   <a class="acervo" style="--acento: #d4af6a;" href="{{ '/familia.html' | relative_url }}">
-    <span class="acervo-nome">Acervo Rücker</span>
-    <span class="acervo-etiqueta">Linha paterna</span>
-    <span class="acervo-meta">Silésia prussiana &middot; <span class="acervo-ano">1898</span></span>
-    <span class="acervo-desc">Árvore, mapa, documentos, pessoas, crônicas, causos e escutas.</span>
+    <span class="acervo-nome">Rücker</span>
     <span class="acervo-seta" aria-hidden="true">→</span>
   </a>
 
   <a class="acervo" style="--acento: #8a9e86;" href="{{ '/musskopf.html' | relative_url }}">
-    <span class="acervo-nome">Acervo Musskopf</span>
-    <span class="acervo-etiqueta">Linha materna</span>
-    <span class="acervo-meta">Palatinado renano &middot; <span class="acervo-ano">1828</span></span>
-    <span class="acervo-desc">Árvore, mapa, documentos, pessoas, crônicas e a travessia.</span>
+    <span class="acervo-nome">Musskopf</span>
     <span class="acervo-seta" aria-hidden="true">→</span>
   </a>
 

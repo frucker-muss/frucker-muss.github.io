@@ -56,6 +56,11 @@ só quer conhecer a própria história — ver seção 2.
   leitor de tela e buscador — removê-lo de vez deixaria a página sem título
   acessível. Caixas empilhadas, paterna primeiro e materna depois: a ordem é
   convenção, não hierarquia, e a pilha existe para caber uma terceira linha.
+  Cada caixa tem **só o sobrenome** — "Rücker", "Musskopf" — mais a seta e a
+  barra de acento. Saíram "Acervo" no nome, a etiqueta linha paterna/materna,
+  a linha de origem e ano, e a lista do que tem dentro. As classes
+  `.acervo-etiqueta`, `.acervo-meta`, `.acervo-ano` e `.acervo-desc` seguem no
+  CSS, sem uso, para uma caixa nova poder voltar a usá-las sem reescrever nada.
 - `_layouts/default.html` — o cabeçalho **não tem wordmark** (04/10/2026).
   Antes dizia "Rucker.life" no topo de toda página. Decisão do usuário: o nome
   do site é o domínio, não precisa estar escrito em cima, e repetir o nome
