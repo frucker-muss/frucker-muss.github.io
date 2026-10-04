@@ -192,7 +192,10 @@ A certidão de óbito de Silírio (Estrela, 13/02/2015, livro C-17, fl. 19,
 nº 8470) confirma dali para baixo: filiação Carlos Reinaldo e Hulda, filhos
 Bruno Walter e Liane Beatriz. Grafia: **Reinoldo** na carta de 2002,
 **Reinaldo** no registro civil — a árvore usa a do registro civil.
-A certidão grafa a esposa de Silírio como **Era** Lisetta, não Erna.
+A esposa de Silírio é **Erna** Lisetta Musskopf — confirmado pelo neto em
+04/10/2026. A leitura digitalizada da certidão de 2015 devolve "Era Lisetta",
+sem o n; é falha de OCR ou erro do próprio registro, não o nome dela. Não
+"corrigir" Erna para Era de novo a partir do texto extraído da certidão.
 
 **Contato**: o rodapé de `musskopf.html` usa `mailto:` para
 `acervorucker@gmail.com` com o endereço codificado em entidades HTML, sem
