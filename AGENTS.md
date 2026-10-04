@@ -52,10 +52,15 @@ só quer conhecer a própria história — ver seção 2.
   acervos empilhados (paterno primeiro, materno depois — a ordem é convenção,
   não hierarquia; a lista é empilhada justamente para caber uma terceira linha
   no futuro) e placeholder "Outros" (em construção, **não é link**).
-- `_layouts/default.html` — o cabeçalho de todas as páginas diz
-  **"Rücker · Musskopf"**, não "Rucker.life" (04/10/2026). O domínio já é
-  rucker.life; repetir o nome paterno no topo de toda página contradiz a
-  paridade entre os dois acervos. Não reintroduzir o wordmark antigo.
+- `_layouts/default.html` — o cabeçalho **não tem wordmark** (04/10/2026).
+  Antes dizia "Rucker.life" no topo de toda página. Decisão do usuário: o nome
+  do site é o domínio, não precisa estar escrito em cima, e repetir o nome
+  paterno acima das páginas do acervo materno contradiz a paridade entre os
+  dois acervos. No lugar ficou só uma seta "←" discreta de volta ao início,
+  escondida na própria home (`{% if page.url != '/' %}`). Ela é a única forma de
+  voltar em 9 páginas que não têm link de retorno no rodapé (entre elas
+  `familia/arvore.html`, `familia/mapa.html` e `ferramentas/marcador.html`) —
+  não remover sem antes dar rodapé a essas páginas.
   Pendência conhecida: `og:image` global ainda é `og-familia-rucker.jpg`, então
   qualquer página Musskopf compartilhada mostra a arte dos Rücker.
 - `familia.html` — hub da família, duas seções:

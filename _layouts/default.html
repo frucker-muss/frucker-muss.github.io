@@ -70,9 +70,19 @@
   /* ---------- Cabeçalho ---------- */
   .site-header {
     border-bottom: 1px solid #2a2a2a;
-    padding: 1.2rem 1.4rem;
-    text-align: center;
+    padding: 0.9rem 1.4rem;
+    text-align: left;
   }
+  .site-header-voltar {
+    display: inline-block;
+    min-width: 44px;
+    min-height: 44px;
+    line-height: 44px;
+    font-size: 1.4rem;
+    color: #8a8578;
+    text-decoration: none;
+  }
+  .site-header-voltar:hover { color: #f2efe6; text-decoration: none; }
   .site-header-title {
     font-size: 1.25rem;
     letter-spacing: 0.14em;
@@ -332,9 +342,13 @@
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Ir ao conteúdo</a>
+  {% if page.url != '/' %}
   <header class="site-header">
-    <a href="{{ '/' | relative_url }}" class="site-header-title">Rücker <span aria-hidden="true">·</span> Musskopf</a>
+    <a href="{{ '/' | relative_url }}" class="site-header-voltar" aria-label="Voltar ao início">
+      <span aria-hidden="true">←</span>
+    </a>
   </header>
+  {% endif %}
 
   <main id="conteudo" class="page-content">
     {{ content }}
