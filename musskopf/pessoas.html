@@ -1,64 +1,79 @@
 ---
 layout: default
-title: "Pessoas — Musskopf"
-description: "Perfis individuais da família Musskopf: origem, trajetória e fontes documentais de cada pessoa."
+title: "Pessoas &mdash; Musskopf"
+description: "Perfis individuais da familia Musskopf: Johann Philipp, Katharina Elisabeth Mai, Johann Heinrich, Philippine, Johann Christian, Jacob e Juliana Lautert."
 ---
 
 <style>
-  .muss-stub {
-    max-width: 640px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .muss-stub .muss-kicker {
-    display: inline-block;
-    font-family: ui-monospace, "SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #8a9e86;
-    border: 1px dashed #8a9e86;
-    border-radius: 4px;
-    padding: 0.3rem 0.7rem;
-    margin-bottom: 1.2rem;
-  }
-  .muss-stub h1 {
-    font-size: 2.1rem;
-    margin: 0 0 0.8rem;
-    color: #f2efe6;
-  }
-  .muss-stub .muss-lead {
-    color: #b8b2a3;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin: 0 auto 1.6rem;
-  }
-  .muss-stub .muss-nota {
-    color: #8a8578;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    border-top: 1px solid #2a2a2a;
-    padding-top: 1.2rem;
-    margin-top: 2rem;
-  }
-  .muss-stub .muss-nota code {
-    font-family: ui-monospace, "SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace;
-    font-size: 0.85em;
-    color: #8a9e86;
-  }
-  .muss-voltar {
-    text-align: center;
-    margin-top: 2.6rem;
-    font-size: 1.05rem;
-  }
-  .muss-voltar a { color: #8a9e86; }
+  .m-wrap { max-width: 720px; margin: 0 auto; }
+  .m-lead { font-size: 1.12rem; color: #b8b2a3; line-height: 1.6; text-align: center; max-width: 600px; margin: 0 auto 2.4rem; }
+  .m-h2 { font-size: 1.35rem; color: #8a9e86; text-align: center; letter-spacing: 0.06em; margin: 3rem 0 1.4rem; }
+  .m-body p { margin-bottom: 1.3rem; text-align: left; hyphens: auto; }
+  .m-body strong { color: #f2efe6; }
+  .m-body em { color: #c9c3b4; }
+  .m-dado { font-family: ui-monospace, "SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace; font-size: 0.92em; color: #8a9e86; }
+  .m-quadro { background: #1a1a1a; border: 1px solid #2a2a2a; border-left: 3px solid #8a9e86; border-radius: 10px; padding: 1.1rem 1.3rem; margin: 1.8rem 0; }
+  .m-quadro h4 { margin: 0 0 0.6rem; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: #8a8578; font-weight: bold; }
+  .m-quadro ul { margin: 0; padding-left: 1.1rem; }
+  .m-quadro li { margin-bottom: 0.35rem; font-size: 0.97rem; line-height: 1.5; color: #d8d3c5; }
+  .m-tabela { width: 100%; border-collapse: collapse; font-size: 0.95rem; margin: 1.6rem 0; }
+  .m-tabela th { text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #8a8578; border-bottom: 1px solid #2a2a2a; padding: 0.5rem 0.6rem 0.5rem 0; font-weight: bold; }
+  .m-tabela td { padding: 0.55rem 0.6rem 0.55rem 0; border-bottom: 1px solid #222; color: #d8d3c5; vertical-align: top; line-height: 1.45; }
+  .m-tabela td:first-child { color: #f2efe6; }
+  .m-scroll { overflow-x: auto; }
+  .m-pendente { font-size: 0.93rem; color: #8a8578; font-style: italic; border-left: 2px solid #2a2a2a; padding-left: 0.9rem; margin: 1.6rem 0; line-height: 1.55; }
+  .m-ressalva { border-top: 1px solid #2a2a2a; margin-top: 3rem; padding-top: 1.3rem; text-align: center; }
+  .m-ressalva p { max-width: 520px; margin: 0 auto 0.7rem; font-size: 0.85rem; line-height: 1.55; color: #8a8578; }
+  .m-ressalva a { display: inline-block; font-size: 0.85rem; color: #8a9e86; border: 1px solid rgba(138,158,134,0.4); border-radius: 6px; padding: 0.35rem 0.9rem; text-decoration: none; }
+  .m-ressalva a:hover { border-color: #8a9e86; background: rgba(138,158,134,0.08); }
+  .m-voltar { text-align: center; margin-top: 2.4rem; font-size: 1.05rem; }
+  .m-voltar a { color: #8a9e86; }
+  @media (max-width: 480px) { .m-h2 { font-size: 1.2rem; } }
 </style>
 
-<section class="muss-stub">
-  <span class="muss-kicker">Em preparo</span>
-  <h1>Pessoas</h1>
-  <p class="muss-lead">Perfis individuais — quem foi cada um, em detalhe: onde nasceu, o que fez, com quem casou e o que restou de registro.</p>
-  <p class="muss-nota">Os perfis consomem a mesma base de dados da árvore.</p>
-</section>
+<div class="m-wrap m-body">
 
-<p class="muss-voltar"><a href="{{ '/musskopf.html' | relative_url }}">← Voltar ao Acervo Musskopf</a></p>
+<h1 style="text-align:center;">Pessoas</h1>
+<p class="m-lead">Quem foi cada um. Sete perfis sustentados por registro paroquial, lista de embarque ou certidão.</p>
+
+<h2 class="m-h2">A geração que atravessou</h2>
+
+<p><strong>Johann Philipp Musskopf</strong> &middot; <span class="m-dado">26.02.1791 &ndash; 04.03.1863</span><br>
+Nascido em Kottweiler-Schwanden, batizado em Steinwenden no dia seguinte. Filho de Johann Nicolaus Muskopf e Anna Margaretha Hellmuther. Chega a São Leopoldo aos 37 anos. Colono em Morro Jardim a partir de 1830. Sepultado pela Igreja Evangélica de Estância Velha.</p>
+
+<p><strong>Maria Katharina Elisabeth Mai</strong> &middot; <span class="m-dado">05.07.1791 &ndash; 14.06.1859</span><br>
+Natural da Baviera Renana; o lugar aparece nos registros como "Kotterich", grafia ainda não identificada. O sobrenome oscila entre Mai, May e Mar conforme o escrivão. Sepultada em Ivoti.</p>
+
+<p><strong>Johann Heinrich Muskopf</strong> &middot; <span class="m-dado">06.11.1797 &ndash; 25.03.1882</span><br>
+Irmão mais novo de Philipp. Casou com Charlotte Margaretha Ulrich em <span class="m-dado">02.02.1825</span>. Emigrou para os Estados Unidos em 1837 e fundou o ramo de Millstadt, Illinois. Sepultado no Freivogel Cemetery.</p>
+
+<h2 class="m-h2">A geração nascida entre dois mundos</h2>
+
+<p><strong>Philippine Muskopf</strong> &middot; <span class="m-dado">*19.01.1819</span><br>
+Batizada em Steinwenden, tinha oito anos na travessia. A lista de desembarque a registrou como "Filippe, filho". Casou em 1838 com Daniel Franck, que chegara ao Brasil em 1825. Dez filhos. Deu nome, com o marido, à Linha Frank.</p>
+
+<p><strong>Johann Christian Musskopf</strong> &middot; <span class="m-dado">*06.03.1825</span><br>
+Tinha três anos ao desembarcar. Casou em <span class="m-dado">14.08.1845</span>, na Igreja Evangélica de Bom Jardim, com Juliana Lautert. Quinze filhos. Mudou-se para Santa Maria por volta de 1863 e para o Alto Taquari na década seguinte. <em>Onde morreu e onde está sepultado permanece desconhecido.</em></p>
+
+<p><strong>Jacob Musskopf</strong> &middot; <span class="m-dado">06.01.1830 &ndash; 31.05.1905</span><br>
+O único nascido no Brasil, dois anos após a chegada. Batizado em 27 de janeiro. Casou em <span class="m-dado">09.09.1853</span> com Elisabeth Philippine Ruppenthal, filha de Peter Ruppenthal e Elisabeth Brenner. Doze filhos. Sepultado no cemitério Bauer Eck, em Forquetinha.</p>
+
+<h2 class="m-h2">Quem entrou na família</h2>
+
+<p><strong>Juliana Lautert</strong> &middot; <span class="m-dado">&dagger; 12.11.1910</span><br>
+Filha de Heinrich Lautert, sapateiro de Stromberg, no Hunsrück, e de Anna Margaretha Jung, de Waldlaubersheim. Embarcou em Bremen em <span class="m-dado">07.07.1826</span>, com cerca de cinco anos, na galera dinamarquesa <em>Brodtrae</em>. Chegou ao Rio em 28 de setembro, depois de 83 dias. O irmão caçula, Sebastian, de um ano, morreu ao chegar. Viúva, morava com a filha Maria. Sepultada no Cemitério Boa Vista, em Languiru, Teutônia.</p>
+
+<p class="m-pendente">A lápide de Juliana registra a Pomerânia como sua origem. Ela era do Hunsrück — mais de quinhentos quilômetros a oeste. A lista de embarque de Bremen e os registros do distrito de Bad Kreuznach não deixam dúvida. A pedra está errada, e é provável que o erro tenha nascido já na segunda geração.</p>
+
+<h2 class="m-h2">Em preparo</h2>
+<p>Os quinze filhos de Christian e Juliana, os doze de Jacob, os dez de Philippine e os descendentes de Millstadt estão levantados e entram aqui conforme forem conferidos um a um.</p>
+
+</div>
+
+<footer class="m-ressalva">
+  <p>Este acervo é trabalho em andamento, não palavra final. Boa parte do que está aqui vem de registros paroquiais, listas de embarque e certidões; outra parte vem de memória de família, que é fonte legítima e falível. Onde as fontes divergem, escolhemos publicar e deixar a divergência visível.</p>
+  <p>Se você reconheceu um nome, tem um documento, ou sabe que alguma coisa aqui está errada, escreva. Correção recebida é correção aplicada.</p>
+  <a href="mailto:&#097;&#099;&#101;&#114;&#118;&#111;&#114;&#117;&#099;&#107;&#101;&#114;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;?subject=Acervo%20Musskopf%20%E2%80%94%20correcao">Corrigir ou contribuir &rarr;</a>
+</footer>
+
+<p class="m-voltar"><a href="{{ '/musskopf.html' | relative_url }}">&larr; Voltar ao Acervo Musskopf</a></p>

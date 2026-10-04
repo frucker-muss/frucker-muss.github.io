@@ -1,64 +1,76 @@
 ---
 layout: default
-title: "Mapa das Migrações — Musskopf"
-description: "Mapa das migrações da família Musskopf, de Stetten e Kottweiler-Schwanden ao sul do Brasil e ao Illinois."
+title: "Mapa das Migracoes &mdash; Musskopf"
+description: "As migracoes da familia Musskopf: Stetten, Kottweiler-Schwanden, Sao Leopoldo em 1828, Millstadt em 1837 e a dispersao pelo Alto Taquari."
 ---
 
 <style>
-  .muss-stub {
-    max-width: 640px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .muss-stub .muss-kicker {
-    display: inline-block;
-    font-family: ui-monospace, "SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #8a9e86;
-    border: 1px dashed #8a9e86;
-    border-radius: 4px;
-    padding: 0.3rem 0.7rem;
-    margin-bottom: 1.2rem;
-  }
-  .muss-stub h1 {
-    font-size: 2.1rem;
-    margin: 0 0 0.8rem;
-    color: #f2efe6;
-  }
-  .muss-stub .muss-lead {
-    color: #b8b2a3;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin: 0 auto 1.6rem;
-  }
-  .muss-stub .muss-nota {
-    color: #8a8578;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    border-top: 1px solid #2a2a2a;
-    padding-top: 1.2rem;
-    margin-top: 2rem;
-  }
-  .muss-stub .muss-nota code {
-    font-family: ui-monospace, "SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace;
-    font-size: 0.85em;
-    color: #8a9e86;
-  }
-  .muss-voltar {
-    text-align: center;
-    margin-top: 2.6rem;
-    font-size: 1.05rem;
-  }
-  .muss-voltar a { color: #8a9e86; }
+  .m-wrap { max-width: 720px; margin: 0 auto; }
+  .m-lead { font-size: 1.12rem; color: #b8b2a3; line-height: 1.6; text-align: center; max-width: 600px; margin: 0 auto 2.4rem; }
+  .m-h2 { font-size: 1.35rem; color: #8a9e86; text-align: center; letter-spacing: 0.06em; margin: 3rem 0 1.4rem; }
+  .m-body p { margin-bottom: 1.3rem; text-align: left; hyphens: auto; }
+  .m-body strong { color: #f2efe6; }
+  .m-body em { color: #c9c3b4; }
+  .m-dado { font-family: ui-monospace, "SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace; font-size: 0.92em; color: #8a9e86; }
+  .m-quadro { background: #1a1a1a; border: 1px solid #2a2a2a; border-left: 3px solid #8a9e86; border-radius: 10px; padding: 1.1rem 1.3rem; margin: 1.8rem 0; }
+  .m-quadro h4 { margin: 0 0 0.6rem; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: #8a8578; font-weight: bold; }
+  .m-quadro ul { margin: 0; padding-left: 1.1rem; }
+  .m-quadro li { margin-bottom: 0.35rem; font-size: 0.97rem; line-height: 1.5; color: #d8d3c5; }
+  .m-tabela { width: 100%; border-collapse: collapse; font-size: 0.95rem; margin: 1.6rem 0; }
+  .m-tabela th { text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #8a8578; border-bottom: 1px solid #2a2a2a; padding: 0.5rem 0.6rem 0.5rem 0; font-weight: bold; }
+  .m-tabela td { padding: 0.55rem 0.6rem 0.55rem 0; border-bottom: 1px solid #222; color: #d8d3c5; vertical-align: top; line-height: 1.45; }
+  .m-tabela td:first-child { color: #f2efe6; }
+  .m-scroll { overflow-x: auto; }
+  .m-pendente { font-size: 0.93rem; color: #8a8578; font-style: italic; border-left: 2px solid #2a2a2a; padding-left: 0.9rem; margin: 1.6rem 0; line-height: 1.55; }
+  .m-ressalva { border-top: 1px solid #2a2a2a; margin-top: 3rem; padding-top: 1.3rem; text-align: center; }
+  .m-ressalva p { max-width: 520px; margin: 0 auto 0.7rem; font-size: 0.85rem; line-height: 1.55; color: #8a8578; }
+  .m-ressalva a { display: inline-block; font-size: 0.85rem; color: #8a9e86; border: 1px solid rgba(138,158,134,0.4); border-radius: 6px; padding: 0.35rem 0.9rem; text-decoration: none; }
+  .m-ressalva a:hover { border-color: #8a9e86; background: rgba(138,158,134,0.08); }
+  .m-voltar { text-align: center; margin-top: 2.4rem; font-size: 1.05rem; }
+  .m-voltar a { color: #8a9e86; }
+  @media (max-width: 480px) { .m-h2 { font-size: 1.2rem; } }
 </style>
 
-<section class="muss-stub">
-  <span class="muss-kicker">Em preparo</span>
-  <h1>Mapa das Migrações</h1>
-  <p class="muss-lead">A rota em etapas: Stetten, a mudança para Kottweiler-Schwanden por volta de 1694, a travessia de 1828 até São Leopoldo, a partida para Millstadt em 1837, e a dispersão pelo Vale do Taquari.</p>
-  <p class="muss-nota">Pontos em coordenadas reais, com meio de transporte e distância de cada trecho.</p>
-</section>
+<div class="m-wrap m-body">
 
-<p class="muss-voltar"><a href="{{ '/musskopf.html' | relative_url }}">← Voltar ao Acervo Musskopf</a></p>
+<h1 style="text-align:center;">Mapa das Migrações</h1>
+<p class="m-lead">De uma aldeia do Palatinado a dois continentes. A família se parte duas vezes: em 1828 para o Brasil, em 1837 para os Estados Unidos.</p>
+
+<h2 class="m-h2">Etapa 1 &middot; Stetten &rarr; Kottweiler-Schwanden</h2>
+<p><strong>Por volta de 1694.</strong> Hans Philipp Muskopf, casado com Elisabeth Jung e filho de Nickel Muskopf, deixa Stetten e se instala na região de Kottweiler-Schwanden. São cerca de 63 quilômetros a sudoeste. A mudança acompanha a recolonização da região depois da Guerra dos Trinta Anos, documentada a partir de 1684.</p>
+<p>Kottweiler-Schwanden é mencionada pela primeira vez em <span class="m-dado">1349</span>. A igreja da família fica em <strong>Steinwenden</strong>, a dois quilômetros, com torre românica do século XII e paróquia evangélica desde 1555. É nos livros dela que estão os batismos, casamentos e óbitos de cinco gerações.</p>
+
+<h2 class="m-h2">Etapa 2 &middot; a travessia de 1828</h2>
+<p><strong>Rio de Janeiro, depois cabotagem até o sul.</strong> Johann Philipp, a mulher e três filhos chegam a <strong>São Leopoldo</strong> em <span class="m-dado">26.05.1828</span>. Em 1830 estão estabelecidos como colonos em Morro Jardim, entre Ivoti e Estância Velha.</p>
+
+<h2 class="m-h2">Etapa 3 &middot; a travessia de 1837</h2>
+<p><strong>Nova Orleans, Mississippi acima.</strong> Johann Heinrich Muskopf, irmão mais novo de Philipp, parte com a mulher Charlotte Margaretha Ulrich e os filhos em novembro de 1837. Desembarca em Nova Orleans, sobe o Mississippi até St. Louis e se fixa em <strong>Millstadt, Illinois</strong>, quarenta quilômetros adiante.</p>
+<p>Morreu em <span class="m-dado">25.03.1882</span> e está sepultado no Freivogel Cemetery. O sobrenome ficou na cidade: houve minas de carvão Dan Muskopf no século XIX e a Muskopf Garage funciona desde 1944.</p>
+
+<h2 class="m-h2">Etapa 4 &middot; a dispersão gaúcha</h2>
+<p>Os três filhos de Philipp que formaram família no Brasil espalharam-se por eixos distintos.</p>
+
+<div class="m-scroll">
+<table class="m-tabela">
+  <tr><th>Ramo</th><th>Para onde</th><th>Marco</th></tr>
+  <tr><td>Philippine &times; Daniel Franck</td><td>Ivoti &rarr; Picada Teutônia</td><td>Primeiros moradores da <strong>Linha Frank</strong></td></tr>
+  <tr><td>Johann Christian &times; Juliana Lautert</td><td>Bom Jardim &rarr; Santa Maria &rarr; Alto Taquari</td><td>Cinco dos sete filhos homens ficam no Alto Taquari</td></tr>
+  <tr><td>Jacob &times; Elisabeth Ruppenthal</td><td>Bom Jardim &rarr; Forquetinha</td><td>Sepultados no cemitério Bauer Eck</td></tr>
+</table>
+</div>
+
+<p>O deslocamento de Christian é o mais longo e o menos explicado. Por volta de <span class="m-dado">1863</span> a família aparece em Santa Maria — João Conrado nasce lá em 1864, Maria em 1867, Pedro em 1869, na Boca do Monte. Na década de 1870 volta ao norte, para o Alto Taquari. Uma hipótese registrada no acervo liga esse desvio ao tio <strong>Heinrich</strong>, o filho mais velho de Philipp, cujo destino se perde e que teria se estabelecido na região de Santa Maria.</p>
+
+<h2 class="m-h2">Um topônimo que sobrou</h2>
+<p>A <strong>Linha Frank</strong>, hoje no município de Westfália, leva o nome de Philippine Muskopf e Daniel Franck porque foram os primeiros a morar ali. A picada foi aberta em 1868 com 92 lotes. A comunidade evangélica foi fundada em <span class="m-dado">08.06.1874</span> e o templo inaugurado em <span class="m-dado">30.10.1887</span>.</p>
+<p>É o único lugar no mapa que carrega o nome de alguém desta família — e é o nome de casada de uma filha, não de um filho.</p>
+
+</div>
+
+<footer class="m-ressalva">
+  <p>Este acervo é trabalho em andamento, não palavra final. Boa parte do que está aqui vem de registros paroquiais, listas de embarque e certidões; outra parte vem de memória de família, que é fonte legítima e falível. Onde as fontes divergem, escolhemos publicar e deixar a divergência visível.</p>
+  <p>Se você reconheceu um nome, tem um documento, ou sabe que alguma coisa aqui está errada, escreva. Correção recebida é correção aplicada.</p>
+  <a href="mailto:&#097;&#099;&#101;&#114;&#118;&#111;&#114;&#117;&#099;&#107;&#101;&#114;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;?subject=Acervo%20Musskopf%20%E2%80%94%20correcao">Corrigir ou contribuir &rarr;</a>
+</footer>
+
+<p class="m-voltar"><a href="{{ '/musskopf.html' | relative_url }}">&larr; Voltar ao Acervo Musskopf</a></p>
