@@ -5,7 +5,7 @@ antes de propor ou aplicar mudanças neste repositório. Não é específico de 
 ferramenta — mantenha o conteúdo genérico e atualizado conforme a estrutura do
 site mudar.
 
-Última atualização: 2026-08-29.
+Última atualização: 2026-10-04.
 
 ## 0. Ao voltar
 
@@ -48,8 +48,16 @@ só quer conhecer a própria história — ver seção 2.
 
 ## 3. Mapa de páginas
 
-- `index.html` — home: frase de entrada + um caminho ("Entrar no acervo") e
-  placeholder "Outros" (em construção, **não é link**). Lote 1 (2026-08-25).
+- `index.html` — home: título "Rücker · Musskopf", seção "Acervos" com os dois
+  acervos empilhados (paterno primeiro, materno depois — a ordem é convenção,
+  não hierarquia; a lista é empilhada justamente para caber uma terceira linha
+  no futuro) e placeholder "Outros" (em construção, **não é link**).
+- `_layouts/default.html` — o cabeçalho de todas as páginas diz
+  **"Rücker · Musskopf"**, não "Rucker.life" (04/10/2026). O domínio já é
+  rucker.life; repetir o nome paterno no topo de toda página contradiz a
+  paridade entre os dois acervos. Não reintroduzir o wordmark antigo.
+  Pendência conhecida: `og:image` global ainda é `og-familia-rucker.jpg`, então
+  qualquer página Musskopf compartilhada mostra a arte dos Rücker.
 - `familia.html` — hub da família, duas seções:
   - Fileira de topo, cards "Interativo" (borda dourada): **Árvore Genealógica**,
     **Mapa das Migrações**, **Documentos**, **Pessoas**, **Crônicas**, **Causos**, **Escutas**.
@@ -135,8 +143,16 @@ estrutura de URLs é simétrica:
   — com conteúdo (lote **musskopf-2**, 2026-10-04), redigido a partir do
   `ACERVO_Musskopf.docx`. Classes próprias prefixadas `.m-` definidas em
   `<style>` local de cada página; não há CSS novo no layout global.
-- `musskopf/arvore.html`, `musskopf/documentos.html`, `musskopf/cronicas.html`
-  — ainda stubs navegáveis (kicker "Em preparo").
+- `musskopf/arvore.html` — árvore genealógica interativa (lote **musskopf-3**,
+  2026-10-04). Mesmo motor de `familia/arvore.html`: o arquivo é uma cópia dela
+  com `DADOS.pessoas` trocado, `--ouro` redefinido para o sálvia `#8a9e86` e
+  `PAGINAS` vazio (ainda não há crônicas/perfis Musskopf para linkar). Doze
+  gerações, de Nickel Muskopf à pesquisa de hoje. A geração do usuário não é
+  nomeada — aparece como "A pesquisa de hoje", por decisão dele.
+  Se a árvore Rücker ganhar recurso novo no motor, replicar aqui à mão: os dois
+  arquivos são irmãos por cópia, não compartilham código.
+- `musskopf/documentos.html`, `musskopf/cronicas.html` — ainda stubs navegáveis
+  (kicker "Em preparo").
 
 **Postura editorial do acervo Musskopf** (decisão do usuário, 04/10/2026):
 publicar mesmo com fonte em disputa, e deixar a divergência visível em vez de
@@ -164,6 +180,19 @@ Pedro e Carlos Reinaldo **não tem documento** e não pode ser desenhado como
 elo sólido em nenhuma página pública. Até a certidão de casamento de Silírio
 Lothar Musskopf com Erna Lisetta aparecer, essas três gerações finais são um
 núcleo separado — ou um traço interrompido, se a convenção visual for criada.
+
+Convenção adotada em `musskopf/arvore.html` (04/10/2026): a quebra aparece no
+próprio rótulo da geração — "Geração IX · a ligação com Pedro ainda não tem
+documento" — em português corrente, sem badge nem jargão. A única fonte desse
+elo é o quadro genealógico da carta de Paulo R. Rücker ao pessoal de Roca
+Sales, de dezembro de 2002 (`Carta, ao pessoal de Roca.doc`, Drive), que
+desenha Pedro × Philippine Schäffer → Carlos Reinoldo × Hulda Stolte →
+Silírio Lothar e irmãos. É documento de família, não registro civil.
+A certidão de óbito de Silírio (Estrela, 13/02/2015, livro C-17, fl. 19,
+nº 8470) confirma dali para baixo: filiação Carlos Reinaldo e Hulda, filhos
+Bruno Walter e Liane Beatriz. Grafia: **Reinoldo** na carta de 2002,
+**Reinaldo** no registro civil — a árvore usa a do registro civil.
+A certidão grafa a esposa de Silírio como **Era** Lisetta, não Erna.
 
 **Contato**: o rodapé de `musskopf.html` usa `mailto:` para
 `acervorucker@gmail.com` com o endereço codificado em entidades HTML, sem
@@ -271,6 +300,7 @@ Um lote = um chat novo = um PR. O de hoje não pode obrigar a refazer HTML amanh
 | **escutas** feito | Áudio do professor Siegmund Rücker; card Escutas no hub | não reabrir |
 | **musskopf-1** feito | Acervo Musskopf: hub + 6 stubs; home com dois acervos | não reabrir |
 | **musskopf-2** feito | Conteúdo em Travessia, Mapa e Pessoas; ressalva editorial | não reabrir |
+| **musskopf-3** feito | Árvore Musskopf com dados reais; cabeçalho passa a "Rücker · Musskopf" | não reabrir |
 
 O **2** deixou o formato da ficha (`id`, `thumb`, `titulo`, `legenda`, `categoria`, `tipo`, `data`, `decada`, `local`, `status`, `pessoas[]` com `genId`, `nome`, `x,y,w,h`). Miniaturas com `loading="lazy"`. O **2c** só preenche — um toque, um nome, “não sei” vale; canal `acervorucker@gmail.com` / Forms; nunca WhatsApp pessoal (seção 2). Sem restilizar a home.
 

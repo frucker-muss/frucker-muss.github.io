@@ -365,7 +365,7 @@ description: "Árvore genealógica da família Musskopf, de Nickel Muskopf no Pa
         ]
       },
       {
-        id: "carlos", ger: "Geração IX", linha: "direta", iniciais: "CR",
+        id: "carlos", ger: "Geração IX · a ligação com Pedro ainda não tem documento", linha: "direta", iniciais: "CR",
         nome: "Carlos Reinaldo Musskopf", vida: "Falecido antes de 2015",
         papel: "Filho de Pedro. É por ele que a linha chega a Estrela e Bom Retiro do Sul.",
         sub: "Cônjuge: Hulda Stolte",
@@ -460,7 +460,7 @@ description: "Árvore genealógica da família Musskopf, de Nickel Muskopf no Pa
   }
 
   function geracaoAbertaPorPadrao(ger) {
-    return ger === 'Geração I' || ger === 'Geração IX' || ger === 'Geração X' || ger === 'Geração XI' || ger === 'Geração XII';
+    return ger === 'Geração I' || ger.indexOf('Geração IX') === 0 || ger === 'Geração X' || ger === 'Geração XI' || ger === 'Geração XII';
   }
 
   function geracoes() {
