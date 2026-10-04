@@ -121,6 +121,45 @@ páginas públicas; a árvore traduz para os 6 status já existentes
 - `ferramentas/marcador.html` — ferramenta offline de marcação de pessoas em
   fotos, linkada no rodapé de `familia.html`.
 
+### Acervo Musskopf (lote **musskopf-1**, 2026-10-04)
+
+O site passa a abrigar **dois acervos em pé de igualdade**: Rücker (linha
+paterna, Silésia prussiana, travessia de 1898) e Musskopf (linha materna,
+Palatinado renano, travessia de 1828). Nenhum dos dois é principal. A
+estrutura de URLs é simétrica:
+
+- `musskopf.html` — hub do acervo Musskopf, espelho de `familia.html`.
+  Mesma mecânica: `layout: default`, classe `.card` do layout, acento por
+  estilo inline, `<style>` local só para o rodapé.
+- `musskopf/arvore.html`, `musskopf/mapa.html`, `musskopf/documentos.html`,
+  `musskopf/pessoas.html`, `musskopf/cronicas.html`, `musskopf/travessia.html`
+  — hoje stubs navegáveis (kicker "Em preparo"), a serem preenchidos.
+- `musskopf/travessia.html` não tem equivalente Rücker: a viagem de 1828 na
+  galera *Fortuna* é o episódio mais documentado dessa linha.
+
+**Acento por acervo**: dourado `#d4af6a` = Rücker, sálvia `#8a9e86` =
+Musskopf. O sálvia já existia na paleta (seção 5) e passa a ter função
+semântica. Ao criar página Musskopf nova, copiar um card de `musskopf.html`
+e trocar texto/href — nunca criar CSS novo.
+
+**Fonte canônica Musskopf**: `Dados_Estruturados_Musskopf_v1.1.json`
+(Google Drive do Nando), com `ACERVO_Musskopf.docx` como documento de apoio.
+Vale aqui a mesma regra da seção 2: as etiquetas internas de evidência
+(`confianca`, `contradicoes`, ids de nó) nunca aparecem nas páginas públicas.
+
+**Lacuna conhecida e não resolvida**: a linha materna direta está documentada
+em duas pontas que ainda não se tocam. De cima, até Pedro Musskopf (*1869).
+De baixo, de Carlos Reinaldo Musskopf e Hulda para frente. O vínculo entre
+Pedro e Carlos Reinaldo **não tem documento** e não pode ser desenhado como
+elo sólido em nenhuma página pública. Até a certidão de casamento de Silírio
+Lothar Musskopf com Erna Lisetta aparecer, essas três gerações finais são um
+núcleo separado — ou um traço interrompido, se a convenção visual for criada.
+
+**Contato**: o rodapé de `musskopf.html` usa `mailto:` para
+`acervorucker@gmail.com` com o endereço codificado em entidades HTML, sem
+texto visível. `familia.html` ainda usa Google Forms — a divergência é
+conhecida e aguarda decisão do usuário.
+
 Inconsistência conhecida (histórica, não é bug): a extensão `.md` vs `.html`
 varia entre páginas de crônica/perfil (ex.: `georg-uma-cronica.md` vs
 `vincenz-uma-cronica.html`) — ambas com `layout: cronica`, funcionalmente
@@ -220,6 +259,7 @@ Um lote = um chat novo = um PR. O de hoje não pode obrigar a refazer HTML amanh
 | **3** feito | Árvore mais fácil: busca, gerações que abrem, clique → foto/crônica | não reabrir |
 | **3s** feito | Selos gênero/base em `familia/metodologia.html` | não reabrir |
 | **escutas** feito | Áudio do professor Siegmund Rücker; card Escutas no hub | não reabrir |
+| **musskopf-1** | Acervo Musskopf: hub `musskopf.html` + 6 stubs em `musskopf/` | só estrutura, sem dados |
 
 O **2** deixou o formato da ficha (`id`, `thumb`, `titulo`, `legenda`, `categoria`, `tipo`, `data`, `decada`, `local`, `status`, `pessoas[]` com `genId`, `nome`, `x,y,w,h`). Miniaturas com `loading="lazy"`. O **2c** só preenche — um toque, um nome, “não sei” vale; canal `acervorucker@gmail.com` / Forms; nunca WhatsApp pessoal (seção 2). Sem restilizar a home.
 
