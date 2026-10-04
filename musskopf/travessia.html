@@ -1,64 +1,101 @@
 ---
 layout: default
-title: "A Travessia — Musskopf"
-description: "A viagem de 1828 da família Musskopf na galera Fortuna, de Kottweiler-Schwanden a São Leopoldo."
+title: "A Travessia &mdash; Musskopf"
+description: "A travessia de 1828 da familia Musskopf: de Kottweiler-Schwanden a Sao Leopoldo, a lista de Hillebrand e os navios do nucleo familiar."
 ---
 
 <style>
-  .muss-stub {
-    max-width: 640px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .muss-stub .muss-kicker {
-    display: inline-block;
-    font-family: ui-monospace, "SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #8a9e86;
-    border: 1px dashed #8a9e86;
-    border-radius: 4px;
-    padding: 0.3rem 0.7rem;
-    margin-bottom: 1.2rem;
-  }
-  .muss-stub h1 {
-    font-size: 2.1rem;
-    margin: 0 0 0.8rem;
-    color: #f2efe6;
-  }
-  .muss-stub .muss-lead {
-    color: #b8b2a3;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin: 0 auto 1.6rem;
-  }
-  .muss-stub .muss-nota {
-    color: #8a8578;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    border-top: 1px solid #2a2a2a;
-    padding-top: 1.2rem;
-    margin-top: 2rem;
-  }
-  .muss-stub .muss-nota code {
-    font-family: ui-monospace, "SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace;
-    font-size: 0.85em;
-    color: #8a9e86;
-  }
-  .muss-voltar {
-    text-align: center;
-    margin-top: 2.6rem;
-    font-size: 1.05rem;
-  }
-  .muss-voltar a { color: #8a9e86; }
+  .m-wrap { max-width: 720px; margin: 0 auto; }
+  .m-lead { font-size: 1.12rem; color: #b8b2a3; line-height: 1.6; text-align: center; max-width: 600px; margin: 0 auto 2.4rem; }
+  .m-h2 { font-size: 1.35rem; color: #8a9e86; text-align: center; letter-spacing: 0.06em; margin: 3rem 0 1.4rem; }
+  .m-body p { margin-bottom: 1.3rem; text-align: left; hyphens: auto; }
+  .m-body strong { color: #f2efe6; }
+  .m-body em { color: #c9c3b4; }
+  .m-dado { font-family: ui-monospace, "SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace; font-size: 0.92em; color: #8a9e86; }
+  .m-quadro { background: #1a1a1a; border: 1px solid #2a2a2a; border-left: 3px solid #8a9e86; border-radius: 10px; padding: 1.1rem 1.3rem; margin: 1.8rem 0; }
+  .m-quadro h4 { margin: 0 0 0.6rem; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: #8a8578; font-weight: bold; }
+  .m-quadro ul { margin: 0; padding-left: 1.1rem; }
+  .m-quadro li { margin-bottom: 0.35rem; font-size: 0.97rem; line-height: 1.5; color: #d8d3c5; }
+  .m-tabela { width: 100%; border-collapse: collapse; font-size: 0.95rem; margin: 1.6rem 0; }
+  .m-tabela th { text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #8a8578; border-bottom: 1px solid #2a2a2a; padding: 0.5rem 0.6rem 0.5rem 0; font-weight: bold; }
+  .m-tabela td { padding: 0.55rem 0.6rem 0.55rem 0; border-bottom: 1px solid #222; color: #d8d3c5; vertical-align: top; line-height: 1.45; }
+  .m-tabela td:first-child { color: #f2efe6; }
+  .m-scroll { overflow-x: auto; }
+  .m-pendente { font-size: 0.93rem; color: #8a8578; font-style: italic; border-left: 2px solid #2a2a2a; padding-left: 0.9rem; margin: 1.6rem 0; line-height: 1.55; }
+  .m-ressalva { border-top: 1px solid #2a2a2a; margin-top: 3rem; padding-top: 1.3rem; text-align: center; }
+  .m-ressalva p { max-width: 520px; margin: 0 auto 0.7rem; font-size: 0.85rem; line-height: 1.55; color: #8a8578; }
+  .m-ressalva a { display: inline-block; font-size: 0.85rem; color: #8a9e86; border: 1px solid rgba(138,158,134,0.4); border-radius: 6px; padding: 0.35rem 0.9rem; text-decoration: none; }
+  .m-ressalva a:hover { border-color: #8a9e86; background: rgba(138,158,134,0.08); }
+  .m-voltar { text-align: center; margin-top: 2.4rem; font-size: 1.05rem; }
+  .m-voltar a { color: #8a9e86; }
+  @media (max-width: 480px) { .m-h2 { font-size: 1.2rem; } }
 </style>
 
-<section class="muss-stub">
-  <span class="muss-kicker">Em preparo</span>
-  <h1>A Travessia</h1>
-  <p class="muss-lead">Johann Philipp Musskopf embarcou na segunda viagem oficial da galera <em>Fortuna</em>, chegou ao Rio de Janeiro em 30 de março de 1828 e desembarcou em São Leopoldo em 26 de maio. Veio com a mulher, Katharina Elisabeth, e os filhos Heinrich, Philippine e Johann Christian.</p>
-  <p class="muss-nota">A rota completa, o navio, a lista de bordo e o que esperava do outro lado.</p>
-</section>
+<div class="m-wrap m-body">
 
-<p class="muss-voltar"><a href="{{ '/musskopf.html' | relative_url }}">← Voltar ao Acervo Musskopf</a></p>
+<h1 style="text-align:center;">A Travessia</h1>
+<p class="m-lead">Em 26 de maio de 1828, cinco pessoas com o sobrenome Muskop desembarcaram em São Leopoldo. Vinham de uma aldeia do Palatinado que hoje tem pouco mais de mil habitantes.</p>
+
+<p>Johann Philipp Musskopf tinha <strong>37 anos</strong>. Nascera em <strong>Kottweiler-Schwanden</strong> em <span class="m-dado">26.02.1791</span> e fora batizado no dia seguinte, na igreja de Steinwenden, a dois quilômetros de casa. Era filho de Johann Nicolaus Muskopf, que morrera em julho de 1804 com 37 anos — a mesma idade que Philipp tinha ao embarcar.</p>
+
+<p>Veio com a mulher, <strong>Maria Katharina Elisabeth</strong>, nascida Mai, e três filhos: <strong>Heinrich</strong>, de 14 anos, <strong>Philippine</strong>, de 8, e <strong>Johann Christian</strong>, de 3.</p>
+
+<div class="m-quadro">
+  <h4>A lista de Hillebrand, 26 de maio de 1828</h4>
+  <ul>
+    <li>Filip Muskop</li>
+    <li>Elisabeth, mulher</li>
+    <li>Henrique, filho</li>
+    <li>Filippe, filho</li>
+    <li>Christiano, filho</li>
+  </ul>
+</div>
+
+<p>O registro traz um erro que atravessou cento e setenta anos sem ser notado. "Filippe", anotado como filho, era <strong>Philippine</strong> — a filha de oito anos, batizada em Steinwenden em <span class="m-dado">23.01.1819</span>. O escrivão ouviu um nome alemão feminino e escreveu o masculino que conhecia. A correção é de Paulo R. Rücker, que comparou a lista com os registros de batismo.</p>
+
+<h2 class="m-h2">Por que partiram</h2>
+
+<p>A região havia sido despovoada pela Guerra dos Trinta Anos; a recolonização de Kottweiler começa a ser documentada a partir de 1684. Foi para lá que Hans Philipp Muskopf, antepassado de Philipp, mudou-se de Stetten por volta de <span class="m-dado">1694</span>.</p>
+
+<p>Em 1815 a aldeia tinha <strong>288 habitantes</strong>. Entre 1798 e 1814 estivera sob administração francesa, no cantão de Landstuhl; depois passou ao Reino da Baviera — razão pela qual as certidões de óbito lavradas no Brasil registram "Reino da Baviera" e "Baviera Renana" como naturalidade.</p>
+
+<p>As causas da emigração alemã daquele período são conhecidas e se aplicam inteiras ao caso: guerra, fome, crescimento populacional, fracionamento das terras até o ponto em que nenhum lote sustentava uma família, crise econômica no Hunsrück e no Birkenfeld, e serviço militar obrigatório.</p>
+
+<h2 class="m-h2">A rota</h2>
+
+<p>A travessia atlântica terminava no <strong>Rio de Janeiro</strong>. De lá os colonos seguiam em navegação de cabotagem até o Rio Grande do Sul, e depois rio acima até São Leopoldo. Outras famílias que chegaram na mesma data de 26 de maio de 1828 fizeram o último trecho no costeiro <em>General Abreu</em>.</p>
+
+<p class="m-pendente">O nome do navio oceânico ainda não está confirmado. Uma biografia reunida sobre Johann Philipp aponta a galera <em>Fortuna</em>, em sua segunda viagem oficial, com chegada ao Rio em 30 de março de 1828 e desembarque em São Leopoldo pela Armação e Niterói. O acervo compilado a partir do texto original de Paulo R. Rücker, por outro lado, registra o navio como não identificado e lista essa identificação como a primeira lacuna a resolver. As duas versões estão aqui porque nenhuma foi descartada. Quem tiver a lista de passageiros do códice C-333 ou as obras completas de Hunsche e Fey pode encerrar a questão.</p>
+
+<h2 class="m-h2">Os navios da família</h2>
+
+<p>Três embarcações aparecem ligadas ao núcleo familiar, e duas delas estão documentadas com precisão:</p>
+
+<div class="m-scroll">
+<table class="m-tabela">
+  <tr><th>Navio</th><th>Ano</th><th>Quem veio</th><th>Rota</th></tr>
+  <tr><td>Friedrich</td><td><span class="m-dado">1825</span></td><td>Famílias Franck e Dexheimer</td><td>Heimersheim &rarr; Amsterdam &rarr; Rio, <span class="m-dado">08.11.1825</span></td></tr>
+  <tr><td>Brodtrae</td><td><span class="m-dado">1826</span></td><td>Família Lautert</td><td>Bremen <span class="m-dado">07.07</span> &rarr; Rio <span class="m-dado">28.09</span>, 83 dias</td></tr>
+  <tr><td>não confirmado</td><td><span class="m-dado">1828</span></td><td>Família Musskopf</td><td>&rarr; São Leopoldo, <span class="m-dado">26.05.1828</span></td></tr>
+</table>
+</div>
+
+<p>Os três navios importam porque os três ramos se cruzam. Daniel Franck, que viria a casar com Philippine em 1838, chegou no <em>Friedrich</em> aos cuidados dos pais. Juliana Lautert, que casaria com Johann Christian em 1845, atravessou no <em>Brodtrae</em> com cinco anos — um irmão de colo, Sebastian, morreu ao chegar.</p>
+
+<h2 class="m-h2">O que encontraram</h2>
+
+<p>São Leopoldo fora fundada em <span class="m-dado">25.07.1824</span>, quatro anos antes, com 39 pessoas de nove famílias instaladas na antiga Real Feitoria do Linho Cânhamo. Entre 1824 e 1830 entraram no Rio Grande do Sul cerca de <strong>5.350 alemães</strong>, em 42 veleiros transatlânticos documentados.</p>
+
+<p>Em 1830, dois anos após a chegada, Philipp aparece registrado como colono em <strong>Morro Jardim</strong>, também chamado Bom Jardim — a região entre Ivoti e Estância Velha. O pastor Wolf o anotou como <em>MOSKOPF, Philipp, casado com Katharina Elisabeth Mar.</em></p>
+
+<p>Morreu em <span class="m-dado">04.03.1863</span>, aos 72 anos, e foi sepultado dois dias depois pela Igreja Evangélica de Estância Velha. Katharina Elisabeth o precedera em <span class="m-dado">14.06.1859</span>, sepultada em Ivoti. Trinta e cinco anos separam o desembarque da morte dele. Nesse intervalo a família que chegou com cinco pessoas já tinha netos espalhados por Teutônia, Forquetinha, Santa Maria e São Pedro do Maratá.</p>
+
+</div>
+
+<footer class="m-ressalva">
+  <p>Este acervo é trabalho em andamento, não palavra final. Boa parte do que está aqui vem de registros paroquiais, listas de embarque e certidões; outra parte vem de memória de família, que é fonte legítima e falível. Onde as fontes divergem, escolhemos publicar e deixar a divergência visível.</p>
+  <p>Se você reconheceu um nome, tem um documento, ou sabe que alguma coisa aqui está errada, escreva. Correção recebida é correção aplicada.</p>
+  <a href="mailto:&#097;&#099;&#101;&#114;&#118;&#111;&#114;&#117;&#099;&#107;&#101;&#114;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;?subject=Acervo%20Musskopf%20%E2%80%94%20correcao">Corrigir ou contribuir &rarr;</a>
+</footer>
+
+<p class="m-voltar"><a href="{{ '/musskopf.html' | relative_url }}">&larr; Voltar ao Acervo Musskopf</a></p>

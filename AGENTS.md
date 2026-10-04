@@ -131,9 +131,19 @@ estrutura de URLs é simétrica:
 - `musskopf.html` — hub do acervo Musskopf, espelho de `familia.html`.
   Mesma mecânica: `layout: default`, classe `.card` do layout, acento por
   estilo inline, `<style>` local só para o rodapé.
-- `musskopf/arvore.html`, `musskopf/mapa.html`, `musskopf/documentos.html`,
-  `musskopf/pessoas.html`, `musskopf/cronicas.html`, `musskopf/travessia.html`
-  — hoje stubs navegáveis (kicker "Em preparo"), a serem preenchidos.
+- `musskopf/travessia.html`, `musskopf/mapa.html`, `musskopf/pessoas.html`
+  — com conteúdo (lote **musskopf-2**, 2026-10-04), redigido a partir do
+  `ACERVO_Musskopf.docx`. Classes próprias prefixadas `.m-` definidas em
+  `<style>` local de cada página; não há CSS novo no layout global.
+- `musskopf/arvore.html`, `musskopf/documentos.html`, `musskopf/cronicas.html`
+  — ainda stubs navegáveis (kicker "Em preparo").
+
+**Postura editorial do acervo Musskopf** (decisão do usuário, 04/10/2026):
+publicar mesmo com fonte em disputa, e deixar a divergência visível em vez de
+escondê-la ou de segurar a publicação. Toda página de conteúdo termina com um
+bloco `.m-ressalva` dizendo isso e convidando à correção por e-mail. Divergência
+entre fontes vai no corpo do texto, em `.m-pendente`, em português corrente —
+nunca como badge, tag ou jargão de método (vale a seção 2).
 - `musskopf/travessia.html` não tem equivalente Rücker: a viagem de 1828 na
   galera *Fortuna* é o episódio mais documentado dessa linha.
 
@@ -259,7 +269,8 @@ Um lote = um chat novo = um PR. O de hoje não pode obrigar a refazer HTML amanh
 | **3** feito | Árvore mais fácil: busca, gerações que abrem, clique → foto/crônica | não reabrir |
 | **3s** feito | Selos gênero/base em `familia/metodologia.html` | não reabrir |
 | **escutas** feito | Áudio do professor Siegmund Rücker; card Escutas no hub | não reabrir |
-| **musskopf-1** | Acervo Musskopf: hub `musskopf.html` + 6 stubs em `musskopf/` | só estrutura, sem dados |
+| **musskopf-1** feito | Acervo Musskopf: hub + 6 stubs; home com dois acervos | não reabrir |
+| **musskopf-2** feito | Conteúdo em Travessia, Mapa e Pessoas; ressalva editorial | não reabrir |
 
 O **2** deixou o formato da ficha (`id`, `thumb`, `titulo`, `legenda`, `categoria`, `tipo`, `data`, `decada`, `local`, `status`, `pessoas[]` com `genId`, `nome`, `x,y,w,h`). Miniaturas com `loading="lazy"`. O **2c** só preenche — um toque, um nome, “não sei” vale; canal `acervorucker@gmail.com` / Forms; nunca WhatsApp pessoal (seção 2). Sem restilizar a home.
 
