@@ -1,25 +1,129 @@
 ---
 layout: default
 title: Início
-description: "Rucker.life reúne a genealogia e os registros históricos da família Rücker, da Silésia prussiana aos ramos do Rio Grande do Sul e Santa Catarina."
+description: "Rucker.life reúne dois acervos de família: Rücker, da Silésia prussiana, e Musskopf, do Palatinado renano, até o sul do Brasil."
 ---
 
+<style>
+  /* ---------- Lista de acervos ---------- */
+  .acervos {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .acervo {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "nome etiqueta"
+      "meta meta"
+      "desc seta";
+    align-items: center;
+    column-gap: 1rem;
+    row-gap: 0.25rem;
+    padding: 1.4rem 1.5rem;
+    background-color: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-left: 3px solid var(--acento);
+    border-radius: 10px;
+    color: #e8e4da;
+    text-decoration: none;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .acervo:hover {
+    border-color: var(--acento);
+    border-left-color: var(--acento);
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+  .acervo-nome {
+    grid-area: nome;
+    font-family: Georgia, serif;
+    font-size: 1.55rem;
+    line-height: 1.2;
+    color: #f2efe6;
+  }
+  .acervo-etiqueta {
+    grid-area: etiqueta;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #8a8578;
+    white-space: nowrap;
+  }
+  .acervo-meta {
+    grid-area: meta;
+    font-size: 0.95rem;
+    color: var(--acento);
+    margin-bottom: 0.3rem;
+  }
+  .acervo-ano {
+    font-family: ui-monospace, "SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+  }
+  .acervo-desc {
+    grid-area: desc;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #b8b2a3;
+  }
+  .acervo-seta {
+    grid-area: seta;
+    font-size: 1.2rem;
+    color: var(--acento);
+    justify-self: end;
+  }
+
+  .secao-titulo {
+    text-align: center;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #8a8578;
+    margin: 0 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    .acervo { padding: 1.2rem 1.2rem; }
+    .acervo-nome { font-size: 1.35rem; }
+    .acervo-etiqueta { font-size: 0.6rem; }
+  }
+</style>
+
 <section class="home-hero">
-  <h1>Família Rücker</h1>
-  <p>Da Silésia prussiana ao sul do Brasil. Genealogia, fotos e crônicas num só lugar.</p>
+  <h1>Rücker &middot; Musskopf</h1>
+  <p>Dois acervos de família. Do Palatinado renano e da Silésia prussiana ao sul do Brasil.</p>
 </section>
 
-<div class="home-grid home-grid--single">
+<p class="secao-titulo">Acervos</p>
 
-  <a href="{{ '/familia.html' | relative_url }}" class="card card--family" style="background-image: linear-gradient(rgba(18, 18, 18, 0.55), rgba(18, 18, 18, 0.72)), url('{{ '/assets/img/og-familia-rucker.jpg' | relative_url }}');">
-    <h3>Entrar no acervo</h3>
-    <p>Árvore, mapa, fotos e histórias.</p>
+<div class="acervos">
+
+  <a class="acervo" style="--acento: #d4af6a;" href="{{ '/familia.html' | relative_url }}">
+    <span class="acervo-nome">Acervo Rücker</span>
+    <span class="acervo-etiqueta">Linha paterna</span>
+    <span class="acervo-meta">Silésia prussiana &middot; <span class="acervo-ano">1898</span></span>
+    <span class="acervo-desc">Árvore, mapa, documentos, pessoas, crônicas, causos e escutas.</span>
+    <span class="acervo-seta" aria-hidden="true">→</span>
   </a>
 
+  <a class="acervo" style="--acento: #8a9e86;" href="{{ '/musskopf.html' | relative_url }}">
+    <span class="acervo-nome">Acervo Musskopf</span>
+    <span class="acervo-etiqueta">Linha materna</span>
+    <span class="acervo-meta">Palatinado renano &middot; <span class="acervo-ano">1828</span></span>
+    <span class="acervo-desc">Árvore, mapa, documentos, pessoas, crônicas e a travessia.</span>
+    <span class="acervo-seta" aria-hidden="true">→</span>
+  </a>
+
+</div>
+
+<div class="home-grid home-grid--single" style="margin-top: 2.6rem;">
   <div class="card card--muted">
     <span class="card-kicker">Em construção</span>
     <h3>Outros</h3>
     <p>Novos projetos a caminho. Volte em breve.</p>
   </div>
-
 </div>
