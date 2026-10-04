@@ -61,8 +61,13 @@ só quer conhecer a própria história — ver seção 2.
   voltar em 9 páginas que não têm link de retorno no rodapé (entre elas
   `familia/arvore.html`, `familia/mapa.html` e `ferramentas/marcador.html`) —
   não remover sem antes dar rodapé a essas páginas.
+  O nome do site (`site.title` em `_config.yml`) deixou de ser "Rucker.life" e
+  passou a **"Rücker · Musskopf"** — ele alimenta a aba do navegador de toda
+  página e o título de compartilhamento quando a página não tem um próprio.
   Pendência conhecida: `og:image` global ainda é `og-familia-rucker.jpg`, então
-  qualquer página Musskopf compartilhada mostra a arte dos Rücker.
+  qualquer página Musskopf compartilhada mostra a arte dos Rücker. Falta uma
+  imagem neutra ou uma por acervo — é a última coisa no site que ainda favorece
+  a linha paterna.
 - `familia.html` — hub da família, duas seções:
   - Fileira de topo, cards "Interativo" (borda dourada): **Árvore Genealógica**,
     **Mapa das Migrações**, **Documentos**, **Pessoas**, **Crônicas**, **Causos**, **Escutas**.
