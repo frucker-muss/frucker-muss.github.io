@@ -1,64 +1,795 @@
 ---
 layout: default
-title: "Árvore Genealógica — Musskopf"
-description: "Árvore genealógica navegável da família Musskopf, de Nickel Muskopf aos ramos do Brasil, dos Estados Unidos e da Alemanha."
+title: "Árvore Genealógica Musskopf"
+description: "Árvore genealógica da família Musskopf, de Nickel Muskopf no Palatinado até a pesquisa de hoje, com fontes documentais e grau de certeza."
 ---
 
+<p class="arv-intro">
+  Doze gerações, do Palatinado renano ao Vale do Taquari. A linha direta segue o ramo que atravessou para o Brasil em 1828; os ramos que seguiram para os Estados Unidos e os que permaneceram na Alemanha aparecem como ramificações. Cada informação traz a fonte e o grau de evidência.
+</p>
+
 <style>
-  .muss-stub {
-    max-width: 640px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .muss-stub .muss-kicker {
-    display: inline-block;
-    font-family: ui-monospace, "SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #8a9e86;
-    border: 1px dashed #8a9e86;
-    border-radius: 4px;
-    padding: 0.3rem 0.7rem;
-    margin-bottom: 1.2rem;
-  }
-  .muss-stub h1 {
-    font-size: 2.1rem;
-    margin: 0 0 0.8rem;
-    color: #f2efe6;
-  }
-  .muss-stub .muss-lead {
-    color: #b8b2a3;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin: 0 auto 1.6rem;
-  }
-  .muss-stub .muss-nota {
-    color: #8a8578;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    border-top: 1px solid #2a2a2a;
-    padding-top: 1.2rem;
-    margin-top: 2rem;
-  }
-  .muss-stub .muss-nota code {
-    font-family: ui-monospace, "SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace;
-    font-size: 0.85em;
-    color: #8a9e86;
-  }
-  .muss-voltar {
-    text-align: center;
-    margin-top: 2.6rem;
-    font-size: 1.05rem;
-  }
-  .muss-voltar a { color: #8a9e86; }
+.rkr{
+  --ouro:#8a9e86;
+  --sage:#8a9e86;
+  --terra:#c0714f;
+  --mudo:#8a8578;
+  --soft:#b8b2a3;
+  --claro:#f2efe6;
+  --borda:#2a2a2a;
+  --superficie:#1a1a1a;
+  --mono:ui-monospace,"SFMono-Regular","Roboto Mono",Menlo,Consolas,monospace;
+  color:#e8e4da;
+}
+.rkr *{box-sizing:border-box;}
+.rkr p,.rkr h2,.rkr h3,.rkr h4,.rkr ol,.rkr li{margin:0;padding:0;list-style:none;}
+
+.arv-intro{
+  color:#b8b2a3;max-width:620px;margin:0 auto 2.4rem;text-align:center;font-size:1.1rem;
+}
+
+.rkr-controles{display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;margin-bottom:1.2rem;}
+.rkr-btn{font-family:var(--mono);font-size:0.72rem;letter-spacing:.08em;text-transform:uppercase;
+  background:transparent;color:var(--soft);border:1px solid rgba(212,175,106,.4);border-radius:6px;
+  padding:0.5rem 1rem;cursor:pointer;transition:border-color .2s,color .2s,background .2s;}
+.rkr-btn:hover{border-color:var(--ouro);color:var(--ouro);background:rgba(212,175,106,.08);}
+.rkr-btn[aria-pressed="true"]{background:var(--ouro);border-color:var(--ouro);color:#121212;}
+.rkr-btn:focus-visible{outline:2px solid var(--ouro);outline-offset:2px;}
+
+.rkr-legenda{display:flex;flex-wrap:wrap;gap:0.6rem 1.2rem;justify-content:center;
+  font-family:var(--mono);font-size:0.68rem;color:var(--mudo);margin:0 auto 2.6rem;max-width:720px;}
+.rkr-legenda span{display:flex;align-items:center;gap:0.45rem;}
+.rkr-ponto{width:9px;height:9px;border-radius:50%;display:inline-block;flex:0 0 9px;}
+.rkr-ponto.doc{background:var(--ouro);}
+.rkr-ponto.ext{background:var(--sage);}
+.rkr-ponto.epi{background-image:linear-gradient(90deg,var(--ouro) 50%,#555 50%);border:1px solid var(--ouro);}
+.rkr-ponto.inf{background-image:linear-gradient(90deg,var(--ouro) 50%,transparent 50%);border:1px solid var(--ouro);}
+.rkr-ponto.hip{background:transparent;border:1px dashed var(--mudo);}
+.rkr-ponto.conf{background:var(--terra);}
+.rkr-ponto.abt{background:transparent;border:1px dashed var(--sage);}
+
+.rkr-arvore{display:flex;flex-direction:column;align-items:center;}
+.rkr-ger{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;width:100%;}
+.rkr-elo{width:1px;height:28px;background:var(--borda);}
+.rkr-gerlabel{font-family:var(--mono);font-size:0.66rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--mudo);margin:1.5rem 0 0.9rem;width:100%;text-align:center;}
+
+.rkr-cartao{background:var(--superficie);border:1px solid var(--borda);border-radius:10px;
+  width:min(270px,100%);padding:1.1rem;text-align:left;cursor:pointer;display:flex;gap:0.85rem;
+  align-items:flex-start;font-family:inherit;color:#e8e4da;
+  transition:border-color .2s ease,transform .2s ease,background .2s ease;}
+.rkr-cartao:hover,.rkr-cartao:focus-visible{border-color:var(--ouro);transform:translateY(-2px);}
+.rkr-cartao:focus-visible{outline:2px solid var(--ouro);outline-offset:3px;}
+.rkr-cartao[data-linha="direta"]{border-color:rgba(212,175,106,.5);background:rgba(212,175,106,.05);}
+.rkr-cartao[data-linha="aberta"]{border-style:dashed;border-color:rgba(138,158,134,.6);}
+.rkr-cartao[aria-current="true"]{border-color:var(--ouro);background:rgba(212,175,106,.1);}
+
+.rkr-chapa{width:42px;height:50px;flex:0 0 42px;background:#e8e0ce;border-radius:3px;
+  display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:bold;
+  font-size:1rem;color:#121212;filter:invert(1) hue-rotate(180deg);transition:filter .5s ease;}
+.rkr-cartao:hover .rkr-chapa,.rkr-cartao:focus-visible .rkr-chapa,.rkr-cartao[aria-current="true"] .rkr-chapa{filter:none;}
+
+.rkr-nome{font-family:Georgia,serif;font-size:1.15rem;color:var(--claro);line-height:1.25;display:block;}
+.rkr-vida{font-family:var(--mono);font-size:0.66rem;color:var(--mudo);margin-top:0.4rem;display:block;line-height:1.45;}
+.rkr-papel{font-size:0.9rem;color:var(--soft);margin-top:0.5rem;line-height:1.5;display:block;}
+
+/* ---- painel de detalhe, agora INLINE dentro da grade da geração ---- */
+.rkr-detalhe{
+  flex:1 1 100%;
+  max-width:100%;
+  margin-top:0.35rem;
+  margin-bottom:0.35rem;
+  border:1px solid var(--ouro);
+  border-radius:10px;
+  background:var(--superficie);
+  padding:1.4rem 1.3rem;
+  animation:rkrAbrir .18s ease-out;
+}
+@keyframes rkrAbrir{ from{opacity:0; transform:translateY(-6px);} to{opacity:1; transform:translateY(0);} }
+.rkr-detalhe-topo{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;}
+.rkr-detalhe h2{font-family:Georgia,serif;font-size:1.5rem;color:var(--claro);line-height:1.2;text-align:left;margin:0;}
+.rkr-detalhe-sub{font-family:var(--mono);font-size:0.66rem;color:var(--ouro);letter-spacing:.1em;text-transform:uppercase;margin-top:0.35rem;}
+.rkr-fechar{background:none;border:1px solid var(--borda);border-radius:6px;color:var(--soft);
+  font-family:var(--mono);font-size:0.66rem;padding:0.4rem 0.8rem;cursor:pointer;flex:0 0 auto;}
+.rkr-fechar:hover{border-color:var(--ouro);color:var(--ouro);}
+
+.rkr-bloco{margin-top:1.4rem;}
+.rkr-bloco h3{font-family:var(--mono);font-size:0.64rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mudo);padding-bottom:0.5rem;border-bottom:1px solid var(--borda);margin:0 0 0.7rem;}
+.rkr-fato{display:grid;grid-template-columns:12px 1fr;gap:0.8rem;padding:0.55rem 0;align-items:start;}
+.rkr-fato+.rkr-fato{border-top:1px dotted rgba(138,133,120,.28);}
+.rkr-fato .rkr-ponto{margin-top:8px;}
+.rkr-rot{font-family:var(--mono);font-size:0.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mudo);display:block;margin-bottom:0.2rem;}
+.rkr-val{font-size:0.96rem;color:#e8e4da;display:block;line-height:1.55;}
+.rkr-src{font-family:var(--mono);font-size:0.64rem;color:var(--mudo);margin-top:0.35rem;display:block;line-height:1.55;}
+.rkr.filtrado .rkr-fato[data-status="inf"],.rkr.filtrado .rkr-fato[data-status="hip"]{opacity:.2;}
+
+.rkr-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
+.rkr-busca-wrap{width:100%;max-width:440px;margin:0 auto 1.1rem;}
+.rkr-busca{
+  width:100%;font-family:Georgia,serif;font-size:1.08rem;line-height:1.4;
+  background:var(--superficie);color:var(--claro);border:1px solid var(--borda);
+  border-radius:8px;padding:0.8rem 1rem;min-height:48px;
+}
+.rkr-busca::placeholder{color:var(--mudo);}
+.rkr-busca:focus{outline:2px solid var(--ouro);outline-offset:2px;border-color:var(--ouro);}
+.rkr-busca-status{font-family:var(--mono);font-size:0.68rem;color:var(--mudo);text-align:center;margin:0.5rem 0 0;}
+
+.rkr-gerbloco{width:100%;display:flex;flex-direction:column;align-items:center;}
+.rkr-gerbloco[hidden]{display:none !important;}
+.rkr-gerbtn{
+  font-family:var(--mono);font-size:0.66rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--mudo);background:transparent;border:1px solid var(--borda);border-radius:999px;
+  padding:0.55rem 1.1rem;cursor:pointer;margin:1.15rem 0 0.75rem;min-height:44px;max-width:100%;
+}
+.rkr-gerbtn:hover,.rkr-gerbtn:focus-visible{border-color:var(--ouro);color:var(--ouro);}
+.rkr-gerbtn[aria-expanded="true"]{color:var(--ouro);border-color:rgba(212,175,106,.45);}
+.rkr-gercont{width:100%;display:flex;flex-direction:column;align-items:center;}
+.rkr-gercont[hidden]{display:none !important;}
+.rkr-cartao[hidden]{display:none !important;}
+
+.rkr-links{display:flex;flex-direction:column;gap:0.55rem;margin-top:1.3rem;}
+.rkr-link{
+  display:flex;align-items:center;justify-content:space-between;gap:0.8rem;
+  background:rgba(212,175,106,.06);border:1px solid rgba(212,175,106,.35);
+  border-radius:8px;padding:0.75rem 1rem;color:var(--claro);text-decoration:none;
+  min-height:44px;font-size:0.95rem;text-align:left;
+}
+.rkr-link:hover{border-color:var(--ouro);color:var(--ouro);text-decoration:none;}
+.rkr-link-tipo{font-family:var(--mono);font-size:0.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ouro);flex:0 0 auto;}
+
+@media (max-width:480px){
+  .rkr-cartao{width:100%;}
+  .rkr-detalhe{padding:1.1rem 1rem;}
+  .rkr-detalhe h2{font-size:1.3rem;}
+}
+@media (prefers-reduced-motion:reduce){.rkr *{transition:none!important;animation:none!important;}}
 </style>
 
-<section class="muss-stub">
-  <span class="muss-kicker">Em preparo</span>
-  <h1>Árvore Genealógica</h1>
-  <p class="muss-lead">Gerações navegáveis a partir de Nickel Muskopf, com os três ramos da família: o que atravessou para o Brasil em 1828, o que seguiu para os Estados Unidos em 1837, e o que permaneceu no Palatinado.</p>
-  <p class="muss-nota">Mesma técnica da árvore Rücker: busca por nome, gerações recolhíveis e painel com fonte de cada fato.</p>
-</section>
+<div class="rkr" id="rkrRaiz">
 
-<p class="muss-voltar"><a href="{{ '/musskopf.html' | relative_url }}">← Voltar ao Acervo Musskopf</a></p>
+  <div class="rkr-busca-wrap">
+    <label class="rkr-sr" for="rkrBusca">Buscar um nome na árvore</label>
+    <input type="search" id="rkrBusca" class="rkr-busca" placeholder="Buscar um nome…" autocomplete="off" enterkeyhint="search">
+    <p class="rkr-busca-status" id="rkrBuscaStatus" hidden></p>
+  </div>
+
+  <div class="rkr-controles">
+    <button class="rkr-btn" id="rkrFiltro" aria-pressed="false" type="button">Ocultar Hipóteses / Inferências</button>
+    <button class="rkr-btn" id="rkrRamif" aria-pressed="false" type="button">Abrir ramificações</button>
+  </div>
+
+  <div class="rkr-legenda">
+    <span><i class="rkr-ponto doc"></i> Documentado</span>
+    <span><i class="rkr-ponto epi"></i> Epigráfico / Lápide</span>
+    <span><i class="rkr-ponto inf"></i> Inferido / Derivado</span>
+    <span><i class="rkr-ponto hip"></i> Hipótese / Oral</span>
+    <span><i class="rkr-ponto conf"></i> Conflito Desambiguado</span>
+    <span><i class="rkr-ponto abt"></i> Pesquisa Aberta</span>
+  </div>
+
+  <div class="rkr-arvore" id="rkrArvore"></div>
+
+  <p style="text-align: center; font-size: 0.85rem; color: var(--soft); margin-top: 3rem; width: 100%;">
+    <a href="{{ '/musskopf.html' | relative_url }}" style="color: var(--soft); text-decoration-color: var(--mudo);">← Voltar ao Acervo Musskopf</a>
+  </p>
+
+</div>
+
+<script>
+(function(){
+  var DADOS = {
+    pessoas: [
+      {
+        id: "nickel", ger: "Geração I", linha: "direta", iniciais: "NM",
+        nome: "Nickel Muskopf", vida: "séc. XVII, Palatinado",
+        papel: "Ancestral mais antigo citado na pesquisa.",
+        sub: "Provável origem em Stetten (Pfalz)",
+        blocos: [
+          { t: "Registros Básicos", f: [
+            { r: "Origem", v: "Stetten, Pfalz (grafado \"Stteten\" no documento de família) — provavelmente Stetten no Donnersbergkreis", s: "inf", src: "Pequena história da Família Musskopf (Paulo R. Rücker, 2002)" },
+            { r: "Pesquisa aberta", v: "Não há registro paroquial localizado para Nickel. O nome chega até aqui pela cadeia de memória familiar, não por documento.", s: "abt", src: "Acervo Musskopf" }
+          ] }
+        ]
+      },
+      {
+        id: "hansphilipp", ger: "Geração II", linha: "direta", iniciais: "HP",
+        nome: "Hans Philipp Muskopf", vida: "migração c. 1694",
+        papel: "Levou a família de Stetten para a região de Kottweiler-Schwanden.",
+        sub: "Cônjuge: Elisabeth Jung",
+        blocos: [
+          { t: "Registros", f: [
+            { r: "Migração", v: "c. 1694, de Stetten para Kottweiler-Schwanden (Landkreis Kaiserslautern)", s: "doc", src: "Documento de família, 2002" },
+            { r: "Contexto", v: "A região ficou despovoada após a Guerra dos Trinta Anos; a recolonização de Kottweiler está documentada a partir de 1684, o que é compatível com a data familiar.", s: "doc", src: "História local de Kottweiler-Schwanden" }
+          ] }
+        ]
+      },
+      {
+        id: "johannnickel", ger: "Geração III", linha: "direta", iniciais: "JN",
+        nome: "Johann Nickel Muskopf", vida: "Kottweiler-Schwanden",
+        papel: "Primeira geração já estabelecida em Kottweiler-Schwanden.",
+        sub: "Igreja evangélica de Steinwenden",
+        blocos: [
+          { t: "Registros", f: [
+            { r: "Paróquia", v: "Steinwenden, a cerca de 2 km de Kottweiler-Schwanden — igreja da família entre c. 1694 e a década de 1820", s: "doc", src: "Documento de família, 2002" },
+            { r: "Pesquisa aberta", v: "Datas de nascimento, casamento e óbito ainda não levantadas nos livros paroquiais.", s: "abt", src: "Acervo Musskopf" }
+          ] }
+        ]
+      },
+      {
+        id: "heinrich1750", ger: "Geração IV", linha: "direta", iniciais: "HM",
+        nome: "Heinrich Muskopf", vida: "n. c. 1750",
+        papel: "Pai de Johann Nicolaus.",
+        sub: "Kottweiler-Schwanden, Pfalz",
+        blocos: [
+          { t: "Registros", f: [
+            { r: "Nascimento", v: "c. 1750", s: "inf", src: "Documento de família, 2002" }
+          ] }
+        ]
+      },
+      {
+        id: "nicolaus", ger: "Geração V", linha: "direta", iniciais: "JN",
+        nome: "Johann Nicolaus Muskopf", vida: "c. 1767 - julho de 1804",
+        papel: "Morreu aos 37 anos, deixando seis filhos. Dois deles emigrariam.",
+        sub: "Cônjuge: Anna Margaretha Hellmuther, filha de Jacob Hellmuther",
+        blocos: [
+          { t: "Registros", f: [
+            { r: "Casamento", v: "1º de novembro de 1789", s: "doc", src: "Registros de Steinwenden / documento de família" },
+            { r: "Óbito", v: "Julho de 1804, aos 37 anos (registro de óbito lançado em outubro de 1804, o 10º do ano; o dia não consta)", s: "doc", src: "Registros de Steinwenden" },
+            { r: "Nascimento", v: "O documento de família traz \"1877\", impossível. Morrendo aos 37 anos em 1804, o nascimento coerente é c. 1767 — quase certamente erro de digitação.", s: "conf", src: "Desambiguação por idade" },
+            { r: "Grafia", v: "A fonte americana do ramo de Illinois grafa a esposa como Margretha Hehlmuther; a brasileira, Hellmuther.", s: "conf", src: "Our Muskopf family album (Massingill) × documento de família" }
+          ] }
+        ]
+      },
+      {
+        id: "philipp", ger: "Geração VI", linha: "direta", iniciais: "JP",
+        nome: "Johann Philipp Musskopf", vida: "26/02/1791 - 04/03/1863",
+        papel: "O imigrante. Chegou a São Leopoldo em 26 de maio de 1828, com mulher e três filhos.",
+        sub: "Cônjuge: Maria Katharina Elisabeth Mai (May / Mar.)",
+        blocos: [
+          { t: "Registros", f: [
+            { r: "Nascimento", v: "26 de fevereiro de 1791, Kottweiler-Schwanden", s: "doc", src: "Batismo em Steinwenden" },
+            { r: "Chegada", v: "26 de maio de 1828, São Leopoldo. Na lista de Hillebrand constam cinco pessoas: Filip Muskop, Elisabeth (mulher), Henrique, Filippe e Christiano.", s: "doc", src: "Lista de Hillebrand, Códice C-333 / Hunsche" },
+            { r: "Leitura", v: "O \"Filippe\" da lista é lido como Philippine — filha, não filho. A correção é plausível e bate com os batismos de Steinwenden.", s: "inf", src: "Documento de família, 2002" },
+            { r: "Colônia", v: "Colono em Morro Jardim / Bom Jardim a partir de 1830 (registro do Pastor Wolf: MOSKOPF, Philipp c.c. Katharina Elisabeth Mar.)", s: "doc", src: "Lista de colonos, Pastor Wilhelm Wolf" },
+            { r: "Óbito", v: "4 de março de 1863; sepultado em 6 de março", s: "doc", src: "Igreja Evangélica de Estância Velha, livro 1" },
+            { r: "Pesquisa aberta", v: "O navio transatlântico da família em 1828 não está identificado — nem no documento de família, nem nas listas consultadas. O que se sabe é a data de chegada a São Leopoldo.", s: "abt", src: "Acervo Musskopf" }
+          ] }
+        ]
+      },
+      {
+        id: "katharina", ger: "Geração VI", linha: "direta", iniciais: "KE",
+        nome: "Maria Katharina Elisabeth Mai", vida: "05/07/1791 - 14/06/1859",
+        papel: "Veio na travessia de 1828 com o marido e os filhos.",
+        sub: "Natural da Baviera Renana",
+        blocos: [
+          { t: "Registros", f: [
+            { r: "Óbito", v: "14 de junho de 1859; sepultada em 15 de junho", s: "doc", src: "Igreja Evangélica de Ivoti, livro 1" },
+            { r: "Pesquisa aberta", v: "O local de origem aparece como \"Kotterich (?)\" — topônimo ainda não identificado no Palatinado.", s: "abt", src: "Acervo Musskopf" }
+          ] }
+        ]
+      },
+      {
+        id: "heinrich_usa", ger: "Geração VI", linha: "ramo", iniciais: "JH",
+        nome: "Johann Heinrich Muskopf", vida: "06/11/1797 - 25/03/1882",
+        papel: "Irmão de Philipp. Seguiu para os Estados Unidos em 1837 — o ramo de Illinois.",
+        sub: "Cônjuge: Charlotte Margaretha Ullrich",
+        blocos: [
+          { t: "Registros", f: [
+            { r: "Rota", v: "Nova Orleans em novembro de 1837, subindo o Mississippi até St. Louis e dali para Millstadt, Illinois", s: "doc", src: "Millstadt Historical Society" },
+            { r: "Casamento", v: "2 de fevereiro de 1825, com Charlotte Margaretha Ulrich", s: "doc", src: "Millstadt Historical Society" },
+            { r: "Óbito", v: "25 de março de 1882; sepultado no Freivogel Cemetery, Millstadt", s: "epi", src: "Millstadt Historical Society" },
+            { r: "Contato", v: "O ramo americano foi reencontrado em 2000, por carta, a partir de Estrela — correspondência com Melvin Muskopf (St. Louis) e Audrey Massingill (Amarillo, Texas).", s: "doc", src: "Cartas de 2000, acervo da família" },
+            { r: "Divergência", v: "O álbum americano registra 1796 como ano de nascimento; o batismo de Steinwenden, 1797.", s: "conf", src: "Our Muskopf family album × registros paroquiais" }
+          ] }
+        ]
+      },
+      {
+        id: "irmaos_v", ger: "Geração VI", linha: "ramo", iniciais: "??",
+        nome: "Os outros quatro irmãos", vida: "1795 - 1803",
+        papel: "Elisabetha (1795), Johann Nicolaus (1799), Nicolaus (1801) e Johann Jacob (1803).",
+        sub: "Paradeiro desconhecido",
+        blocos: [
+          { t: "Registros", f: [
+            { r: "Batismos", v: "Todos batizados em Steinwenden, com datas conhecidas", s: "doc", src: "Registros paroquiais de Steinwenden" },
+            { r: "Pesquisa aberta", v: "Nenhum destino localizado — não consta emigração, casamento ou óbito. Quatro fios soltos na mesma geração que produziu os dois emigrantes.", s: "abt", src: "Acervo Musskopf" }
+          ] }
+        ]
+      },
+      {
+        id: "christian", ger: "Geração VII", linha: "direta", iniciais: "JC",
+        nome: "Johann Christian Musskopf", vida: "n. 06/03/1825",
+        papel: "Tinha três anos na travessia. Casou em Bom Jardim, teve quinze filhos e levou a família para o Alto Taquari.",
+        sub: "Cônjuge: Juliana Lautert",
+        blocos: [
+          { t: "Registros", f: [
+            { r: "Nascimento", v: "6 de março de 1825, batizado em 9 de março, em Steinwenden", s: "doc", src: "Registros paroquiais" },
+            { r: "Casamento", v: "14 de agosto de 1845, Igreja Evangélica de Bom Jardim", s: "doc", src: "Documento de família, 2002" },
+            { r: "Migrações", v: "Bom Jardim e Ivoti até c. 1863; depois Santa Maria e arredores (onde nascem João Conrado em 1864, Maria em 1867 e Pedro em 1869); na década de 1870, Alto Taquari.", s: "doc", src: "Documento de família, 2002" },
+            { r: "Pesquisa aberta", v: "O paradeiro final e a sepultura de Christian seguem desconhecidos — é o enigma central do ramo brasileiro.", s: "abt", src: "Acervo Musskopf" }
+          ] }
+        ]
+      },
+      {
+        id: "juliana", ger: "Geração VII", linha: "direta", iniciais: "JL",
+        nome: "Juliana Lautert", vida: "† 12/11/1910",
+        papel: "Veio criança de Stromberg, no Hunsrück, na galera dinamarquesa Brodtrae.",
+        sub: "Filha de Heinrich Lautert, sapateiro, e Anna Margaretha Jung",
+        blocos: [
+          { t: "Registros", f: [
+            { r: "Travessia", v: "Embarque em Bremen em 7 de julho de 1826; chegada ao Rio de Janeiro em 28 de setembro, após 83 dias", s: "doc", src: "Listas de imigrantes do distrito de Bad Kreuznach / Fey, cap. 20" },
+            { r: "Óbito", v: "12 de novembro de 1910, viúva, morando com a filha Maria. Túmulo no Cemitério Boa Vista, Languiru, Teutônia — localizado em 16 de dezembro de 1999.", s: "epi", src: "Visita ao cemitério, 1999" },
+            { r: "Lápide", v: "A lápide dá \"Pomerânia\" como origem. A documentação de embarque é inequívoca: Stromberg, no Hunsrück. A pedra está errada.", s: "conf", src: "Listas de embarque × lápide" },
+            { r: "Divergência", v: "A chegada a São Leopoldo aparece como 4 de fevereiro de 1827 no documento de família e 4 de fevereiro de 1829 nas listas publicadas. Pendente de conferência no Códice C-333.", s: "conf", src: "Documento de família × Trespach" }
+          ] }
+        ]
+      },
+      {
+        id: "irmaos_vii", ger: "Geração VII", linha: "ramo", iniciais: "5F",
+        nome: "Os irmãos de Christian no Brasil", vida: "1814 - 1830",
+        papel: "Heinrich (1814), Elisabetha (†1818), Philippine (1819), Johannes (1822) e Jacob (1830).",
+        sub: "Dali saem os ramos Franck e Ruppenthal",
+        blocos: [
+          { t: "Registros", f: [
+            { r: "Philippine", v: "n. 19/01/1819. Casou em 1838 com Daniel Franck; dez filhos. O casal deu nome à Linha Frank, em Teutônia, como primeiros moradores.", s: "doc", src: "Documento de família / Guido Lang, Colônia Teutônia" },
+            { r: "Jacob", v: "n. 06/01/1830, já no Brasil. Casou em 09/09/1853 com Elisabeth Philippine Ruppenthal; doze filhos. Sepultado no Cemitério Bauer Eck, Forquetinha, em 1905.", s: "epi", src: "Documento de família, 2002" },
+            { r: "Jacob — divergência", v: "O batismo dá 6 de janeiro de 1830; a lápide, 30 de maio de 1830.", s: "conf", src: "Batismo × lápide" },
+            { r: "Heinrich", v: "n. 02/12/1814, tinha 14 anos na chegada. Hunsche cita um Henrique Musskopf casado com Margarida Fritz. A hipótese da família é que tenha ido para a região de Santa Maria e que seus descendentes sejam os Musskopf católicos de lá.", s: "hip", src: "Documento de família, 2002" }
+          ] }
+        ]
+      },
+      {
+        id: "pedro", ger: "Geração VIII", linha: "direta", iniciais: "PM",
+        nome: "Pedro Musskopf", vida: "n. 1869, Santa Maria",
+        papel: "Nasceu em Santa Maria da Boca do Monte, durante a passagem da família pela região. Viveu 72 anos.",
+        sub: "Cônjuge: Philippine Schäffer · 15 de Novembro (RS)",
+        blocos: [
+          { t: "Registros", f: [
+            { r: "Nascimento", v: "1869, Santa Maria da Boca do Monte", s: "doc", src: "Documento de família, 2002" },
+            { r: "Residência", v: "15 de Novembro (RS)", s: "doc", src: "Documento de família, 2002" },
+            { r: "Descendência", v: "A pesquisa de Paulo R. Rücker registra a linha como \"Pedro → Bruno e Liane\", em 15 de Novembro — a ponte entre o tronco imigrante e a geração viva.", s: "doc", src: "Documento de família, 2002" }
+          ] }
+        ]
+      },
+      {
+        id: "quinze", ger: "Geração VIII", linha: "ramo", iniciais: "15",
+        nome: "Os quinze filhos de Christian e Juliana", vida: "Bom Jardim → Alto Taquari",
+        papel: "Juliana, Heinrich, Elisabetha, Margarethe, Friedrich, Christian F.º, Guilherme, Katharina Elisabeth, Julius, Madalena Elisabeth, Jeanette Elisabeth, Felipe Carlos, João Conrado, Maria e Pedro.",
+        sub: "Quatro morreram na infância",
+        blocos: [
+          { t: "Registros", f: [
+            { r: "Dispersão", v: "Canabarro, São Pedro do Maratá, Roca Sales, Linha Boa Vista, Arroio do Pau, Conventos, Linha Germano, Paverama e 15 de Novembro", s: "doc", src: "Documento de família, 2002" },
+            { r: "Linhas vivas", v: "O autor da pesquisa acompanhou sete linhas de descendentes: Heinrich, Guilherme, Julius, Felipe Carlos, João Conrado, Friedrich e Pedro.", s: "doc", src: "Documento de família, 2002" },
+            { r: "Pesquisa aberta", v: "A descendência dessas quatorze linhas irmãs está praticamente intocada.", s: "abt", src: "Acervo Musskopf" }
+          ] }
+        ]
+      },
+      {
+        id: "carlos", ger: "Geração IX", linha: "direta", iniciais: "CR",
+        nome: "Carlos Reinaldo Musskopf", vida: "Falecido antes de 2015",
+        papel: "Filho de Pedro. É por ele que a linha chega a Estrela e Bom Retiro do Sul.",
+        sub: "Cônjuge: Hulda Stolte",
+        blocos: [
+          { t: "Registros", f: [
+            { r: "Filiação", v: "Filho de Pedro Musskopf e Philippine Schäffer", s: "doc", src: "Carta ao pessoal de Roca, Paulo R. Rücker, dezembro de 2002" },
+            { r: "Casamento", v: "Hulda Stolte — na certidão de óbito do filho, grafada apenas Hulda Musskopf", s: "doc", src: "Carta de 2002 / Certidão de óbito de Silírio, 2015" },
+            { r: "Filhos", v: "Silírio Lothar, Otto, Rudi, Almiro, Lauro, Hedi e Nelda", s: "doc", src: "Carta ao pessoal de Roca, 2002" },
+            { r: "Grafia", v: "Carlos Reinoldo na carta de 2002; Carlos Reinaldo na certidão de óbito de 2015. A segunda é a forma do registro civil.", s: "conf", src: "Carta de 2002 × certidão de 2015" },
+            { r: "Pesquisa aberta", v: "O elo Pedro → Carlos Reinaldo se apoia num único documento: o quadro genealógico que Paulo R. Rücker enviou aos parentes de Roca Sales em 2002. Falta a certidão de nascimento ou de casamento que o confirme em registro civil.", s: "abt", src: "Acervo Musskopf" }
+          ] }
+        ]
+      },
+      {
+        id: "silirio", ger: "Geração X", linha: "direta", iniciais: "SL",
+        nome: "Silírio Lothar Musskopf", vida: "c. 1919/20 - 11/02/2015",
+        papel: "Comerciante. Nasceu em Bom Retiro do Sul e morreu em Estrela, aos 95 anos.",
+        sub: "Cônjuge: Era Lisetta Musskopf",
+        blocos: [
+          { t: "Registro civil", f: [
+            { r: "Naturalidade", v: "Bom Retiro do Sul, RS", s: "doc", src: "Certidão de óbito, Serventia de Estrela, livro C-17, fl. 19, nº 8470" },
+            { r: "Óbito", v: "11 de fevereiro de 2015, às 19h20, no Hospital Estrela, em Estrela (RS), aos 95 anos — o que situa o nascimento em 1919 ou 1920", s: "doc", src: "Certidão de óbito, 2015" },
+            { r: "Sepultamento", v: "Cemitério Evangélico de Estrela", s: "doc", src: "Certidão de óbito, 2015" },
+            { r: "Filiação", v: "Carlos Reinaldo Musskopf e Hulda Musskopf, ambos já falecidos", s: "doc", src: "Certidão de óbito, 2015" },
+            { r: "Ofício", v: "Comerciante aposentado; viúvo de Era Lisetta Musskopf", s: "doc", src: "Certidão de óbito, 2015" },
+            { r: "Filhos", v: "Bruno Walter e Liane Beatriz; e dois filhos pré-mortos, Paulo Lothar e Carlos Orlando", s: "doc", src: "Certidão de óbito, 2015" },
+            { r: "Declarante", v: "O próprio filho, Bruno Walter Musskopf", s: "doc", src: "Certidão de óbito, 2015" },
+            { r: "Residência", v: "Rua Marechal Floriano, 290, Centro, Estrela — o mesmo endereço que Paulo R. Rücker usava como remetente em suas cartas de pesquisa, em 2002. O sogro morava com a filha e o genro.", s: "inf", src: "Certidão de 2015 × cartas de 2002" }
+          ] }
+        ]
+      },
+      {
+        id: "irmaos_x", ger: "Geração X", linha: "ramo", iniciais: "6I",
+        nome: "Os irmãos de Silírio", vida: "Geração de Carlos Reinaldo",
+        papel: "Otto, Rudi, Almiro, Lauro, Hedi e Nelda.",
+        sub: "Ramo de Roca Sales",
+        blocos: [
+          { t: "Registros", f: [
+            { r: "Fonte", v: "Listados no quadro genealógico de 2002, que foi endereçado justamente a esse ramo", s: "doc", src: "Carta ao pessoal de Roca, 2002" },
+            { r: "Descendência", v: "O quadro segue por uma dessas linhas até Tovar, Rosely, Adelar, Marise e Marilice — a formatação do original não deixa claro de qual dos irmãos descendem.", s: "abt", src: "Carta ao pessoal de Roca, 2002" }
+          ] }
+        ]
+      },
+      {
+        id: "liane", ger: "Geração XI", linha: "direta", iniciais: "LB",
+        nome: "Liane Beatriz Musskopf", vida: "",
+        papel: "Filha de Silírio Lothar e Era Lisetta. É por ela que a linha Musskopf encontra a linha Rücker.",
+        sub: "Irmãos: Bruno Walter; Paulo Lothar e Carlos Orlando, pré-mortos",
+        blocos: [
+          { t: "Registros", f: [
+            { r: "Filiação", v: "Silírio Lothar Musskopf e Era Lisetta Musskopf", s: "doc", src: "Certidão de óbito de Silírio, 2015" },
+            { r: "Pesquisa", v: "A pesquisa da família Musskopf começou em 1998, conduzida pelo casal — em carta de junho de 2000 ao ramo americano, o pesquisador se apresenta e identifica a esposa como descendente direta de Johann Philipp.", s: "doc", src: "Carta a Melvin Muskopf, Estrela, 8 de junho de 2000" },
+            { r: "Memória oral", v: "Fonte viva ainda não registrada. É a geração que alcançou Silírio, a casa de Estrela e as histórias que não estão em nenhum cartório.", s: "abt", src: "Acervo Musskopf" }
+          ] }
+        ]
+      },
+      {
+        id: "base", ger: "Geração XII", linha: "direta", iniciais: "·",
+        nome: "A pesquisa de hoje", vida: "em curso",
+        papel: "Onde a linha paterna Rücker e a linha materna Musskopf se encontram.",
+        sub: "O ponto de partida deste acervo",
+        blocos: [
+          { t: "Nota", f: [
+            { r: "Continuidade", v: "A pesquisa da família Musskopf foi iniciada em 1998 e organizada em 2002; este acervo a retoma e a cruza com a linha Rücker.", s: "doc", src: "Acervo Musskopf" }
+          ] }
+        ]
+      }
+    ]
+  };
+
+  var raiz = document.getElementById('rkrArvore');
+  var btnFiltro = document.getElementById('rkrFiltro');
+  var btnRamif = document.getElementById('rkrRamif');
+  var raizGlobal = document.getElementById('rkrRaiz');
+  var buscaEl = document.getElementById('rkrBusca');
+  var buscaStatus = document.getElementById('rkrBuscaStatus');
+  var abertoId = null;
+  var consulta = '';
+  var acervoItens = [];
+  var gerAberta = {};
+
+  var PAGINAS = {
+  };
+
+  function gerId(nome) {
+    return String(nome || '')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-zA-Z0-9]+/g, '-')
+      .replace(/^-|-$/g, '')
+      .toLowerCase();
+  }
+
+  function geracaoAbertaPorPadrao(ger) {
+    return ger === 'Geração I' || ger === 'Geração IX' || ger === 'Geração X' || ger === 'Geração XI' || ger === 'Geração XII';
+  }
+
+  function geracoes() {
+    var lista = [];
+    DADOS.pessoas.forEach(function(p) {
+      if (p.ger && lista.indexOf(p.ger) === -1) lista.push(p.ger);
+    });
+    return lista;
+  }
+
+  function normNome(s) {
+    return String(s || '')
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\([^)]*\)/g, ' ')
+      .replace(/['"“”‘’.]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function pessoaCombina(p, q) {
+    if (!q) return true;
+    return normNome([p.nome, p.vida, p.papel, p.sub].join(' ')).indexOf(q) !== -1;
+  }
+
+  function nomesBatem(a, b) {
+    if (/a confirmar/i.test(String(a || '')) || /a confirmar/i.test(String(b || ''))) return false;
+    var na = normNome(a), nb = normNome(b);
+    if (!na || !nb) return false;
+    if (na === nb) return true;
+    var curta = na.length <= nb.length ? na : nb;
+    var longa = na.length <= nb.length ? nb : na;
+    if (curta.indexOf(' ') !== -1 && longa.indexOf(curta) !== -1) return true;
+
+    var stop = { rucker: 1, ruecker: 1 };
+    function given(s) {
+      return s.split(' ').filter(function(t) { return t && !stop[t]; });
+    }
+    function temSobrenome(s) {
+      return /(^|\s)(rucker|ruecker)(\s|$)/.test(s);
+    }
+    var ga = given(na), gb = given(nb);
+    if (!ga.length || !gb.length || ga[0] !== gb[0]) return false;
+    if (temSobrenome(na) !== temSobrenome(nb)) return false;
+    var short = ga.length <= gb.length ? ga : gb;
+    var longg = ga.length <= gb.length ? gb : ga;
+    for (var i = 0; i < short.length; i++) {
+      if (longg.indexOf(short[i]) === -1) return false;
+    }
+    return true;
+  }
+
+  function fotosDaPessoa(pessoa) {
+    if (!acervoItens.length) return [];
+    var out = [];
+    acervoItens.forEach(function(item) {
+      var pessoas = item.pessoas || [];
+      var bate = pessoas.some(function(pe) { return nomesBatem(pessoa.nome, pe.nome); });
+      if (bate) out.push(item);
+    });
+    return out;
+  }
+
+  function estaAberta(ger) {
+    if (Object.prototype.hasOwnProperty.call(gerAberta, ger)) return gerAberta[ger];
+    return geracaoAbertaPorPadrao(ger);
+  }
+
+  function definirAberta(ger, valor) {
+    gerAberta[ger] = valor;
+  }
+
+  function renderizarArvore() {
+    var html = '';
+    var gerAtual = '';
+    var nGer = 0;
+
+    DADOS.pessoas.forEach(function(p) {
+      if (p.ger && p.ger !== gerAtual) {
+        if (gerAtual !== '') html += '</div></div></div>';
+        nGer += 1;
+        var gid = gerId(p.ger);
+        var aberta = estaAberta(p.ger);
+        var nPessoas = DADOS.pessoas.filter(function(x) { return x.ger === p.ger; }).length;
+        html += '<div class="rkr-gerbloco" data-ger="' + gid + '">' +
+                  (gerAtual !== '' ? '<div class="rkr-elo" aria-hidden="true"></div>' : '') +
+                  '<button type="button" class="rkr-gerbtn" data-toggle-ger="' + gid + '" aria-expanded="' + aberta + '">' +
+                    p.ger + ' · ' + nPessoas +
+                  '</button>' +
+                  '<div class="rkr-gercont" data-ger-cont="' + gid + '"' + (aberta ? '' : ' hidden') + '>' +
+                    '<div class="rkr-ger" id="ger-' + gid + '">';
+        gerAtual = p.ger;
+      }
+
+      var attrLinha = p.linha === 'direta' ? ' data-linha="direta"' : (p.linha === 'aberta' ? ' data-linha="aberta"' : '');
+      html += '<button class="rkr-cartao" data-id="' + p.id + '"' + attrLinha + ' aria-current="false">' +
+                '<div class="rkr-chapa">' + p.iniciais + '</div>' +
+                '<div>' +
+                  '<span class="rkr-nome">' + p.nome + '</span>' +
+                  '<span class="rkr-vida">' + p.vida + '</span>' +
+                  '<span class="rkr-papel">' + p.papel + '</span>' +
+                '</div>' +
+              '</button>';
+    });
+    if (gerAtual !== '') html += '</div></div></div>';
+    raiz.innerHTML = html;
+    aplicarBusca();
+  }
+
+  function aplicarBusca() {
+    var q = consulta;
+    var visiveis = 0;
+    DADOS.pessoas.forEach(function(p) {
+      var btn = raiz.querySelector('.rkr-cartao[data-id="' + p.id + '"]');
+      if (!btn) return;
+      var ok = pessoaCombina(p, q);
+      btn.hidden = !ok;
+      if (ok) visiveis += 1;
+    });
+
+    geracoes().forEach(function(ger) {
+      var gid = gerId(ger);
+      var bloco = raiz.querySelector('.rkr-gerbloco[data-ger="' + gid + '"]');
+      var cont = raiz.querySelector('[data-ger-cont="' + gid + '"]');
+      var toggle = raiz.querySelector('[data-toggle-ger="' + gid + '"]');
+      if (!bloco || !cont || !toggle) return;
+      var nMatch = DADOS.pessoas.filter(function(p) { return p.ger === ger && pessoaCombina(p, q); }).length;
+      bloco.hidden = q !== '' && nMatch === 0;
+      var aberta = q !== '' ? nMatch > 0 : estaAberta(ger);
+      cont.hidden = !aberta;
+      toggle.setAttribute('aria-expanded', aberta ? 'true' : 'false');
+      toggle.textContent = ger + ' · ' + nMatch;
+    });
+
+    if (!q) {
+      buscaStatus.hidden = true;
+      buscaStatus.textContent = '';
+    } else {
+      buscaStatus.hidden = false;
+      buscaStatus.textContent = visiveis === 0
+        ? 'Ninguém com esse nome na árvore.'
+        : (visiveis === 1 ? '1 pessoa' : visiveis + ' pessoas');
+    }
+  }
+
+  function montarLinksHTML(pessoa) {
+    var links = (PAGINAS[pessoa.id] || []).slice();
+    fotosDaPessoa(pessoa).forEach(function(item) {
+      links.push({
+        tipo: 'Foto',
+        titulo: item.titulo || 'Foto do acervo',
+        href: '/familia/documentos.html?foto=' + encodeURIComponent(item.id)
+      });
+    });
+    if (!links.length) return '';
+    var html = '<div class="rkr-bloco"><h3>Ver também</h3><div class="rkr-links">';
+    links.forEach(function(l) {
+      html += '<a class="rkr-link" href="' + l.href + '"><span>' + l.titulo + '</span><span class="rkr-link-tipo">' + l.tipo + '</span></a>';
+    });
+    html += '</div></div>';
+    return html;
+  }
+
+  function montarDetalheHTML(pessoa) {
+    var fHtml = '<div class="rkr-detalhe-topo">' +
+                  '<div><h2>' + pessoa.nome + '</h2><div class="rkr-detalhe-sub">' + pessoa.sub + '</div></div>' +
+                  '<button class="rkr-fechar" type="button" data-fechar="1">Fechar</button>' +
+                '</div>';
+
+    if (pessoa.blocos) {
+      pessoa.blocos.forEach(function(b) {
+        fHtml += '<div class="rkr-bloco"><h3>' + b.t + '</h3>';
+        b.f.forEach(function(f) {
+          fHtml += '<div class="rkr-fato" data-status="' + f.s + '">' +
+                     '<i class="rkr-ponto ' + f.s + '"></i><div><span class="rkr-rot">' + f.r + '</span><span class="rkr-val">' + f.v + '</span><span class="rkr-src">' + f.src + '</span></div>' +
+                   '</div>';
+        });
+        fHtml += '</div>';
+      });
+    }
+    fHtml += montarLinksHTML(pessoa);
+    return fHtml;
+  }
+
+  function fecharDetalheAberto() {
+    var atual = raiz.querySelector('.rkr-detalhe');
+    if (atual) atual.remove();
+    raiz.querySelectorAll('.rkr-cartao').forEach(function(b){ b.setAttribute('aria-current','false'); });
+    abertoId = null;
+  }
+
+  function abrirDetalhe(btn, pessoa) {
+    fecharDetalheAberto();
+
+    var painel = document.createElement('div');
+    painel.className = 'rkr-detalhe';
+    painel.setAttribute('role', 'region');
+    painel.setAttribute('aria-live', 'polite');
+    painel.innerHTML = montarDetalheHTML(pessoa);
+
+    btn.insertAdjacentElement('afterend', painel);
+
+    btn.setAttribute('aria-current', 'true');
+    abertoId = pessoa.id;
+
+    painel.querySelector('[data-fechar="1"]').addEventListener('click', function(e){
+      e.stopPropagation();
+      fecharDetalheAberto();
+    });
+
+    requestAnimationFrame(function(){
+      var rect = painel.getBoundingClientRect();
+      var foraDaTela = rect.bottom > window.innerHeight || rect.top < 0;
+      if (foraDaTela) {
+        painel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+  }
+
+  function abrirPessoaPorId(id) {
+    var pessoa = DADOS.pessoas.find(function(p){ return p.id === id; });
+    if (!pessoa) return;
+    definirAberta(pessoa.ger, true);
+    renderizarArvore();
+    var btn = raiz.querySelector('.rkr-cartao[data-id="' + id + '"]');
+    if (btn) abrirDetalhe(btn, pessoa);
+  }
+
+  function ramificacoesAbertas() {
+    return geracoes().every(function(ger) {
+      if (geracaoAbertaPorPadrao(ger)) return true;
+      return estaAberta(ger);
+    });
+  }
+
+  function atualizarBotaoRamif() {
+    var todas = ramificacoesAbertas();
+    btnRamif.setAttribute('aria-pressed', todas ? 'true' : 'false');
+    btnRamif.textContent = todas ? 'Recolher ramificações' : 'Abrir ramificações';
+  }
+
+  function iniciarEventos() {
+    raiz.addEventListener('click', function(ev){
+      var toggle = ev.target.closest('[data-toggle-ger]');
+      if (toggle) {
+        var gid = toggle.getAttribute('data-toggle-ger');
+        var ger = geracoes().filter(function(g) { return gerId(g) === gid; })[0];
+        if (!ger) return;
+        var nova = !estaAberta(ger);
+        definirAberta(ger, nova);
+        var cont = raiz.querySelector('[data-ger-cont="' + gid + '"]');
+        if (cont) cont.hidden = !nova;
+        toggle.setAttribute('aria-expanded', nova ? 'true' : 'false');
+        if (!nova && abertoId) {
+          var aberta = DADOS.pessoas.find(function(p){ return p.id === abertoId; });
+          if (aberta && gerId(aberta.ger) === gid) fecharDetalheAberto();
+        }
+        atualizarBotaoRamif();
+        return;
+      }
+
+      var btn = ev.target.closest('.rkr-cartao');
+      if (!btn) return;
+
+      var id = btn.getAttribute('data-id');
+
+      if (id === abertoId) {
+        fecharDetalheAberto();
+        return;
+      }
+
+      var pessoa = DADOS.pessoas.find(function(p){ return p.id === id; });
+      if (!pessoa) return;
+
+      abrirDetalhe(btn, pessoa);
+    });
+
+    btnFiltro.addEventListener('click', function() {
+      var p = btnFiltro.getAttribute('aria-pressed') === 'true';
+      btnFiltro.setAttribute('aria-pressed', !p);
+      raizGlobal.classList.toggle('filtrado', !p);
+      btnFiltro.textContent = p ? "Ocultar Hipóteses / Inferências" : "Mostrar todos os dados";
+    });
+
+    btnRamif.addEventListener('click', function() {
+      var abrir = !ramificacoesAbertas();
+      geracoes().forEach(function(ger) {
+        if (geracaoAbertaPorPadrao(ger)) definirAberta(ger, true);
+        else definirAberta(ger, abrir);
+      });
+      renderizarArvore();
+      atualizarBotaoRamif();
+    });
+
+    var buscaTimer = null;
+    buscaEl.addEventListener('input', function() {
+      clearTimeout(buscaTimer);
+      buscaTimer = setTimeout(function() {
+        consulta = normNome(buscaEl.value);
+        if (abertoId) fecharDetalheAberto();
+        aplicarBusca();
+      }, 80);
+    });
+  }
+
+  function lerQuery() {
+    try {
+      var p = new URLSearchParams(window.location.search).get('p');
+      return p ? String(p).trim() : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  fetch('/assets/data/acervo.json').then(function(r) { return r.json(); }).then(function(data) {
+    acervoItens = (data && data.itens) ? data.itens : [];
+    if (abertoId) {
+      var pessoa = DADOS.pessoas.find(function(p){ return p.id === abertoId; });
+      var btn = raiz.querySelector('.rkr-cartao[data-id="' + abertoId + '"]');
+      if (pessoa && btn) abrirDetalhe(btn, pessoa);
+    }
+  }).catch(function() { acervoItens = []; });
+
+  renderizarArvore();
+  iniciarEventos();
+  atualizarBotaoRamif();
+
+  var pid = lerQuery();
+  if (pid) abrirPessoaPorId(pid);
+})();
+</script>
