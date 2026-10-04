@@ -1,0 +1,124 @@
+---
+layout: default
+title: "Família Musskopf"
+description: "Árvore genealógica, mapa das migrações, acervo visual e crônicas da família Musskopf, do Palatinado renano até o Brasil."
+---
+
+<style>
+  .colab-footer-muss {
+    border-top: 1px solid #2a2a2a;
+    margin-top: 2.5rem;
+    padding: 1.1rem 1.4rem;
+    text-align: center;
+  }
+  .colab-footer-muss .colab-galho {
+    display: block;
+    margin: 0 auto 0.6rem;
+    opacity: 0.8;
+  }
+  .colab-footer-muss p {
+    max-width: 460px;
+    margin: 0 auto 0.6rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #8a8578;
+  }
+  .colab-footer-muss a {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: #8a9e86;
+    border: 1px solid rgba(138, 158, 134, 0.4);
+    border-radius: 6px;
+    padding: 0.35rem 0.9rem;
+    text-decoration: none;
+  }
+  .colab-footer-muss a:hover {
+    border-color: #8a9e86;
+    background: rgba(138, 158, 134, 0.08);
+  }
+  .colab-footer-muss .colab-separador {
+    max-width: 460px;
+    margin: 1.1rem auto;
+    border: none;
+    border-top: 1px dashed rgba(138, 158, 134, 0.25);
+  }
+</style>
+
+<!-- Texto introdutório centralizado -->
+<p style="font-size: 1.15rem; color: #b8b2a3; text-align: center; max-width: 600px; margin: 0 auto 2.5rem;">
+  Registros documentais, trajetórias e crônicas da imigração da família Musskopf, dos registros paroquiais do Palatinado renano no século XVII até o sul do Brasil.
+</p>
+
+<!-- ============================================================
+     FERRAMENTAS FIXAS — Árvore Genealógica e Mapa das Migrações.
+     ============================================================ -->
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; max-width: 880px; margin: 0 auto;">
+
+  <!-- Cartão: Árvore Genealógica -->
+  <a href="{{ '/musskopf/arvore.html' | relative_url }}" class="card" style="padding: 1.3rem 1.4rem; text-align: left; justify-content: flex-start; border: 2px solid rgba(138, 158, 134, 0.55); background-color: rgba(138, 158, 134, 0.06); min-height: auto;">
+    <span style="font-size: 0.7rem; color: #8a9e86; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.35rem; display: block; font-weight: bold;">Interativo</span>
+    <h3 style="margin-bottom: 0.4rem; font-size: 1.25rem; border: none;">Árvore Genealógica</h3>
+    <p style="font-size: 0.9rem; line-height: 1.45;">Gerações navegáveis, de Nickel Muskopf à pesquisa de hoje — com fonte e grau de certeza em cada informação.</p>
+  </a>
+
+  <!-- Cartão: Mapa das Migrações -->
+  <a href="{{ '/musskopf/mapa.html' | relative_url }}" class="card" style="padding: 1.3rem 1.4rem; text-align: left; justify-content: flex-start; border: 2px solid rgba(138, 158, 134, 0.55); background-color: rgba(138, 158, 134, 0.06); min-height: auto;">
+    <span style="font-size: 0.7rem; color: #8a9e86; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.35rem; display: block; font-weight: bold;">Interativo</span>
+    <h3 style="margin-bottom: 0.4rem; font-size: 1.25rem; border: none;">Mapa das Migrações</h3>
+    <p style="font-size: 0.9rem; line-height: 1.45;">De uma aldeia do Palatinado a três destinos: o Brasil em 1828, os Estados Unidos em 1837, e os que permaneceram na Alemanha.</p>
+  </a>
+
+  <!-- Cartão: Documentos (Acervo Visual) -->
+  <a href="{{ '/musskopf/documentos.html' | relative_url }}" class="card" style="padding: 1.3rem 1.4rem; text-align: left; justify-content: flex-start; border: 2px solid rgba(138, 158, 134, 0.55); background-color: rgba(138, 158, 134, 0.06); min-height: auto;">
+    <span style="font-size: 0.7rem; color: #8a9e86; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.35rem; display: block; font-weight: bold;">Interativo</span>
+    <h3 style="margin-bottom: 0.4rem; font-size: 1.25rem; border: none;">Documentos</h3>
+    <p style="font-size: 0.9rem; line-height: 1.45;">Acervo visual: retratos de família, sepulturas e documentos escritos, com grau de certeza de cada leitura.</p>
+  </a>
+
+  <!-- Cartão: Pessoas -->
+  <a href="{{ '/musskopf/pessoas.html' | relative_url }}" class="card" style="padding: 1.3rem 1.4rem; text-align: left; justify-content: flex-start; border: 2px solid rgba(138, 158, 134, 0.55); background-color: rgba(138, 158, 134, 0.06); min-height: auto;">
+    <span style="font-size: 0.7rem; color: #8a9e86; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.35rem; display: block; font-weight: bold;">Interativo</span>
+    <h3 style="margin-bottom: 0.4rem; font-size: 1.25rem; border: none;">Pessoas</h3>
+    <p style="font-size: 0.9rem; line-height: 1.45;">Perfis individuais — quem foi cada um, em detalhe: origem, trajetória e fontes documentais.</p>
+  </a>
+
+  <!-- Cartão: Crônicas -->
+  <a href="{{ '/musskopf/cronicas.html' | relative_url }}" class="card" style="padding: 1.3rem 1.4rem; text-align: left; justify-content: flex-start; border: 2px solid rgba(138, 158, 134, 0.55); background-color: rgba(138, 158, 134, 0.06); min-height: auto;">
+    <span style="font-size: 0.7rem; color: #8a9e86; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.35rem; display: block; font-weight: bold;">Interativo</span>
+    <h3 style="margin-bottom: 0.4rem; font-size: 1.25rem; border: none;">Crônicas</h3>
+    <p style="font-size: 0.9rem; line-height: 1.45;">Reconstruções narrativas da vida de cada personagem — pontes entre o dado documental e a experiência vivida.</p>
+  </a>
+
+  <!-- Cartão: A Travessia -->
+  <a href="{{ '/musskopf/travessia.html' | relative_url }}" class="card" style="padding: 1.3rem 1.4rem; text-align: left; justify-content: flex-start; border: 2px solid rgba(138, 158, 134, 0.55); background-color: rgba(138, 158, 134, 0.06); min-height: auto;">
+    <span style="font-size: 0.7rem; color: #8a9e86; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.35rem; display: block; font-weight: bold;">Interativo</span>
+    <h3 style="margin-bottom: 0.4rem; font-size: 1.25rem; border: none;">A Travessia</h3>
+    <p style="font-size: 0.9rem; line-height: 1.45;">A viagem de 1828 na galera Fortuna, do embarque à chegada em São Leopoldo — a rota, o navio e quem veio a bordo.</p>
+  </a>
+
+</div>
+
+<hr style="margin-top: 3rem; border-color: #2a2a2a;">
+
+<p style="font-size: 1.05rem; text-align: center;"><a href="{{ '/' | relative_url }}" style="color: #8a9e86;">← Voltar para a página inicial</a></p>
+
+<footer class="colab-footer-muss">
+  <svg class="colab-galho" width="100" height="22" viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M6 18C30 22 45 14 65 15C85 16 95 8 124 12" stroke="#8a9e86" stroke-width="1" stroke-linecap="round"/>
+    <path d="M28 20C24 24 20 26 15 26" stroke="#8a9e86" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M46 16C44 11 42 8 44 4" stroke="#8a9e86" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M78 13C81 9 86 7 92 8" stroke="#8a9e86" stroke-width="0.8" stroke-linecap="round"/>
+    <path d="M100 10C102 15 106 18 112 18" stroke="#8a9e86" stroke-width="0.8" stroke-linecap="round"/>
+    <circle cx="15" cy="26" r="1.4" fill="#8a9e86"/>
+    <circle cx="44" cy="4" r="1.4" fill="#8a9e86"/>
+    <circle cx="92" cy="8" r="1.4" fill="#8a9e86"/>
+    <circle cx="112" cy="18" r="1.4" fill="#8a9e86"/>
+  </svg>
+  <p>Reconheceu um nome ou tem uma foto, documento ou correção para o acervo?</p>
+  <a href="mailto:&#097;&#099;&#101;&#114;&#118;&#111;&#114;&#117;&#099;&#107;&#101;&#114;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;?subject=Acervo%20Musskopf">Colaborar →</a>
+
+  <hr class="colab-separador">
+
+  <p>Tem uma foto com várias pessoas? Marque quem é quem direto nela antes de enviar — é mais rápido que descrever por escrito.</p>
+  <a href="{{ '/ferramentas/marcador.html' | relative_url }}" target="_blank" rel="noopener noreferrer">Marcar pessoas na foto →</a>
+</footer>
