@@ -48,10 +48,14 @@ só quer conhecer a própria história — ver seção 2.
 
 ## 3. Mapa de páginas
 
-- `index.html` — home: título "Rücker · Musskopf", seção "Acervos" com os dois
-  acervos empilhados (paterno primeiro, materno depois — a ordem é convenção,
-  não hierarquia; a lista é empilhada justamente para caber uma terceira linha
-  no futuro) e placeholder "Outros" (em construção, **não é link**).
+- `index.html` — home: **sem cabeçalho visível**. Nada de `<h1>` na tela, nada
+  de subtítulo, nada de rótulo "Acervos" (decisão do usuário, 04/10/2026 —
+  pedida três vezes; não reintroduzir nenhum dos três). A home é as duas caixas
+  e o placeholder "Outros" (em construção, **não é link**). O `<h1>` continua
+  existindo no HTML com a classe `.rkr-sr-only`, invisível na tela, só para
+  leitor de tela e buscador — removê-lo de vez deixaria a página sem título
+  acessível. Caixas empilhadas, paterna primeiro e materna depois: a ordem é
+  convenção, não hierarquia, e a pilha existe para caber uma terceira linha.
 - `_layouts/default.html` — o cabeçalho **não tem wordmark** (04/10/2026).
   Antes dizia "Rucker.life" no topo de toda página. Decisão do usuário: o nome
   do site é o domínio, não precisa estar escrito em cima, e repetir o nome

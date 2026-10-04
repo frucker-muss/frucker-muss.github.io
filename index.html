@@ -5,13 +5,25 @@ description: "Dois acervos de família: Rücker, da Silésia prussiana, e Mussko
 ---
 
 <style>
+  /* Título só para leitor de tela e buscador: a home não tem cabeçalho visível,
+     são as duas caixas e nada mais (decisão do usuário, 04/10/2026). */
+  .rkr-sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0; border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
   /* ---------- Lista de acervos ---------- */
   .acervos {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     max-width: 640px;
-    margin: 0 auto;
+    margin: 2rem auto 0;
   }
   .acervo {
     display: grid;
@@ -93,12 +105,7 @@ description: "Dois acervos de família: Rücker, da Silésia prussiana, e Mussko
   }
 </style>
 
-<section class="home-hero">
-  <h1>Rücker &middot; Musskopf</h1>
-  <p>Dois acervos de família. Do Palatinado renano e da Silésia prussiana ao sul do Brasil.</p>
-</section>
-
-<p class="secao-titulo">Acervos</p>
+<h1 class="rkr-sr-only">Rücker e Musskopf</h1>
 
 <div class="acervos">
 
