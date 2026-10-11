@@ -1,0 +1,225 @@
+---
+layout: default
+title: O ramo que ficou
+description: A filha de Vincentius Joseph que não atravessou em 1898 — o que o acervo sabe hoje sobre a linha alemã, e o que ainda falta.
+robots: noindex, nofollow
+---
+
+<style>
+  .al-wrap { max-width: 900px; margin: 0 auto; padding: 0 1rem; }
+  .al-kicker {
+    font-family: ui-monospace, monospace; font-size: .72rem;
+    letter-spacing: .18em; text-transform: uppercase; color: #d4af6a; margin: 0 0 1rem;
+  }
+  .al-titulo {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.1;
+    color: #f2efe6; margin: 0 0 1.1rem; font-weight: normal;
+  }
+  .al-linha { width: 56px; height: 2px; background: #d4af6a; margin: 0 0 1.6rem; }
+  .al-lead {
+    font-family: Georgia, serif; font-size: clamp(1.05rem, 2.4vw, 1.28rem);
+    line-height: 1.65; color: #b8b2a3; max-width: 38rem; margin: 0 0 1.2rem;
+  }
+  .al-wrap p { font-family: Georgia, serif; font-size: 1.05rem; line-height: 1.75;
+    color: #d8d3c6; max-width: 38rem; margin: 0 0 1.15rem; }
+  .al-sec { margin: 4rem 0 0; }
+  .al-sec h2 {
+    font-family: Georgia, serif; font-weight: normal;
+    font-size: clamp(1.4rem, 3.4vw, 1.95rem); color: #f2efe6;
+    margin: 0 0 .35rem; border: 0; padding: 0;
+  }
+  .al-sub {
+    font-family: ui-monospace, monospace; font-size: .72rem; letter-spacing: .18em;
+    color: #8a8578; text-transform: uppercase; margin: 0 0 1.6rem;
+  }
+
+  /* linhagem vertical */
+  .al-linhagem { margin: 2rem 0 2.5rem; padding: 0; list-style: none; }
+  .al-linhagem li {
+    position: relative; padding: 0 0 1.6rem 1.6rem;
+    border-left: 1px solid #2a2a2a; max-width: 38rem;
+  }
+  .al-linhagem li:last-child { border-left-color: transparent; padding-bottom: 0; }
+  .al-linhagem li::before {
+    content: ''; position: absolute; left: -5px; top: .45rem;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: #121212; border: 1px solid #8a8578;
+  }
+  .al-linhagem li.destaque::before { background: #d4af6a; border-color: #d4af6a; }
+  .al-nome { font-family: Georgia, serif; font-size: 1.18rem; color: #f2efe6; }
+  .al-linhagem li.destaque .al-nome { color: #d4af6a; }
+  .al-meta {
+    font-family: ui-monospace, monospace; font-size: .74rem; color: #8a8578;
+    margin-top: .25rem; line-height: 1.6;
+  }
+  .al-nota { font-family: Georgia, serif; font-size: .98rem; color: #b8b2a3;
+    margin-top: .45rem; line-height: 1.6; }
+
+  .al-destaque { border-left: 2px solid #d4af6a; padding: .2rem 0 .2rem 1.4rem;
+    margin: 2.5rem 0; max-width: 38rem; }
+  .al-destaque p { font-size: 1.2rem; line-height: 1.6; color: #f2efe6; margin: 0; }
+
+  .al-cards { display: grid; gap: .8rem;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin: 2rem 0; padding: 0; list-style: none; }
+  .al-cards li { border: 1px solid #2a2a2a; background: #1a1a1a; border-radius: 8px; padding: 1rem; }
+  .al-cards strong { font-family: Georgia, serif; font-weight: normal; font-size: 1.12rem; color: #f2efe6; display: block; }
+  .al-cards span { font-family: ui-monospace, monospace; font-size: .7rem; letter-spacing: .08em;
+    text-transform: uppercase; color: #8a8578; display: block; margin-top: .35rem; line-height: 1.6; }
+
+  .al-ger { margin: 1.6rem 0 2.2rem; }
+  .al-ger h3 { font-family: ui-monospace, monospace; font-size: .74rem; letter-spacing: .16em;
+    text-transform: uppercase; color: #d4af6a; margin: 0 0 .1rem; font-weight: normal; }
+  .al-ger .al-aviso { font-family: Georgia, serif; font-size: .92rem; color: #8a8578; margin: 0 0 .7rem; }
+  .al-ger .al-lista { font-family: Georgia, serif; font-size: 1.08rem; color: #d8d3c6; line-height: 1.9; margin: 0; max-width: 38rem; }
+
+  .al-perg { counter-reset: q; margin: 2rem 0; padding: 0; list-style: none; }
+  .al-perg li {
+    counter-increment: q; position: relative; padding: 1.1rem 0 1.1rem 3rem;
+    border-top: 1px solid #2a2a2a; max-width: 40rem;
+  }
+  .al-perg li:last-child { border-bottom: 1px solid #2a2a2a; }
+  .al-perg li::before {
+    content: counter(q, decimal-leading-zero); position: absolute; left: 0; top: 1.15rem;
+    font-family: ui-monospace, monospace; font-size: .8rem; color: #d4af6a;
+  }
+  .al-perg strong { font-family: Georgia, serif; font-weight: normal; font-size: 1.1rem;
+    color: #f2efe6; display: block; margin-bottom: .3rem; }
+  .al-perg p { font-size: .99rem; color: #b8b2a3; margin: 0; max-width: none; }
+
+  .al-ressalva { margin: 4.5rem 0 2rem; padding: 1.5rem; border: 1px solid #2a2a2a;
+    border-radius: 10px; background: rgba(212,175,106,.04); }
+  .al-ressalva p { font-size: .98rem; color: #b8b2a3; margin: 0 0 .8rem; max-width: none; }
+  .al-ressalva p:last-child { margin: 0; }
+  .al-ressalva a { color: #d4af6a; }
+  .al-previa { font-family: ui-monospace, monospace; font-size: .72rem; letter-spacing: .1em;
+    color: #c0714f; border: 1px solid rgba(192,113,79,.4); border-radius: 6px;
+    padding: .5rem .8rem; display: inline-block; margin-bottom: 2.5rem; }
+</style>
+
+<div class="al-wrap">
+
+  <p class="al-previa">PÁGINA DE TRABALHO — não listada, para conferência da família</p>
+
+  <p class="al-kicker">Rosendahl-Holtwick · Westfália</p>
+  <h1 class="al-titulo">O ramo que ficou</h1>
+  <div class="al-linha"></div>
+
+  <p class="al-lead">Em 1898, Vincentius Joseph Rücker embarcou para o Brasil com os filhos homens. Contou-se por mais de um século que a família inteira tinha saído da Silésia. Não tinha: uma filha ficou. Esta página reúne o que se sabe hoje sobre essa linha — e, sobretudo, o que ainda falta.</p>
+
+  <div class="al-sec">
+    <h2>De onde ela vem</h2>
+    <p class="al-sub">Ascendência</p>
+
+    <ul class="al-linhagem">
+      <li>
+        <span class="al-nome">Georg Rücker</span>
+        <div class="al-meta">n. 1789, Johannesberg · hoje Janowa Góra, Polônia</div>
+        <div class="al-nota">Mudou-se para Wölfelsgrund por volta de 1816. Casou duas vezes; da segunda, com Johanna Hannig, nasceu Vincentius.</div>
+      </li>
+      <li>
+        <span class="al-nome">Vincentius Joseph Rücker</span>
+        <div class="al-meta">09/10/1827, Wölfelsgrund — 21/07/1908, São Pedro do Maratá (RS)</div>
+        <div class="al-nota">Viúvo de Beata Larisch, organizou e financiou a emigração de 1898, aos 70 anos. Está sepultado no Rio Grande do Sul.</div>
+      </li>
+      <li class="destaque">
+        <span class="al-nome">Maria Rücker Wolf</span>
+        <div class="al-meta">datas desconhecidas · cônjuge: Berthold Wolf</div>
+        <div class="al-nota">A filha que não atravessou. Descrita como a mais nova. Em 1898 já era casada e tinha o primeiro filho — e ficou.</div>
+      </li>
+    </ul>
+
+    <p>Os irmãos dela que embarcaram foram três: <strong>Anton</strong>, de quem não se sabe mais nada depois de 1898; <strong>August Ambros</strong>, que ficou em São Pedro do Maratá e teve quinze filhos; e <strong>Ambros August</strong>, que em 1921 migrou para Maratá, em Porto União, Santa Catarina.</p>
+
+    <div class="al-destaque">
+      <p>Maria não sumiu da história da família por ter ficado. Sumiu por ter casado: virou Wolf, e a busca de cá sempre se fez por Rücker.</p>
+    </div>
+
+    <p>E a travessia de 1898 deixa de ser o corte limpo que se contava. Gottfried Anton esteve na Alemanha em 1923. O tio José guardava os telefones dos parentes de lá numa gaveta e os passou ao sobrinho em 1966. Emil atravessou a Alemanha naquele mesmo ano para visitar Sigesfredo Engelbert Rücker em Celle. Bertholdo Henrique esteve em Rosendahl-Holtwick em 1966 ou 1967. Cada um desses episódios estava guardado em separado, como curiosidade solta. São uma linha só, e ela nunca se rompeu.</p>
+  </div>
+
+  <div class="al-sec">
+    <h2>O que veio depois dela</h2>
+    <p class="al-sub">Descendência</p>
+
+    <p>Duas fontes que não se falam dizem o mesmo: Maria e Berthold Wolf tiveram cinco filhos, com estes nomes.</p>
+
+    <ul class="al-cards">
+      <li><strong>Emil Ewald</strong><span>o mais velho · n. 16/02/1897, a confirmar · Bodenstedt · cônjuge Maria Treutler · filha Regina Reihers</span></li>
+      <li><strong>Alfred</strong><span>Rosendahl-Holtwick · recebeu Bertholdo em 1966</span></li>
+      <li><strong>Alfons</strong><span>sem dados</span></li>
+      <li><strong>Fritz</strong><span>sem dados</span></li>
+      <li><strong>Mariechen</strong><span>sem dados</span></li>
+    </ul>
+
+    <p>Das gerações seguintes temos os nomes, anotados numa árvore desenhada à mão em outubro de 2026. A geração de cada um dá para atribuir com segurança, porque os parentes brasileiros desenhados nas mesmas faixas têm geração já conhecida. O que não dá para ler são os traços entre as colunas — de qual dos cinco irmãos cada pessoa descende continua em aberto.</p>
+
+    <div class="al-ger">
+      <h3>Netos de Maria</h3>
+      <p class="al-aviso">Regina Reihers é filha de Emil. Dos demais, a ligação não está estabelecida.</p>
+      <p class="al-lista">Regina Reihers · Alfons · Waltraud · Norbert · Ewald · Elisabeth · Ulla · Erika</p>
+    </div>
+
+    <div class="al-ger">
+      <h3>Bisnetos</h3>
+      <p class="al-aviso">Dirk-Gerald esteve em Porto Alegre e é pai de Dana. Brunhilde nasceu por volta de 1952.</p>
+      <p class="al-lista">Dirk-Gerald · Brunhilde · Christiane · Brigitte · Hannelore · Günther · Manuela · Manfred · Doris · Rita · Barbara · Achim</p>
+    </div>
+
+    <div class="al-ger">
+      <h3>Tataranetos</h3>
+      <p class="al-aviso">Dana é filha de Dirk-Gerald.</p>
+      <p class="al-lista">Dana · Carina · Christina · Julia</p>
+    </div>
+  </div>
+
+  <div class="al-sec">
+    <h2>O que ainda não sabemos</h2>
+    <p class="al-sub">Questionamentos em aberto</p>
+
+    <ol class="al-perg">
+      <li>
+        <strong>As datas de Maria</strong>
+        <p>Nascimento, casamento, falecimento. E onde está sepultada — uma fotografia da lápide resolveria de uma vez.</p>
+      </li>
+      <li>
+        <strong>Onde o casal morava na Silésia</strong>
+        <p>Era Wölfelsgrund, como o pai e os irmãos, ou outra aldeia?</p>
+      </li>
+      <li>
+        <strong>As ligações entre as colunas</strong>
+        <p>Quem desce de Emil, quem de Alfred, quem de Alfons, de Fritz, de Mariechen. É o que transforma a lista de nomes em árvore.</p>
+      </li>
+      <li>
+        <strong>Datas e cônjuges dos cinco irmãos</strong>
+        <p>De Emil sabemos a esposa, Maria Treutler, e a filha Regina. Dos outros quatro, nada.</p>
+      </li>
+      <li>
+        <strong>16 de fevereiro de 1897</strong>
+        <p>A data aparece numa frase que pode se referir a Emil ou ao pai, Berthold Wolf. Se for de Emil, ele já tinha quinze meses em 1898 — e então Maria não estava grávida no embarque, era mãe. Muda o motivo declarado de ela ter ficado, não o fato.</p>
+      </li>
+      <li>
+        <strong>1966 ou 1967</strong>
+        <p>O verso das fotografias da visita de Bertholdo diz 1966. O relato de família no Brasil situa a viagem em julho e agosto de 1967.</p>
+      </li>
+      <li>
+        <strong>Beata Larisch</strong>
+        <p>A mãe de Maria, esposa de Vincentius, morreu na Europa. O acervo não tem data, nem lugar, nem sepultura. É possível que o nome ainda circule do lado de lá.</p>
+      </li>
+      <li>
+        <strong>1945</strong>
+        <p>A família é hoje do Münsterland e da Baixa Saxônia, longe da Silésia. Saber o que foi possível levar na saída — papéis, fotografias, um Ahnenpass — define o que ainda existe para encontrar.</p>
+      </li>
+      <li>
+        <strong>Outras filhas</strong>
+        <p>Maria é descrita como “a mais nova filha”. A formulação sugere que houve outras, e a prole de Vincentius segue incompleta.</p>
+      </li>
+    </ol>
+  </div>
+
+  <div class="al-ressalva">
+    <p>Esta página existe por causa de <strong>Augusto Jaeger</strong>, que foi até lá, sentou à mesa, perguntou e mandou tudo para casa. O que está aqui é dele.</p>
+    <p>Publicamos mesmo com pontas soltas, e deixamos as dúvidas à vista em vez de escondê-las — é assim que alguém pode dizer que está errado e a gente corrige. Se você sabe uma data, reconhece um nome ou lembra de outra versão, escreva para o acervo: <a href="mailto:&#097;&#099;&#101;&#114;&#118;&#111;&#114;&#117;&#099;&#107;&#101;&#114;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">fale com a gente</a>.</p>
+  </div>
+
+</div>

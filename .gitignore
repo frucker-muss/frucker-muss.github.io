@@ -6,3 +6,8 @@ _site/
 vendor/
 .bundle/
 Gemfile.lock
+
+# Fotos do ramo alemão (out/2026): mantidas fora do repositório por decisão do
+# Nando — mostram pessoas vivas da família alemã que ainda não foram consultadas.
+# Para publicar um dia, remover esta linha.
+assets/img/alemanha/

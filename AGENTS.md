@@ -5,7 +5,7 @@ antes de propor ou aplicar mudanças neste repositório. Não é específico de 
 ferramenta — mantenha o conteúdo genérico e atualizado conforme a estrutura do
 site mudar.
 
-Última atualização: 2026-10-04.
+Última atualização: 2026-10-10.
 
 ## 0. Ao voltar
 
@@ -107,6 +107,14 @@ versão mais nova do acervo for consolidada depois (v5.14, v6.0 real etc.),
 atualizar este parágrafo e repetir a busca/substituição das citações antigas
 em `familia/arvore.html` — não deixar duas numerações concorrentes no ar.
 
+**Exceção registrada (ramo Maria/Wolf, 2026-10-10)**: os nós do ramo alemão
+(`g3_maria_wolf` e descendentes `g4w_`/`g5w_`/`g6w_`/`g7w_`) **não** citam
+`"Base v5.13"` no campo `src`, porque esse material não está na v5.13 — ele
+chegou depois, por relato de Augusto Jaeger no grupo da família (dez/2025) e
+pela árvore que a família alemã desenhou à mão em Rosendahl-Holtwick
+(out/2026). Esses nós citam a fonte real. Quando a v5.14 consolidar esse
+material, revisar: não trocar por "Base v5.13" às cegas.
+
 O `ACERVO_RUCKER_v5_13.md` usa suas próprias etiquetas de evidência
 ([DOC], [EPI], [HIP], [TO], [ABERTO] etc. — ver seção 2 das regras
 editoriais deste arquivo) — essas etiquetas nunca aparecem literalmente nas
@@ -142,6 +150,19 @@ páginas públicas; a árvore traduz para os 6 status já existentes
   qualquer artigo de texto corrido, não é exclusivo de crônicas literárias).
 - `familia/georg-uma-cronica.md`, `familia/vincenz-uma-cronica.html`,
   `familia/ambrosio-augusto-uma-cronica.html` — crônicas literárias.
+- `familia/previa-o-ramo-que-ficou.html` — página de trabalho não listada (lote
+  **wolf-2**, 2026-10-10). Sobre o ramo alemão: ascendência de Maria Rücker Wolf,
+  a descendência dela em três gerações, e nove questionamentos em aberto.
+  Destinada a ser enviada por link a parentes que possam corrigir e completar —
+  o primeiro destinatário é Augusto Jaeger.
+  **Sem fotografia nenhuma, por decisão do Nando (10/10/2026).** As fotos de 1966
+  e do reencontro de 2026 existem, foram tratadas, e estão fora do repositório:
+  `assets/img/alemanha/` está no `.gitignore`, porque as imagens de 2026 mostram
+  pessoas vivas da família alemã que ainda não foram consultadas. Se um dia forem
+  publicadas, tirar a linha do `.gitignore` e aí decidir a página.
+  `layout: default` com `<style>` local e classes prefixadas `.al-`; nenhum CSS
+  novo no layout global. **Não listar em índice público** enquanto for prévia.
+  Para promover, renomear sem o prefixo `previa-`, tirar `robots`, e aí criar o card.
 - `familia/previa-albano-rucker.html` — prévia não listada (`robots: noindex`),
   envio pessoal a um parente específico. **Não** deve aparecer em nenhum índice
   público (nem `cronicas.html`, nem `pessoas.html`, nem `familia.html`).
@@ -233,6 +254,15 @@ existentes só por consistência de extensão.
 - `default.html` — chrome do site inteiro: header, variáveis de CSS globais,
   sistema `.home-grid`/`.card`, tipografia. `page.title`/`page.description` viram
   meta tags Open Graph/Twitter automaticamente.
+  Dois front matter opcionais, acrescentados em 2026-10-10 (lote **wolf-2**):
+  `robots:` emite `<meta name="robots">` só quando a página define — é o que faz a
+  convenção de prévia funcionar de verdade (antes `robots: noindex` no front matter
+  não produzia tag nenhuma); e `image:` troca o `og:image` daquela página, caindo
+  no `og-familia-rucker.jpg` quando ausente. Nenhuma página existente muda de
+  comportamento.
+  Nota de tipografia: o site **não carrega webfont nenhuma** — só Georgia do
+  sistema. A menção a "IBM Plex Mono" na seção 5 é aspiracional; onde se quiser
+  mono, usar a pilha `ui-monospace, monospace`, sem adicionar Google Fonts.
 - `cronica.html` — layout de artigo de texto corrido: título + subtítulo + corpo
   + botões de compartilhar (WhatsApp / Google Forms) no final. Usado tanto para
   crônicas literárias quanto para perfis "Pessoas" — o layout não distingue os
@@ -323,6 +353,21 @@ Um lote = um chat novo = um PR. O de hoje não pode obrigar a refazer HTML amanh
 | **musskopf-1** feito | Acervo Musskopf: hub + 6 stubs; home com dois acervos | não reabrir |
 | **musskopf-2** feito | Conteúdo em Travessia, Mapa e Pessoas; ressalva editorial | não reabrir |
 | **musskopf-3** feito | Árvore Musskopf com dados reais; cabeçalho passa a "Rücker · Musskopf" | não reabrir |
+| **wolf-1** aberto | Ramo alemão na árvore Rücker: Maria Rücker Wolf na Geração III e 29 descendentes | só `familia/arvore.html` |
+| **wolf-2** aberto | Página `familia/previa-o-ramo-que-ficou.html`: linhagem + questionamentos, sem fotos; `robots`/`image` no layout | não listar; fotos fora do repo |
+
+O **wolf-1** (2026-10-10) acrescenta o terceiro ramo do tronco de Vincentius
+Joseph: a filha **Maria**, que casou com Berthold Wolf e **não** emigrou em
+1898. Entram 30 pessoas (a árvore vai de 98 para 128) em quatro grupos de
+geração novos, posicionados depois do bloco de Ambros August e antes do nó de
+pesquisa aberta — a mesma lógica "um irmão, um bloco" que o arquivo já usava.
+Duas coisas ficaram explícitas no rótulo da geração, em português corrente e
+sem jargão (convenção já usada na árvore Musskopf): **de qual dos cinco irmãos
+cada descendente vem ainda não foi apurado**. A geração de cada nome foi
+deduzida pelas faixas horizontais do desenho, calibradas pelos nomes
+brasileiros que aparecem nas mesmas faixas (Joseph e Maria Emma = IV; Ursula =
+V; Maria do Carmo = VI; Fernanda = VII). Não mexeu em crônica, em
+`metodologia.html` nem no catálogo de fotos.
 
 O **2** deixou o formato da ficha (`id`, `thumb`, `titulo`, `legenda`, `categoria`, `tipo`, `data`, `decada`, `local`, `status`, `pessoas[]` com `genId`, `nome`, `x,y,w,h`). Miniaturas com `loading="lazy"`. O **2c** só preenche — um toque, um nome, “não sei” vale; canal `acervorucker@gmail.com` / Forms; nunca WhatsApp pessoal (seção 2). Sem restilizar a home.
 
