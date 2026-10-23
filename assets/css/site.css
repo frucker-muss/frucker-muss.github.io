@@ -518,9 +518,14 @@ figcaption .ref, .legenda .ref {
   top: 1.2rem;
   right: 1rem;
   margin: 0;
-  padding: 0;
+  padding: 0.3rem 0.8rem;
   list-style: none;
   text-align: right;
+  /* Véu creme só atrás das palavras: torres e morros escuros da imagem
+     derrubavam o contraste abaixo de AA; com o véu, o pior pixel dá ~6:1. */
+  background: rgba(253, 248, 233, 0.68);
+  border-radius: var(--raio);
+  box-shadow: 0 0 18px 10px rgba(253, 248, 233, 0.68);
 }
 .pano-palavras li {
   padding: 0.35rem 0 0.35rem 1.2rem;
@@ -603,10 +608,6 @@ figcaption .ref, .legenda .ref {
   margin: 0 auto;
 }
 .faixa-frase {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   margin: 0 auto;
   padding: 0.6rem 1rem 0;
   max-width: 38rem;
@@ -664,7 +665,6 @@ figcaption .ref, .legenda .ref {
 
   .pano-palavras { top: 2rem; right: 2rem; }
   .pano-palavras li { font-size: 2rem; }
-  .faixa-frase { padding-top: 1.2rem; font-size: 1.2rem; }
 }
 
 /* ---------- Computador ---------- */
@@ -699,6 +699,8 @@ figcaption .ref, .legenda .ref {
   }
   .destino-texto { padding: 1.1rem 2.6rem 1.3rem 1.2rem; }
   .destino-texto h2 { font-size: 1.5rem; }
+
+  .faixa-frase { position: absolute; top: 0; left: 0; right: 0; padding-top: 1.6rem; font-size: 1.25rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
