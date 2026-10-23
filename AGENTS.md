@@ -136,6 +136,18 @@ páginas públicas; a árvore traduz para os 6 status já existentes
   mantenedor aprovar e editar o JSON — a família não mexe no GitHub.
 - `familia/pessoas.html` — índice de perfis individuais (hoje: Georg Rücker,
   Vincentius Joseph Rücker). Badge "Pessoas".
+  Badge nova **"Documento"** (2026-10-22), mesmo cinza `#8a8578` da "Pessoas",
+  só muda a palavra: para páginas que transcrevem e traduzem uma fonte primária
+  em vez de perfilar uma pessoa. Primeira:
+  `familia/paulusblatt-novembro-1976.html` — autobiografia de Siegmund Rücker e
+  artigo de José Rücker, `Skt. Paulusblatt` ano 59 nº 11, nov/1976, com o
+  original alemão em `<details>` abaixo de cada tradução.
+  **Escopo de publicação dessa página (decisão do Nando, 22/10/2026)**: a edição
+  é de 1976, ainda dentro do prazo de direitos autorais, e a regra do site é
+  reproduzir na íntegra só recortes anteriores a ~1956. Por isso vão ao ar
+  apenas os dois textos assinados por Rückers — não a edição inteira (contos,
+  humor e anúncios de terceiros ficam fora). Manter esse critério ao publicar
+  outras edições do `Paulusblatt`.
 - `familia/cronicas.html` — índice de crônicas literárias (hoje: Georg,
   Vincentius, Ambrósio Augusto). Badge "Crônica Literária".
 - `familia/causos.html` — índice de causos. Já existe pelo menos um causo
