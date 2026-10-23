@@ -1,0 +1,16 @@
+{%- comment -%}
+  Pano de fundo da home (estético). Celular em retrato usa a versão vertical;
+  tela larga usa a panorâmica — nenhuma das duas é recortada para caber na outra.
+  As palavras são texto HTML, nunca parte da imagem.
+{%- endcomment -%}
+<div class="pano-fundo">
+  <picture>
+    <source media="(min-aspect-ratio: 1/1)" srcset="{{ '/assets/img/home/fundo-migracoes.jpg' | relative_url }}" width="1600" height="900">
+    <img src="{{ '/assets/img/home/fundo-migracoes-vertical.jpg' | relative_url }}" width="941" height="1672" alt="" fetchpriority="high" decoding="async">
+  </picture>
+  <ul class="pano-palavras">
+    {%- for p in site.palavras_pano %}
+    <li>{{ p }}</li>
+    {%- endfor %}
+  </ul>
+</div>

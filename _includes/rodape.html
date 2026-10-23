@@ -1,0 +1,9 @@
+{%- comment -%}
+  Rodapé de todas as páginas. "Contribua" é o único canal de contato do site:
+  o endereço só existe no href (codificado), nunca como texto visível.
+{%- endcomment -%}
+<footer class="site-footer">
+  <p class="site-footer-nome">{{ site.marca }}</p>
+  <p class="site-footer-linha">{{ site.marca_linha }}</p>
+  <a href="mailto:{{ site.contato_email | replace: '@', '&#64;' | replace: '.', '&#46;' }}">Contribua</a>
+</footer>

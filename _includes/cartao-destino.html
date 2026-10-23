@@ -1,0 +1,15 @@
+{%- comment -%}
+  Cartão de destino da home. Recebe include.s = um item de _data/secoes.yml.
+  O cartão inteiro é o link; a seta é só indicação visual.
+{%- endcomment -%}
+{%- assign s = include.s -%}
+<li>
+  <a class="destino" href="{{ s.url | relative_url }}" style="--acento: var(--{{ s.acento }}); --acento-texto: var(--{{ s.acento }}{% if s.acento == 'bronze' %}-texto{% endif %});">
+    <img class="destino-imagem" src="{{ s.imagem | relative_url }}" width="{{ s.imagem_w }}" height="{{ s.imagem_h }}" alt="{{ s.imagem_alt }}" loading="lazy" decoding="async">
+    <div class="destino-texto">
+      <h2>{{ s.nome }}</h2>
+      <p>{{ s.descricao }}</p>
+      <span class="destino-seta" aria-hidden="true">→</span>
+    </div>
+  </a>
+</li>

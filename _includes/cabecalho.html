@@ -1,0 +1,30 @@
+<header class="site-header">
+  <div class="site-header-barra">
+    <a class="marca" href="{{ '/' | relative_url }}">
+      <span class="marca-nome">{{ site.marca }}</span>
+      <span class="marca-linha">{{ site.marca_linha }}</span>
+    </a>
+    <nav class="menu-largo" aria-label="Principal">
+      {% include menu.html %}
+    </nav>
+    <details class="menu">
+      <summary>Menu</summary>
+      <nav class="menu-gaveta" aria-label="Principal">
+        {% include menu.html %}
+      </nav>
+    </details>
+  </div>
+</header>
+<script>
+  // Celular: fecha o menu com Esc ou ao tocar fora dele. Sem script, o <details> funciona sozinho.
+  (function () {
+    var menu = document.querySelector('.site-header .menu');
+    if (!menu) return;
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menu.open) { menu.open = false; menu.querySelector('summary').focus(); }
+    });
+    document.addEventListener('click', function (e) {
+      if (menu.open && !menu.contains(e.target)) menu.open = false;
+    });
+  })();
+</script>

@@ -1,0 +1,12 @@
+{%- comment -%}
+  Menu principal: mesma lista e mesma ordem dos cartões da home (_data/secoes.yml).
+  Marca o item atual quando a página é o destino ou está dentro da pasta dele
+  (/familia.html e /familia/…, /musskopf.html e /musskopf/…).
+{%- endcomment -%}
+{%- assign secoes = site.data.secoes | where: "publicado", true | sort: "ordem" -%}
+<ul class="menu-lista">
+  {%- for s in secoes %}
+  {%- assign pasta = s.url | remove: ".html" | append: "/" %}
+  <li><a href="{{ s.url | relative_url }}"{% if page.url == s.url or page.url contains pasta %} aria-current="page"{% endif %}>{{ s.nome }}</a></li>
+  {%- endfor %}
+</ul>

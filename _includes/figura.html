@@ -1,0 +1,19 @@
+{%- comment -%}
+  Imagem documental (padrão da crônica "Vô Mundo"): moldura única, legenda e
+  referência arquivística, ampliação em dois níveis ao tocar.
+  Parâmetros:
+    src      caminho da cópia otimizada
+    w, h     tamanho real do arquivo (evita salto de layout)
+    alt      descrição da imagem
+    legenda  texto da legenda
+    ref      referência arquivística (ex.: "Acervo Rücker · DOC-0123")
+    lado     "esquerda", "larga" ou omitido (direita)
+    grande   (opcional) arquivo maior para a ampliação; sem ele, usa src
+  Uso: {% include figura.html src="/assets/img/documentos/x.jpg" w=900 h=600 alt="…" legenda="…" ref="…" %}
+{%- endcomment -%}
+<figure class="figura{% if include.lado %} figura--{{ include.lado }}{% endif %}">
+  <button type="button" class="figura-ampliar" data-grande="{{ include.grande | default: include.src | relative_url }}" aria-label="Ampliar imagem: {{ include.alt | escape }}">
+    <img src="{{ include.src | relative_url }}" width="{{ include.w }}" height="{{ include.h }}" alt="{{ include.alt | escape }}" loading="lazy" decoding="async">
+  </button>
+  <figcaption>{{ include.legenda }}{% if include.ref %}<span class="ref">{{ include.ref }}</span>{% endif %}</figcaption>
+</figure>

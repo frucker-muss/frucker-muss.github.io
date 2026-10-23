@@ -1,0 +1,706 @@
+/* ==========================================================================
+   rucker.life — folha de estilo central
+   Única fonte de cores, tipografia e componentes do site.
+   Celular primeiro: as regras base valem para 360–390px; as media queries
+   (min-width) só adaptam para tablet e computador.
+   ========================================================================== */
+
+/* ---------- Tokens ---------- */
+:root {
+  /* Paleta aprovada (--papel ajustado ao creme exato da faixa-paisagem) */
+  --papel:          #fdf8e9;
+  --papel-claro:    #faf5ec;
+  --verde-profundo: #1e3a2f;
+  --bronze:         #9c6b3c;   /* filetes, bordas, detalhes */
+  --salvia-escura:  #5a6e56;
+  --texto:          #2c2a26;
+  --texto-suave:    #5c564d;
+  --borda:          #d9cdb8;
+
+  /* Variantes para texto — o bronze puro não atinge AA (4,3:1) sobre o papel */
+  --bronze-texto:   #85582d;   /* 5,8:1 sobre --papel */
+  --terra:          #a14f2c;   /* 5,4:1 — causos e alertas */
+  --sobre-verde:    #f4ece0;   /* texto sobre --verde-profundo (11:1) */
+  --sobre-verde-suave: #c9d2c4;
+
+  /* Tipografia — só fontes do sistema, nenhuma webfont */
+  --serifa: Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  /* Forma */
+  --raio: 10px;
+  --toque: 48px;
+  --coluna: 42rem;
+  --largura: 72rem;
+  --sombra: 0 1px 3px rgba(44, 42, 38, 0.08);
+
+  /* Acento padrão (cada família/seção troca via --acento) */
+  --acento: var(--bronze);
+  --acento-texto: var(--bronze-texto);
+
+  /* Apelidos dos nomes antigos usados nas páginas internas
+     (árvore, mapa, documentos, metodologia…). Não usar em código novo. */
+  --ouro: var(--acento-texto);
+  --claro: var(--texto);
+  --soft: var(--texto-suave);
+  --mudo: var(--texto-suave);
+  --superficie: var(--papel-claro);
+  --sage: var(--salvia-escura);
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background-color: var(--papel);
+  color: var(--texto);
+  font-family: var(--serifa);
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.7;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg, video { max-width: 100%; height: auto; }
+
+a { color: var(--acento-texto); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-visible {
+  outline: 3px solid var(--bronze-texto);
+  outline-offset: 2px;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--serifa);
+  font-weight: normal;
+  line-height: 1.25;
+  color: var(--texto);
+}
+h1 { font-size: 1.9rem; margin: 0 0 0.6rem; }
+h2 { font-size: 1.45rem; margin: 2.2rem 0 0.8rem; }
+h3 { font-size: 1.2rem; margin: 1.8rem 0 0.6rem; }
+
+hr { border: none; border-top: 1px solid var(--borda); margin: 2.5rem 0; }
+
+code, kbd, samp, .ref, .referencia { font-family: var(--mono); font-size: 0.88em; }
+
+.sr-only, .rkr-sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 0.8rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.7rem 1rem;
+  background: var(--papel);
+  color: var(--verde-profundo);
+  border-radius: 6px;
+  font-weight: bold;
+}
+.skip-link:focus { top: 0.8rem; }
+
+/* ---------- Cabeçalho e menu ---------- */
+.site-header {
+  background: var(--verde-profundo);
+  color: var(--sobre-verde);
+}
+.site-header-barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 0.35rem 1rem;
+  min-height: 3.6rem;
+}
+.marca {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: var(--toque);
+  color: var(--sobre-verde);
+  text-decoration: none;
+  line-height: 1.15;
+}
+.marca:hover { text-decoration: none; }
+.marca-nome {
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.marca-linha {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sobre-verde-suave);
+}
+.site-header a:focus-visible, .site-header summary:focus-visible,
+.site-footer a:focus-visible { outline-color: var(--sobre-verde); }
+
+.menu-lista { list-style: none; margin: 0; padding: 0; }
+.menu-lista a {
+  display: flex;
+  align-items: center;
+  min-height: var(--toque);
+  color: var(--sobre-verde);
+  text-decoration: none;
+}
+.menu-lista a[aria-current="page"] { text-decoration: underline; text-underline-offset: 6px; }
+
+/* Celular: botão "Menu" com rótulo por extenso; a lista abre empurrando o conteúdo */
+.menu > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: var(--toque);
+  padding: 0 0.9rem;
+  border: 1px solid rgba(244, 236, 224, 0.45);
+  border-radius: 6px;
+  color: var(--sobre-verde);
+  font-size: 1rem;
+  cursor: pointer;
+  list-style: none;
+}
+.menu > summary::-webkit-details-marker { display: none; }
+.menu > summary::after { content: "▾"; font-size: 0.8rem; }
+.menu[open] > summary::after { content: "▴"; }
+.site-header { position: relative; }
+.menu-gaveta {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: var(--verde-profundo);
+  border-top: 1px solid rgba(244, 236, 224, 0.2);
+  padding: 0.3rem 1rem 0.8rem;
+  box-shadow: 0 6px 12px rgba(30, 58, 47, 0.25);
+}
+.menu-gaveta .menu-lista a {
+  font-size: 1.15rem;
+  border-bottom: 1px solid rgba(244, 236, 224, 0.12);
+}
+.menu-gaveta .menu-lista li:last-child a { border-bottom: none; }
+.menu-largo { display: none; }
+
+/* ---------- Conteúdo ---------- */
+.page-content {
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 2rem 1rem 3.5rem;
+}
+.page-content > h1:first-child,
+.page-content > h1 { text-align: center; }
+
+.texto-intro {
+  max-width: var(--coluna);
+  margin: 0 auto 2rem;
+  color: var(--texto-suave);
+  text-align: center;
+}
+
+.voltar {
+  text-align: center;
+  margin: 2.5rem 0 0;
+}
+.voltar a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--toque);
+  padding: 0 0.5rem;
+}
+
+/* ---------- Cartões genéricos (hubs, índices) ---------- */
+.home-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0 auto;
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: var(--toque);
+  padding: 1.25rem 1.25rem;
+  background-color: var(--papel-claro);
+  border: 1px solid var(--borda);
+  border-left: 3px solid var(--acento);
+  border-radius: var(--raio);
+  color: var(--texto);
+  text-align: left;
+  text-decoration: none;
+}
+a.card:hover { border-color: var(--acento); text-decoration: none; }
+.card h2, .card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.25rem;
+  color: var(--texto);
+}
+.card p {
+  margin: 0;
+  color: var(--texto-suave);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+.card-kicker, .selo {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-family: var(--serifa);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--acento-texto);
+}
+
+/* Cartão de artigo: título + resumo + selo, seta discreta */
+.cartao-artigo { padding-right: 2.6rem; }
+.cartao-artigo::after {
+  content: "→";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--acento-texto);
+}
+
+/* ---------- Bloco de seção do hub de família ---------- */
+.hub-secao { margin: 2.5rem 0 0; }
+.hub-secao > h2 {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  text-align: center;
+}
+
+/* ---------- Imagens documentais: moldura única ---------- */
+.moldura,
+.page-content figure img,
+.page-content .cronica-body img {
+  display: block;
+  padding: 6px;
+  background: var(--papel-claro);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+}
+
+figure { margin: 2rem 0; }
+figcaption, .legenda {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--texto-suave);
+}
+figcaption .ref, .legenda .ref {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+
+/* Figura de crônica (padrão "Vô Mundo"): avança sobre a margem lateral da
+   coluna com o texto contornando — a mesma diagramação no celular e no
+   computador, sempre dentro dos limites da coluna. */
+.figura {
+  float: right;
+  width: 46%;
+  margin: 0.35rem 0 1rem 1.1rem;
+}
+.figura--esquerda { float: left; margin: 0.35rem 1.1rem 1rem 0; }
+.figura--larga { float: none; width: 100%; margin: 2rem 0; }
+.figura button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+.figura img { width: 100%; }
+.cronica-body h3, .cronica-body hr, .cronica-body blockquote { clear: both; }
+
+/* Ampliação em dois níveis: 1º toque = tela cheia ajustada; 2º toque = tamanho real com rolagem */
+.ampliacao {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  background: rgba(30, 58, 47, 0.96);
+  color: var(--sobre-verde);
+}
+.ampliacao[hidden] { display: none; }
+.ampliacao-barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  padding-top: max(0.4rem, env(safe-area-inset-top));
+}
+.ampliacao-barra button {
+  min-height: var(--toque);
+  min-width: var(--toque);
+  padding: 0 1rem;
+  border: 1px solid rgba(244, 236, 224, 0.5);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--sobre-verde);
+  font: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.ampliacao-palco {
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+.ampliacao-palco img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  cursor: zoom-in;
+}
+.ampliacao.is-real .ampliacao-palco { display: block; }
+.ampliacao.is-real .ampliacao-palco img { max-width: none; max-height: none; cursor: zoom-out; }
+.ampliacao-legenda {
+  padding: 0.6rem 1rem;
+  padding-bottom: max(0.8rem, env(safe-area-inset-bottom));
+  font-size: 0.95rem;
+  color: var(--sobre-verde);
+}
+.ampliacao-legenda .ref { color: var(--sobre-verde-suave); }
+
+/* ---------- Crônicas e perfis (layout cronica) ---------- */
+.cronica, .causo {
+  max-width: var(--coluna);
+  margin: 0 auto;
+  padding: 0 0 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+.cronica-header, .causo-header { text-align: center; }
+.cronica-header h1, .causo-header h1 {
+  font-size: 2rem;
+  margin: 0 0 0.4rem;
+  text-align: center;
+}
+.cronica-subtitle, .causo-subtitle {
+  margin: 0 0 2.4rem;
+  font-style: italic;
+  color: var(--texto-suave);
+  font-size: 1.1rem;
+  text-align: center;
+}
+.cronica-header::after, .causo-header::after {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  margin: 0 auto 2.4rem;
+  border-top: 1px solid var(--bronze);
+}
+.cronica-body h3 {
+  text-align: center;
+  color: var(--acento-texto);
+  font-size: 1.3rem;
+  margin: 3rem 0 1.6rem;
+  letter-spacing: 0.06em;
+}
+.cronica-body p, .causo-body p { margin: 0 0 1.4rem; hyphens: auto; }
+.cronica-body blockquote {
+  margin: 2.2rem 0;
+  padding: 1.1rem 1.3rem;
+  border-left: 3px solid var(--bronze);
+  border-radius: 0 var(--raio) var(--raio) 0;
+  background: var(--papel-claro);
+  font-style: italic;
+  font-size: 1.05rem;
+}
+.cronica-footnote {
+  margin-top: 3rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--borda);
+  font-size: 0.95rem;
+  color: var(--texto-suave);
+  line-height: 1.6;
+}
+.cronica-acoes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 3rem 0 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--borda);
+  clear: both;
+}
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  max-width: 22rem;
+  min-height: var(--toque);
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--acento);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--acento-texto);
+  font-family: var(--serifa);
+  font-size: 1.05rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+.botao:hover { background: rgba(156, 107, 60, 0.08); text-decoration: none; }
+
+.causo { --acento: var(--terra); --acento-texto: var(--terra); }
+.causo-tag {
+  display: inline-block;
+  margin-bottom: 1.1rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px dashed var(--terra);
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terra);
+}
+.causo-body p:first-of-type::first-letter {
+  float: left;
+  padding: 0.05em 0.1em 0 0;
+  font-size: 2.7rem;
+  line-height: 0.82;
+  color: var(--terra);
+}
+
+/* ---------- Página inicial ---------- */
+.pagina-cheia { display: block; }
+
+/* Pano de fundo: fica preso ao topo enquanto os cartões sobem por cima dele
+   (sticky — background-attachment: fixed falha no navegador móvel). */
+.pano { position: relative; }
+.pano-fundo {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  height: 70vh;
+  height: 70svh;
+  min-height: 22rem;
+  overflow: hidden;
+}
+.pano-fundo picture, .pano-fundo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.pano-fundo img {
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+.pano-palavras {
+  position: absolute;
+  top: 1.2rem;
+  right: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: right;
+}
+.pano-palavras li {
+  padding: 0.35rem 0 0.35rem 1.2rem;
+  font-size: 1.55rem;
+  line-height: 1.2;
+  color: var(--verde-profundo);
+}
+.pano-palavras li + li { border-top: 1px solid rgba(30, 58, 47, 0.45); }
+
+.pano-conteudo {
+  position: relative;
+  z-index: 1;
+  background: var(--papel);
+  border-top: 1px solid var(--borda);
+  padding: 1.25rem 1rem 0.5rem;
+}
+
+.destinos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+.destino {
+  display: grid;
+  grid-template-columns: 7.2rem 1fr;
+  align-items: stretch;
+  min-height: 8.5rem;
+  background: var(--papel-claro);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  overflow: hidden;
+  color: var(--texto);
+  text-decoration: none;
+}
+.destino:hover { border-color: var(--acento); text-decoration: none; }
+.destino-imagem {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-right: 3px solid var(--acento);
+}
+.destino-texto {
+  position: relative;
+  padding: 0.85rem 2.2rem 0.9rem 0.9rem;
+}
+.destino-texto h2 {
+  margin: 0 0 0.3rem;
+  font-size: 1.3rem;
+  color: var(--texto);
+}
+.destino-texto p {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.45;
+  color: var(--texto-suave);
+}
+.destino-seta {
+  position: absolute;
+  right: 0.8rem;
+  bottom: 0.7rem;
+  color: var(--acento-texto);
+  font-size: 1.2rem;
+}
+
+/* Faixa da paisagem a bico de pena */
+.faixa {
+  position: relative;
+  margin-top: 2rem;
+  background: var(--papel);
+  text-align: center;
+}
+.faixa img {
+  display: block;
+  width: 100%;
+  max-width: 100rem;
+  margin: 0 auto;
+}
+.faixa-frase {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding: 0.6rem 1rem 0;
+  max-width: 38rem;
+  font-style: italic;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--texto);
+}
+.faixa-frase::after {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  margin: 0.6rem auto 0;
+  border-top: 1px solid var(--bronze);
+}
+
+/* ---------- Rodapé ---------- */
+.site-footer {
+  background: var(--verde-profundo);
+  color: var(--sobre-verde);
+  padding: 2rem 1rem;
+  padding-bottom: max(2rem, env(safe-area-inset-bottom));
+  text-align: center;
+}
+.site-footer-nome {
+  margin: 0;
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.site-footer-linha {
+  margin: 0.3rem 0 1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sobre-verde-suave);
+}
+.site-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--toque);
+  padding: 0 0.8rem;
+  color: var(--sobre-verde-suave);
+  font-size: 0.95rem;
+}
+.site-footer a:hover { color: var(--sobre-verde); }
+
+/* ---------- Tablet ---------- */
+@media (min-width: 720px) {
+  body { font-size: 1.125rem; }
+  h1 { font-size: 2.3rem; }
+  .page-content { padding: 2.8rem 1.5rem 4rem; }
+  .home-grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+  .cronica-header h1, .causo-header h1 { font-size: 2.4rem; }
+
+  .pano-palavras { top: 2rem; right: 2rem; }
+  .pano-palavras li { font-size: 2rem; }
+  .faixa-frase { padding-top: 1.2rem; font-size: 1.2rem; }
+}
+
+/* ---------- Computador ---------- */
+@media (min-width: 1000px) {
+  .site-header-barra { padding: 0.5rem 1.5rem; min-height: 4.2rem; }
+  .marca-nome { font-size: 1.45rem; }
+  .menu { display: none; }
+  .menu-largo { display: block; }
+  .menu-largo .menu-lista { display: flex; gap: 0.4rem; }
+  .menu-largo .menu-lista a { padding: 0 0.8rem; font-size: 1.05rem; }
+  .menu-largo .menu-lista a:hover { text-decoration: underline; text-underline-offset: 6px; }
+
+  .home-grid { grid-template-columns: repeat(3, 1fr); }
+
+  .pano-fundo { height: 70vh; height: 70svh; }
+  .pano-fundo img { object-position: 50% 40%; }
+  .pano-palavras { top: 2.5rem; right: 3rem; }
+  .pano-palavras li { font-size: 2.3rem; }
+  .pano-conteudo { padding: 2rem 1.5rem 0.5rem; }
+
+  .destinos { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .destino {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: 0;
+  }
+  .destino-imagem {
+    aspect-ratio: 16 / 10;
+    height: auto;
+    border-right: none;
+    border-bottom: 3px solid var(--acento);
+  }
+  .destino-texto { padding: 1.1rem 2.6rem 1.3rem 1.2rem; }
+  .destino-texto h2 { font-size: 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

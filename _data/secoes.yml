@@ -1,0 +1,50 @@
+# Fonte única dos destinos do site.
+# O menu do cabeçalho e os cartões da página inicial leem esta lista.
+# Para acrescentar uma família: um item novo aqui + a página de destino.
+#
+# chave        identificador curto (sem espaço)
+# nome         como aparece no menu e no cartão
+# descricao    texto do cartão
+# imagem       caminho da imagem do cartão (estética, sem legenda)
+# imagem_w/h   tamanho real do arquivo, evita salto de layout
+# imagem_alt   descrição curta da imagem
+# url          destino do cartão e do menu (o mesmo)
+# acento       nome de uma cor de assets/css/site.css (bronze, salvia-escura, verde-profundo…)
+# ordem        posição no menu e na home
+# publicado    false esconde do menu e da home
+
+- chave: rucker
+  nome: Família Rücker
+  descricao: "Da Silésia para o Brasil. História, registros, fotografias e descendência."
+  imagem: /assets/img/home/card-rucker.jpg
+  imagem_w: 900
+  imagem_h: 514
+  imagem_alt: "Fotografia em sépia de uma família reunida diante de uma casa"
+  url: /familia.html
+  acento: bronze
+  ordem: 1
+  publicado: true
+
+- chave: musskopf
+  nome: Família Musskopf
+  descricao: "Raízes alemãs, imigração e história da família no Brasil."
+  imagem: /assets/img/home/card-musskopf.jpg
+  imagem_w: 900
+  imagem_h: 675
+  imagem_alt: "Fotografia colorida de uma família reunida"
+  url: /musskopf.html
+  acento: salvia-escura
+  ordem: 2
+  publicado: true
+
+- chave: caderno
+  nome: Caderno de ideias
+  descricao: "Artigos e reflexões sobre economia, política, história, filosofia, livros e outros temas."
+  imagem: /assets/img/home/card-caderno.jpg
+  imagem_w: 900
+  imagem_h: 325
+  imagem_alt: "Caderno aberto sobre a mesa, com livros, globo e caneta-tinteiro"
+  url: /caderno.html
+  acento: verde-profundo
+  ordem: 3
+  publicado: true

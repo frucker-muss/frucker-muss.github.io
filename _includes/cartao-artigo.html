@@ -1,0 +1,10 @@
+{%- comment -%}
+  Cartão de artigo (índices de crônicas, pessoas, causos, hubs de família).
+  Parâmetros: url, titulo, resumo, selo (opcional), acento (opcional: nome de cor do site.css).
+  Uso: {% include cartao-artigo.html url="/familia/arvore.html" titulo="Árvore" resumo="…" selo="Interativo" %}
+{%- endcomment -%}
+<a class="card cartao-artigo" href="{{ include.url | relative_url }}"{% if include.acento %} style="--acento: var(--{{ include.acento }});"{% endif %}>
+  {%- if include.selo %}<span class="selo">{{ include.selo }}</span>{% endif %}
+  <h3>{{ include.titulo }}</h3>
+  {%- if include.resumo %}<p>{{ include.resumo }}</p>{% endif %}
+</a>

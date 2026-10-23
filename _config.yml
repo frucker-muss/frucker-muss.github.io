@@ -5,6 +5,12 @@ url: "https://rucker.life"
 
 # Único canal de contato/contribuição do acervo
 contato_email: acervorucker@gmail.com
+
+# Identidade visual — textos do cabeçalho, rodapé e home (um lugar só)
+marca: "Rücker.life"
+marca_linha: "Genealogia · História · Memória"
+palavras_pano: ["Histórias", "Família", "Memória", "Devaneios"]
+frase_faixa: "Memórias não são apenas lembranças,<br>mas pontes entre o que fomos e o que ainda podemos compreender."
 baseurl: ""
 
 markdown: kramdown
