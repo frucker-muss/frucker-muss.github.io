@@ -12,40 +12,31 @@ description: "O percurso geográfico real da família Rücker, de um vale da Sil
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" defer></script>
 <style>
 .rkg{
-  --ouro:#d4af6a;
-  --sage:#8a9e86;
-  --terra:#c0714f;
-  --azul:#4a7f9e;
-  --mudo:#b0ab9e;
-  --soft:#b8b2a3;
-  --claro:#f2efe6;
-  --borda:#2a2a2a;
-  --superficie:#1a1a1a;
-  --pergaminho:#e7dcc2;
+        --azul:#4a7f9e;
+            --pergaminho:#e7dcc2;
   --pergaminho-escuro:#cdbd94;
   --tinta:#3a2c1a;
-  --mono:ui-monospace,"SFMono-Regular","Roboto Mono",Menlo,Consolas,monospace;
-  color:#e8e4da;
+    color:var(--texto);
 }
 .rkg *{box-sizing:border-box;}
 .rkg p,.rkg h2,.rkg h3{margin:0;padding:0;}
-.rkg-intro{color:#b8b2a3;max-width:640px;margin:0 auto 1.8rem;text-align:center;font-size:1.1rem;}
+.rkg-intro{color:var(--texto-suave);max-width:640px;margin:0 auto 1.8rem;text-align:center;font-size:1.1rem;}
 
 /* ---------- Camadas + legenda ---------- */
 .rkg-controles{display:flex;flex-direction:column;gap:.7rem;align-items:center;margin:0 auto 1.4rem;max-width:820px;}
 .rkg-camadas{display:flex;flex-wrap:wrap;gap:.5rem .8rem;justify-content:center;}
-.rkg-camada{display:flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:0.7rem;
-  letter-spacing:.02em;color:var(--soft);background:#161616;border:1px solid var(--borda);
+.rkg-camada{display:flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:0.85rem;
+  letter-spacing:.02em;color:var(--soft);background:var(--papel);border:1px solid var(--borda);
   border-radius:999px;padding:.4rem .8rem .4rem .6rem;cursor:pointer;user-select:none;
   transition:border-color .2s ease,color .2s ease;}
 .rkg-camada:hover{border-color:var(--camada-cor,var(--ouro));}
 .rkg-camada input{accent-color:var(--camada-cor,var(--ouro));width:14px;height:14px;margin:0;cursor:pointer;}
 .rkg-camada i{width:9px;height:9px;border-radius:50%;background:var(--camada-cor,var(--ouro));flex:0 0 9px;}
 .rkg-camada[data-off="1"]{opacity:.45;}
-.rkg-camada-nota{font-size:0.62rem;color:var(--mudo);font-style:italic;margin-left:.15rem;}
+.rkg-camada-nota{font-size:0.8rem;color:var(--mudo);font-style:italic;margin-left:.15rem;}
 
 .rkg-legenda{display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;justify-content:center;
-  font-family:var(--mono);font-size:0.66rem;color:var(--mudo);}
+  font-family:var(--mono);font-size:0.8rem;color:var(--mudo);}
 .rkg-legenda span{display:flex;align-items:center;gap:.4rem;}
 .rkg-traco{width:20px;height:0;flex:0 0 20px;border-top-width:3px;border-top-style:solid;}
 .rkg-traco.tracejado{border-top-style:dashed;border-top-width:2px;}
@@ -55,7 +46,7 @@ description: "O percurso geográfico real da família Rücker, de um vale da Sil
 .rkg-palco{display:grid;grid-template-columns:1.5fr 1fr;gap:0;border:1px solid var(--borda);
   border-radius:10px;overflow:hidden;background:var(--superficie);}
 .rkg-carta{position:relative;padding:.7rem;border-right:1px solid var(--borda);
-  background:linear-gradient(135deg,#2b2213,#1c160c);}
+  background:var(--papel-claro);}
 .rkg-moldura{position:relative;border:2px solid var(--pergaminho-escuro);border-radius:4px;
   overflow:hidden;box-shadow:inset 0 0 40px rgba(0,0,0,.55);}
 #rkgMap{width:100%;height:560px;filter:sepia(.55) saturate(1.35) contrast(1.08) brightness(.93) hue-rotate(-6deg);}
@@ -67,50 +58,50 @@ description: "O percurso geográfico real da família Rücker, de um vale da Sil
 .rkg-cartucho{position:absolute;top:.9rem;left:.9rem;z-index:3;background:rgba(231,220,194,.92);
   border:1px solid var(--tinta);border-radius:3px;padding:.4rem .7rem;pointer-events:none;
   box-shadow:0 2px 8px rgba(0,0,0,.4);}
-.rkg-cartucho b{display:block;font-family:Georgia,serif;font-size:.78rem;letter-spacing:.06em;
+.rkg-cartucho b{display:block;font-family:Georgia,serif;font-size:0.85rem;letter-spacing:.06em;
   text-transform:uppercase;color:var(--tinta);line-height:1.3;}
-.rkg-cartucho span{display:block;font-family:var(--mono);font-size:.6rem;color:#5a4a30;margin-top:.15rem;}
+.rkg-cartucho span{display:block;font-family:var(--mono);font-size:0.8rem;color:#5a4a30;margin-top:.15rem;}
 .rkg-rosa{position:absolute;bottom:.8rem;right:.8rem;z-index:3;width:52px;height:52px;opacity:.85;
   pointer-events:none;filter:drop-shadow(0 1px 3px rgba(0,0,0,.5));}
 .rkg-acoes{position:absolute;bottom:.8rem;left:.8rem;z-index:3;display:flex;gap:.4rem;}
-.rkg-acao-btn{font-family:var(--mono);font-size:.62rem;letter-spacing:.04em;text-transform:uppercase;
-  background:rgba(18,18,18,.85);border:1px solid var(--borda);color:var(--soft);border-radius:6px;
-  padding:.35rem .55rem;cursor:pointer;transition:border-color .2s,color .2s;}
+.rkg-acao-btn{font-family:var(--mono);font-size:0.8rem;letter-spacing:.04em;text-transform:uppercase;
+  background:rgba(253,248,233,.94);border:1px solid var(--borda);color:var(--texto);border-radius:6px;
+  padding:.35rem .7rem;min-height:44px;cursor:pointer;transition:border-color .2s,color .2s;}
 .rkg-acao-btn:hover,.rkg-acao-btn:focus-visible{border-color:var(--ouro);color:var(--ouro);}
 
 .rkg-tooltip{position:fixed;z-index:50;pointer-events:none;background:rgba(231,220,194,.97);
   border:1px solid var(--tinta);border-radius:4px;padding:.4rem .6rem;max-width:220px;
-  font-family:Georgia,serif;font-size:.78rem;color:var(--tinta);line-height:1.4;
+  font-family:Georgia,serif;font-size:0.85rem;color:var(--tinta);line-height:1.4;
   box-shadow:0 3px 10px rgba(0,0,0,.45);opacity:0;transition:opacity .12s ease;}
 .rkg-tooltip.on{opacity:1;}
 .rkg-tooltip b{display:block;font-size:.85rem;}
-.rkg-tooltip s{display:block;text-decoration:none;font-family:var(--mono);font-size:.6rem;
+.rkg-tooltip s{display:block;text-decoration:none;font-family:var(--mono);font-size:0.8rem;
   letter-spacing:.05em;text-transform:uppercase;color:#5a4a30;margin-top:.15rem;}
 
 .rkg-dir{padding:1.2rem 1.1rem 1.3rem;min-height:280px;}
-.rkg-selo{display:inline-block;margin-bottom:.8rem;font-family:var(--mono);font-size:0.6rem;
+.rkg-selo{display:inline-block;margin-bottom:.8rem;font-family:var(--mono);font-size:0.8rem;
   letter-spacing:.1em;text-transform:uppercase;border-radius:4px;padding:2px 7px;
   color:var(--ouro);border:1px solid var(--ouro);}
-.rkg-ctx{font-size:0.93rem;color:var(--soft);line-height:1.65;}
+.rkg-ctx{font-size:1.0625rem;color:var(--soft);line-height:1.65;}
 .rkg-ctx+.rkg-ctx{margin-top:.6rem;}
 .rkg-vazio{color:var(--mudo);font-size:0.9rem;font-style:italic;}
 .rkg-nome{font-family:Georgia,serif;font-size:1.3rem;color:var(--claro);margin:0 0 .2rem;}
-.rkg-sub{font-family:var(--mono);font-size:0.68rem;color:var(--mudo);margin-bottom:1rem;}
+.rkg-sub{font-family:var(--mono);font-size:0.8rem;color:var(--mudo);margin-bottom:1rem;}
 .rkg-anoevento{font-size:0.85rem;color:var(--ouro);margin-bottom:.8rem;font-style:italic;}
 
 .rkg-secao{margin-top:3rem;}
 .rkg-secao h2{font-family:Georgia,serif;font-size:1.6rem;color:var(--claro);margin:0 0 .4rem;text-align:center;}
 .rkg-secao-nota{font-size:0.95rem;color:var(--mudo);max-width:620px;margin:0 auto 1.6rem;text-align:center;line-height:1.6;}
 .rkg-metodo{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.8rem;}
-.rkg-cartao{display:block;background:#161616;border:1px solid var(--borda);border-radius:10px;
-  padding:0.9rem 1rem;text-decoration:none;color:#e8e4da;
+.rkg-cartao{display:block;background:var(--papel);border:1px solid var(--borda);border-radius:10px;
+  padding:0.9rem 1rem;text-decoration:none;color:var(--texto);
   transition:border-color .2s ease,transform .2s ease;}
-.rkg-cartao:hover{border-color:var(--ouro);transform:translateY(-2px);}
-.rkg-cartao s{display:block;text-decoration:none;font-family:var(--mono);font-size:0.62rem;
+.rkg-cartao:hover{border-color:var(--ouro);}
+.rkg-cartao s{display:block;text-decoration:none;font-family:var(--mono);font-size:0.8rem;
   letter-spacing:.1em;text-transform:uppercase;color:var(--ouro);margin-bottom:.35rem;font-weight:bold;}
 .rkg-cartao b{display:block;font-family:Georgia,serif;font-size:1.05rem;font-weight:normal;
   color:var(--claro);line-height:1.25;margin-bottom:.3rem;}
-.rkg-cartao span{display:block;font-size:0.85rem;line-height:1.5;color:var(--soft);}
+.rkg-cartao span{display:block;font-size:1rem;line-height:1.5;color:var(--soft);}
 
 @media (max-width:820px){
   .rkg-palco{grid-template-columns:1fr;}
@@ -127,16 +118,16 @@ description: "O percurso geográfico real da família Rücker, de um vale da Sil
 
   <div class="rkg-controles">
     <div class="rkg-camadas" id="rkgCamadas">
-      <label class="rkg-camada" data-grupo="europa" style="--camada-cor:#b0ab9e;">
+      <label class="rkg-camada" data-grupo="europa" style="--camada-cor:var(--texto-suave);">
         <input type="checkbox" checked><i></i>Europa
       </label>
       <label class="rkg-camada" data-grupo="travessia" style="--camada-cor:#4a7f9e;">
         <input type="checkbox" checked><i></i>Travessia Atlântica
       </label>
-      <label class="rkg-camada" data-grupo="rs" style="--camada-cor:#c0714f;">
+      <label class="rkg-camada" data-grupo="rs" style="--camada-cor:var(--terra);">
         <input type="checkbox" checked><i></i>Assentamento RS
       </label>
-      <label class="rkg-camada" data-grupo="expansao" style="--camada-cor:#8a9e86;">
+      <label class="rkg-camada" data-grupo="expansao" style="--camada-cor:var(--sage);">
         <input type="checkbox" checked><i></i>Expansão SC/PR/MT
         <span class="rkg-camada-nota">(SC/PR documentados — MT pendente)</span>
       </label>
@@ -196,10 +187,6 @@ description: "O percurso geográfico real da família Rücker, de um vale da Sil
         <s>Versão anterior</s><b>Diagrama esquemático</b>
         <span>A versão anterior deste mapa, sem geografia real — mantida como referência.</span>
       </a>
-      <a class="rkg-cartao" href="mailto:{{ site.contato_email }}?subject=Acervo%20R%C3%BCcker%20%E2%80%94%20mapa&amp;body=Pessoa%3A%0AInforma%C3%A7%C3%A3o%2Fcorre%C3%A7%C3%A3o%3A%0AFonte%3A%0A%0A(anexe%20documentos%20ou%20fotos)">
-        <s>Colaborar</s><b>Falta documento</b>
-        <span>Reconheceu um nome, tem foto ou correção? O acervo aceita contribuições.</span>
-      </a>
     </div>
   </div>
 
@@ -213,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
 (function(){
 "use strict";
 
-var COR_RAMO = { comum:"#d4af6a", rs:"#c0714f", pr:"#8a9e86" };
+var COR_RAMO = { comum:"#85582d", rs:"#a14f2c", pr:"#5a6e56" };
 var GRUPO_LABEL = { europa:"Europa", travessia:"Travessia Atlântica", rs:"Assentamento RS", expansao:"Expansão SC/PR/MT" };
 var MODO = {
   pe:      { cor:"#7a6a52", label:"A pé" },

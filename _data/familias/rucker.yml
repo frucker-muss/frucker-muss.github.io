@@ -1,0 +1,30 @@
+# Página da Família Rücker (familia.html, layout acervo).
+# Para acrescentar uma seção: um item novo em "secoes".
+nome: Família Rücker
+intro: "Registros documentais, trajetórias e crônicas da imigração da família Rücker, desde a região da Silésia no século XVIII até o sul do Brasil."
+secoes:
+  - titulo: "Árvore Genealógica"
+    url: /familia/arvore.html
+    resumo: "Seis gerações navegáveis, de Georg (1789) à pesquisa de hoje — com fonte e grau de certeza em cada informação."
+  - titulo: "Mapa das Migrações"
+    url: /familia/mapa.html
+    resumo: "Cinco etapas narradas, de um vale da Silésia em 1816 aos dois destinos no sul do Brasil — com meio de transporte e distância de cada trecho."
+  - titulo: "Documentos"
+    url: /familia/documentos.html
+    resumo: "Acervo visual: retratos de família, sepulturas e documentos escritos, com grau de certeza de cada leitura."
+  - titulo: "Pessoas"
+    url: /familia/pessoas.html
+    resumo: "Perfis individuais — quem foi cada um, em detalhe: origem, trajetória e fontes documentais."
+  - titulo: "Crônicas"
+    url: /familia/cronicas.html
+    resumo: "Reconstruções narrativas da vida de cada personagem — pontes entre o dado documental e a experiência vivida."
+  - titulo: "Causos"
+    url: /familia/causos.html
+    resumo: "Histórias de colônia, contadas de boca em boca — o primeiro causo já no ar."
+  - titulo: "Escutas"
+    url: /familia/escutas.html
+    resumo: "Áudio para ouvir junto. O primeiro: o caderno do professor Siegmund Rücker na Campanha de Nacionalização."
+ferramenta:
+  texto: "Tem uma foto com várias pessoas? Marque quem é quem direto nela antes de enviar — é mais rápido que descrever por escrito."
+  rotulo: "Marcar pessoas na foto"
+  url: /ferramentas/marcador.html

@@ -1,0 +1,26 @@
+---
+layout: default
+---
+{%- comment -%}
+  Página de família, alimentada por _data/familias/<page.familia>.yml.
+  Uma família nova reusa esta estrutura: crie o .yml, a página com
+  "layout: acervo" e "familia: <chave>", e o item em _data/secoes.yml.
+{%- endcomment -%}
+{%- assign f = site.data.familias[page.familia] -%}
+<h1>{{ f.nome }}</h1>
+<p class="texto-intro">{{ f.intro }}</p>
+
+<div class="home-grid">
+  {%- for s in f.secoes %}
+  {% include cartao-artigo.html url=s.url titulo=s.titulo resumo=s.resumo %}
+  {%- endfor %}
+</div>
+
+{{ content }}
+
+{%- if f.nota %}
+<p class="texto-intro nota-acervo">{{ f.nota }}</p>
+{%- endif %}
+{%- if f.ferramenta %}
+<p class="texto-intro nota-acervo">{{ f.ferramenta.texto }}<br><a href="{{ f.ferramenta.url | relative_url }}">{{ f.ferramenta.rotulo }} →</a></p>
+{%- endif %}

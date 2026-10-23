@@ -9,92 +9,92 @@ sitemap: false
 <style>
   .al-wrap { max-width: 900px; margin: 0 auto; padding: 0 1rem; }
   .al-kicker {
-    font-family: ui-monospace, monospace; font-size: .72rem;
-    letter-spacing: .18em; text-transform: uppercase; color: #d4af6a; margin: 0 0 1rem;
+    font-family: ui-monospace, monospace; font-size: 0.85rem;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--ouro); margin: 0 0 1rem;
   }
   .al-titulo {
     font-family: Georgia, 'Times New Roman', serif;
     font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.1;
-    color: #f2efe6; margin: 0 0 1.1rem; font-weight: normal;
+    color: var(--texto); margin: 0 0 1.1rem; font-weight: normal;
   }
-  .al-linha { width: 56px; height: 2px; background: #d4af6a; margin: 0 0 1.6rem; }
+  .al-linha { width: 56px; height: 2px; background: var(--ouro); margin: 0 0 1.6rem; }
   .al-lead {
     font-family: Georgia, serif; font-size: clamp(1.05rem, 2.4vw, 1.28rem);
-    line-height: 1.65; color: #b8b2a3; max-width: 38rem; margin: 0 0 1.2rem;
+    line-height: 1.65; color: var(--texto-suave); max-width: 38rem; margin: 0 0 1.2rem;
   }
   .al-wrap p { font-family: Georgia, serif; font-size: 1.05rem; line-height: 1.75;
-    color: #d8d3c6; max-width: 38rem; margin: 0 0 1.15rem; }
+    color: var(--texto); max-width: 38rem; margin: 0 0 1.15rem; }
   .al-sec { margin: 4rem 0 0; }
   .al-sec h2 {
     font-family: Georgia, serif; font-weight: normal;
-    font-size: clamp(1.4rem, 3.4vw, 1.95rem); color: #f2efe6;
+    font-size: clamp(1.4rem, 3.4vw, 1.95rem); color: var(--texto);
     margin: 0 0 .35rem; border: 0; padding: 0;
   }
   .al-sub {
-    font-family: ui-monospace, monospace; font-size: .72rem; letter-spacing: .18em;
-    color: #b0ab9e; text-transform: uppercase; margin: 0 0 1.6rem;
+    font-family: ui-monospace, monospace; font-size: 0.85rem; letter-spacing: .18em;
+    color: var(--texto-suave); text-transform: uppercase; margin: 0 0 1.6rem;
   }
 
   /* linhagem vertical */
   .al-linhagem { margin: 2rem 0 2.5rem; padding: 0; list-style: none; }
   .al-linhagem li {
     position: relative; padding: 0 0 1.6rem 1.6rem;
-    border-left: 1px solid #2a2a2a; max-width: 38rem;
+    border-left: 1px solid var(--borda); max-width: 38rem;
   }
   .al-linhagem li:last-child { border-left-color: transparent; padding-bottom: 0; }
   .al-linhagem li::before {
     content: ''; position: absolute; left: -5px; top: .45rem;
     width: 9px; height: 9px; border-radius: 50%;
-    background: #121212; border: 1px solid #b0ab9e;
+    background: var(--papel); border: 1px solid var(--texto-suave);
   }
-  .al-linhagem li.destaque::before { background: #d4af6a; border-color: #d4af6a; }
-  .al-nome { font-family: Georgia, serif; font-size: 1.18rem; color: #f2efe6; }
-  .al-linhagem li.destaque .al-nome { color: #d4af6a; }
+  .al-linhagem li.destaque::before { background: var(--ouro); border-color: var(--ouro); }
+  .al-nome { font-family: Georgia, serif; font-size: 1.18rem; color: var(--texto); }
+  .al-linhagem li.destaque .al-nome { color: var(--ouro); }
   .al-meta {
-    font-family: ui-monospace, monospace; font-size: .74rem; color: #b0ab9e;
+    font-family: ui-monospace, monospace; font-size: 0.85rem; color: var(--texto-suave);
     margin-top: .25rem; line-height: 1.6;
   }
-  .al-nota { font-family: Georgia, serif; font-size: .98rem; color: #b8b2a3;
+  .al-nota { font-family: Georgia, serif; font-size: .98rem; color: var(--texto-suave);
     margin-top: .45rem; line-height: 1.6; }
 
-  .al-destaque { border-left: 2px solid #d4af6a; padding: .2rem 0 .2rem 1.4rem;
+  .al-destaque { border-left: 2px solid var(--ouro); padding: .2rem 0 .2rem 1.4rem;
     margin: 2.5rem 0; max-width: 38rem; }
-  .al-destaque p { font-size: 1.2rem; line-height: 1.6; color: #f2efe6; margin: 0; }
+  .al-destaque p { font-size: 1.2rem; line-height: 1.6; color: var(--texto); margin: 0; }
 
   .al-cards { display: grid; gap: .8rem;
     grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin: 2rem 0; padding: 0; list-style: none; }
-  .al-cards li { border: 1px solid #2a2a2a; background: #1a1a1a; border-radius: 8px; padding: 1rem; }
-  .al-cards strong { font-family: Georgia, serif; font-weight: normal; font-size: 1.12rem; color: #f2efe6; display: block; }
-  .al-cards span { font-family: ui-monospace, monospace; font-size: .7rem; letter-spacing: .08em;
-    text-transform: uppercase; color: #b0ab9e; display: block; margin-top: .35rem; line-height: 1.6; }
+  .al-cards li { border: 1px solid var(--borda); background: var(--papel-claro); border-radius: 8px; padding: 1rem; }
+  .al-cards strong { font-family: Georgia, serif; font-weight: normal; font-size: 1.12rem; color: var(--texto); display: block; }
+  .al-cards span { font-family: ui-monospace, monospace; font-size: 0.85rem; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--texto-suave); display: block; margin-top: .35rem; line-height: 1.6; }
 
   .al-ger { margin: 1.6rem 0 2.2rem; }
-  .al-ger h3 { font-family: ui-monospace, monospace; font-size: .74rem; letter-spacing: .16em;
-    text-transform: uppercase; color: #d4af6a; margin: 0 0 .1rem; font-weight: normal; }
-  .al-ger .al-aviso { font-family: Georgia, serif; font-size: .92rem; color: #b0ab9e; margin: 0 0 .7rem; }
-  .al-ger .al-lista { font-family: Georgia, serif; font-size: 1.08rem; color: #d8d3c6; line-height: 1.9; margin: 0; max-width: 38rem; }
+  .al-ger h3 { font-family: ui-monospace, monospace; font-size: 0.85rem; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--ouro); margin: 0 0 .1rem; font-weight: normal; }
+  .al-ger .al-aviso { font-family: Georgia, serif; font-size: .92rem; color: var(--texto-suave); margin: 0 0 .7rem; }
+  .al-ger .al-lista { font-family: Georgia, serif; font-size: 1.08rem; color: var(--texto); line-height: 1.9; margin: 0; max-width: 38rem; }
 
   .al-perg { counter-reset: q; margin: 2rem 0; padding: 0; list-style: none; }
   .al-perg li {
     counter-increment: q; position: relative; padding: 1.1rem 0 1.1rem 3rem;
-    border-top: 1px solid #2a2a2a; max-width: 40rem;
+    border-top: 1px solid var(--borda); max-width: 40rem;
   }
-  .al-perg li:last-child { border-bottom: 1px solid #2a2a2a; }
+  .al-perg li:last-child { border-bottom: 1px solid var(--borda); }
   .al-perg li::before {
     content: counter(q, decimal-leading-zero); position: absolute; left: 0; top: 1.15rem;
-    font-family: ui-monospace, monospace; font-size: .8rem; color: #d4af6a;
+    font-family: ui-monospace, monospace; font-size: .8rem; color: var(--ouro);
   }
   .al-perg strong { font-family: Georgia, serif; font-weight: normal; font-size: 1.1rem;
-    color: #f2efe6; display: block; margin-bottom: .3rem; }
-  .al-perg p { font-size: .99rem; color: #b8b2a3; margin: 0; max-width: none; }
+    color: var(--texto); display: block; margin-bottom: .3rem; }
+  .al-perg p { font-size: .99rem; color: var(--texto-suave); margin: 0; max-width: none; }
 
-  .al-ressalva { margin: 4.5rem 0 2rem; padding: 1.5rem; border: 1px solid #2a2a2a;
-    border-radius: 10px; background: rgba(212,175,106,.04); }
-  .al-ressalva p { font-size: .98rem; color: #b8b2a3; margin: 0 0 .8rem; max-width: none; }
+  .al-ressalva { margin: 4.5rem 0 2rem; padding: 1.5rem; border: 1px solid var(--borda);
+    border-radius: 10px; background: rgba(156, 107, 60,.04); }
+  .al-ressalva p { font-size: .98rem; color: var(--texto-suave); margin: 0 0 .8rem; max-width: none; }
   .al-ressalva p:last-child { margin: 0; }
-  .al-ressalva a { color: #d4af6a; }
-  .al-previa { font-family: ui-monospace, monospace; font-size: .72rem; letter-spacing: .1em;
-    color: #c0714f; border: 1px solid rgba(192,113,79,.4); border-radius: 6px;
+  .al-ressalva a { color: var(--ouro); }
+  .al-previa { font-family: ui-monospace, monospace; font-size: 0.85rem; letter-spacing: .1em;
+    color: var(--terra); border: 1px solid rgba(161, 79, 44,.4); border-radius: 6px;
     padding: .5rem .8rem; display: inline-block; margin-bottom: 2.5rem; }
 </style>
 
@@ -220,7 +220,7 @@ sitemap: false
 
   <div class="al-ressalva">
     <p>Esta página existe por causa de <strong>Augusto Jaeger</strong>, que foi até lá, sentou à mesa, perguntou e mandou tudo para casa. O que está aqui é dele.</p>
-    <p>Publicamos mesmo com pontas soltas, e deixamos as dúvidas à vista em vez de escondê-las — é assim que alguém pode dizer que está errado e a gente corrige. Se você sabe uma data, reconhece um nome ou lembra de outra versão, escreva para o acervo: <a href="mailto:{{ site.contato_email }}">fale com a gente</a>.</p>
+    <p>Publicamos mesmo com pontas soltas, e deixamos as dúvidas à vista em vez de escondê-las — é assim que alguém pode dizer que está errado e a gente corrige. Se você sabe uma data, reconhece um nome ou lembra de outra versão, escreva para o acervo pelo link “Contribua”, no fim da página.</p>
   </div>
 
 </div>

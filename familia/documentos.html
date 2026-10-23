@@ -9,24 +9,13 @@ description: "Retratos, sepulturas e documentos escritos que sustentam a árvore
 </p>
 
 <style>
-.rkd{
-  --ouro:#d4af6a;
-  --sage:#8a9e86;
-  --terra:#c0714f;
-  --mudo:#b0ab9e;
-  --soft:#b8b2a3;
-  --claro:#f2efe6;
-  --borda:#2a2a2a;
-  --superficie:#1a1a1a;
-  --mono:ui-monospace,"SFMono-Regular","Roboto Mono",Menlo,Consolas,monospace;
-  color:#e8e4da;
-}
+.rkd{color:var(--texto);}
 .rkd *{box-sizing:border-box;}
 .rkd p,.rkd h2,.rkd h3{margin:0;padding:0;}
-.rkd-intro{color:#b8b2a3;max-width:620px;margin:0 auto 2rem;text-align:center;font-size:1.1rem;}
+.rkd-intro{color:var(--texto-suave);max-width:620px;margin:0 auto 2rem;text-align:center;font-size:1.1rem;}
 
 .rkd-abas{display:flex;justify-content:center;flex-wrap:wrap;gap:0.5rem;margin:0 auto 2rem;}
-.rkd-aba{font-family:var(--mono);font-size:0.78rem;letter-spacing:.03em;text-transform:uppercase;
+.rkd-aba{font-family:var(--mono);font-size:0.85rem;min-height:48px;letter-spacing:.03em;text-transform:uppercase;
   background:transparent;color:var(--mudo);border:1px solid var(--borda);border-radius:999px;
   padding:0.5rem 1.1rem;cursor:pointer;transition:border-color .2s ease,color .2s ease;}
 .rkd-aba:hover{color:var(--soft);border-color:var(--soft);}
@@ -46,30 +35,32 @@ description: "Retratos, sepulturas e documentos escritos que sustentam a árvore
 
 .rkd-card{position:relative;display:block;width:100%;padding:0;text-align:left;
   font-family:inherit;color:inherit;background:var(--superficie);border:1px solid var(--borda);
-  border-radius:10px;overflow:hidden;cursor:pointer;transition:border-color .2s ease,transform .2s ease;}
-.rkd-card:hover,.rkd-card:focus-visible{border-color:var(--ouro);transform:translateY(-2px);}
+  border-radius:10px;overflow:hidden;cursor:pointer;transition:border-color .2s ease;}
+.rkd-card:hover,.rkd-card:focus-visible{border-color:var(--ouro);}
 .rkd-card:focus-visible{outline:2px solid var(--ouro);outline-offset:2px;}
 
-.rkd-thumb{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#0f0f0f;}
+.rkd-thumb{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;padding:6px;background:var(--papel-claro);} /* contain: miniatura nunca corta rostos */
 
 .rkd-card-rodape{display:block;padding:0.6rem 0.7rem;}
-.rkd-subcat-card{display:block;font-family:var(--mono);font-size:0.62rem;letter-spacing:.05em;
+.rkd-subcat-card{display:block;font-family:var(--mono);font-size:0.85rem;letter-spacing:.05em;
   text-transform:uppercase;color:var(--mudo);margin-bottom:0.3rem;}
-.rkd-legenda-card{display:block;font-size:0.84rem;color:var(--soft);line-height:1.4;}
+.rkd-legenda-card{display:block;font-size:0.95rem;color:var(--soft);line-height:1.4;}
 .rkd-status-card{display:flex;align-items:center;gap:0.4rem;margin-top:0.35rem;font-size:0.84rem;color:var(--mudo);}
 .rkd-status-card .rkd-ponto{width:7px;height:7px;flex:0 0 7px;}
 
 /* ---------- Lightbox ---------- */
-.rkd-lightbox{position:fixed;inset:0;background:rgba(8,8,8,.94);z-index:1000;
+.rkd-lightbox{position:fixed;inset:0;background:rgba(30,58,47,.97);z-index:1000;
+  /* visualizador escuro (verde profundo): tokens claros só aqui dentro */
+  --claro:var(--sobre-verde);--soft:var(--sobre-verde-suave);--mudo:var(--sobre-verde-suave);--ouro:#e3c49b;
   display:none;flex-direction:column;}
 .rkd-lightbox[aria-hidden="false"]{display:flex;}
 .rkd-lb-topo{display:flex;justify-content:space-between;align-items:center;
   padding:0.9rem 1.1rem;gap:1rem;flex:0 0 auto;}
 .rkd-lb-titulo{font-family:Georgia,serif;color:var(--claro);font-size:1.05rem;line-height:1.3;}
 .rkd-lb-acoes{display:flex;gap:0.5rem;flex:0 0 auto;}
-.rkd-lb-btn{font-family:var(--mono);font-size:0.72rem;background:transparent;color:var(--soft);
-  border:1px solid rgba(212,175,106,.4);border-radius:6px;padding:0.35rem 0.75rem;cursor:pointer;}
-.rkd-lb-btn:hover{border-color:#d4af6a;color:#d4af6a;}
+.rkd-lb-btn{font-family:var(--mono);font-size:0.85rem;min-height:48px;background:transparent;color:var(--soft);
+  border:1px solid rgba(156, 107, 60,.4);border-radius:6px;padding:0.35rem 0.75rem;cursor:pointer;}
+.rkd-lb-btn:hover{border-color:var(--ouro);color:var(--ouro);}
 
 .rkd-lb-palco{position:relative;flex:1 1 auto;overflow:hidden;display:flex;
   align-items:center;justify-content:center;touch-action:none;cursor:grab;min-height:0;}
@@ -82,12 +73,12 @@ description: "Retratos, sepulturas e documentos escritos que sustentam a árvore
 .rkd-lb-marcador-wrap{position:absolute;width:0;height:0;transform:translate(-50%,-50%);}
 .rkd-lb-marcador-halo{position:absolute;left:50%;top:50%;width:54px;height:54px;
   transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;
-  background:radial-gradient(circle,rgba(212,175,106,.55) 0%,rgba(212,175,106,0) 70%);
+  background:radial-gradient(circle,rgba(156, 107, 60,.55) 0%,rgba(156, 107, 60,0) 70%);
   opacity:0;transition:opacity .2s ease;}
 .rkd-lb-marcador-wrap:hover .rkd-lb-marcador-halo,
 .rkd-lb-marcador-wrap.ativo .rkd-lb-marcador-halo{opacity:1;}
 .rkd-lb-marcador{position:absolute;left:50%;top:50%;width:12px;height:12px;margin:0;padding:0;border:none;
-  border-radius:50%;background:#d4af6a;opacity:.6;cursor:pointer;pointer-events:auto;
+  border-radius:50%;background:var(--ouro);opacity:.6;cursor:pointer;pointer-events:auto;
   transform:translate(-50%,-50%);transition:opacity .15s ease,transform .15s ease;}
 .rkd-lb-marcador:hover,.rkd-lb-marcador:focus-visible{opacity:.95;transform:translate(-50%,-50%) scale(1.3);}
 .rkd-lb-marcador:focus-visible{outline:2px solid var(--claro);outline-offset:2px;}
@@ -97,61 +88,60 @@ description: "Retratos, sepulturas e documentos escritos que sustentam a árvore
   border:1.5px solid transparent;border-radius:5px;cursor:pointer;pointer-events:auto;
   transition:border-color .15s ease, background-color .15s ease;}
 .rkd-lb-area:hover, .rkd-lb-area.ativa, .rkd-lb-area:focus-visible{
-  border-color:var(--ouro);background:rgba(212,175,106,.14);}
+  border-color:var(--ouro);background:rgba(156, 107, 60,.14);}
 .rkd-lb-area:focus-visible{outline:2px solid var(--claro);outline-offset:1px;}
 
+.rkd-lb-pessoa-painel,.rkd-sug{--claro:var(--texto);--soft:var(--texto-suave);--mudo:var(--texto-suave);--ouro:var(--acento-texto);}
 .rkd-lb-pessoa-painel{flex:0 0 auto;max-height:0;opacity:0;overflow:hidden;
-  background:#211e1a;border-top:1px solid #2a2a2a;border-left:3px solid #d4af6a;
+  background:var(--papel-claro);border-top:1px solid var(--borda);border-left:3px solid var(--ouro);
   padding:0 1.1rem;color:var(--soft);font-size:0.9rem;
   transition:max-height .2s ease,opacity .2s ease,padding .2s ease;}
 .rkd-lb-pessoa-painel.visivel{max-height:220px;opacity:1;padding:0.9rem 1.1rem;}
 .rkd-lb-pessoa-painel h4{font-family:Georgia,serif;font-size:1.05rem;color:var(--claro);margin:0 0 .2rem;}
 
-.rkd-lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(18,18,18,.65);
-  border:1px solid var(--borda);color:var(--soft);width:42px;height:42px;border-radius:50%;
+.rkd-lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(30,58,47,.75);
+  border:1px solid var(--borda);color:var(--soft);width:48px;height:48px;border-radius:50%;
   font-size:1.5rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;}
-.rkd-lb-nav:hover{border-color:#d4af6a;color:#d4af6a;}
+.rkd-lb-nav:hover{border-color:var(--ouro);color:var(--ouro);}
 .rkd-lb-nav:disabled{opacity:0.2;cursor:default;}
 .rkd-lb-prev{left:1rem;}
 .rkd-lb-next{right:1rem;}
 
-.rkd-lb-legenda{flex:0 0 auto;text-align:center;color:var(--mudo);font-size:0.85rem;
+.rkd-lb-legenda{flex:0 0 auto;text-align:center;color:var(--mudo);font-size:1rem;
   padding:0.8rem 1.1rem 0.4rem;max-width:640px;margin:0 auto;}
 
-.rkd-lb-status{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:var(--mudo);
+.rkd-lb-status{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.85rem;color:var(--mudo);
   margin-left:0.6rem;vertical-align:middle;}
 .rkd-lb-status .rkd-ponto{width:7px;height:7px;}
 
 /* Lote 2c — identificação no celular */
 .rkd-lb-quem{flex:0 0 auto;padding:0.55rem 1rem 1rem;display:flex;justify-content:center;}
 .rkd-lb-quem-btn{min-height:52px;width:100%;max-width:420px;font-family:Georgia,serif;font-size:1.1rem;
-  background:rgba(212,175,106,.12);color:var(--claro);border:1px solid var(--ouro);border-radius:10px;
+  background:rgba(156, 107, 60,.12);color:var(--claro);border:1px solid var(--ouro);border-radius:10px;
   cursor:pointer;padding:0.7rem 1rem;}
-.rkd-lb-quem-btn:hover{background:rgba(212,175,106,.2);}
+.rkd-lb-quem-btn:hover{background:rgba(156, 107, 60,.2);}
 
-.rkd-sug{display:none;flex:0 0 auto;background:#211e1a;border-top:1px solid #2a2a2a;padding:1rem 1.1rem 1.3rem;}
+.rkd-sug{display:none;flex:0 0 auto;background:var(--papel-claro);border-top:1px solid var(--borda);padding:1rem 1.1rem 1.3rem;}
 .rkd-sug.aberta{display:block;}
 .rkd-sug h3{font-family:Georgia,serif;font-size:1.2rem;color:var(--claro);margin:0 0 0.35rem;text-align:center;}
 .rkd-sug p{color:var(--soft);font-size:0.95rem;line-height:1.45;text-align:center;margin:0 0 0.85rem;}
-.rkd-sug-foto{font-family:var(--mono);font-size:0.72rem;color:var(--mudo);text-align:center;margin:0 0 0.8rem;}
+.rkd-sug-foto{font-family:var(--mono);font-size:0.85rem;color:var(--mudo);text-align:center;margin:0 0 0.8rem;}
 .rkd-sug input{display:block;width:100%;max-width:420px;margin:0 auto 0.8rem;min-height:52px;
   font-size:16px;font-family:Georgia,serif;padding:0.7rem 0.85rem;border-radius:8px;
-  border:1px solid var(--borda);background:#121212;color:var(--claro);}
+  border:1px solid var(--borda);background:var(--papel);color:var(--claro);}
 .rkd-sug-acoes{display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;max-width:420px;margin:0 auto;}
 .rkd-sug-acoes button,.rkd-sug-acoes a{min-height:52px;flex:1 1 140px;font-size:1rem;font-family:Georgia,serif;
   border-radius:10px;padding:0.65rem 0.8rem;cursor:pointer;text-align:center;text-decoration:none;
   display:flex;align-items:center;justify-content:center;}
-.rkd-sug-enviar{background:var(--ouro);color:#121212;border:none;font-weight:bold;}
+.rkd-sug-enviar{background:var(--ouro);color:var(--papel);border:none;font-weight:bold;}
 .rkd-sug-naosei{background:transparent;color:var(--soft);border:1px solid var(--borda);}
 .rkd-sug-cancelar{background:transparent;color:var(--mudo);border:1px dashed var(--borda);flex-basis:100%;}
 .rkd-sug-codigo{font-family:var(--mono);font-size:1.35rem;letter-spacing:.08em;color:var(--ouro);
   text-align:center;margin:0.4rem 0 0.8rem;word-break:break-all;}
-.rkd-sug-mail{background:var(--ouro);color:#121212;border:none;font-weight:bold;}
-.rkd-sug-form{background:transparent;color:var(--ouro);border:1px solid var(--ouro);}
+.rkd-sug-mail{background:var(--ouro);color:var(--papel);border:none;font-weight:bold;}
 
 @media (max-width:480px){
   .rkd-grade{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:0.7rem;}
-  .rkd-lb-nav{width:36px;height:36px;font-size:1.25rem;}
   .rkd-lb-titulo{font-size:0.92rem;}
 }
 @media (prefers-reduced-motion:reduce){.rkd *{transition:none!important;}}
@@ -164,9 +154,9 @@ description: "Retratos, sepulturas e documentos escritos que sustentam a árvore
 
   <div id="rkdGalerias"></div>
 
-  <p style="text-align:center;margin-top:2.8rem;"><a href="{{ '/familia.html' | relative_url }}">← Voltar para Família</a></p>
+  <p class="voltar"><a href="{{ '/familia.html' | relative_url }}">← Voltar para Família</a></p>
 
-  <p style="text-align: center; font-size: 0.85rem; color: var(--mudo); margin-top: 1rem;">
+  <p class="link-discreto">
     <a href="{{ '/familia/metodologia.html' | relative_url }}">Notas de desambiguação e metodologia de pesquisa →</a>
   </p>
 

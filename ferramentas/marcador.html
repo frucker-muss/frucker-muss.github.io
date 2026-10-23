@@ -1,29 +1,21 @@
 ---
+layout: default
+title: "Marcador de Fotos"
+robots: "noindex, nofollow"
 sitemap: false
 ---
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta name="robots" content="noindex, nofollow">
-<meta charset="UTF-8">
-<title>Marcador de Fotos · Acervo Rücker</title>
 <style>
-  :root{
-    --ouro:#d4af6a; --sage:#8a9e86; --terra:#c0714f; --mudo:#b0ab9e;
-    --soft:#b8b2a3; --claro:#f2efe6; --borda:#2a2a2a; --superficie:#1a1a1a;
-    --fundo:#121212;
-  }
+  
   *{box-sizing:border-box;}
-  body{background:var(--fundo);color:#e8e4da;font-family:ui-monospace,"SFMono-Regular","Roboto Mono",Menlo,Consolas,monospace;margin:0;padding:1.5rem;}
-  h1{font-family:Georgia,serif;color:var(--claro);font-size:1.4rem;margin:0 0 .3rem;}
-  .sub{color:var(--soft);font-size:.85rem;margin:0 0 1.5rem;max-width:680px;}
+  .marcador h1{font-size:1.6rem;margin:0 0 .3rem;text-align:left;}
+  .sub{color:var(--soft);font-size:1rem;margin:0 0 1.5rem;max-width:680px;}
   .layout{display:grid;grid-template-columns:1fr 380px;gap:1.5rem;align-items:start;}
   @media (max-width:900px){.layout{grid-template-columns:1fr;}}
   .painel{background:var(--superficie);border:1px solid var(--borda);border-radius:10px;padding:1rem;}
   .campo{margin-bottom:.8rem;}
-  .campo label{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;color:var(--mudo);margin-bottom:.25rem;}
+  .campo label{display:block;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em;color:var(--mudo);margin-bottom:.25rem;}
   .campo input, .campo select, .campo textarea{
-    width:100%;background:#0f0f0f;border:1px solid var(--borda);color:var(--claro);
+    width:100%;background:var(--papel);border:1px solid var(--borda);color:var(--claro);
     padding:.5rem;border-radius:6px;font-family:inherit;font-size:.85rem;
   }
   .campo textarea{resize:vertical;min-height:60px;}
@@ -31,31 +23,31 @@ sitemap: false
   .drop:hover, .drop:active{border-color:var(--ouro);color:var(--soft);}
   #stage{position:relative;display:inline-block;max-width:100%;line-height:0;user-select:none;touch-action:none;}
   #img{max-width:100%;display:block;cursor:crosshair;border-radius:6px;-webkit-user-drag:none;touch-action:none;}
-  .caixa{position:absolute;border:2px solid var(--ouro);background:rgba(212,175,106,.15);
+  .caixa{position:absolute;border:2px solid var(--ouro);background:rgba(156, 107, 60,.15);
     box-sizing:border-box;cursor:pointer;}
-  .caixa .numero{position:absolute;top:-1px;left:-1px;background:var(--ouro);color:#1a1a1a;
-    font-size:.65rem;font-weight:bold;padding:0 4px;line-height:1.4;}
-  .caixa .apagar{position:absolute;top:-1px;right:-1px;background:var(--terra);color:#fff;
-    font-size:.65rem;font-weight:bold;width:16px;height:16px;line-height:16px;text-align:center;
+  .caixa .numero{position:absolute;top:-1px;left:-1px;background:var(--ouro);color:var(--papel-claro);
+    font-size:0.8rem;font-weight:bold;padding:0 4px;line-height:1.4;}
+  .caixa .apagar{position:absolute;top:-1px;right:-1px;background:var(--terra);color:var(--papel);
+    font-size:0.8rem;font-weight:bold;width:16px;height:16px;line-height:16px;text-align:center;
     cursor:pointer;}
-  .caixa-temp{position:absolute;border:2px dashed var(--claro);background:rgba(242,239,230,.12);
+  .caixa-temp{position:absolute;border:2px dashed var(--claro);background:rgba(44, 42, 38,.12);
     box-sizing:border-box;pointer-events:none;}
-  .lista-pessoa{background:#0f0f0f;border:1px solid var(--borda);border-radius:6px;padding:.6rem;margin-bottom:.5rem;}
+  .lista-pessoa{background:var(--papel);border:1px solid var(--borda);border-radius:6px;padding:.6rem;margin-bottom:.5rem;}
   .lista-pessoa .linha{display:flex;gap:.4rem;margin-bottom:.35rem;}
   .lista-pessoa input{flex:1;}
-  .lista-pessoa .del{flex:0 0 auto;background:var(--terra);border:none;color:#fff;border-radius:5px;padding:0 .6rem;cursor:pointer;}
-  .coords{font-size:.68rem;color:var(--mudo);}
-  button.acao{background:var(--ouro);color:#1a1a1a;border:none;border-radius:6px;padding:.6rem 1rem;
+  .lista-pessoa .del{flex:0 0 auto;background:var(--terra);border:none;color:var(--papel);border-radius:5px;padding:0 .6rem;cursor:pointer;}
+  .coords{font-size:.8rem;color:var(--mudo);}
+  button.acao{background:var(--ouro);color:var(--papel-claro);border:none;border-radius:6px;padding:.6rem 1rem;
     font-family:inherit;font-weight:bold;cursor:pointer;font-size:.85rem;}
   button.acao:hover{opacity:.85;}
   button.secundaria{background:transparent;border:1px solid var(--borda);color:var(--soft);}
-  #saida{width:100%;min-height:280px;background:#0f0f0f;border:1px solid var(--borda);color:var(--sage);
-    padding:.8rem;border-radius:6px;font-size:.78rem;white-space:pre;overflow:auto;}
+  #saida{font-family:var(--mono);font-family:var(--mono);width:100%;min-height:280px;background:var(--papel);border:1px solid var(--borda);color:var(--sage);
+    padding:.8rem;border-radius:6px;font-size:0.85rem;white-space:pre;overflow:auto;}
   .contador{color:var(--ouro);font-weight:bold;}
-  .dica{font-size:.78rem;color:var(--mudo);margin:.5rem 0;}
+  .dica{font-size:.95rem;color:var(--mudo);margin:.5rem 0;}
 </style>
-</head>
-<body>
+
+<div class="marcador">
 
 <h1>Marcador de Fotos — Acervo Rücker</h1>
 <p class="sub">Suba a foto, clique e arraste um retângulo em volta de cada pessoa (do jeito que você recorta uma área numa foto). Digite o nome na lista ao lado. Clique rápido sem arrastar também funciona (cria uma caixa padrão pra ajustar depois). No final, clique em "Gerar código" e cole no array ITENS do documentos.html. Nada sai do seu navegador.</p>
@@ -114,18 +106,17 @@ sitemap: false
 
     <textarea id="saida" style="display:none;" readonly></textarea>
 
-    <div id="passoFinal" style="display:none;margin-top:1rem;padding:.8rem;background:#0f0f0f;border:1px solid var(--ouro);border-radius:8px;">
+    <div id="passoFinal" style="display:none;margin-top:1rem;padding:.8rem;background:var(--papel);border:1px solid var(--ouro);border-radius:8px;">
       <p style="font-size:.8rem;color:var(--soft);margin:0 0 .6rem;line-height:1.5;">
         <strong style="color:var(--ouro);">Falta só enviar:</strong><br>
         1. Cole o código copiado no corpo do e-mail.<br>
         2. Anexe a foto original (sem tratamento nenhum) ao e-mail.<br>
         3. Envie — o Nando recebe e cuida do resto.
       </p>
-      <a href="mailto:{{ site.contato_email }}?subject=Marca%C3%A7%C3%A3o%20de%20pessoas%20na%20foto&amp;body=Cole%20aqui%20o%20c%C3%B3digo%20copiado%3A%0A%0A(anexe%20a%20foto%20original)" style="text-decoration:none;">
-        <button class="acao" style="width:100%;">Enviar por e-mail ({{ site.contato_email }}) →</button>
-      </a>
+      <a class="botao" href="mailto:{{ site.contato_email }}?subject=Marca%C3%A7%C3%A3o%20de%20pessoas%20na%20foto&amp;body=Cole%20aqui%20o%20c%C3%B3digo%20copiado%3A%0A%0A(anexe%20a%20foto%20original)">Enviar por e-mail →</a>
     </div>
   </div>
+</div>
 </div>
 
 <script>
@@ -335,5 +326,3 @@ sitemap: false
   });
 })();
 </script>
-</body>
-</html>

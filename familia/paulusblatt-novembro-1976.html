@@ -7,8 +7,8 @@ description: "Transcrição e tradução dos dois textos assinados por Rückers 
 
 <style>
   .pb-ficha {
-    background: #1a1a1a;
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+    background: var(--papel-claro);
+    box-shadow: 0 0 0 1px rgba(44, 42, 38,0.08);
     border-radius: 10px;
     padding: 1.1rem 1.2rem;
     margin: 1.8rem 0 2.2rem;
@@ -16,10 +16,10 @@ description: "Transcrição e tradução dos dois textos assinados por Rückers 
   .pb-ficha p {
     margin: 0 0 0.5rem;
     font-family: -apple-system, sans-serif;
-    font-size: 0.72rem;
+    font-size: 0.85rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #d4af6a;
+    color: var(--ouro);
   }
   .pb-ficha dl {
     margin: 0;
@@ -31,13 +31,13 @@ description: "Transcrição e tradução dos dois textos assinados por Rückers 
   }
   .pb-ficha dt {
     font-family: -apple-system, sans-serif;
-    font-size: 0.74rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #b0ab9e;
+    color: var(--texto-suave);
     padding-top: 0.2rem;
   }
-  .pb-ficha dd { margin: 0; color: #f2efe6; }
+  .pb-ficha dd { margin: 0; color: var(--texto); }
   @media (max-width: 30rem) {
     .pb-ficha dl { grid-template-columns: 1fr; gap: 0; }
     .pb-ficha dd { margin-bottom: 0.6rem; }
@@ -45,8 +45,8 @@ description: "Transcrição e tradução dos dois textos assinados por Rückers 
 
   .pb-orig {
     margin: 2rem 0 2.5rem;
-    border-top: 1px solid #2a2a2a;
-    border-bottom: 1px solid #2a2a2a;
+    border-top: 1px solid var(--borda);
+    border-bottom: 1px solid var(--borda);
     padding: 0.2rem 0;
   }
   .pb-orig summary {
@@ -56,16 +56,16 @@ description: "Transcrição e tradução dos dois textos assinados por Rückers 
     font-size: 0.8rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #b0ab9e;
+    color: var(--texto-suave);
     list-style: none;
   }
   .pb-orig summary::-webkit-details-marker { display: none; }
-  .pb-orig summary::before { content: "+ "; color: #d4af6a; }
+  .pb-orig summary::before { content: "+ "; color: var(--ouro); }
   .pb-orig[open] summary::before { content: "− "; }
-  .pb-orig summary:hover { color: #f2efe6; }
+  .pb-orig summary:hover { color: var(--texto); }
   .pb-orig-corpo {
     padding: 0.3rem 0 1.3rem;
-    color: #b8b2a3;
+    color: var(--texto-suave);
     font-size: 1rem;
     line-height: 1.65;
   }
@@ -75,19 +75,19 @@ description: "Transcrição e tradução dos dois textos assinados por Rückers 
     display: block;
     margin: 1.6rem 0;
     font-family: -apple-system, sans-serif;
-    font-size: 0.7rem;
+    font-size: 0.85rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #b0ab9e;
-    border-top: 1px solid #2a2a2a;
+    color: var(--texto-suave);
+    border-top: 1px solid var(--borda);
     padding-top: 1.2rem;
   }
 
   .pb-nota {
-    color: #b8b2a3;
+    color: var(--texto-suave);
     font-size: 0.96rem;
     line-height: 1.6;
-    border-left: 2px solid #2a2a2a;
+    border-left: 2px solid var(--borda);
     padding-left: 1rem;
     margin: 1.6rem 0;
   }
@@ -95,19 +95,19 @@ description: "Transcrição e tradução dos dois textos assinados por Rückers 
   .pb-ressalva {
     margin: 3rem 0 0;
     padding: 1.2rem 1.3rem;
-    background: #1a1a1a;
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+    background: var(--papel-claro);
+    box-shadow: 0 0 0 1px rgba(44, 42, 38,0.08);
     border-radius: 10px;
-    color: #b8b2a3;
+    color: var(--texto-suave);
     font-size: 0.96rem;
     line-height: 1.6;
   }
-  .pb-ressalva strong { color: #f2efe6; }
+  .pb-ressalva strong { color: var(--texto); }
 
   .pb-fonte {
     font-family: -apple-system, sans-serif;
     font-size: 0.85rem;
-    color: #b0ab9e;
+    color: var(--texto-suave);
     line-height: 1.6;
     margin: 2.5rem 0 0;
   }
@@ -253,4 +253,4 @@ description: "Transcrição e tradução dos dois textos assinados por Rückers 
   Exemplar do acervo da família, com carimbo de Paulo Renato Rücker, Estrela–RS.
 </p>
 
-<p style="font-size: 1.05rem; margin-top: 2rem;"><a href="{{ '/familia.html' | relative_url }}">← Voltar para Família</a></p>
+<p class="voltar"><a href="{{ '/familia.html' | relative_url }}">← Voltar para Família</a></p>

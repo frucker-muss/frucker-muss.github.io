@@ -37,9 +37,16 @@
   /* Acento padrão (cada família/seção troca via --acento) */
   --acento: var(--bronze);
   --acento-texto: var(--bronze-texto);
+}
 
-  /* Apelidos dos nomes antigos usados nas páginas internas
-     (árvore, mapa, documentos, metodologia…). Não usar em código novo. */
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+/* Apelidos dos nomes antigos usados nas páginas internas (árvore, mapa,
+   documentos, metodologia…). Ficam no body, não no :root, para seguirem o
+   --acento de cada família. Não usar em código novo. */
+body {
   --ouro: var(--acento-texto);
   --claro: var(--texto);
   --soft: var(--texto-suave);
@@ -47,10 +54,6 @@
   --superficie: var(--papel-claro);
   --sage: var(--salvia-escura);
 }
-
-/* ---------- Base ---------- */
-*, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
@@ -706,3 +709,35 @@ figcaption .ref, .legenda .ref {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* ---------- Páginas de texto documental (Travessia, Pessoas, Mapa Musskopf…) ----------
+   Classes m-* e muss-* vieram das páginas Musskopf; usam o acento da família. */
+.m-wrap { max-width: var(--coluna); margin: 0 auto; }
+.m-lead { max-width: 38rem; margin: 0 auto 2.4rem; font-size: 1.15rem; line-height: 1.6; color: var(--texto-suave); text-align: center; }
+.m-h2 { margin: 3rem 0 1.4rem; font-size: 1.4rem; color: var(--acento-texto); text-align: center; letter-spacing: 0.04em; }
+.m-body p { margin: 0 0 1.3rem; hyphens: auto; }
+.m-body em { color: var(--texto-suave); }
+.m-dado { font-family: var(--mono); font-size: 0.9em; color: var(--acento-texto); }
+.m-quadro { margin: 1.8rem 0; padding: 1.1rem 1.3rem; background: var(--papel-claro); border: 1px solid var(--borda); border-left: 3px solid var(--acento); border-radius: var(--raio); }
+.m-quadro h4, .m-quadro h2.m-quadro-tit { margin: 0 0 0.6rem; font-size: 0.85rem; line-height: 1.4; text-align: left; text-transform: uppercase; letter-spacing: 0.1em; color: var(--texto-suave); }
+.m-quadro ul { margin: 0; padding-left: 1.1rem; }
+.m-quadro li { margin-bottom: 0.4rem; font-size: 1rem; line-height: 1.5; }
+.m-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.m-tabela { width: 100%; border-collapse: collapse; margin: 1.6rem 0; font-size: 1rem; }
+.m-tabela th { padding: 0.5rem 0.6rem 0.5rem 0; border-bottom: 1px solid var(--borda); font-size: 0.8rem; text-align: left; text-transform: uppercase; letter-spacing: 0.08em; color: var(--texto-suave); }
+.m-tabela td { padding: 0.55rem 0.6rem 0.55rem 0; border-bottom: 1px solid var(--borda); vertical-align: top; line-height: 1.45; }
+.m-pendente { margin: 1.6rem 0; padding-left: 0.9rem; border-left: 2px solid var(--borda); font-size: 1rem; font-style: italic; line-height: 1.55; color: var(--texto-suave); }
+.m-ressalva { margin-top: 3rem; padding-top: 1.3rem; border-top: 1px solid var(--borda); text-align: center; }
+.m-ressalva p { max-width: 34rem; margin: 0 auto 0.7rem; font-size: 1rem; line-height: 1.55; color: var(--texto-suave); }
+.m-voltar, .muss-voltar { margin-top: 2.4rem; text-align: center; }
+.m-voltar a, .muss-voltar a { display: inline-flex; align-items: center; min-height: var(--toque); }
+
+.muss-stub { max-width: 40rem; margin: 0 auto; text-align: center; }
+.muss-kicker { display: inline-block; margin-bottom: 1.2rem; padding: 0.3rem 0.7rem; border: 1px dashed var(--acento); border-radius: 4px; font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--acento-texto); }
+.muss-lead { margin: 0 auto 1.6rem; font-size: 1.15rem; line-height: 1.6; color: var(--texto-suave); }
+.muss-nota { margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid var(--borda); font-size: 1rem; line-height: 1.6; color: var(--texto-suave); }
+.nota-acervo { margin-top: 2.5rem; font-size: 1rem; }
+
+/* Link secundário discreto (ex.: metodologia ao fim da árvore) */
+.link-discreto { width: 100%; margin-top: 3rem; text-align: center; font-size: 0.95rem; }
+.link-discreto a { color: var(--texto-suave); text-decoration-color: var(--borda); }

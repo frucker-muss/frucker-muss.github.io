@@ -1,0 +1,27 @@
+# Página da Família Musskopf (musskopf.html, layout acervo).
+nome: Família Musskopf
+intro: "Registros documentais, trajetórias e crônicas da imigração da família Musskopf, dos registros paroquiais do Palatinado renano no século XVII até o sul do Brasil."
+secoes:
+  - titulo: "Árvore Genealógica"
+    url: /musskopf/arvore.html
+    resumo: "Gerações navegáveis, de Nickel Muskopf à pesquisa de hoje — com fonte e grau de certeza em cada informação."
+  - titulo: "Mapa das Migrações"
+    url: /musskopf/mapa.html
+    resumo: "De uma aldeia do Palatinado a três destinos: o Brasil em 1828, os Estados Unidos em 1837, e os que permaneceram na Alemanha."
+  - titulo: "Documentos"
+    url: /musskopf/documentos.html
+    resumo: "Acervo visual: retratos de família, sepulturas e documentos escritos, com grau de certeza de cada leitura."
+  - titulo: "Pessoas"
+    url: /musskopf/pessoas.html
+    resumo: "Perfis individuais — quem foi cada um, em detalhe: origem, trajetória e fontes documentais."
+  - titulo: "Crônicas"
+    url: /musskopf/cronicas.html
+    resumo: "Reconstruções narrativas da vida de cada personagem — pontes entre o dado documental e a experiência vivida."
+  - titulo: "A Travessia"
+    url: /musskopf/travessia.html
+    resumo: "A chegada a São Leopoldo em 26 de maio de 1828 — a rota, a lista de desembarque e quem veio a bordo."
+nota: "Este acervo é trabalho em andamento, não palavra final. Onde as fontes divergem, publicamos a divergência em vez de escondê-la."
+ferramenta:
+  texto: "Tem uma foto com várias pessoas? Marque quem é quem direto nela antes de enviar — é mais rápido que descrever por escrito."
+  rotulo: "Marcar pessoas na foto"
+  url: /ferramentas/marcador.html

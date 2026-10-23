@@ -29,6 +29,9 @@
   <link rel="preload" as="image" href="{{ '/assets/img/home/fundo-migracoes.jpg' | relative_url }}" media="(min-aspect-ratio: 1/1)">
   {% endif %}
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+  {%- for c in page.css %}
+  <link rel="stylesheet" href="{{ '/assets/css/' | append: c | append: '.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+  {%- endfor %}
 </head>
 <body{% if page.acento %} style="--acento: var(--{{ page.acento }}); --acento-texto: var(--{{ page.acento }}{% if page.acento == 'bronze' %}-texto{% endif %});"{% endif %}>
   <a class="skip-link" href="#conteudo">Ir ao conteúdo</a>

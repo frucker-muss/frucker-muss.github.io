@@ -22,13 +22,13 @@ sitemap: false
     justify-content: center;
     padding-bottom: 1.4rem;
     margin-bottom: 2rem;
-    border-bottom: 1px solid #2a2a2a;
+    border-bottom: 1px solid var(--borda);
   }
 
   .sg-btn {
-    background: #1a1a1a;
-    color: #d4af6a;
-    border: 1px solid #d4af6a;
+    background: var(--papel-claro);
+    color: var(--ouro);
+    border: 1px solid var(--ouro);
     border-radius: 6px;
     padding: .7rem 1.1rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -37,33 +37,33 @@ sitemap: false
     cursor: pointer;
   }
 
-  .sg-btn:hover, .sg-btn:focus-visible { background: #2a2a2a; }
+  .sg-btn:hover, .sg-btn:focus-visible { background: var(--borda); }
 
   .sg-recado {
-    background: #1a1a1a;
-    border-left: 3px solid #d4af6a;
+    background: var(--papel-claro);
+    border-left: 3px solid var(--ouro);
     border-radius: 6px;
     padding: 1.2rem 1.5rem;
     margin-bottom: 2.6rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: .95em;
     line-height: 1.6;
-    color: #b8b2a3;
+    color: var(--texto-suave);
   }
 
   .sg-recado strong {
     display: block;
-    color: #d4af6a;
+    color: var(--ouro);
     margin-bottom: .4rem;
     font-size: 1.05em;
   }
 
   .sg-kicker {
     font-family: ui-monospace, monospace;
-    font-size: .72rem;
+    font-size: 0.85rem;
     letter-spacing: .18em;
     text-transform: uppercase;
-    color: #d4af6a;
+    color: var(--ouro);
     margin: 0 0 .9rem;
   }
 
@@ -71,7 +71,7 @@ sitemap: false
     font-family: Georgia, 'Times New Roman', serif;
     font-size: clamp(1.9rem, 5.5vw, 2.6rem);
     line-height: 1.2;
-    color: #f2efe6;
+    color: var(--texto);
     font-weight: normal;
     margin: 0 0 .6rem;
     text-wrap: balance;
@@ -79,61 +79,61 @@ sitemap: false
 
   .sg-subtitulo {
     font-style: italic;
-    color: #b8b2a3;
+    color: var(--texto-suave);
     margin: 0 0 2.4rem;
     font-size: 1.05em;
   }
 
   .sg-corpo p { margin: 0 0 1.5rem; line-height: 1.75; hyphens: auto; }
-  .sg-corpo em { color: #c9c3b4; }
+  .sg-corpo em { color: var(--texto-suave); }
 
   .sg-corpo blockquote {
-    border-left: 3px solid #d4af6a;
-    background: #1a1a1a;
+    border-left: 3px solid var(--ouro);
+    background: var(--papel-claro);
     border-radius: 6px;
     margin: 2.2rem 0;
     padding: 1.2rem 1.5rem;
     font-style: italic;
     font-size: .95em;
     line-height: 1.7;
-    color: #d8d3c5;
+    color: var(--texto);
   }
 
   .sg-credito {
     margin: 2.8rem 0 0;
     padding: 1.2rem 1.5rem;
-    background: rgba(212,175,106,.06);
-    border: 1px solid #2a2a2a;
+    background: rgba(156, 107, 60,.06);
+    border: 1px solid var(--borda);
     border-radius: 6px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: .92em;
     line-height: 1.65;
-    color: #b8b2a3;
+    color: var(--texto-suave);
   }
 
-  .sg-credito strong { color: #d4af6a; }
+  .sg-credito strong { color: var(--ouro); }
 
   .sg-perguntas {
     margin-top: 3rem;
     padding-top: 1.8rem;
-    border-top: 1px solid #2a2a2a;
+    border-top: 1px solid var(--borda);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: .92em;
-    color: #b8b2a3;
+    color: var(--texto-suave);
   }
 
-  .sg-perguntas h2 { font-size: 1.1em; color: #d4af6a; margin: 0 0 1rem; }
+  .sg-perguntas h2 { font-size: 1.1em; color: var(--ouro); margin: 0 0 1rem; }
   .sg-perguntas p { line-height: 1.65; }
   .sg-perguntas ul { padding-left: 1.3rem; margin: 0; }
   .sg-perguntas li { margin-bottom: .9rem; line-height: 1.6; }
-  .sg-perguntas strong { color: #e8e4da; }
+  .sg-perguntas strong { color: var(--texto); }
 
   @media print {
     .sg-controles, .sg-recado { display: none; }
     .sg-wrap { max-width: 100%; padding: 0; font-size: 12pt; }
     .sg-titulo, .sg-corpo blockquote, .sg-credito strong, .sg-perguntas h2, .sg-perguntas strong { color: #000; }
-    .sg-corpo blockquote, .sg-credito { background: none; border-left: 2px solid #777; border-top: 0; border-right: 0; border-bottom: 0; }
-    .sg-subtitulo, .sg-credito, .sg-perguntas { color: #333; }
+    .sg-corpo blockquote, .sg-credito { background: none; border-left: 2px solid var(--texto-suave); border-top: 0; border-right: 0; border-bottom: 0; }
+    .sg-subtitulo, .sg-credito, .sg-perguntas { color: var(--borda); }
   }
 </style>
 

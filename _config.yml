@@ -42,3 +42,10 @@ exclude:
 
 # Remova ou comente a linha abaixo para evitar sobreposição de estilos
 # theme: jekyll-theme-architect
+
+# Cor de acento por pasta (bronze = Rücker, salvia-escura = Musskopf)
+defaults:
+  - scope: { path: "familia" }
+    values: { acento: bronze }
+  - scope: { path: "musskopf" }
+    values: { acento: salvia-escura }

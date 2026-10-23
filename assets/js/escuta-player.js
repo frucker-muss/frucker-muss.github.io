@@ -106,7 +106,7 @@
       seek.value = t;
       const p = d > 0 ? (t / d) * 100 : 0;
       seek.style.background =
-        "linear-gradient(to right, #d4af6a " + p + "%, #2a2a2a " + p + "%)";
+        "linear-gradient(to right, #85582d " + p + "%, #d9cdb8 " + p + "%)";
     }
 
     function setPlaying(v) {

@@ -6,7 +6,8 @@ description: "Escuta compartilhada: o caderno de registros do professor Siegmund
 
 <style>
   .page-content { max-width: 1040px; padding-bottom: 7.5rem; }
-  .escuta { color: #e8e4da; }
+  .site-footer { padding-bottom: 7rem; } /* a barra fixa do player não cobre o "Contribua" */
+  .escuta { color: var(--texto); }
   .escuta-grid {
     display: grid;
     gap: 2.2rem;
@@ -19,50 +20,50 @@ description: "Escuta compartilhada: o caderno de registros do professor Siegmund
   .escuta-cover {
     width: 11rem;
     border-radius: 10px;
-    outline: 1px solid rgba(242, 239, 230, 0.1);
+    outline: 1px solid rgba(44, 42, 38, 0.1);
     outline-offset: -1px;
   }
   @media (min-width: 880px) { .escuta-cover { width: 100%; } }
   .escuta-kicker {
     margin: 1.2rem 0 0.35rem;
-    font-size: 0.7rem;
+    font-size: 0.85rem;
     font-weight: bold;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #d4af6a;
+    color: var(--ouro);
   }
   .escuta-side h1 {
     margin: 0.2rem 0 0;
     font-size: 1.85rem;
     line-height: 1.15;
-    color: #f2efe6;
+    color: var(--texto);
     text-align: inherit;
   }
   .escuta-sub {
     margin: 0.45rem 0 0;
     font-style: italic;
-    color: #b8b2a3;
+    color: var(--texto-suave);
     font-size: 1.05rem;
   }
   .escuta-lede {
     margin: 1rem 0 0;
-    color: #b8b2a3;
+    color: var(--texto-suave);
     font-size: 0.98rem;
     line-height: 1.55;
   }
   .escuta-meta {
     margin: 0.75rem 0 0;
     font-family: -apple-system, sans-serif;
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #b0ab9e;
+    color: var(--texto-suave);
   }
   .escuta-place {
     margin: 0.35rem 0 0;
     font-family: -apple-system, sans-serif;
     font-size: 0.82rem;
-    color: #b0ab9e;
+    color: var(--texto-suave);
     line-height: 1.4;
   }
   .escuta-play {
@@ -73,8 +74,8 @@ description: "Escuta compartilhada: o caderno de registros do professor Siegmund
     width: 100%;
     height: 3rem;
     margin-top: 1.4rem;
-    background: #d4af6a;
-    color: #121212;
+    background: var(--ouro);
+    color: var(--papel);
     border: 0;
     border-radius: 6px;
     font-family: -apple-system, sans-serif;
@@ -87,10 +88,10 @@ description: "Escuta compartilhada: o caderno de registros do professor Siegmund
   .escuta-chs p {
     margin: 0 0 0.6rem;
     font-family: -apple-system, sans-serif;
-    font-size: 0.68rem;
+    font-size: 0.8rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #b0ab9e;
+    color: var(--texto-suave);
   }
   .escuta-ch, .escuta-cue {
     display: flex;
@@ -99,28 +100,28 @@ description: "Escuta compartilhada: o caderno de registros do professor Siegmund
     text-align: left;
     background: transparent;
     border: 0;
-    color: #b8b2a3;
+    color: var(--texto-suave);
     padding: 0.55rem 0.5rem;
     border-radius: 6px;
     font: inherit;
   }
   .escuta-ch { justify-content: space-between; align-items: baseline; }
   .escuta-ch span:first-child { font-size: 0.92rem; line-height: 1.3; }
-  .escuta-ch.is-on, .escuta-cue.is-on { background: #222; color: #f2efe6; }
-  .escuta-ch:hover, .escuta-cue:hover { color: #f2efe6; text-decoration: none; }
+  .escuta-ch.is-on, .escuta-cue.is-on { background: var(--papel-claro); color: var(--texto); }
+  .escuta-ch:hover, .escuta-cue:hover { color: var(--texto); text-decoration: none; }
   .escuta-t {
     flex-shrink: 0;
     width: 2.6rem;
     font-family: -apple-system, sans-serif;
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     font-variant-numeric: tabular-nums;
-    color: #b0ab9e;
+    color: var(--texto-suave);
   }
   .escuta-card {
-    background: #1a1a1a;
+    background: var(--papel-claro);
     border-radius: 14px;
     padding: 1.3rem 1.25rem 1.2rem;
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+    box-shadow: 0 0 0 1px rgba(44, 42, 38,0.08);
     margin-bottom: 5.5rem;
   }
   @media (min-width: 880px) {
@@ -129,55 +130,55 @@ description: "Escuta compartilhada: o caderno de registros do professor Siegmund
   .escuta-card-kicker {
     margin: 0 0 0.7rem;
     font-family: -apple-system, sans-serif;
-    font-size: 0.68rem;
+    font-size: 0.8rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #d4af6a;
+    color: var(--ouro);
   }
   .escuta-caption {
     margin: 0;
     font-size: 1.28rem;
     line-height: 1.45;
-    color: #f2efe6;
+    color: var(--texto);
   }
   @media (min-width: 880px) { .escuta-caption { font-size: 1.55rem; min-height: 7.5rem; } }
   .escuta-voice {
     margin: 1rem 0 0;
     font-family: -apple-system, sans-serif;
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #b0ab9e;
+    color: var(--texto-suave);
   }
   .escuta-tabs {
     display: flex;
     gap: 0.2rem;
-    border-bottom: 1px solid #2a2a2a;
+    border-bottom: 1px solid var(--borda);
     margin: 1.4rem 0 0.8rem;
   }
   .escuta-tabs button {
     background: none;
     border: 0;
-    color: #b0ab9e;
+    color: var(--texto-suave);
     font-family: -apple-system, sans-serif;
     font-size: 0.82rem;
     padding: 0.75rem 0.85rem;
     position: relative;
   }
-  .escuta-tabs button.is-on { color: #f2efe6; }
+  .escuta-tabs button.is-on { color: var(--texto); }
   .escuta-tabs button.is-on::after {
     content: "";
     position: absolute;
     left: 0.85rem; right: 0.85rem; bottom: -1px;
     height: 1px;
-    background: #d4af6a;
+    background: var(--ouro);
   }
   .escuta-cue { align-items: flex-start; font-size: 1.02rem; line-height: 1.55; }
-  .escuta-after p { color: #b8b2a3; font-size: 1.08rem; line-height: 1.6; }
+  .escuta-after p { color: var(--texto-suave); font-size: 1.08rem; line-height: 1.6; }
   .escuta-q {
     list-style: none;
-    background: #1a1a1a;
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+    background: var(--papel-claro);
+    box-shadow: 0 0 0 1px rgba(44, 42, 38,0.08);
     border-radius: 10px;
     padding: 1rem 1.1rem;
     margin: 0 0 0.7rem;
@@ -185,17 +186,17 @@ description: "Escuta compartilhada: o caderno de registros do professor Siegmund
   .escuta-q span {
     display: block;
     font-family: -apple-system, sans-serif;
-    font-size: 0.68rem;
-    color: #d4af6a;
+    font-size: 0.8rem;
+    color: var(--ouro);
     margin-bottom: 0.35rem;
   }
-  .escuta-q p { margin: 0; color: #f2efe6; font-size: 1.08rem; }
+  .escuta-q p { margin: 0; color: var(--texto); font-size: 1.08rem; }
   .escuta-bar {
     position: fixed;
     left: 0; right: 0; bottom: 0;
     z-index: 40;
-    background: rgba(18,18,18,0.96);
-    border-top: 1px solid #2a2a2a;
+    background: rgba(250,245,236,0.97);
+    border-top: 1px solid var(--borda);
     padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom));
   }
   .escuta-bar-inner {
@@ -209,7 +210,7 @@ description: "Escuta compartilhada: o caderno de registros do professor Siegmund
     flex-shrink: 0;
     background: none;
     border: 0;
-    color: #b8b2a3;
+    color: var(--texto-suave);
     width: 2.6rem;
     height: 2.6rem;
     display: flex;
@@ -218,8 +219,8 @@ description: "Escuta compartilhada: o caderno de registros do professor Siegmund
     border-radius: 8px;
   }
   .escuta-bar [data-action=bar-play] {
-    background: #d4af6a;
-    color: #121212;
+    background: var(--ouro);
+    color: var(--papel);
     width: 3rem;
     height: 3rem;
     border-radius: 999px;
@@ -229,9 +230,9 @@ description: "Escuta compartilhada: o caderno de registros do professor Siegmund
     display: flex;
     justify-content: space-between;
     font-family: -apple-system, sans-serif;
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     font-variant-numeric: tabular-nums;
-    color: #b0ab9e;
+    color: var(--texto-suave);
     margin-bottom: 0.2rem;
   }
   .escuta-range input[type=range] {
@@ -239,10 +240,10 @@ description: "Escuta compartilhada: o caderno de registros do professor Siegmund
     height: 8px;
     appearance: none;
     border-radius: 99px;
-    background: #2a2a2a;
-    accent-color: #d4af6a;
+    background: var(--borda);
+    accent-color: var(--ouro);
   }
-  .escuta-err { color: #b8b2a3; font-size: 0.9rem; margin-top: 0.8rem; }
+  .escuta-err { color: var(--texto-suave); font-size: 0.9rem; margin-top: 0.8rem; }
   .escuta-back { text-align: center; margin-top: 2.5rem; }
   @media (max-width: 640px) {
     .escuta-bar [data-action=back],
