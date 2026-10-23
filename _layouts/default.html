@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" href="{{ '/assets/img/og-familia-rucker.jpg' | relative_url }}">
 
   <!-- Open Graph / Twitter Card -->
-  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}Rücker · Musskopf{% endif %}">
+  <meta property="og:title" content="{% if page.og_title %}{{ page.og_title }}{% elsif page.title %}{{ page.title }}{% else %}Rücker · Musskopf{% endif %}">
   <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}Genealogia e registros históricos da família Rücker.{% endif %}">
   {% if page.robots %}<meta name="robots" content="{{ page.robots }}">{% endif %}
   <meta property="og:image" content="https://rucker.life{% if page.image %}{{ page.image }}{% else %}/assets/img/og-familia-rucker.jpg{% endif %}">
@@ -20,7 +20,7 @@
   <meta property="og:url" content="https://rucker.life{{ page.url }}">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}Rücker · Musskopf{% endif %}">
+  <meta name="twitter:title" content="{% if page.og_title %}{{ page.og_title }}{% elsif page.title %}{{ page.title }}{% else %}Rücker · Musskopf{% endif %}">
   <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}Genealogia e registros históricos da família Rücker.{% endif %}">
   <meta name="twitter:image" content="https://rucker.life/assets/img/og-familia-rucker.jpg">
   <style>
@@ -322,6 +322,11 @@
   .causo-body strong { color: #f2efe6; }
 
 
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+
   /* ---------- Colabore (único canal: e-mail) ---------- */
   .colabore {
     max-width: 640px;
@@ -375,6 +380,7 @@
   {% endif %}
 
   <main id="conteudo" class="page-content">
+    {% unless content contains '<h1' %}<h1 class="sr-only">{{ page.title | default: site.title }}</h1>{% endunless %}
     {{ content }}
     {% unless page.colabore == false %}{% include colabore.html %}{% endunless %}
   </main>
