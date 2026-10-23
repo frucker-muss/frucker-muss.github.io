@@ -9,7 +9,7 @@ sitemap: false
 <title>Marcador de Fotos · Acervo Rücker</title>
 <style>
   :root{
-    --ouro:#d4af6a; --sage:#8a9e86; --terra:#c0714f; --mudo:#8a8578;
+    --ouro:#d4af6a; --sage:#8a9e86; --terra:#c0714f; --mudo:#b0ab9e;
     --soft:#b8b2a3; --claro:#f2efe6; --borda:#2a2a2a; --superficie:#1a1a1a;
     --fundo:#121212;
   }
@@ -67,7 +67,7 @@ sitemap: false
     <label class="drop" id="drop" for="fileInput">Toque aqui ou arraste a foto pra começar</label>
     <input type="file" id="fileInput" accept="image/*" style="position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;">
     <div id="stage" style="display:none;">
-      <img id="img" draggable="false">
+      <img id="img" draggable="false" alt="Foto enviada para marcar as pessoas">
     </div>
     <p class="dica" id="dica" style="display:none;">Clique e arraste em volta de um rosto/pessoa pra criar uma área. Clique no "✕" no canto da caixa pra apagar.</p>
   </div>
@@ -117,12 +117,12 @@ sitemap: false
     <div id="passoFinal" style="display:none;margin-top:1rem;padding:.8rem;background:#0f0f0f;border:1px solid var(--ouro);border-radius:8px;">
       <p style="font-size:.8rem;color:var(--soft);margin:0 0 .6rem;line-height:1.5;">
         <strong style="color:var(--ouro);">Falta só enviar:</strong><br>
-        1. Cole o código copiado no campo de texto do formulário.<br>
-        2. Anexe a foto original (sem tratamento nenhum) no campo de foto do formulário.<br>
+        1. Cole o código copiado no corpo do e-mail.<br>
+        2. Anexe a foto original (sem tratamento nenhum) ao e-mail.<br>
         3. Envie — o Nando recebe e cuida do resto.
       </p>
-      <a href="https://forms.gle/MAY913vupvStXXgP7" target="_blank" rel="noopener" style="text-decoration:none;">
-        <button class="acao" style="width:100%;">Abrir formulário de colaboração →</button>
+      <a href="mailto:{{ site.contato_email }}?subject=Marca%C3%A7%C3%A3o%20de%20pessoas%20na%20foto&amp;body=Cole%20aqui%20o%20c%C3%B3digo%20copiado%3A%0A%0A(anexe%20a%20foto%20original)" style="text-decoration:none;">
+        <button class="acao" style="width:100%;">Enviar por e-mail ({{ site.contato_email }}) →</button>
       </a>
     </div>
   </div>

@@ -13,7 +13,7 @@ description: "Retratos, sepulturas e documentos escritos que sustentam a árvore
   --ouro:#d4af6a;
   --sage:#8a9e86;
   --terra:#c0714f;
-  --mudo:#8a8578;
+  --mudo:#b0ab9e;
   --soft:#b8b2a3;
   --claro:#f2efe6;
   --borda:#2a2a2a;
@@ -212,7 +212,6 @@ description: "Retratos, sepulturas e documentos escritos que sustentam a árvore
       <p id="rkdSugResumo"></p>
       <div class="rkd-sug-acoes">
         <a class="rkd-sug-mail" id="rkdSugMail" href="#">Enviar por e-mail</a>
-        <a class="rkd-sug-form" id="rkdSugForm" href="https://forms.gle/MAY913vupvStXXgP7" target="_blank" rel="noopener noreferrer">Abrir formulário</a>
         <button class="rkd-sug-cancelar" id="rkdSugOutro" type="button">Outro nome nesta foto</button>
       </div>
     </div>
@@ -596,8 +595,7 @@ palco.addEventListener('pointerup', encerrarPonteiro);
 palco.addEventListener('pointercancel', encerrarPonteiro);
 
 /* ---------- Lote 2c: um toque, um nome, código para aprovar ---------- */
-var RKD_MAIL = "acervorucker@gmail.com";
-var RKD_FORM = "https://forms.gle/MAY913vupvStXXgP7";
+var RKD_MAIL = "{{ site.contato_email }}";
 var sugEl = document.getElementById("rkdSugerir");
 var sugPergunta = document.getElementById("rkdSugPassoPergunta");
 var sugCodigoPasso = document.getElementById("rkdSugPassoCodigo");
@@ -606,7 +604,6 @@ var sugFoto = document.getElementById("rkdSugFoto");
 var sugCodigoEl = document.getElementById("rkdSugCodigo");
 var sugResumo = document.getElementById("rkdSugResumo");
 var sugMail = document.getElementById("rkdSugMail");
-var sugForm = document.getElementById("rkdSugForm");
 var btnQuem = document.getElementById("rkdLbQuem");
 var codigoAtual = "";
 var nomeAtual = "";
@@ -659,7 +656,6 @@ function rkdSugConfirmar(nome) {
   sugMail.href = "mailto:" + RKD_MAIL +
     "?subject=" + encodeURIComponent(assunto) +
     "&body=" + encodeURIComponent(corpo);
-  sugForm.href = RKD_FORM;
   sugCodigoEl.textContent = codigoAtual;
   sugResumo.textContent = nomeAtual === "Não sei"
     ? "Você marcou que não reconhece ninguém nesta foto."

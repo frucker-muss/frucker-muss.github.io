@@ -42,7 +42,7 @@ só quer conhecer a própria história — ver seção 2.
   documental, tradição oral, hipótese, folclore). Documental ≠ verdadeiro.
 - **Privacidade**: nunca expor WhatsApp/telefone pessoal do administrador do site;
   e-mail pessoal dele nunca aparece publicamente — só o canal dedicado
-  `acervorucker@gmail.com` / formulário Google Forms de colaboração.
+  `acervorucker@gmail.com` (variável `site.contato_email` em `_config.yml`), único canal de contato — não usar formulários nem GitHub Issues/Discussions.
 - **Não reescrever prosa de crônica literária** (arquivos `*-uma-cronica.*`,
   `previa-*.html`) sem confirmação explícita do usuário — é texto autoral.
 
@@ -132,7 +132,7 @@ páginas públicas; a árvore traduz para os 6 status já existentes
   **Nunca** editar esta página para adicionar foto. Lote 2 (2026-08-26).
   Lote **2c** (2026-08-26): no visualizador, o botão **Quem é esta pessoa?**
   gera um código `RK2C-…` (um nome por vez; “Não sei” vale) e envia por
-  `acervorucker@gmail.com` ou Google Forms. A ficha só muda quando o
+  `acervorucker@gmail.com` (único canal). A ficha só muda quando o
   mantenedor aprovar e editar o JSON — a família não mexe no GitHub.
 - `familia/pessoas.html` — índice de perfis individuais (hoje: Georg Rücker,
   Vincentius Joseph Rücker). Badge "Pessoas".
@@ -249,14 +249,11 @@ A esposa de Silírio é **Erna** Lisetta Musskopf — confirmado pelo neto em
 sem o n; é falha de OCR ou erro do próprio registro, não o nome dela. Não
 "corrigir" Erna para Era de novo a partir do texto extraído da certidão.
 
-**Contato**: o rodapé de `musskopf.html` usa `mailto:` para
-`acervorucker@gmail.com` com o endereço codificado em entidades HTML, sem
-texto visível. Os layouts `cronica.html` e `causo.html` passaram ao mesmo
-padrão em 23/10/2026. `familia.html`, `familia/documentos.html`,
-`familia/mapa.html`, `familia/mapa-diagrama.html` e `ferramentas/marcador.html`
-ainda usam o Google Forms `MAY913vupvStXXgP7` ("Colaborar →") — a divergência é
-conhecida e aguarda decisão do usuário; se esse formulário também tiver sido
-excluído, é a mesma troca.
+**Contato**: desde 23/10/2026 o único canal é `mailto:{{ site.contato_email }}`
+(`acervorucker@gmail.com`, definido em `_config.yml`). O formulário Google
+foi removido de todas as páginas (retornava 410). Toda página com
+layout `default` recebe o bloco `_includes/colabore.html`. Não adicionar
+formulários nem links para GitHub Issues/Discussions.
 
 Inconsistência conhecida (histórica, não é bug): a extensão `.md` vs `.html`
 varia entre páginas de crônica/perfil (ex.: `georg-uma-cronica.md` vs
@@ -281,7 +278,7 @@ existentes só por consistência de extensão.
   mono, usar a pilha `ui-monospace, monospace`, sem adicionar Google Fonts.
 - `cronica.html` — layout de artigo de texto corrido: título + subtítulo + corpo
   + botões no final: compartilhar no WhatsApp e "Adicionar Relato à História".
-  Esse segundo botão apontava para o Google Forms `zbPuMirz1jVDKdae7`, que foi
+  Esse segundo botão apontava para um formulário Google, que foi
   **excluído** (quem clicava caía em "O arquivo solicitado foi excluído");
   desde 23/10/2026 ele é um `mailto:` para `acervorucker@gmail.com` com o
   endereço em entidades HTML, assunto com o título da página e corpo já com o

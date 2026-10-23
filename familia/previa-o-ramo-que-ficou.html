@@ -3,6 +3,7 @@ layout: default
 title: O ramo que ficou
 description: A filha de Vincentius Joseph que não atravessou em 1898 — o que o acervo sabe hoje sobre a linha alemã, e o que ainda falta.
 robots: noindex, nofollow
+sitemap: false
 ---
 
 <style>
@@ -31,7 +32,7 @@ robots: noindex, nofollow
   }
   .al-sub {
     font-family: ui-monospace, monospace; font-size: .72rem; letter-spacing: .18em;
-    color: #8a8578; text-transform: uppercase; margin: 0 0 1.6rem;
+    color: #b0ab9e; text-transform: uppercase; margin: 0 0 1.6rem;
   }
 
   /* linhagem vertical */
@@ -44,13 +45,13 @@ robots: noindex, nofollow
   .al-linhagem li::before {
     content: ''; position: absolute; left: -5px; top: .45rem;
     width: 9px; height: 9px; border-radius: 50%;
-    background: #121212; border: 1px solid #8a8578;
+    background: #121212; border: 1px solid #b0ab9e;
   }
   .al-linhagem li.destaque::before { background: #d4af6a; border-color: #d4af6a; }
   .al-nome { font-family: Georgia, serif; font-size: 1.18rem; color: #f2efe6; }
   .al-linhagem li.destaque .al-nome { color: #d4af6a; }
   .al-meta {
-    font-family: ui-monospace, monospace; font-size: .74rem; color: #8a8578;
+    font-family: ui-monospace, monospace; font-size: .74rem; color: #b0ab9e;
     margin-top: .25rem; line-height: 1.6;
   }
   .al-nota { font-family: Georgia, serif; font-size: .98rem; color: #b8b2a3;
@@ -65,12 +66,12 @@ robots: noindex, nofollow
   .al-cards li { border: 1px solid #2a2a2a; background: #1a1a1a; border-radius: 8px; padding: 1rem; }
   .al-cards strong { font-family: Georgia, serif; font-weight: normal; font-size: 1.12rem; color: #f2efe6; display: block; }
   .al-cards span { font-family: ui-monospace, monospace; font-size: .7rem; letter-spacing: .08em;
-    text-transform: uppercase; color: #8a8578; display: block; margin-top: .35rem; line-height: 1.6; }
+    text-transform: uppercase; color: #b0ab9e; display: block; margin-top: .35rem; line-height: 1.6; }
 
   .al-ger { margin: 1.6rem 0 2.2rem; }
   .al-ger h3 { font-family: ui-monospace, monospace; font-size: .74rem; letter-spacing: .16em;
     text-transform: uppercase; color: #d4af6a; margin: 0 0 .1rem; font-weight: normal; }
-  .al-ger .al-aviso { font-family: Georgia, serif; font-size: .92rem; color: #8a8578; margin: 0 0 .7rem; }
+  .al-ger .al-aviso { font-family: Georgia, serif; font-size: .92rem; color: #b0ab9e; margin: 0 0 .7rem; }
   .al-ger .al-lista { font-family: Georgia, serif; font-size: 1.08rem; color: #d8d3c6; line-height: 1.9; margin: 0; max-width: 38rem; }
 
   .al-perg { counter-reset: q; margin: 2rem 0; padding: 0; list-style: none; }
@@ -219,7 +220,7 @@ robots: noindex, nofollow
 
   <div class="al-ressalva">
     <p>Esta página existe por causa de <strong>Augusto Jaeger</strong>, que foi até lá, sentou à mesa, perguntou e mandou tudo para casa. O que está aqui é dele.</p>
-    <p>Publicamos mesmo com pontas soltas, e deixamos as dúvidas à vista em vez de escondê-las — é assim que alguém pode dizer que está errado e a gente corrige. Se você sabe uma data, reconhece um nome ou lembra de outra versão, escreva para o acervo: <a href="mailto:&#097;&#099;&#101;&#114;&#118;&#111;&#114;&#117;&#099;&#107;&#101;&#114;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">fale com a gente</a>.</p>
+    <p>Publicamos mesmo com pontas soltas, e deixamos as dúvidas à vista em vez de escondê-las — é assim que alguém pode dizer que está errado e a gente corrige. Se você sabe uma data, reconhece um nome ou lembra de outra versão, escreva para o acervo: <a href="mailto:{{ site.contato_email }}">fale com a gente</a>.</p>
   </div>
 
 </div>

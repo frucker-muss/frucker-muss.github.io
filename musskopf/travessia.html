@@ -13,17 +13,18 @@ description: "A travessia de 1828 da familia Musskopf: de Kottweiler-Schwanden a
   .m-body em { color: #c9c3b4; }
   .m-dado { font-family: ui-monospace, "SFMono-Regular", "Roboto Mono", Menlo, Consolas, monospace; font-size: 0.92em; color: #8a9e86; }
   .m-quadro { background: #1a1a1a; border: 1px solid #2a2a2a; border-left: 3px solid #8a9e86; border-radius: 10px; padding: 1.1rem 1.3rem; margin: 1.8rem 0; }
-  .m-quadro h4 { margin: 0 0 0.6rem; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: #8a8578; font-weight: bold; }
+  .m-quadro h4, .m-quadro h2.m-quadro-tit { margin: 0 0 0.6rem; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: #b0ab9e; font-weight: bold; }
+  .m-quadro h2.m-quadro-tit { text-align: left; line-height: 1.4; }
   .m-quadro ul { margin: 0; padding-left: 1.1rem; }
   .m-quadro li { margin-bottom: 0.35rem; font-size: 0.97rem; line-height: 1.5; color: #d8d3c5; }
   .m-tabela { width: 100%; border-collapse: collapse; font-size: 0.95rem; margin: 1.6rem 0; }
-  .m-tabela th { text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #8a8578; border-bottom: 1px solid #2a2a2a; padding: 0.5rem 0.6rem 0.5rem 0; font-weight: bold; }
+  .m-tabela th { text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #b0ab9e; border-bottom: 1px solid #2a2a2a; padding: 0.5rem 0.6rem 0.5rem 0; font-weight: bold; }
   .m-tabela td { padding: 0.55rem 0.6rem 0.55rem 0; border-bottom: 1px solid #222; color: #d8d3c5; vertical-align: top; line-height: 1.45; }
   .m-tabela td:first-child { color: #f2efe6; }
   .m-scroll { overflow-x: auto; }
-  .m-pendente { font-size: 0.93rem; color: #8a8578; font-style: italic; border-left: 2px solid #2a2a2a; padding-left: 0.9rem; margin: 1.6rem 0; line-height: 1.55; }
+  .m-pendente { font-size: 0.93rem; color: #b0ab9e; font-style: italic; border-left: 2px solid #2a2a2a; padding-left: 0.9rem; margin: 1.6rem 0; line-height: 1.55; }
   .m-ressalva { border-top: 1px solid #2a2a2a; margin-top: 3rem; padding-top: 1.3rem; text-align: center; }
-  .m-ressalva p { max-width: 520px; margin: 0 auto 0.7rem; font-size: 0.85rem; line-height: 1.55; color: #8a8578; }
+  .m-ressalva p { max-width: 520px; margin: 0 auto 0.7rem; font-size: 0.85rem; line-height: 1.55; color: #b0ab9e; }
   .m-ressalva a { display: inline-block; font-size: 0.85rem; color: #8a9e86; border: 1px solid rgba(138,158,134,0.4); border-radius: 6px; padding: 0.35rem 0.9rem; text-decoration: none; }
   .m-ressalva a:hover { border-color: #8a9e86; background: rgba(138,158,134,0.08); }
   .m-voltar { text-align: center; margin-top: 2.4rem; font-size: 1.05rem; }
@@ -41,7 +42,7 @@ description: "A travessia de 1828 da familia Musskopf: de Kottweiler-Schwanden a
 <p>Veio com a mulher, <strong>Maria Katharina Elisabeth</strong>, nascida Mai, e três filhos: <strong>Heinrich</strong>, de 14 anos, <strong>Philippine</strong>, de 8, e <strong>Johann Christian</strong>, de 3.</p>
 
 <div class="m-quadro">
-  <h4>A lista de Hillebrand, 26 de maio de 1828</h4>
+  <h2 class="m-quadro-tit">A lista de Hillebrand, 26 de maio de 1828</h2>
   <ul>
     <li>Filip Muskop</li>
     <li>Elisabeth, mulher</li>
@@ -95,7 +96,7 @@ description: "A travessia de 1828 da familia Musskopf: de Kottweiler-Schwanden a
 <footer class="m-ressalva">
   <p>Este acervo é trabalho em andamento, não palavra final. Boa parte do que está aqui vem de registros paroquiais, listas de embarque e certidões; outra parte vem de memória de família, que é fonte legítima e falível. Onde as fontes divergem, escolhemos publicar e deixar a divergência visível.</p>
   <p>Se você reconheceu um nome, tem um documento, ou sabe que alguma coisa aqui está errada, escreva. Correção recebida é correção aplicada.</p>
-  <a href="mailto:&#097;&#099;&#101;&#114;&#118;&#111;&#114;&#117;&#099;&#107;&#101;&#114;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;?subject=Acervo%20Musskopf%20%E2%80%94%20correcao">Corrigir ou contribuir &rarr;</a>
+  <a href="mailto:{{ site.contato_email }}?subject=Acervo%20Musskopf%20%E2%80%94%20correcao">Corrigir ou contribuir &rarr;</a>
 </footer>
 
 <p class="m-voltar"><a href="{{ '/musskopf.html' | relative_url }}">&larr; Voltar ao Acervo Musskopf</a></p>
