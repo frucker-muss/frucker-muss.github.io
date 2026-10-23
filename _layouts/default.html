@@ -321,6 +321,29 @@
   .causo-body em { color: #c9c3b4; }
   .causo-body strong { color: #f2efe6; }
 
+
+  /* ---------- Colabore (único canal: e-mail) ---------- */
+  .colabore {
+    max-width: 640px;
+    margin: 3.5rem auto 0;
+    padding: 1.6rem 1.4rem;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    background: #1a1a1a;
+    text-align: center;
+  }
+  .page-content .colabore-titulo { font-size: 1.2rem; margin: 0 0 0.6rem; }
+  .colabore p { margin: 0 0 1rem; color: #b8b2a3; font-size: 0.98rem; line-height: 1.55; }
+  .colabore-botao {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid #d4af6a;
+    border-radius: 6px;
+    font-weight: bold;
+  }
+  .colabore-botao:hover { background: rgba(212,175,106,0.08); text-decoration: none; }
+  .colabore .colabore-email { margin: 0.8rem 0 0; font-size: 0.85rem; color: #b0ab9e; }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation: none !important;
@@ -353,6 +376,7 @@
 
   <main id="conteudo" class="page-content">
     {{ content }}
+    {% unless page.colabore == false %}{% include colabore.html %}{% endunless %}
   </main>
 </body>
 </html>
