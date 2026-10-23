@@ -251,8 +251,12 @@ sem o n; é falha de OCR ou erro do próprio registro, não o nome dela. Não
 
 **Contato**: o rodapé de `musskopf.html` usa `mailto:` para
 `acervorucker@gmail.com` com o endereço codificado em entidades HTML, sem
-texto visível. `familia.html` ainda usa Google Forms — a divergência é
-conhecida e aguarda decisão do usuário.
+texto visível. Os layouts `cronica.html` e `causo.html` passaram ao mesmo
+padrão em 23/10/2026. `familia.html`, `familia/documentos.html`,
+`familia/mapa.html`, `familia/mapa-diagrama.html` e `ferramentas/marcador.html`
+ainda usam o Google Forms `MAY913vupvStXXgP7` ("Colaborar →") — a divergência é
+conhecida e aguarda decisão do usuário; se esse formulário também tiver sido
+excluído, é a mesma troca.
 
 Inconsistência conhecida (histórica, não é bug): a extensão `.md` vs `.html`
 varia entre páginas de crônica/perfil (ex.: `georg-uma-cronica.md` vs
@@ -276,7 +280,12 @@ existentes só por consistência de extensão.
   sistema. A menção a "IBM Plex Mono" na seção 5 é aspiracional; onde se quiser
   mono, usar a pilha `ui-monospace, monospace`, sem adicionar Google Fonts.
 - `cronica.html` — layout de artigo de texto corrido: título + subtítulo + corpo
-  + botões de compartilhar (WhatsApp / Google Forms) no final. Usado tanto para
+  + botões no final: compartilhar no WhatsApp e "Adicionar Relato à História".
+  Esse segundo botão apontava para o Google Forms `zbPuMirz1jVDKdae7`, que foi
+  **excluído** (quem clicava caía em "O arquivo solicitado foi excluído");
+  desde 23/10/2026 ele é um `mailto:` para `acervorucker@gmail.com` com o
+  endereço em entidades HTML, assunto com o título da página e corpo já com o
+  link da página. Mesma troca em `causo.html` ("Contar um Causo Seu"). Usado tanto para
   crônicas literárias quanto para perfis "Pessoas" — o layout não distingue os
   dois tipos; a classificação editorial acontece só no card que linka para a
   página (`familia.html`/`pessoas.html`/`cronicas.html`).
