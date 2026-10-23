@@ -117,12 +117,12 @@ sitemap: false
     <div id="passoFinal" style="display:none;margin-top:1rem;padding:.8rem;background:#0f0f0f;border:1px solid var(--ouro);border-radius:8px;">
       <p style="font-size:.8rem;color:var(--soft);margin:0 0 .6rem;line-height:1.5;">
         <strong style="color:var(--ouro);">Falta só enviar:</strong><br>
-        1. Cole o código copiado no campo de texto do formulário.<br>
-        2. Anexe a foto original (sem tratamento nenhum) no campo de foto do formulário.<br>
+        1. Cole o código copiado no corpo do e-mail.<br>
+        2. Anexe a foto original (sem tratamento nenhum) ao e-mail.<br>
         3. Envie — o Nando recebe e cuida do resto.
       </p>
-      <a href="https://forms.gle/MAY913vupvStXXgP7" target="_blank" rel="noopener" style="text-decoration:none;">
-        <button class="acao" style="width:100%;">Abrir formulário de colaboração →</button>
+      <a href="mailto:{{ site.contato_email }}?subject=Marca%C3%A7%C3%A3o%20de%20pessoas%20na%20foto&amp;body=Cole%20aqui%20o%20c%C3%B3digo%20copiado%3A%0A%0A(anexe%20a%20foto%20original)" style="text-decoration:none;">
+        <button class="acao" style="width:100%;">Enviar por e-mail ({{ site.contato_email }}) →</button>
       </a>
     </div>
   </div>

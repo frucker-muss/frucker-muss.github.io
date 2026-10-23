@@ -97,7 +97,7 @@ Parente não edita GitHub. No visualizador da galeria:
 1. Toca **Quem é esta pessoa?**
 2. Escreve **um** nome, ou toca **Não sei**.
 3. Aparece um código `RK2C-…` já ligado à foto.
-4. Envia por e-mail (`acervorucker@gmail.com`) ou pelo formulário.
+4. Envia por e-mail (`acervorucker@gmail.com`).
 
 O mantenedor recebe o código + nome, confere, e **só então** atualiza a ficha em `_data/acervo.json` (nunca o HTML).
 

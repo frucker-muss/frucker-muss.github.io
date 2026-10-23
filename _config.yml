@@ -2,6 +2,9 @@ title: Rücker · Musskopf
 description: Família
 lang: pt-BR
 url: "https://rucker.life"
+
+# Único canal de contato/contribuição do acervo
+contato_email: acervorucker@gmail.com
 baseurl: ""
 
 markdown: kramdown

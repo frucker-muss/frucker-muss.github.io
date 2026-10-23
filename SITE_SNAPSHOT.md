@@ -93,7 +93,7 @@ layout: default
     </a>
 
     <!-- Botão Google Forms -->
-    <a href="https://forms.gle/zbPuMirz1jVDKdae7"
+    <a href="mailto:acervorucker@gmail.com"
        target="_blank"
        rel="noopener noreferrer"
        style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 24px; background-color: transparent; border: 1px solid #d4af6a; color: #d4af6a; border-radius: 6px; text-decoration: none; font-family: -apple-system, sans-serif; font-size: 1.05rem; font-weight: bold; width: 100%; max-width: 350px;">
@@ -578,7 +578,7 @@ title: "Família Rücker"
     <circle cx="112" cy="18" r="1.4" fill="#d4af6a"/>
   </svg>
   <p>Reconheceu um nome ou tem uma foto, documento ou correção para o acervo?</p>
-  <a href="https://forms.gle/MAY913vupvStXXgP7" target="_blank" rel="noopener noreferrer">Colaborar →</a>
+  <a href="mailto:acervorucker@gmail.com" target="_blank" rel="noopener noreferrer">Colaborar →</a>
 </footer>
 ```
 
@@ -1776,7 +1776,7 @@ title: "Mapa das Migrações"
         <s>Acervo</s><b>Artigos e crônicas</b>
         <span>Perfis históricos e crônicas literárias da imigração Rücker.</span>
       </a>
-      <a class="rkm-cartao" href="https://forms.gle/MAY913vupvStXXgP7" target="_blank" rel="noopener">
+      <a class="rkm-cartao" href="mailto:acervorucker@gmail.com" target="_blank" rel="noopener">
         <s>Colaborar</s><b>Falta documento</b>
         <span>Reconheceu um nome, tem foto ou correção? O acervo aceita contribuições.</span>
       </a>
@@ -2050,5 +2050,5 @@ title: Início
   - Nenhuma biblioteca CSS externa (sem Bootstrap/Tailwind) — CSS todo escrito à mão, inline em `<style>` nos layouts/páginas e em `assets/css/`.
   - Nenhuma fonte web externa (Google Fonts, etc.) — tipografia usa fontes do sistema (`Georgia`, `'Times New Roman'`, serif; monoespaçada via `ui-monospace`/`SFMono-Regular`/`Roboto Mono`/`Menlo`/`Consolas`).
   - Ícones: SVGs inline (ícone do WhatsApp, ícone do Google Forms, ramo decorativo) — nenhuma biblioteca de ícones externa.
-  - Integrações externas via links: WhatsApp (`api.whatsapp.com/send`) para compartilhamento, e Google Forms (`forms.gle`) para coleta de relatos/colaborações da família.
+  - Integrações externas via links: WhatsApp (`api.whatsapp.com/send`) para compartilhamento, e e-mail (`acervorucker@gmail.com`) para coleta de relatos/colaborações da família.
   - `assets/css/cronica.css` e `assets/css/site.css` existem como arquivos separados, mas o conteúdo CSS efetivamente usado está duplicado inline dentro de `_layouts/default.html` e `_layouts/cronica.html` (os arquivos `.css` parecem não estar sendo referenciados/linkados em nenhum `<link>` nas páginas atuais).
