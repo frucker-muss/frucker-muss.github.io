@@ -8,8 +8,8 @@ description: "O percurso geográfico real da família Rücker, de um vale da Sil
   De um vale da Silésia até os destinos no sul do Brasil, em coordenadas geográficas reais. Ative ou desative as camadas abaixo, clique num ponto para abrir o dossiê da etapa, e passe o mouse para ver ano, lugar e evento.
 </p>
 
-<link href="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.css" rel="stylesheet">
-<script src="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.js"></script>
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js" defer></script>
 <style>
 .rkg{
   --ouro:#d4af6a;
@@ -208,6 +208,8 @@ description: "O percurso geográfico real da família Rücker, de um vale da Sil
 <div class="rkg-tooltip" id="rkgTooltip"></div>
 
 <script>
+// maplibre-gl é carregado com defer: o código roda após o script da biblioteca
+document.addEventListener('DOMContentLoaded', function () {
 (function(){
 "use strict";
 
@@ -415,4 +417,5 @@ map.on('load', function(){
 
 });
 })();
+});
 </script>

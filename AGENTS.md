@@ -251,7 +251,7 @@ sem o n; é falha de OCR ou erro do próprio registro, não o nome dela. Não
 
 **Contato**: desde 23/10/2026 o único canal é `mailto:{{ site.contato_email }}`
 (`acervorucker@gmail.com`, definido em `_config.yml`). O formulário Google
-(`forms.gle`) foi removido de todas as páginas (retornava 410). Toda página com
+foi removido de todas as páginas (retornava 410). Toda página com
 layout `default` recebe o bloco `_includes/colabore.html`. Não adicionar
 formulários nem links para GitHub Issues/Discussions.
 
