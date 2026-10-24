@@ -315,12 +315,12 @@ rolagem horizontal (tabelas largas dentro de `.m-scroll`).
 
 ## 6. Workflow de deploy e teste
 
-- **Build local** (desde 23/10/2026): Ruby 3.3 em `C:Ruby33-x64`, gems fora do
-  repositório em `C:SERSERNA.RKGEMS` (CAMINHO CURTO — O WINDOWS ESTOURA O
-  LIMITE DE CAMINHO COM GEMS EM PASTA FUNDA). PARA COMPILAR:
-  `BUNDLE_PATH=/C/USERS/FERNA/.RKGEMS BUNDLE EXEC JEKYLL BUILD -D /C/USERS/FERNA/.RKSITE`.
-  TESTES DE 360PX: CARREGAR A PáGINA NUM `<IFRAME>` DE 360PX (O CHROME HEADLESS
-  NãO ABRE JANELA COM MENOS DE ~500PX, ENTãO `--WINDOW-SIZE=360` ENGANA).
+- **Build local** (desde 23/10/2026): Ruby 3.3 em `C:/Ruby33-x64`, gems fora do
+  repositório em `C:/Users/ferna/.rkgems` (caminho curto — o Windows estoura o
+  limite de caminho com gems em pasta funda). Para compilar:
+  `BUNDLE_PATH=/c/Users/ferna/.rkgems bundle exec jekyll build -d /c/Users/ferna/.rksite`.
+  Testes de 360px: carregar a página num `<iframe>` de 360px (o Chrome headless
+  não abre janela com menos de ~500px, então `--window-size=360` engana).
 - Rodar `git status` **antes** de editar: pode haver edição local pendente, não
   commitada, de trabalho em andamento do usuário (ex.: ajustes manuais em
   `arvore.html`). Nunca misturar essa edição alheia no seu commit — isole via
@@ -374,6 +374,7 @@ Um lote = um chat novo = um PR. O de hoje não pode obrigar a refazer HTML amanh
 | **2c** feito | Idoso toca a foto no celular → código `RK2C-…`; você aprova no JSON | não reabrir |
 | **3** feito | Árvore mais fácil: busca, gerações que abrem, clique → foto/crônica | não reabrir |
 | **3s** feito | Selos gênero/base em `familia/metodologia.html` | não reabrir |
+| **Redesign** feito | Identidade editorial clara, celular primeiro, três destinos em `_data/secoes.yml`, Contribua único (23/10/2026) | só bug |
 | **escutas** feito | Áudio do professor Siegmund Rücker; card Escutas no hub | não reabrir |
 | **musskopf-1** feito | Acervo Musskopf: hub + 6 stubs; home com dois acervos | não reabrir |
 | **musskopf-2** feito | Conteúdo em Travessia, Mapa e Pessoas; ressalva editorial | não reabrir |

@@ -8,6 +8,8 @@ O site é mantido por descendentes da família como um projeto de memória e pes
 
 - [Início](https://rucker.life/): Página inicial do site.
 - [Família Rücker](https://rucker.life/familia.html): Ponto de partida para a genealogia — árvore, mapa, acervo, crônicas e pessoas.
+- [Família Musskopf](https://rucker.life/musskopf.html): Acervo da linha materna, do Palatinado renano ao sul do Brasil — árvore, travessia de 1828, mapa e pessoas.
+- [Caderno de ideias](https://rucker.life/caderno.html): Artigos e reflexões sobre economia, política, história, filosofia, livros e outros temas.
 - [Árvore Genealógica](https://rucker.life/familia/arvore.html): Árvore genealógica completa da família, de Georg (1789) aos ramos atuais, com fontes documentais e orais.
 - [Mapa das Migrações](https://rucker.life/familia/mapa.html): Diagrama esquemático da rota migratória da família, da Silésia ao sul do Brasil.
 - [Acervo Visual](https://rucker.life/familia/documentos.html): Retratos, sepulturas e documentos escritos que sustentam a árvore genealógica.
