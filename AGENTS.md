@@ -48,41 +48,27 @@ só quer conhecer a própria história — ver seção 2.
 
 ## 3. Mapa de páginas
 
-- `index.html` — home: **sem cabeçalho visível**. Nada de `<h1>` na tela, nada
-  de subtítulo, nada de rótulo "Acervos" (decisão do usuário, 04/10/2026 —
-  pedida três vezes; não reintroduzir nenhum dos três). A home é as duas caixas
-  e o placeholder "Outros" (em construção, **não é link**). O `<h1>` continua
-  existindo no HTML com a classe `.rkr-sr-only`, invisível na tela, só para
-  leitor de tela e buscador — removê-lo de vez deixaria a página sem título
-  acessível. Caixas empilhadas, paterna primeiro e materna depois: a ordem é
-  convenção, não hierarquia, e a pilha existe para caber uma terceira linha.
-  Cada caixa tem **só o sobrenome** — "Rücker", "Musskopf" — mais a seta e a
-  barra de acento. Saíram "Acervo" no nome, a etiqueta linha paterna/materna,
-  a linha de origem e ano, e a lista do que tem dentro. As classes
-  `.acervo-etiqueta`, `.acervo-meta`, `.acervo-ano` e `.acervo-desc` seguem no
-  CSS, sem uso, para uma caixa nova poder voltar a usá-las sem reescrever nada.
-- `_layouts/default.html` — o cabeçalho **não tem wordmark** (04/10/2026).
-  Antes dizia "Rucker.life" no topo de toda página. Decisão do usuário: o nome
-  do site é o domínio, não precisa estar escrito em cima, e repetir o nome
-  paterno acima das páginas do acervo materno contradiz a paridade entre os
-  dois acervos. No lugar ficou só uma seta "←" discreta de volta ao início,
-  escondida na própria home (`{% if page.url != '/' %}`). Ela é a única forma de
-  voltar em 9 páginas que não têm link de retorno no rodapé (entre elas
-  `familia/arvore.html`, `familia/mapa.html` e `ferramentas/marcador.html`) —
-  não remover sem antes dar rodapé a essas páginas.
-  O nome do site (`site.title` em `_config.yml`) deixou de ser "Rucker.life" e
-  passou a **"Rücker · Musskopf"** — ele alimenta a aba do navegador de toda
-  página e o título de compartilhamento quando a página não tem um próprio.
-  Pendência conhecida: `og:image` global ainda é `og-familia-rucker.jpg`, então
-  qualquer página Musskopf compartilhada mostra a arte dos Rücker. Falta uma
-  imagem neutra ou uma por acervo — é a última coisa no site que ainda favorece
-  a linha paterna.
-- `familia.html` — hub da família, duas seções:
-  - Fileira de topo, cards "Interativo" (borda dourada): **Árvore Genealógica**,
-    **Mapa das Migrações**, **Documentos**, **Pessoas**, **Crônicas**, **Causos**, **Escutas**.
-  - Seção "Artigos" (`.home-grid`): um card por pessoa, com badge **"Pessoas"**
-    (perfil factual) e/ou **"Crônica Literária"** (narrativa). Uma mesma pessoa
-    pode ter os dois cards lado a lado quando existem as duas versões.
+> **Redesign editorial (23/10/2026)** — substitui as decisões anteriores sobre
+> home, cabeçalho, paleta e contato registradas neste arquivo. Ver seção 4 e 5.
+
+- `index.html` — home: pano de fundo (`_includes/pano.html`; vertical no
+  celular, panorâmica em tela larga, `position: sticky`, nunca
+  `background-attachment: fixed`) com as palavras Histórias / Família / Memória /
+  Devaneios em HTML (véu creme atrás delas por contraste AA); três cartões de
+  destino vindos de `_data/secoes.yml` (cartão inteiro clicável, sem botão
+  "Explorar"); faixa a bico de pena com a frase (`_includes/faixa.html`);
+  rodapé. Imagens da home em `assets/img/home/` são **estética**: sem legenda,
+  data nem referência arquivística.
+- Menu = mesma lista dos cartões (`_data/secoes.yml`): Família Rücker |
+  Família Musskopf | Caderno de ideias. Sem "Início", "Sobre", "Contato",
+  submenu ou página intermediária. No celular, botão "Menu" (`<details>`).
+- `caderno.html` — Caderno de ideias (artigos sobre economia, política,
+  história, filosofia, livros). **Crônicas de familiares nunca entram aqui** —
+  ficam na página da família.
+- `familia.html` / `musskopf.html` — páginas de família, ambas com
+  `layout: acervo` e o conteúdo em `_data/familias/rucker.yml` /
+  `musskopf.yml` (intro, lista de seções, nota). Para acrescentar uma seção,
+  editar o .yml, não o HTML.
 - `familia/arvore.html` — árvore genealógica interativa. Dados em
   `DADOS.pessoas` (array; ver `RELATORIO_FASE0.md` para o schema completo de
   cada campo). Lote **3** (2026-08-26): busca por nome; gerações recolhíveis
@@ -188,21 +174,21 @@ paterna, Silésia prussiana, travessia de 1898) e Musskopf (linha materna,
 Palatinado renano, travessia de 1828). Nenhum dos dois é principal. A
 estrutura de URLs é simétrica:
 
-- `musskopf.html` — hub do acervo Musskopf, espelho de `familia.html`.
-  Mesma mecânica: `layout: default`, classe `.card` do layout, acento por
-  estilo inline, `<style>` local só para o rodapé.
+- `musskopf.html` — página do acervo Musskopf, mesmo `layout: acervo` de
+  `familia.html`, dados em `_data/familias/musskopf.yml`.
 - `musskopf/travessia.html`, `musskopf/mapa.html`, `musskopf/pessoas.html`
   — com conteúdo (lote **musskopf-2**, 2026-10-04), redigido a partir do
-  `ACERVO_Musskopf.docx`. Classes próprias prefixadas `.m-` definidas em
-  `<style>` local de cada página; não há CSS novo no layout global.
+  `ACERVO_Musskopf.docx`. Classes `.m-*` / `.muss-*`, hoje definidas em
+  `assets/css/site.css` (saíram dos `<style>` locais no redesign).
 - `musskopf/arvore.html` — árvore genealógica interativa (lote **musskopf-3**,
   2026-10-04). Mesmo motor de `familia/arvore.html`: o arquivo é uma cópia dela
   com `DADOS.pessoas` trocado, `--ouro` redefinido para o sálvia `#8a9e86` e
   `PAGINAS` vazio (ainda não há crônicas/perfis Musskopf para linkar). Doze
   gerações, de Nickel Muskopf à pesquisa de hoje. A geração do usuário não é
   nomeada — aparece como "A pesquisa de hoje", por decisão dele.
-  Se a árvore Rücker ganhar recurso novo no motor, replicar aqui à mão: os dois
-  arquivos são irmãos por cópia, não compartilham código.
+  O CSS das duas árvores é um só (`assets/css/arvore.css`, via
+  `css: [arvore]` no front matter); o JavaScript ainda é cópia — se a árvore
+  Rücker ganhar recurso novo no motor, replicar aqui à mão.
 - `musskopf/documentos.html`, `musskopf/cronicas.html` — ainda stubs navegáveis
   (kicker "Em preparo").
 
@@ -215,10 +201,9 @@ nunca como badge, tag ou jargão de método (vale a seção 2).
 - `musskopf/travessia.html` não tem equivalente Rücker: a viagem de 1828 na
   galera *Fortuna* é o episódio mais documentado dessa linha.
 
-**Acento por acervo**: dourado `#d4af6a` = Rücker, sálvia `#8a9e86` =
-Musskopf. O sálvia já existia na paleta (seção 5) e passa a ter função
-semântica. Ao criar página Musskopf nova, copiar um card de `musskopf.html`
-e trocar texto/href — nunca criar CSS novo.
+**Acento por acervo**: bronze = Rücker, sálvia escura = Musskopf (seção 5).
+Aplicado automaticamente por pasta (`defaults` em `_config.yml`); página nova
+dentro de `familia/` ou `musskopf/` já nasce com o acento certo.
 
 **Fonte canônica Musskopf**: `Dados_Estruturados_Musskopf_v1.1.json`
 (Google Drive do Nando), com `ACERVO_Musskopf.docx` como documento de apoio.
@@ -249,11 +234,16 @@ A esposa de Silírio é **Erna** Lisetta Musskopf — confirmado pelo neto em
 sem o n; é falha de OCR ou erro do próprio registro, não o nome dela. Não
 "corrigir" Erna para Era de novo a partir do texto extraído da certidão.
 
-**Contato**: desde 23/10/2026 o único canal é `mailto:{{ site.contato_email }}`
-(`acervorucker@gmail.com`, definido em `_config.yml`). O formulário Google
-foi removido de todas as páginas (retornava 410). Toda página com
-layout `default` recebe o bloco `_includes/colabore.html`. Não adicionar
-formulários nem links para GitHub Issues/Discussions.
+**Contato (redesign, 23/10/2026)**: **nenhum formulário** no site. O canal é
+um único link **"Contribua"** no rodapé de todas as páginas
+(`_includes/rodape.html`), `mailto:` para `site.contato_email`. O endereço
+**nunca** aparece como texto visível — só no `href`. O bloco
+`_includes/colabore.html` foi removido, assim como os botões "Colaborar",
+"Corrigir ou contribuir", "Adicionar relato" e "Corrigir este dado" em
+Pessoas. Ficaram, por decisão do usuário, só três envios que carregam dados
+gerados pela página: código `RK2C` em `familia/documentos.html`, o envio do
+`ferramentas/marcador.html` e "Corrigir este dado" no painel das árvores.
+Não adicionar outros.
 
 Inconsistência conhecida (histórica, não é bug): a extensão `.md` vs `.html`
 varia entre páginas de crônica/perfil (ex.: `georg-uma-cronica.md` vs
@@ -262,58 +252,75 @@ idênticas; o Jekyll compila as duas para `.html` no build. Ao criar uma página
 nova desse tipo, `.md` é o padrão dominante, mas não vale a pena migrar as
 existentes só por consistência de extensão.
 
-## 4. Layouts (`_layouts/`)
 
-- `default.html` — chrome do site inteiro: header, variáveis de CSS globais,
-  sistema `.home-grid`/`.card`, tipografia. `page.title`/`page.description` viram
-  meta tags Open Graph/Twitter automaticamente.
-  Dois front matter opcionais, acrescentados em 2026-10-10 (lote **wolf-2**):
-  `robots:` emite `<meta name="robots">` só quando a página define — é o que faz a
-  convenção de prévia funcionar de verdade (antes `robots: noindex` no front matter
-  não produzia tag nenhuma); e `image:` troca o `og:image` daquela página, caindo
-  no `og-familia-rucker.jpg` quando ausente. Nenhuma página existente muda de
-  comportamento.
-  Nota de tipografia: o site **não carrega webfont nenhuma** — só Georgia do
-  sistema. A menção a "IBM Plex Mono" na seção 5 é aspiracional; onde se quiser
-  mono, usar a pilha `ui-monospace, monospace`, sem adicionar Google Fonts.
-- `cronica.html` — layout de artigo de texto corrido: título + subtítulo + corpo
-  + botões no final: compartilhar no WhatsApp e "Adicionar Relato à História".
-  Esse segundo botão apontava para um formulário Google, que foi
-  **excluído** (quem clicava caía em "O arquivo solicitado foi excluído");
-  desde 23/10/2026 ele é um `mailto:` para `acervorucker@gmail.com` com o
-  endereço em entidades HTML, assunto com o título da página e corpo já com o
-  link da página. Mesma troca em `causo.html` ("Contar um Causo Seu"). Usado tanto para
-  crônicas literárias quanto para perfis "Pessoas" — o layout não distingue os
-  dois tipos; a classificação editorial acontece só no card que linka para a
-  página (`familia.html`/`pessoas.html`/`cronicas.html`).
+## 4. Layouts, includes e dados
 
-## 5. Convenção visual dos cards
+- `_layouts/default.html` — esqueleto de toda página: `<head>` (meta, Open
+  Graph, `assets/css/site.css`), `_includes/cabecalho.html` (marca + menu),
+  `<main>`, faixa opcional e `_includes/rodape.html`. **Sem CSS embutido.**
+  Front matter opcional: `robots:` (prévias), `image:` (og:image),
+  `acento:` (nome de cor; por padrão vem da pasta), `css: [arvore]` (folhas
+  extras de `assets/css/`), `pagina_cheia: true` (sem coluna, como a home),
+  `faixa: true` (faixa a bico de pena antes do rodapé).
+  O h1 invisível automático continua: se a página não tem `<h1>`, o layout cria
+  um `.sr-only`.
+- `_layouts/acervo.html` — página de família (Rücker, Musskopf, e qualquer
+  família futura), lê `_data/familias/<page.familia>.yml`.
+- `_layouts/cronica.html` / `causo.html` — artigo de texto corrido: título,
+  subtítulo, corpo e botão de compartilhar no WhatsApp. O botão de relato por
+  e-mail saiu no redesign (contato = só o "Contribua" do rodapé).
+- `_includes/`: `cabecalho`, `menu`, `rodape`, `pano`, `faixa`,
+  `cartao-destino` (home), `cartao-artigo` (índices e páginas de família),
+  `figura` (imagem documental com legenda, referência e ampliação em dois
+  níveis — `assets/js/figura.js` só carrega se a página usar).
+- `_data/secoes.yml` — fonte única dos destinos (menu + cartões da home).
+  Campos: chave, nome, descricao, imagem (+ w/h/alt), url, acento, ordem,
+  publicado. `publicado: false` esconde.
 
-Paleta usada quase toda via CSS custom properties e estilo inline:
-`--ouro #d4af6a` (dourado, destaque/interativo), `--terra #c0714f`,
-`--sage #8a9e86`, `--mudo #8a8578` (cinza discreto — usar para links/notas
-secundárias, ex. o link de metodologia), `--soft #b8b2a3`, `--claro #f2efe6`,
-`--borda #2a2a2a`, `--superficie #1a1a1a`.
+**Acrescentar uma família** (ex.: Martins): (1) item em `_data/secoes.yml`;
+(2) `_data/familias/martins.yml` copiando `musskopf.yml`; (3) `martins.html`
+com `layout: acervo` e `familia: martins`; (4) se tiver cor própria, um token
+em `:root` de `site.css` e uma entrada em `defaults` do `_config.yml` para a
+pasta `martins/`. Nada mais.
 
-Duas famílias de card em `familia.html`:
+**Imagem documental em crônica** (padrão "Vô Mundo"):
+`{% include figura.html src="/assets/img/…jpg" w=900 h=600 alt="…" legenda="…" ref="Acervo Rücker · …" %}`
+— flutua à direita (`lado="esquerda"` ou `"larga"` mudam), texto contorna,
+mesma diagramação no celular e no computador.
 
-1. **Cards "Interativo"** (fileira de topo): borda dourada 2px, fundo
-   `rgba(212,175,106,.06)`, badge pequena dourada uppercase "Interativo". Para
-   ferramentas/páginas navegáveis.
-2. **Cards de "Artigos"** (`.home-grid`): borda padrão de `.card`, badge cinza
-   (`#8a8578`) "Pessoas" para perfil factual, badge dourada (`#d4af6a`)
-   "Crônica Literária" para narrativa.
+Tipografia: só fontes do sistema (Georgia; mono = `IBM Plex Mono` se instalada,
+senão `ui-monospace`). **Nenhuma webfont, nenhum CDN novo.** A única
+dependência externa que existe é a do mapa (MapLibre via unpkg + tiles
+openfreemap), anterior ao redesign.
 
-O site usa estilo inline (`style="..."`) extensivamente em vez de classes CSS
-dedicadas para variações pontuais dentro de `familia.html` — é o padrão já
-estabelecido. Ao adicionar um card novo, copiar um card existente do mesmo tipo
-e ajustar título/texto/href é mais seguro do que criar CSS novo.
+## 5. Paleta e convenção visual (redesign 23/10/2026)
+
+Tudo em `assets/css/site.css` (`:root`). Fundo claro, papel envelhecido:
+`--papel #fdf8e9` (igual ao creme da faixa-paisagem — não mudar um sem o
+outro), `--papel-claro #faf5ec` (cartões), `--verde-profundo #1e3a2f`
+(cabeçalho/rodapé), `--bronze #9c6b3c` (Rücker — filetes/bordas),
+`--salvia-escura #5a6e56` (Musskopf), `--texto #2c2a26`, `--texto-suave
+#5c564d`, `--borda #d9cdb8`. Para **texto** em bronze usar `--bronze-texto
+#85582d` (o bronze puro dá 4,3:1, abaixo de AA); `--terra #a14f2c` para causos.
+
+Os nomes antigos (`--ouro`, `--claro`, `--soft`, `--mudo`, `--superficie`,
+`--sage`) seguem existindo como apelidos no `body` e apontam para os novos —
+`--ouro` = acento da família da página. Não usar em código novo e **não
+redefinir cor em `:root` de página**.
+
+Cartões com raio 10px, borda discreta, sem sombra pesada nem animação. Imagens
+documentais: moldura única (`.moldura` / `figure img`). Celular primeiro:
+corpo ≥ 17px, alvos de toque ≥ 48px, nada que dependa de hover, nada de
+rolagem horizontal (tabelas largas dentro de `.m-scroll`).
 
 ## 6. Workflow de deploy e teste
 
-- **Não há toolchain Jekyll local** nesta máquina (sem `bundle`/`jekyll`/`node`
-  instalados) — não dá para rodar `jekyll serve` localmente. Build e preview
-  reais só acontecem no GitHub Pages, depois de um `git push` para `main`.
+- **Build local** (desde 23/10/2026): Ruby 3.3 em `C:Ruby33-x64`, gems fora do
+  repositório em `C:SERSERNA.RKGEMS` (CAMINHO CURTO — O WINDOWS ESTOURA O
+  LIMITE DE CAMINHO COM GEMS EM PASTA FUNDA). PARA COMPILAR:
+  `BUNDLE_PATH=/C/USERS/FERNA/.RKGEMS BUNDLE EXEC JEKYLL BUILD -D /C/USERS/FERNA/.RKSITE`.
+  TESTES DE 360PX: CARREGAR A PáGINA NUM `<IFRAME>` DE 360PX (O CHROME HEADLESS
+  NãO ABRE JANELA COM MENOS DE ~500PX, ENTãO `--WINDOW-SIZE=360` ENGANA).
 - Rodar `git status` **antes** de editar: pode haver edição local pendente, não
   commitada, de trabalho em andamento do usuário (ex.: ajustes manuais em
   `arvore.html`). Nunca misturar essa edição alheia no seu commit — isole via

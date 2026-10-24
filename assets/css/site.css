@@ -339,7 +339,7 @@ figcaption .ref, .legenda .ref {
   z-index: 200;
   display: flex;
   flex-direction: column;
-  background: rgba(30, 58, 47, 0.96);
+  background: var(--verde-profundo);
   color: var(--sobre-verde);
 }
 .ampliacao[hidden] { display: none; }
@@ -386,7 +386,7 @@ figcaption .ref, .legenda .ref {
   font-size: 0.95rem;
   color: var(--sobre-verde);
 }
-.ampliacao-legenda .ref { color: var(--sobre-verde-suave); }
+.ampliacao-legenda .ref { display: block; margin-top: 0.2rem; color: var(--sobre-verde-suave); }
 
 /* ---------- Crônicas e perfis (layout cronica) ---------- */
 .cronica, .causo {
@@ -741,3 +741,13 @@ figcaption .ref, .legenda .ref {
 /* Link secundário discreto (ex.: metodologia ao fim da árvore) */
 .link-discreto { width: 100%; margin-top: 3rem; text-align: center; font-size: 0.95rem; }
 .link-discreto a { color: var(--texto-suave); text-decoration-color: var(--borda); }
+
+/* Celular estreito: a linha da marca quebrava em duas no cabeçalho; ela segue no rodapé */
+@media (max-width: 419px) {
+  .site-header .marca-linha { display: none; }
+}
+
+/* Cartões de destino com a mesma altura na fileira */
+.destinos > li { display: flex; }
+.destinos > li > .destino { flex: 1; }
+.m-wrap > h1, .muss-stub h1 { text-align: center; }

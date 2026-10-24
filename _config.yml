@@ -39,6 +39,7 @@ exclude:
   - RELATORIO_FASE0.md
   - SITE_SNAPSHOT.md
   - _notas/
+  - "*.patch"
 
 # Remova ou comente a linha abaixo para evitar sobreposição de estilos
 # theme: jekyll-theme-architect
