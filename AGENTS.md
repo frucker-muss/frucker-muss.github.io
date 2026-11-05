@@ -101,6 +101,17 @@ pela árvore que a família alemã desenhou à mão em Rosendahl-Holtwick
 (out/2026). Esses nós citam a fonte real. Quando a v5.14 consolidar esse
 material, revisar: não trocar por "Base v5.13" às cegas.
 
+**Exceção registrada (ramo Jahn, 2026-11-04)**: os nós `g4_luisavictoria`,
+`g5_curtalbano_jahn`, `g5_norberto_jahn` e os `g6_*_jahn` citam como fonte as
+mensagens de Pedro Augusto Rücker e de Anita Bortoli Jahn no grupo da família
+em 04/11/2026, não "Base v5.13". Esse material chegou depois da v5.17
+(consolidada em 03/11/2026) e entra no acervo na v5.18. Anita Bortoli Jahn é
+viúva de Curt Albano e fonte de autoridade sobre os nomes e a residência da
+própria família: a grafia correta é **Curt** Albano Jahn e **Norberto
+Lindolfo** Jahn, sem K, e a forma "Kurt" da tabela dos quinze filhos é
+variante incorreta. Não reintroduzir "Kurt" nem "Fredolino" (o correto é
+**Fridolino**).
+
 O `ACERVO_RUCKER_v5_13.md` usa suas próprias etiquetas de evidência
 ([DOC], [EPI], [HIP], [TO], [ABERTO] etc. — ver seção 2 das regras
 editoriais deste arquivo) — essas etiquetas nunca aparecem literalmente nas
