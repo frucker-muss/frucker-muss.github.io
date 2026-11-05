@@ -98,8 +98,17 @@ pessoas, lápides, livros, fotografias, testemunhos.
 
 Ao adicionar ou revisar um fato, preferir no `src` a fonte concreta — quem
 contou, qual documento, qual data. Se for só a base genealógica, usar a versão
-vigente (hoje a v5.17), que ficará invisível na página mas preserva a
-rastreabilidade. Nunca `"v6.0"`, `"v5.8"` ou outra versão antiga.
+vigente (hoje a **v5.18** = v5.17 de 03/11/2026 mais o bloco do ramo Jahn de
+04/11/2026), que ficará invisível na página mas preserva a rastreabilidade.
+Nunca `"v6.0"`, `"v5.8"` ou outra versão antiga.
+
+**Estado da árvore em 04/11/2026**: `familia/arvore.html` foi alinhada à v5.18.
+Entrou o que as versões v5.14–v5.17 trouxeram — a autobiografia de Siegmundo no
+Skt. Paulusblatt (1976), a fratria de Adalberto fechada em oito com anos, o
+tronco MAIA no Rio de Janeiro, as datas de óbito que faltavam na Geração IV e as
+datas de Maria Rücker Wolf — mais o ramo Jahn. As citações antigas `"Base
+v5.13"` foram mantidas onde o fato não mudou: elas não aparecem na tela e trocá-
+las em massa não acrescentaria nada ao leitor.
 
 **Exceção registrada (ramo Maria/Wolf, 2026-10-10)**: os nós do ramo alemão
 (`g3_maria_wolf` e descendentes `g4w_`/`g5w_`/`g6w_`/`g7w_`) **não** citam
