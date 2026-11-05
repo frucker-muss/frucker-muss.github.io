@@ -102,6 +102,22 @@ vigente (hoje a **v5.18** = v5.17 de 03/11/2026 mais o bloco do ramo Jahn de
 04/11/2026), que ficará invisível na página mas preserva a rastreabilidade.
 Nunca `"v6.0"`, `"v5.8"` ou outra versão antiga.
 
+**Estado da árvore em 05/11/2026 (v5.19)**: entrou o ramo de Nelson Jacob
+Ruecker em quatro gerações, a partir das mensagens de Augusto Jaeger, Ângela
+Ruecker e Rosângela Ramil no grupo da família em 05/11/2026. Três correções
+estruturais foram feitas: Ângela e Guilherme estavam uma geração acima do que
+são (VI → VII); o rótulo "Ruecker EUA/França (via Nelson Jacob)" foi eliminado,
+porque nenhum descendente de Nelson Jacob está nos EUA — os EUA são do ramo de
+Bertholdo; e o rótulo provisório "Filho ou neta de Nelson Jacob" saiu de quatro
+nós, com o grau agora resolvido. **Não reintroduzir nenhum dos três.**
+
+**O cinema de Videira — evidência rebaixada em 05/11/2026.** A ficha de Bertholdo
+apoiava o cinema de Videira no fato de o sobrinho Nelson Jacob ter trabalhado com
+cinema. A trajetória completa de Nelson Jacob (São Paulo, Jataí-GO, Bom Jesus de
+Goiás) não passa por Videira nem por Santa Catarina. A corroboração caiu; o fato
+não foi refutado. Não voltar a escrever que o percurso do sobrinho sustenta o
+cinema do tio.
+
 **Estado da árvore em 04/11/2026**: `familia/arvore.html` foi alinhada à v5.18.
 Entrou o que as versões v5.14–v5.17 trouxeram — a autobiografia de Siegmundo no
 Skt. Paulusblatt (1976), a fratria de Adalberto fechada em oito com anos, o
