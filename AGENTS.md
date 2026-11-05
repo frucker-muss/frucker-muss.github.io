@@ -86,12 +86,20 @@ anteriores (v5.8 até v5.12) e o rótulo "v6.0" que ainda podia aparecer em
 `familia/arvore.html` — esse "v6.0" era um snapshot paralelo feito só para
 popular a árvore, desalinhado da numeração v5.x real, e já foi corrigido.
 
-Ao adicionar ou revisar qualquer fato em `familia/arvore.html` (ou em
-qualquer outra página), citar a fonte no campo `src` como `"Base v5.13"` (ou
-`"Acervo v5.13"`), nunca `"v6.0"`, `"v5.8"` ou outra versão antiga. Se uma
-versão mais nova do acervo for consolidada depois (v5.14, v6.0 real etc.),
-atualizar este parágrafo e repetir a busca/substituição das citações antigas
-em `familia/arvore.html` — não deixar duas numerações concorrentes no ar.
+**Numeração de versão da base não vai para a tela (decisão de 04/11/2026).**
+"Base v5.13", "Acervo v5.17" e afins são rótulos de manutenção: quem lê o site
+não tem acesso a esses documentos e o número não significa nada para ele. O
+campo `src` continua existindo nos dados, para rastreabilidade interna, mas
+`familia/arvore.html` passa cada `src` pela função `srcParaTela()` antes de
+exibir: ela remove o rótulo de versão, isolado ou dentro de uma fonte composta
+("Foto de 1925 / Base v5.13" vira "Foto de 1925"), e esconde a linha inteira
+quando não sobra nada. Na tela ficam só fontes que dizem algo a quem lê:
+pessoas, lápides, livros, fotografias, testemunhos.
+
+Ao adicionar ou revisar um fato, preferir no `src` a fonte concreta — quem
+contou, qual documento, qual data. Se for só a base genealógica, usar a versão
+vigente (hoje a v5.17), que ficará invisível na página mas preserva a
+rastreabilidade. Nunca `"v6.0"`, `"v5.8"` ou outra versão antiga.
 
 **Exceção registrada (ramo Maria/Wolf, 2026-10-10)**: os nós do ramo alemão
 (`g3_maria_wolf` e descendentes `g4w_`/`g5w_`/`g6w_`/`g7w_`) **não** citam

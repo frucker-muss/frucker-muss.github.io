@@ -1490,6 +1490,20 @@ description: "Árvore genealógica da família Rücker, de Georg (1789) aos ramo
     }
   }
 
+  // Rótulos internos de versão da base genealógica ("Base v5.13", "Acervo v5.17").
+  // Servem para a manutenção do acervo e não significam nada para quem lê o site,
+  // que não tem acesso a esses documentos. Ficam nos dados, fora da tela.
+  function srcParaTela(src) {
+    if (!src) return '';
+    var t = String(src);
+    t = t.replace(/\((?:base|acervo)\s*v?\s*\d+(?:\.\d+)*\)/gi, '');  // "(Base v5.13)"
+    t = t.replace(/(?:base|acervo)\s*v?\s*\d+(?:\.\d+)*/gi, '');      // "Base v5.13"
+    t = t.replace(/\s*[\/—–-]\s*$/g, '').replace(/^\s*[\/—–-]\s*/g, '');
+    t = t.replace(/\s*\/\s*\//g, ' / ').replace(/\s{2,}/g, ' ');
+    t = t.trim().replace(/^[\/,;]\s*/, '').trim();
+    return t ? t.charAt(0).toUpperCase() + t.slice(1) : '';
+  }
+
   function montarLinksHTML(pessoa) {
     var links = (PAGINAS[pessoa.id] || []).slice();
     fotosDaPessoa(pessoa).forEach(function(item) {
@@ -1532,8 +1546,13 @@ description: "Árvore genealógica da família Rücker, de Georg (1789) aos ramo
       pessoa.blocos.forEach(function(b) {
         fHtml += '<div class="rkr-bloco"><h3>' + b.t + '</h3>';
         b.f.forEach(function(f) {
+          // O campo src guarda a procedência de cada fato para quem mantém o acervo.
+          // Só vai para a tela quando diz algo a quem lê: uma pessoa, um documento,
+          // um livro. Numeração interna de versão da base não aparece.
+          var vis = srcParaTela(f.src);
+          var fonte = vis ? '<span class="rkr-src">' + vis + '</span>' : '';
           fHtml += '<div class="rkr-fato" data-status="' + f.s + '">' +
-                     '<i class="rkr-ponto ' + f.s + '"></i><div><span class="rkr-rot">' + f.r + '</span><span class="rkr-val">' + f.v + '</span><span class="rkr-src">' + f.src + '</span></div>' +
+                     '<i class="rkr-ponto ' + f.s + '"></i><div><span class="rkr-rot">' + f.r + '</span><span class="rkr-val">' + f.v + '</span>' + fonte + '</div>' +
                    '</div>';
         });
         fHtml += '</div>';
