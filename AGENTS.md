@@ -111,7 +111,21 @@ porque nenhum descendente de Nelson Jacob está nos EUA — os EUA são do ramo 
 Bertholdo; e o rótulo provisório "Filho ou neta de Nelson Jacob" saiu de quatro
 nós, com o grau agora resolvido. **Não reintroduzir nenhum dos três.**
 
-**O cinema de Videira — evidência rebaixada em 05/11/2026.** A ficha de Bertholdo
+**O cinema de Videira — resolvido em 05/11/2026, à noite (v5.20).** Chama-se
+**Cine Teatro Guarani**, em Videira (SC). Bertholdo o vendeu antes de 1950 e o
+prédio queimou em fevereiro de 1953, junto com o Clube Vitória e com a casa da
+família. Fonte: Augusto Jaeger e a carta de Cláudio José Ruecker (filho de
+Bertholdo) de 19/05/2014. **A viagem de 1967 à Alemanha também está resolvida:**
+ele foi visitar os Wolf e hospedou-se em Holtwick, Meschede e Lienen — a pergunta
+que o acervo mantinha aberta desde a v5.16. Permanece aberta só a divergência de
+data, 1966 nos versos das fotografias alemãs contra 1967 no relato brasileiro.
+
+**Quatro "Vitória" no corpus.** Além das três gaúchas já registradas, Vitória é o
+nome antigo da cidade da margem direita do Rio do Peixe que, ao juntar-se com
+Perdizes, formou Videira (SC). "Vitória" sem o estado por extenso é inutilizável
+nesta família — mesma regra de "Maratá".
+
+**Nota histórica (v5.19, mantida para contexto).** A ficha de Bertholdo
 apoiava o cinema de Videira no fato de o sobrinho Nelson Jacob ter trabalhado com
 cinema. A trajetória completa de Nelson Jacob (São Paulo, Jataí-GO, Bom Jesus de
 Goiás) não passa por Videira nem por Santa Catarina. A corroboração caiu; o fato
