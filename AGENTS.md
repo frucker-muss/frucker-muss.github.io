@@ -193,10 +193,37 @@ páginas públicas; a árvore traduz para os 6 status já existentes
   `_data/acervo.json`); lista da pasta em `assets/data/documentos-arquivos.json`;
   JPGs em `assets/img/documentos/`. Arquivo listado sem ficha ainda aparece.
   **Nunca** editar esta página para adicionar foto. Lote 2 (2026-08-26).
-  Lote **2c** (2026-08-26): no visualizador, o botão **Quem é esta pessoa?**
-  gera um código `RK2C-…` (um nome por vez; “Não sei” vale) e envia por
-  `acervorucker@gmail.com` (único canal). A ficha só muda quando o
-  mantenedor aprovar e editar o JSON — a família não mexe no GitHub.
+  Lote **2c** (2026-08-26), reescrito em **06/11/2026**: no visualizador, o botão
+  **Quem está nesta foto?** abre um painel que acumula vários nomes numa lista
+  visível, pergunta **onde** e **quando** por botões de toque (lugares da família
+  e décadas de 1900 a 1990), tem um campo livre de lembrança de até 1500
+  caracteres e um campo "quem está mandando" guardado no navegador. Sai **um
+  único e-mail no fim**, para `acervorucker@gmail.com` (único canal), com o
+  **código permanente** da foto. "Não reconheço ninguém" continua valendo.
+  A ficha só muda quando o mantenedor aprovar e editar o JSON — a família não
+  mexe no GitHub.
+
+  **Decisões de 06/11/2026 — não desfazer:**
+  1. **O código `RK2C-` é permanente por foto**, derivado do `id` em maiúsculas
+     sem separadores e **sem truncar** (`lote01-002` → `RK2C-LOTE01002`). Nos 187
+     itens de hoje: 187 códigos distintos, zero colisão. Não voltar a embutir
+     `Date.now()` no código — isso dava um código novo a cada envio e impedia
+     agrupar contribuições da mesma foto. O que distingue dois envios é a linha
+     `Envio:`.
+  2. **O e-mail carrega o link da foto** (`documentos.html?foto=<id>`), para quem
+     lê abrir direto nela. O parâmetro `?foto=` já existia e é tratado por
+     `rkdAbrirFotoDaUrl()` — não é `#hash`.
+  3. **Fechar ou navegar não descarta mais o que a pessoa escreveu.** Vira
+     rascunho por foto em `localStorage` (`rucker.acervo.rascunho.v1`), com
+     `try/catch`. Antes, tocar na seta apagava três nomes digitados sem aviso.
+  4. **Nada de dividir a mensagem em duas.** Foi implementado e removido no mesmo
+     dia: quem manda a parte 1 esquece a parte 2, e a lembrança some em silêncio.
+     Mensagem longa vai inteira, com aviso em tela e o texto completo à mão para
+     copiar.
+  5. **WhatsApp foi avaliado como canal e descartado pelo Nando** (06/11/2026):
+     não existe mais número para isso. E-mail é o único canal. Não repropor.
+  6. O endereço de e-mail continua **sem aparecer como texto visível** (seção 2):
+     no plano B existe um botão "copiar o endereço", não o endereço escrito.
 - `familia/pessoas.html` — índice de perfis individuais (hoje: Georg Rücker,
   Vincentius Joseph Rücker). Badge "Pessoas".
   Badge nova **"Documento"** (2026-10-22), mesmo cinza `#8a8578` da "Pessoas",
