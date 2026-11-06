@@ -102,6 +102,25 @@ vigente (hoje a **v5.18** = v5.17 de 03/11/2026 mais o bloco do ramo Jahn de
 04/11/2026), que ficará invisível na página mas preserva a rastreabilidade.
 Nunca `"v6.0"`, `"v5.8"` ou outra versão antiga.
 
+**Estado da árvore em 06/11/2026 (v5.21)**: 156 cartões. Entraram os ramos de
+**Rudolfo** (Gertrudes, Marlene e Renate, mais a vice-prefeitura de Três de Maio),
+de **Maximiliano** (com Miloca Schorr), de **Norberto Lindolfo Jahn** (Vera
+Beatriz, Sérgio Luiz e Nara Luísa) e o **Tochetto** (Anara, Sabrina, Guilherme,
+Sabino Júnior, Isabella, Melissa e Larissa). Paulo Ambrósio ganhou a precisão de
+cartório e Irene Regina Ludwig, bloco próprio com o óbito de 1998 e o segundo
+casamento.
+
+**Três correções de parentesco aplicadas em 06/11/2026 — não desfazer:**
+1. **Artur Berlet era casado com Hildegard Kayser, não com Erica.** Os filhos
+   Berlet (Ana Hedi, Alisson, Jorge Alfredo, João Paulo) estavam lançados sob
+   Erica e passaram para Hildegard, conforme a base genealógica e o Livro de
+   Endereços.
+2. **Bruno Rücker é filho de Maximiliano, não de Herberto.** A atribuição antiga
+   vinha da legenda da fotografia de 1943, que nomeia pessoas mas não diz quem é
+   filho de quem, e que o próprio acervo manda não usar para atribuir.
+3. **Aloísio morreu em 19 ou 20/08/1996**, na noite seguinte à do irmão Rudolfo,
+   e não "c. 1996".
+
 **Estado da árvore em 05/11/2026 (v5.19)**: entrou o ramo de Nelson Jacob
 Ruecker em quatro gerações, a partir das mensagens de Augusto Jaeger, Ângela
 Ruecker e Rosângela Ramil no grupo da família em 05/11/2026. Três correções
