@@ -5,7 +5,7 @@ description: "Retratos, sepulturas e documentos escritos que sustentam a árvore
 ---
 
 <p class="rkd-intro">
-  Retratos, sepulturas e documentos escritos que sustentam a Árvore Genealógica. Cada item traz o grau de certeza da leitura — toque em um card para abrir em tela cheia. Se reconhecer alguém, um toque basta: um nome de cada vez, e “não sei” também vale.
+  Retratos, sepulturas e documentos escritos que sustentam a Árvore Genealógica. Cada item traz o grau de certeza da leitura — toque em um card para abrir em tela cheia. Se reconhecer alguém, vá anotando os nomes que lembrar e conte o que souber da foto — envia tudo de uma vez só no final. “Não reconheço ninguém” também ajuda.
 </p>
 
 <style>
@@ -121,8 +121,16 @@ description: "Retratos, sepulturas e documentos escritos que sustentam a árvore
   cursor:pointer;padding:0.7rem 1rem;}
 .rkd-lb-quem-btn:hover{background:rgba(156, 107, 60,.2);}
 
-.rkd-sug{display:none;flex:0 0 auto;background:var(--papel-claro);border-top:1px solid var(--borda);padding:1rem 1.1rem 1.3rem;}
+.rkd-sug{display:none;flex:0 1 auto;background:var(--papel-claro);border-top:1px solid var(--borda);
+  padding:1rem 1.1rem 1.3rem;overflow-y:auto;-webkit-overflow-scrolling:touch;max-height:62vh;}
 .rkd-sug.aberta{display:block;}
+.rkd-lightbox.rkd-sugerindo .rkd-lb-palco{flex:0 1 32vh;min-height:120px;}
+.rkd-lightbox.rkd-sugerindo .rkd-lb-legenda,
+.rkd-lightbox.rkd-sugerindo .rkd-lb-pessoa-painel{display:none;}
+@media (max-width:480px){
+  .rkd-sug{max-height:70vh;}
+  .rkd-lightbox.rkd-sugerindo .rkd-lb-palco{flex:0 1 26vh;}
+}
 .rkd-sug h3{font-family:Georgia,serif;font-size:1.2rem;color:var(--claro);margin:0 0 0.35rem;text-align:center;}
 .rkd-sug p{color:var(--soft);font-size:0.95rem;line-height:1.45;text-align:center;margin:0 0 0.85rem;}
 .rkd-sug-foto{font-family:var(--mono);font-size:0.85rem;color:var(--mudo);text-align:center;margin:0 0 0.8rem;}
@@ -140,6 +148,41 @@ description: "Retratos, sepulturas e documentos escritos que sustentam a árvore
   text-align:center;margin:0.4rem 0 0.8rem;word-break:break-all;}
 .rkd-sug-mail{background:var(--ouro);color:var(--papel);border:none;font-weight:bold;}
 
+/* Lista de nomes já apontados nesta foto */
+.rkd-sug-lista{list-style:none;padding:0;margin:0 auto 0.9rem;max-width:420px;display:flex;flex-direction:column;gap:0.45rem;}
+.rkd-sug-lista li{display:flex;align-items:center;gap:0.6rem;background:var(--papel);border:1px solid var(--borda);
+  border-radius:6px;padding:0.55rem 0.7rem;font-family:Georgia,serif;font-size:1.02rem;color:var(--claro);text-align:left;}
+.rkd-sug-lista li span{flex:1;}
+.rkd-sug-tirar{min-height:40px;min-width:44px;background:transparent;border:1px solid var(--borda);border-radius:6px;
+  color:var(--mudo);font-size:1rem;cursor:pointer;}
+.rkd-sug-tirar:hover{color:var(--terra);border-color:var(--terra);}
+.rkd-sug-contagem{font-family:var(--mono);font-size:0.82rem;color:var(--mudo);text-align:center;margin:0 0 0.6rem;}
+.rkd-sug textarea{display:block;width:100%;max-width:420px;margin:0 auto 0.9rem;min-height:84px;resize:vertical;
+  padding:0.7rem 0.8rem;font-family:Georgia,serif;font-size:1.05rem;line-height:1.4;color:var(--claro);
+  background:var(--papel);border:1px solid var(--borda);border-radius:6px;}
+.rkd-sug-rotulo{display:block;max-width:420px;margin:0 auto 0.35rem;font-family:Georgia,serif;font-size:1rem;
+  color:var(--claro);text-align:left;}
+.rkd-sug-dica{max-width:420px;margin:0 auto 0.5rem!important;font-size:0.88rem!important;text-align:left!important;color:var(--mudo)!important;}
+.rkd-sug-add{background:transparent;color:var(--ouro);border:1px solid var(--ouro);}
+.rkd-sug-final{background:var(--ouro);color:var(--papel);border:none;font-weight:bold;flex-basis:100%!important;}
+.rkd-sug-final[disabled]{opacity:.45;cursor:not-allowed;}
+
+/* Progresso: onde eu parei */
+.rkd-progresso{max-width:620px;margin:0 auto 1.5rem;padding:0.9rem 1rem;background:var(--papel-claro);
+  border:1px solid var(--borda);border-radius:8px;text-align:center;}
+.rkd-progresso p{margin:0 0 0.7rem;font-family:Georgia,serif;font-size:1.02rem;color:var(--texto);line-height:1.45;}
+.rkd-progresso-barra{height:8px;background:var(--borda);border-radius:4px;overflow:hidden;margin:0 0 0.8rem;}
+.rkd-progresso-barra i{display:block;height:100%;background:var(--acento-texto);transition:width .3s;}
+.rkd-progresso-acoes{display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;}
+.rkd-progresso-acoes button{min-height:48px;flex:1 1 180px;max-width:280px;font-family:Georgia,serif;font-size:1rem;
+  border-radius:6px;cursor:pointer;padding:0 1rem;}
+.rkd-prog-continuar{background:var(--acento-texto);color:var(--papel);border:none;font-weight:bold;}
+.rkd-prog-zerar{background:transparent;color:var(--texto-suave);border:1px dashed var(--borda);}
+.rkd-card.rkd-vista{opacity:.55;}
+.rkd-card.rkd-vista::after{content:"✓ já olhei";position:absolute;top:6px;right:6px;background:var(--acento-texto);
+  color:var(--papel);font-family:var(--mono);font-size:0.68rem;padding:3px 7px;border-radius:4px;letter-spacing:.04em;}
+.rkd-card{position:relative;}
+
 @media (max-width:480px){
   .rkd-grade{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:0.7rem;}
   .rkd-lb-titulo{font-size:0.92rem;}
@@ -151,6 +194,14 @@ description: "Retratos, sepulturas e documentos escritos que sustentam a árvore
 
   <div class="rkd-abas" id="rkdAbas" role="tablist" aria-label="Categorias do acervo"></div>
   <p class="rkd-categoria-nota" id="rkdCategoriaNota"></p>
+  <div class="rkd-progresso" id="rkdProgresso" hidden>
+    <p id="rkdProgressoTexto"></p>
+    <div class="rkd-progresso-barra"><i id="rkdProgressoBarra" style="width:0%"></i></div>
+    <div class="rkd-progresso-acoes">
+      <button class="rkd-prog-continuar" id="rkdProgContinuar" type="button">Continuar de onde parei</button>
+      <button class="rkd-prog-zerar" id="rkdProgZerar" type="button">Começar do zero</button>
+    </div>
+  </div>
 
   <div id="rkdGalerias"></div>
 
@@ -185,24 +236,35 @@ description: "Retratos, sepulturas e documentos escritos que sustentam a árvore
   </div>
   <div class="rkd-sug" id="rkdSugerir" aria-live="polite">
     <div id="rkdSugPassoPergunta">
-      <h3>Um nome de cada vez</h3>
-      <p>Quem você reconhece nesta foto? Se não souber, isso também vale.</p>
+      <h3>Quem você reconhece?</h3>
+      <p>Vá acrescentando um nome de cada vez. Quando terminar, envia tudo de uma vez só.</p>
       <p class="rkd-sug-foto" id="rkdSugFoto"></p>
-      <input id="rkdSugNome" type="text" inputmode="text" autocomplete="name" maxlength="80" placeholder="Nome completo, se souber">
+
+      <ul class="rkd-sug-lista" id="rkdSugLista"></ul>
+      <p class="rkd-sug-contagem" id="rkdSugContagem" hidden></p>
+
+      <label class="rkd-sug-rotulo" for="rkdSugNome">Nome de alguém que você reconhece</label>
+      <input id="rkdSugNome" type="text" inputmode="text" autocomplete="name" maxlength="80" placeholder="Ex.: Siegmundo Rücker">
+
+      <label class="rkd-sug-rotulo" for="rkdSugContexto">O que é esta foto? (opcional)</label>
+      <p class="rkd-sug-dica">Que ocasião era, onde foi, mais ou menos quando. Ex.: “Casamento da tia Pina, em Estrela, começo dos anos 50”. Se não souber o ano, a década já ajuda.</p>
+      <textarea id="rkdSugContexto" maxlength="600" placeholder="Ocasião, lugar, época, o que estiver escrito atrás da foto…"></textarea>
+
       <div class="rkd-sug-acoes">
-        <button class="rkd-sug-enviar" id="rkdSugEnviar" type="button">Enviar este nome</button>
-        <button class="rkd-sug-naosei" id="rkdSugNaoSei" type="button">Não sei</button>
+        <button class="rkd-sug-add" id="rkdSugEnviar" type="button">+ Acrescentar nome</button>
+        <button class="rkd-sug-naosei" id="rkdSugNaoSei" type="button">Não reconheço ninguém</button>
+        <button class="rkd-sug-final" id="rkdSugFinalizar" type="button" disabled>Terminei — enviar</button>
         <button class="rkd-sug-cancelar" id="rkdSugCancelar" type="button">Voltar para a foto</button>
       </div>
     </div>
     <div id="rkdSugPassoCodigo" hidden>
-      <h3>Guarde este código</h3>
-      <p>A sugestão ainda não entra no acervo. O mantenedor aprova depois — você não precisa mexer em nada.</p>
+      <h3>Quase lá: falta enviar</h3>
+      <p>Toque no botão abaixo para abrir o e-mail já preenchido, e então mande. Nada entra no acervo sozinho — quem organiza confere antes.</p>
       <p class="rkd-sug-codigo" id="rkdSugCodigo"></p>
       <p id="rkdSugResumo"></p>
       <div class="rkd-sug-acoes">
-        <a class="rkd-sug-mail" id="rkdSugMail" href="#">Enviar por e-mail</a>
-        <button class="rkd-sug-cancelar" id="rkdSugOutro" type="button">Outro nome nesta foto</button>
+        <a class="rkd-sug-mail" id="rkdSugMail" href="#">Abrir o e-mail e enviar</a>
+        <button class="rkd-sug-cancelar" id="rkdSugOutro" type="button">Voltar e corrigir</button>
       </div>
     </div>
   </div>
@@ -296,7 +358,8 @@ function itensPorCategoria(categoria) {
 function montarCardHTML(categoria, item, idx) {
   var tagTipo = item.tipo || item.subcategoria;
   var subcat = tagTipo ? '<span class="rkd-subcat-card">' + tagTipo + '</span>' : '';
-  return '<button class="rkd-card" type="button" data-cat="' + categoria + '" data-idx="' + idx + '">' +
+  var visto = vistas[item.id] ? ' rkd-vista' : '';
+  return '<button class="rkd-card' + visto + '" type="button" data-cat="' + categoria + '" data-idx="' + idx + '" data-fid="' + (item.id || '') + '">' +
            '<img class="rkd-thumb" src="' + item.thumb + '" alt="' + (item.titulo || '') + '" loading="lazy" decoding="async">' +
            '<span class="rkd-card-rodape">' +
              subcat +
@@ -346,7 +409,65 @@ function renderizarTudo() {
   renderizarAbas();
   renderizarNota();
   renderizarGaleria();
+  if (typeof rkdPintarProgresso === "function") rkdPintarProgresso();
 }
+
+/* ---------- Onde eu parei: marca as fotos já abertas, só neste aparelho ----------
+   Guardado no próprio navegador do visitante. Some se ele limpar os dados ou
+   trocar de aparelho, e nunca chega ao servidor. Por isso tudo aqui é
+   protegido: se a gaveta não abrir, a página funciona igual, só sem a marca. */
+var RKD_VISTAS_CHAVE = "rucker.acervo.vistas.v1";
+var vistas = {};
+try {
+  var cru = window.localStorage.getItem(RKD_VISTAS_CHAVE);
+  if (cru) vistas = JSON.parse(cru) || {};
+} catch (e) { vistas = {}; }
+
+function rkdGravarVistas() {
+  try { window.localStorage.setItem(RKD_VISTAS_CHAVE, JSON.stringify(vistas)); } catch (e) {}
+}
+function rkdMarcarVista(id) {
+  if (!id || vistas[id]) return;
+  vistas[id] = 1;
+  rkdGravarVistas();
+  var card = document.querySelector('.rkd-card[data-fid="' + id + '"]');
+  if (card) card.classList.add("rkd-vista");
+  rkdPintarProgresso();
+}
+
+var progEl = document.getElementById("rkdProgresso");
+var progTexto = document.getElementById("rkdProgressoTexto");
+var progBarra = document.getElementById("rkdProgressoBarra");
+
+function rkdPintarProgresso() {
+  if (!progEl) return;
+  var itens = itensPorCategoria(categoriaAtiva);
+  var total = itens.length;
+  var jaVi = itens.filter(function(i) { return vistas[i.id]; }).length;
+  if (total < 12 || jaVi === 0) { progEl.hidden = true; return; }
+  progEl.hidden = false;
+  var faltam = total - jaVi;
+  progTexto.textContent = faltam === 0
+    ? ("Você já olhou todas as " + total + " desta aba. Obrigado — isso é muita foto.")
+    : ("Você já olhou " + jaVi + " de " + total + ". Faltam " + faltam + ".");
+  progBarra.style.width = Math.round((jaVi / total) * 100) + "%";
+  var btn = document.getElementById("rkdProgContinuar");
+  if (btn) btn.hidden = faltam === 0;
+}
+
+function rkdContinuar() {
+  var itens = itensPorCategoria(categoriaAtiva);
+  for (var i = 0; i < itens.length; i++) {
+    if (!vistas[itens[i].id]) { abrirLightbox(categoriaAtiva, i); return; }
+  }
+}
+
+document.getElementById("rkdProgContinuar").addEventListener("click", rkdContinuar);
+document.getElementById("rkdProgZerar").addEventListener("click", function() {
+  vistas = {}; rkdGravarVistas();
+  document.querySelectorAll(".rkd-card.rkd-vista").forEach(function(c) { c.classList.remove("rkd-vista"); });
+  rkdPintarProgresso();
+});
 
 /* ---------- Lightbox: estado e navegação ---------- */
 var lightbox = document.getElementById('rkdLightbox');
@@ -430,6 +551,7 @@ function renderizarMarcadores(item) {
 function carregarItem() {
   var itens = itensPorCategoria(galAtual);
   var item = itens[indiceAtual];
+  if (item) rkdMarcarVista(item.id);
   esconderPessoaPainel();
   img.src = item.full || item.thumb;
   img.alt = item.titulo || '';
@@ -595,7 +717,12 @@ var sugCodigoEl = document.getElementById("rkdSugCodigo");
 var sugResumo = document.getElementById("rkdSugResumo");
 var sugMail = document.getElementById("rkdSugMail");
 var btnQuem = document.getElementById("rkdLbQuem");
+var sugLista = document.getElementById("rkdSugLista");
+var sugContagem = document.getElementById("rkdSugContagem");
+var sugContexto = document.getElementById("rkdSugContexto");
+var btnFinalizar = document.getElementById("rkdSugFinalizar");
 var codigoAtual = "";
+var nomesAtuais = [];        // nomes apontados nesta foto, ainda não enviados
 var nomeAtual = "";
 
 function rkdItemAtual() {
@@ -615,52 +742,121 @@ function rkdSugAbrir() {
   if (!item) return;
   sugFoto.textContent = item.titulo || item.id || "";
   sugNome.value = "";
+  nomesAtuais = [];
+  if (sugContexto) sugContexto.value = "";
+  rkdSugPintarLista();
   sugPergunta.hidden = false;
   sugCodigoPasso.hidden = true;
   sugEl.classList.add("aberta");
+  lightbox.classList.add("rkd-sugerindo");
   setTimeout(function() { sugNome.focus(); }, 50);
 }
 
 function rkdSugFechar(silencioso) {
   sugEl.classList.remove("aberta");
+  lightbox.classList.remove("rkd-sugerindo");
   sugPergunta.hidden = false;
   sugCodigoPasso.hidden = true;
   if (sugNome) sugNome.value = "";
+  if (sugContexto) sugContexto.value = "";
+  nomesAtuais = [];
+  rkdSugPintarLista();
   if (!silencioso) btnQuem.focus();
 }
 
-function rkdSugConfirmar(nome) {
+/* Redesenha a lista de nomes já apontados e ajusta o botão de envio. */
+function rkdSugPintarLista() {
+  if (!sugLista) return;
+  var html = "";
+  nomesAtuais.forEach(function(n, i) {
+    html += '<li><span>' + n.replace(/[<>&]/g, "") + '</span>' +
+            '<button class="rkd-sug-tirar" type="button" data-tirar="' + i + '" ' +
+            'aria-label="Tirar ' + n.replace(/["<>&]/g, "") + ' da lista">✕</button></li>';
+  });
+  sugLista.innerHTML = html;
+  if (sugContagem) {
+    sugContagem.hidden = nomesAtuais.length === 0;
+    sugContagem.textContent = nomesAtuais.length === 1
+      ? "1 nome nesta foto"
+      : nomesAtuais.length + " nomes nesta foto";
+  }
+  if (btnFinalizar) {
+    var temContexto = sugContexto && sugContexto.value.trim().length > 0;
+    btnFinalizar.disabled = nomesAtuais.length === 0 && !temContexto;
+    btnFinalizar.textContent = nomesAtuais.length > 1
+      ? ("Terminei — enviar os " + nomesAtuais.length + " nomes")
+      : "Terminei — enviar";
+  }
+}
+
+/* Acrescenta um nome à lista desta foto, sem enviar nada ainda. */
+function rkdSugAcrescentar(nome) {
+  var n = (nome || "").replace(/\s+/g, " ").trim();
+  if (!n) return;
+  var jaTem = nomesAtuais.some(function(x) { return x.toLowerCase() === n.toLowerCase(); });
+  if (!jaTem) nomesAtuais.push(n);
+  sugNome.value = "";
+  rkdSugPintarLista();
+  sugNome.focus();
+}
+
+/* Fecha a contribuição: um código, um e-mail, todos os nomes juntos. */
+function rkdSugConfirmar(forcarNaoSei) {
   var item = rkdItemAtual();
   if (!item) return;
-  nomeAtual = nome;
+  var naoSei = forcarNaoSei === true;
+  var ctx = sugContexto ? sugContexto.value.replace(/\s+\n/g, "\n").trim() : "";
+  if (!naoSei && nomesAtuais.length === 0 && !ctx) return;
   codigoAtual = rkdCodigo(item);
-  var corpo = [
+
+  var linhas = [
     "Código: " + codigoAtual,
     "Foto: " + (item.id || ""),
     "Título: " + (item.titulo || ""),
-    "Sugestão: " + nomeAtual,
-    "",
-    "Um nome por vez. O mantenedor aprova e só então a ficha em acervo.json muda."
-  ].join("\n");
-  var assunto = "Sugestão " + codigoAtual;
+    ""
+  ];
+  if (naoSei) {
+    linhas.push("Não reconheço ninguém nesta foto.");
+  } else if (nomesAtuais.length) {
+    linhas.push(nomesAtuais.length === 1 ? "Pessoa reconhecida:" : "Pessoas reconhecidas:");
+    nomesAtuais.forEach(function(n, i) { linhas.push("  " + (i + 1) + ". " + n); });
+  }
+  if (ctx) { linhas.push("", "Sobre a foto:", ctx); }
+  linhas.push("", "Enviado pelo acervo visual de rucker.life. Quem organiza confere antes de publicar.");
+
+  var assunto = "Acervo " + codigoAtual + " — " + (item.id || "foto");
   sugMail.href = "mailto:" + RKD_MAIL +
     "?subject=" + encodeURIComponent(assunto) +
-    "&body=" + encodeURIComponent(corpo);
+    "&body=" + encodeURIComponent(linhas.join("\n"));
   sugCodigoEl.textContent = codigoAtual;
-  sugResumo.textContent = nomeAtual === "Não sei"
-    ? "Você marcou que não reconhece ninguém nesta foto."
-    : ("Nome sugerido: " + nomeAtual);
+
+  var resumo;
+  if (naoSei) resumo = "Você marcou que não reconhece ninguém nesta foto.";
+  else if (nomesAtuais.length) {
+    resumo = (nomesAtuais.length === 1 ? "Nome: " : "Nomes: ") + nomesAtuais.join(", ");
+    if (ctx) resumo += " · com informação sobre a foto";
+  } else resumo = "Informação sobre a foto, sem nomes.";
+  sugResumo.textContent = resumo;
+
   sugPergunta.hidden = true;
   sugCodigoPasso.hidden = false;
 }
 
 btnQuem.addEventListener("click", rkdSugAbrir);
 document.getElementById("rkdSugCancelar").addEventListener("click", function() { rkdSugFechar(false); });
-document.getElementById("rkdSugNaoSei").addEventListener("click", function() { rkdSugConfirmar("Não sei"); });
+document.getElementById("rkdSugNaoSei").addEventListener("click", function() { rkdSugConfirmar(true); });
 document.getElementById("rkdSugEnviar").addEventListener("click", function() {
   var n = (sugNome.value || "").replace(/\s+/g, " ").trim();
   if (!n) { sugNome.focus(); return; }
-  rkdSugConfirmar(n);
+  rkdSugAcrescentar(n);
+});
+if (btnFinalizar) btnFinalizar.addEventListener("click", function() { rkdSugConfirmar(false); });
+if (sugContexto) sugContexto.addEventListener("input", rkdSugPintarLista);
+if (sugLista) sugLista.addEventListener("click", function(e) {
+  var b = e.target.closest ? e.target.closest("[data-tirar]") : null;
+  if (!b) return;
+  nomesAtuais.splice(parseInt(b.getAttribute("data-tirar"), 10), 1);
+  rkdSugPintarLista();
 });
 sugNome.addEventListener("keydown", function(e) {
   if (e.key === "Enter") {
@@ -672,6 +868,7 @@ document.getElementById("rkdSugOutro").addEventListener("click", function() {
   sugNome.value = "";
   sugPergunta.hidden = false;
   sugCodigoPasso.hidden = true;
+  rkdSugPintarLista();
   sugNome.focus();
 });
 
