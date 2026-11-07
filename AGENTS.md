@@ -65,6 +65,17 @@ só quer conhecer a própria história — ver seção 2.
 - `caderno.html` — Caderno de ideias (artigos sobre economia, política,
   história, filosofia, livros). **Crônicas de familiares nunca entram aqui** —
   ficam na página da família.
+  Artigo novo vai em `caderno/<slug>.html`, com `layout: cronica` e
+  `acento: verde-profundo`, e entra no índice como cartão
+  (`{% include cartao-artigo.html … selo="Ensaio" %}`). **Não existe `_posts`
+  neste site** e não se usa `categories` nem `tags` — páginas soltas, não blog.
+  Primeiro texto (06/11/2026): `caderno/da-desconstrucao-francesa-ao-wokismo.html`,
+  reprodução e tradução livre de um texto de Brivael Le Pogam publicado na rede X.
+  Padrão editorial estabelecido aí, a seguir em texto de terceiro: nota de
+  abertura assinada pelo Nando num painel próprio (`.ens-nota`) antes do texto,
+  e crédito discreto no fim (`.ens-fecho`) com autor, perfil de origem, data e a
+  ressalva de que a tradução e a nota são do site, não do autor. CSS local
+  prefixado `.ens-`, nada no CSS global.
 - `familia.html` / `musskopf.html` — páginas de família, ambas com
   `layout: acervo` e o conteúdo em `_data/familias/rucker.yml` /
   `musskopf.yml` (intro, lista de seções, nota). Para acrescentar uma seção,
